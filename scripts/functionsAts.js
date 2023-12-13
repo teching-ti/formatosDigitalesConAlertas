@@ -165,11 +165,20 @@ btnGenerar.addEventListener("click", async function generarPDF(e){
         let lugar = document.getElementById("lugar").value
         let fecha = document.getElementById("fecha").value
         let responsable1 = document.getElementById("responsable-nombre").value
-        doc.text(trabajo, 58, 32.5)
-        doc.text(lugar, 58, 36.8)
-        doc.text(fecha, 58, 41)
-        doc.setFontSize(8)
-        doc.text(responsable1, 143, 41)
+
+        if(trabajo!="" && lugar!="" && responsable1!=""){
+            doc.text(trabajo, 58, 32.5)
+            doc.text(lugar, 58, 36.8)
+            doc.text(fecha, 58, 41)
+            doc.setFontSize(8)
+            doc.text(responsable1, 143, 41)
+            return true;
+        }else{
+            alert("Complete todos los campos de la parte superior del formulario")
+            return false;
+        }
+
+        
     }
     
     let evaluarEmpresa = ()=>{
@@ -179,8 +188,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e){
 
         /*EMPRESA SELECCIONADA */
         switch(empresa.value){
+            //La validación se da en el primer caso
+            //si el valor del input es seleccionar se returna un valor falso
+            //esto redirige el flujo al final del código
             case "- Seleccionar -":
-                break;
+                alert("Complete la sección de Empresa")
+                return false;
             case "TECHING":
                 doc.text("x", 34, 28)
                 break;
@@ -193,10 +206,16 @@ btnGenerar.addEventListener("click", async function generarPDF(e){
                 doc.text(empresa.value, 94, 28.3)
                 break;
         }
+        return true;
     }
 
     //funcion que se usa para colocar las actividades
     let reconocerActividades = ()=>{
+        //variables que serán utilizadas para la validación
+        let val1
+        let val2
+        let val3
+        let val4
 
         //la suma de las coordenadas y debe ser de 6.5 para rellenar las actividades
         //definiendo las posiciones iniciales para las actividades
@@ -211,32 +230,79 @@ btnGenerar.addEventListener("click", async function generarPDF(e){
 
         //nombre de las actividades
         nombresActs = document.querySelectorAll(".actividad-nombre")
+
         nombresActs.forEach((nombreA)=>{
-            doc.setFontSize(9)
-            doc.text(nombreA.value, XnombreActividad, YnombreActividad)
-            YnombreActividad+=6.5
+            if(nombreA.value!=""){
+                doc.setFontSize(9)
+                doc.text(nombreA.value, XnombreActividad, YnombreActividad)
+                YnombreActividad+=6.5
+                //si no hay campos vacios
+                val1="1"
+            }else{
+                //si hay campos vacios
+                alert("Complete el campo 'actividades' ")
+                val1="0"
+            }
         })
+        
         //peligros y aspecto
         peligros = document.querySelectorAll(".peligro-aspecto-nombre")
+
         peligros.forEach((peligro)=>{
-            doc.setFontSize(9)
-            doc.text(peligro.value, XpeligroActividad, YpeligroActividad)
-            YpeligroActividad+=6.5
+            if(peligro.value!=""){
+                doc.setFontSize(9)
+                doc.text(peligro.value, XpeligroActividad, YpeligroActividad)
+                YpeligroActividad+=6.5
+                //si no hay campos vacios
+                val2="1"
+            }else{
+                //si hay campos vacios
+                alert("Complete el campo 'peligro actividad' ")
+                val2="0"
+            }
         })
+
         //riesgos e impactos
         riesgos = document.querySelectorAll(".riesgo-impacto-nombre")
+
         riesgos.forEach((riesgo)=>{
-            doc.setFontSize(9)
-            doc.text(riesgo.value, XriesgoActividad, YriesgoActividad)
-            YriesgoActividad+=6.5
+            if(riesgo.value!=""){
+                doc.setFontSize(9)
+                doc.text(riesgo.value, XriesgoActividad, YriesgoActividad)
+                YriesgoActividad+=6.5
+                //si no hay campos vacios
+                val3="1"
+            }else{
+                //si hay campos vacios
+                alert("Complete el campo 'riesgo impacto'")
+                val3="0"
+            }
         })
+
         //acciones recomendadas
         recomendaciones = document.querySelectorAll(".acciones-nombre")
+
         recomendaciones.forEach((recomendacion)=>{
-            doc.setFontSize(9)
-            doc.text(recomendacion.value, XrecomendacionActividad, YrecomendacionActividad)
-            YrecomendacionActividad+=6.5
+            if(recomendacion.value!=""){
+                doc.setFontSize(9)
+                doc.text(recomendacion.value, XrecomendacionActividad, YrecomendacionActividad)
+                YrecomendacionActividad+=6.5
+                //si no hay campos vacios
+                val4="1"
+            }else{
+                //si hay campos vacios
+                alert("Complete el campo 'recomendaciones' ")
+                val4="0"
+            }
         })
+        //si todos los campos tienen datos, sus variables tendrán un número asignado, diferente a a0
+        if(val1!="0" && val2!="0" && val3!="0" && val4!="0"){
+            //si los valores son diferentes a 0, esta función retornará un true
+            return true;
+        }else{
+            //si al menos uno de los valores es 0, esta función retornará un false
+            return false;
+        }
     }
 
     //función para evaluar las casillas marcadas
@@ -288,6 +354,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e){
             }
             contador+=1
         });
+        return true;
     }
 
     //funcion para evaluar los datos de clinica
@@ -296,34 +363,59 @@ btnGenerar.addEventListener("click", async function generarPDF(e){
         let clinicaDireccion = document.getElementById("clinica-direccion").value
         doc.text(clincaNombre, 44.5, 225.2)
         doc.text(clinicaDireccion, 29.5, 229)
+        return true;
     }
     
     //funcion para evaluar datos de trabajadores
     let evaluarPersonas = () => {
+        let vl1
+        let vl2
+        let vl3
+
         //Colocar nombres
         let nombreY = 241
         let nombresPersonas = document.querySelectorAll(".participante-nombre")
         nombresPersonas.forEach((persona)=>{
-            doc.setFontSize(9)
-            doc.text(persona.value, 27, nombreY)
-            nombreY+=5.2
+            if(persona.value!=""){
+                doc.setFontSize(9)
+                doc.text(persona.value, 27, nombreY)
+                nombreY+=5.2
+                //si persona es diferennte de vacio
+                vl1="1"
+            }else{
+                alert("complete los datos de los participantes")
+                vl1="0"
+            }
         })
 
         //ColocarDNI
         let dniY = 241
         let dniPersonas = document.querySelectorAll(".participante-dni")
         dniPersonas.forEach((dniPersona)=>{
-            doc.text(dniPersona.value, 110, dniY)
-            dniY+=5.2
+            if(dniPersona.value!=""){
+                doc.text(dniPersona.value, 110, dniY)
+                dniY+=5.2
+                //si dni es diferennte de vacio
+                vl2="1"
+            }else{
+                alert("Campo DNI vacío")
+                vl2="0"
+            }
         })
 
         //ColocarFirma
         let firmaY = 241
         let firmasPersonas = document.querySelectorAll(".participante-firma")
         firmasPersonas.forEach((firmaPersona)=>{
-            doc.text(firmaPersona.value, 144, firmaY)
-            firmaY+=5.2
-            
+            if(firmaPersona.value!=""){
+                doc.text(firmaPersona.value, 144, firmaY)
+                firmaY+=5.2
+                //si firma es diferente de vacio
+                vl3="1"
+            }else{
+                alert("Campo firma se encuentra vacío")
+                vl3="0"
+            }   
         })
         //ColocarHoraIngreso
         let horaIngresoY = 241
@@ -339,19 +431,47 @@ btnGenerar.addEventListener("click", async function generarPDF(e){
             doc.text(horaSalida.value,180,horaSalidaY)
             horaSalidaY+=5.2
         })
+
+        //si todos los campos tienen datos, sus variables tendrán un número asignado, diferente a a0
+        if(vl1!="0" && vl2!="0" && vl3!="0"){
+            //si los valores son diferentes a 0, esta función retornará un true
+            return true;
+        }else{
+            //si al menos uno de los valores es 0, esta función retornará un false
+            return false;
+        }
+
+    }
+
+    let evaluarObservaciones = ()=>{
+        let observaciones = document.getElementById("input-observaciones").value
+        if(observaciones!=""){
+            doc.setFontSize(9)
+            doc.text(observaciones, 12, 274, {maxWidth: 185, lineHeightFactor: 0.8})
+            return true;
+        }else{
+            return false;
+        }
     }
 
     //introduciendo datos
     doc.setFontSize(10)
-    evaluarEmpresa()
-    evaluarDatosPrincipales()
-    reconocerActividades()
-    evaluarCheckbox()
-    evaluarClinica()
-    evaluarPersonas()
+    //validar que todas las funciones den true, sino, parecerá el alert
+    evaluarObservaciones()
+    if(evaluarEmpresa() && evaluarDatosPrincipales() && reconocerActividades() && evaluarCheckbox() && evaluarClinica() && evaluarPersonas() && evaluarObservaciones()){
+        var blob = doc.output("blob");
+        window.open(URL.createObjectURL(blob))
+    }else{
+         alert("Asegúrse de competar todos los campos para generar el documento")
+    }
+    // evaluarEmpresa()
+    // evaluarDatosPrincipales()
+    // reconocerActividades()
+    // evaluarCheckbox()
+    // evaluarClinica()
+    // evaluarPersonas()
 
-    var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob))
+    
 
     //doc.save("analisis_trabajo_seguro.pdf")
 })
