@@ -232,6 +232,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     //doc.save("reporte_charla_05_minutos.pdf");
 
     //hacer previsualización
-    /*var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob))*/
+    var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob))
 })  
