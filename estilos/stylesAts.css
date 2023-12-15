@@ -103,7 +103,6 @@ input{
     padding: .5em;
 }
 
-
 #lugar, #responsable-nombre{
     padding: 0.5em;
     width: 45%;
@@ -188,17 +187,41 @@ input{
     gap: 1.5rem;
     padding: .5rem;
     grid-template-areas: 
-                        "nombres nombres dni"
-                        "firma hora-i hora-s";
+                        "nombres dni firma"
+                        "hora-i hora-s ..";
     border: solid 1px rgb(202, 202, 202);
 }
 
 .participante-nombre{
+    border-style: none;
+    outline: none;
     grid-area: nombres;
 }
 
 .participante-dni{
     grid-area: dni;
+}
+
+.btn-remover-participante{
+    background: none;
+    color: rgb(173, 7, 7);
+    padding: .5rem;
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 auto;
+    width: 20%;
+    transition: all ease-in-out .3s;
+}
+
+.btn-remover-participante:hover{
+    background: rgb(173, 7, 7);
+    transition: all ease-in-out .4s;
+    color: white;
+}
+
+.btn-remover-participante i{
+    font-size: 1.5rem;
 }
 
 .participante-firma{
@@ -339,6 +362,10 @@ input{
                             "firma"
                             "hora-i" 
                             "hora-s";
+    }
+
+    .participante-nombre{
+        font-size: 1.1rem;
     }
 
     #input-observaciones{

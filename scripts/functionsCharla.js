@@ -234,4 +234,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     //hacer previsualización
     var blob = doc.output("blob");
     window.open(URL.createObjectURL(blob))
-})  
+})
+
+fetch("../scripts/datos.json")
+    .then((response)=>response.json())
+    .then((data)=>{
+        users = data
+        console.log(users)
+    })
+    .catch((error)=>console.error("Se ha presentado un error =>", error))
