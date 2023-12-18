@@ -117,7 +117,7 @@ function funcionalidadesPersonal() {
     datosParticipante.classList.add("participante-datos");
 
     //creacion del boton para remover personas
-    let botonRemoverPersona = document.createElement("button");
+    let botonRemoverPersona = document.createElement("div");
     botonRemoverPersona.classList.add("btn-remover-participante");
     let iconTrash = document.createElement("i");
     iconTrash.classList.add("fa-solid");
@@ -201,9 +201,8 @@ function funcionalidadesPersonal() {
 
   //el manejo de los click están delegados al un contenedor de participante en específico
   contenedorParticipante.addEventListener("click", function (ev) {
-    ev.preventDefault();
     //condición, si el evento causado es por alguien que contiene esa clase
-    if (ev.target.classList.contains("btn-remover-participante")) {
+    if (ev.target.classList.contains("btn-remover-participante") || ev.target.classList.contains("fa-trash")) {
       //se guarda dentro de participanteContainer el div en cuestión 'participante-datos que haya tenido dicho evento'
       //debido al método closest
       const participanteContainer = ev.target.closest(".participante-datos");
@@ -514,14 +513,18 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         vl2 = "0";
       }
     });
-
+    /*
+    tengo un archivo excel ya cread, con tablas, colores y celdas ya estabelicdas, hay forma de usar una página web a modo de formulario
+    para escribir información como nombres, fechas y datos que quisiera que aparezcan dentro de ese excel modificado en celdas específicas?
+    */
     //ColocarFirma
-    let firmaY = 241;
+    let firmaY = 236.2;
     let firmasPersonas = document.querySelectorAll(".participante-firma");
     firmasPersonas.forEach((firmaPersona) => {
       if (firmaPersona.value != "") {
-        doc.text(firmaPersona.value, 144, firmaY);
-        firmaY += 5.2;
+        console.log(firmaPersona.value)
+        doc.addImage(firmaPersona.value, "PNG", 144, firmaY, 19.2, 4.8);
+        firmaY += 5.3;
         //si firma es diferente de vacio
         vl3 = "1";
       } else {

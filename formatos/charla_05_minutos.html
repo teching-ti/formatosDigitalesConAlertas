@@ -140,7 +140,27 @@
                   <h3>Participantes de la Charla</h3>
                   <button id="btn-aniadir">Añadir <i class="fa-solid fa-user-plus"></i></button>
                 </div>
+                <!--Agregar el autocompletado haciendo uso de una petición fetch,
+                y una vez obtenida se deberá realizar el foreach
+                users=data
+                let nombreContenedor = document.createElement("select")
+                users.forEach((user)=>{
+                  let nombre = user.name
+                  let dni = user.dni
+                  option = document.createElement(option)
+                  option.innterText(nombre)
+                })
 
+                luego considerar el tema del botoón 'remover', crear un botonremover
+                para cada uno de los nuevos campos de usuarios que vayan a aparecer dentro del
+                contenedorInput, al hacer click en un botón remover que se encuentre dentro de un elemento
+                con la clase 'participante-datos' se debe considerar el uso del método closets}
+                ya que al hacer clic en el btnRemover, es importante reconocer que botón exactamente ocasionó
+                ese evento (para eso se usará el event.target), entonces una vez reconocido se aplicará
+                el método closets, de esa manera se reconoce al botón que desencadenó el evento y se reconocerá
+                al elemento padre 'el elemento padre se espera que sea el que contiene a los inputs, al select, los campos de la hora
+                y al mismo botón de eliminar'
+                -->
                 <div class="participante-datos">
                   <input
                     type="text"

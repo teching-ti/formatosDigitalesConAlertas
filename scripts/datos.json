@@ -2,13 +2,13 @@
   {
     "name": "José Luis Diaz Vasquez",
     "dni": "43692772",
-    "firma": "firma.d.prueba.1",
+    "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma1.png",
     "cargo": "Técnico de Medición"
   },
   {
     "name": "Rodrigo Marco Lopez Acuña",
     "dni": "74444960",
-    "firma": "firma.d.prueba.2",
+    "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma2.png",
     "cargo": "Técnico de Medición"
   },
   {
