@@ -170,11 +170,35 @@ h3{
 }
 
 .participante-nombre{
+    margin: auto 0;
+    border-style: none;
+    outline: none;
+    height: 35px;
     width: 40%;
 }
 .participante-firma{
     pointer-events: none;
     background: #d1d5db;
+}
+
+.btn-remover-participante{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px  rgb(161, 16, 16);
+    border-radius: 4px;
+    font-size: 1.2rem;
+    color: rgb(161, 16, 16);
+    transition: all ease-in-out .3s;
+    cursor: pointer;
+    width: 5%;
+
+}
+
+.btn-remover-participante:hover{
+    background: rgb(161, 16, 16);
+    color: white;
+    transition: all ease-in-out .4s;
 }
 
 #expositor{
@@ -251,6 +275,12 @@ h3{
 
     .participante-nombre{
         width: auto;
+    }
+
+    .btn-remover-participante{
+        margin: auto;
+        padding: .4rem;
+        width: 18%;
     }
 
     #expositor{

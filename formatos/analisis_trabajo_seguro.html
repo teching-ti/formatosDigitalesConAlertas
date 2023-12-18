@@ -70,40 +70,44 @@
             </div>
             <br />
             <!-- Seccion de actividades -->
-            <section class="section-actividades">
-              <div id="contenedor-actividades">
-                <div class="sup-actividades">
-                  <h3>Listado de Actividades</h3>
-                  <button id="btn-aniadir-actividad">
-                    Añadir Actividad
-                    <i class="fa-solid fa-file-circle-plus"></i>
-                  </button>
-                </div>
+              <section class="section-actividades">
+                <div id="contenedor-actividades">
+                  <div class="sup-actividades">
+                    <h3>Listado de Actividades</h3>
+                    <button id="btn-aniadir-actividad">
+                      Añadir Actividad
+                      <i class="fa-solid fa-file-circle-plus"></i>
+                    </button>
+                  </div>
 
-                <div class="actividades-datos">
-                  <input
-                    type="text"
-                    class="actividad-nombre"
-                    placeholder="Actividad."
-                  />
-                  <input
-                    type="text"
-                    class="peligro-aspecto-nombre"
-                    placeholder="Peligro/Aspecto."
-                  />
-                  <input
-                    type="text"
-                    class="riesgo-impacto-nombre"
-                    placeholder="Riesgo Asociado/ Impacto Ambiental."
-                  />
-                  <input
-                    type="text"
-                    class="acciones-nombre"
-                    placeholder="Acciones Recomendades."
-                  />
+                  <div class="actividades-datos">
+                    <input
+                      type="text"
+                      class="actividad-nombre"
+                      placeholder="Actividad."
+                    />
+                    <input
+                      type="text"
+                      class="peligro-aspecto-nombre"
+                      placeholder="Peligro/Aspecto."
+                    />
+                    <input
+                      type="text"
+                      class="riesgo-impacto-nombre"
+                      placeholder="Riesgo Asociado/ Impacto Ambiental."
+                    />
+                    <input
+                      type="text"
+                      class="acciones-nombre"
+                      placeholder="Acciones Recomendades."
+                    />
+                    <div class="btn-remover-actividad">
+                      <i class="fa-solid fa-file-circle-xmark"></i>
+                    </div>
+                  </div>
+                  
                 </div>
-              </div>
-            </section>
+              </section>
 
             <!-- Seccion de checkbox -->
 
@@ -182,12 +186,13 @@
                 
                 <div class="participante-datos">
                   <select name="participante-nombre" class="participante-nombre">
-                    <option value=""></option>
+                    <option value="Seleccionar">--Seleccionar Nombre--</option>
                   </select>
                   <input
                     type="text"
                     class="participante-dni"
                     placeholder="DNI."
+                    readonly
                   />
 
                   <div class="btn-remover-participante">
@@ -198,6 +203,7 @@
                     type="text"
                     class="participante-firma"
                     placeholder="Firma."
+                    readonly
                   />
                   <!--evaluar tema de las horas-->
                   <div class="contenedor-ingreso">
@@ -222,6 +228,7 @@
               ></textarea>
             </section>
             <hr />
+            <!--
             <h3>Responsable</h3>
             <section id="responsable">
               <div id="resp1" class="responsable-datos">
@@ -233,6 +240,7 @@
                 <input type="text" id="responsable-firma" />
               </div>
             </section>
+            -->
           </div>
 
           <!--Fin Cuerpo del Formulario-->

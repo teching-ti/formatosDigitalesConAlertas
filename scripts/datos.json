@@ -1,50 +1,62 @@
-[
-  {
-    "name": "José Luis Diaz Vasquez",
-    "dni": "43692772",
-    "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma1.png",
-    "cargo": "Técnico de Medición"
-  },
-  {
-    "name": "Rodrigo Marco Lopez Acuña",
-    "dni": "74444960",
-    "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma2.png",
-    "cargo": "Técnico de Medición"
-  },
-  {
-    "name": "Luis David Enriquez Quispe",
-    "dni": "48072457",
-    "firma": "firma.d.prueba.3",
-    "cargo": "Técnico de Medición"
-  },
-  {
-    "name": "Juan José Alcantara Soto",
-    "dni": "77028233",
-    "firma": "firma.d.prueba.4",
-    "cargo": "Técnico de Medición"
-  },
-  {
-    "name": "Erich Ofni Gonzalo Laguna",
-    "dni": "48058039",
-    "firma": "firma.d.prueba.5",
-    "cargo": "Técnico Auxiliar"
-  },
-  {
-    "name": "Frank Brayan Morales Quispe",
-    "dni": "73876867",
-    "firma": "firma.d.prueba.6",
-    "cargo": "Técnico Auxiliar"
-  },
-  {
-    "name": "Robin Valentino Asensios Cardenas",
-    "dni": "77913680",
-    "firma": "firma.d.prueba.7",
-    "cargo": "Técnico Auxiliar"
-  },
-  {
-    "name": "Jordy Alquett Acosta Fernandez",
-    "dni": "47935322",
-    "firma": "firma.d.prueba.8",
-    "cargo": "Técnico Auxiliar"
-  }
-]
+{
+  "tecnico": [
+    {
+      "name": "José Luis Diaz Vasquez",
+      "dni": "43692772",
+      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma1.png",
+      "cargo": "Técnico de Medición"
+    },
+    {
+      "name": "Rodrigo Marco Lopez Acuña",
+      "dni": "74444960",
+      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma2.png",
+      "cargo": "Técnico de Medición"
+    },
+    {
+      "name": "Luis David Enriquez Quispe",
+      "dni": "48072457",
+      "firma": "firma.d.prueba.3",
+      "cargo": "Técnico de Medición"
+    },
+    {
+      "name": "Juan José Alcantara Soto",
+      "dni": "77028233",
+      "firma": "firma.d.prueba.4",
+      "cargo": "Técnico de Medición"
+    },
+    {
+      "name": "Erich Ofni Gonzalo Laguna",
+      "dni": "48058039",
+      "firma": "firma.d.prueba.5",
+      "cargo": "Técnico Auxiliar"
+    },
+    {
+      "name": "Frank Brayan Morales Quispe",
+      "dni": "73876867",
+      "firma": "firma.d.prueba.6",
+      "cargo": "Técnico Auxiliar"
+    },
+    {
+      "name": "Robin Valentino Asensios Cardenas",
+      "dni": "77913680",
+      "firma": "firma.d.prueba.7",
+      "cargo": "Técnico Auxiliar"
+    },
+    {
+      "name": "Jordy Alquett Acosta Fernandez",
+      "dni": "47935322",
+      "firma": "firma.d.prueba.8",
+      "cargo": "Técnico Auxiliar"
+    }
+  ],
+
+  "supervisor": [
+    {
+      "name":"Victor Adrian Gonzales Vidal",
+      "dni": "O7984815",
+      "firma": "firma.d.supervisor",
+      "cargo":"Supervisor"
+
+    }
+  ]
+}

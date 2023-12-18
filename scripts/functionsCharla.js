@@ -26,6 +26,38 @@ let opcionesPreguntas2 = document.querySelectorAll(".op2")
         })
 })
 
+//obtener los datos del archivo
+//uso de una petición fetch
+fetch("../scripts/datos.json")
+  .then((response) => response.json())
+  .then((data) => {
+    //la data obtenida será nombrada como users
+    users = data;
+
+    /*Autocompletado y llenado para los técnicos*/
+    //llena las opciones de 'participantes tecnicos' del primer select que aparecerá por defecto
+    //funcion
+    llenarSelect(document.querySelector(".participante-nombre"));
+    //auocompleta los campos relacionados al primer select, que aparece por defecto
+    autocompletarCampos(document.querySelector(".participante-nombre"), document.querySelector(".participante-datos"));
+
+
+    funcionalidadesPersonal();
+  })
+  .catch((error) => console.error("Error al cargar los datos:", error));
+
+// Función para llenar el select con opciones de nombres de los técnicos
+function llenarSelect(elementoSelect) {
+    //una vez con la data 'users' obtenida se podrá acceder a cada uno de los elementos dentro de ella
+    users.tecnico.forEach((tecnico) => {
+      const option = document.createElement("option");
+      option.value = tecnico.name;
+      option.textContent = tecnico.name;
+      elementoSelect.appendChild(option);
+    });
+  }
+
+  
 /*añadir participante start*/
 let btnAniadir = document.getElementById("btn-aniadir")
 let contInputs = document.getElementById("contenedor-inputs")
@@ -46,8 +78,16 @@ function aniadirParticipante(){
     let firmaParticipante = document.createElement("input")
     firmaParticipante.classList.add("participante-firma")
     firmaParticipante.placeholder = "Firma."
+    //creacion del btn-remover
+    let btnRemoverParticipante = document.createElement("div")
+    btnRemoverParticipante.classList.add("btn-remover-participante")
+    let iconTrash = document.createElement("i")
+    iconTrash.classList.add("fa-solid")
+    iconTrash.classList.add("fa-trash")
+    btnRemoverParticipante.appendChild(iconTrash)
+
     //añadiendo los input creados al div
-    datosParticipante.append(nombreParticipante, dniParticipante, firmaParticipante)
+    datosParticipante.append(nombreParticipante, dniParticipante, firmaParticipante, btnRemoverParticipante)
     //añadir el div con los input dentro al DOM
     contInputs.appendChild(datosParticipante)
 }
@@ -225,21 +265,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     evaluarNombres()
     evaluarExpositor()
 
-    //https://codingpotions.com/input-autocompletado-javascript/
-    //Para generar el autocomplete podría ser usando fetch
-
-    // Guardar el PDF
-    //doc.save("reporte_charla_05_minutos.pdf");
-
     //hacer previsualización
     var blob = doc.output("blob");
     window.open(URL.createObjectURL(blob))
 })
-
-fetch("../scripts/datos.json")
-    .then((response)=>response.json())
-    .then((data)=>{
-        users = data
-        console.log(users)
-    })
-    .catch((error)=>console.error("Se ha presentado un error =>", error))

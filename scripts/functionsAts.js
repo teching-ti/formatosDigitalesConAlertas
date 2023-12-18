@@ -35,12 +35,22 @@ function aniadirActividad() {
   let accionesRecomendadas = document.createElement("input");
   accionesRecomendadas.classList.add("acciones-nombre");
   accionesRecomendadas.placeholder = "Acciones Recomendadas.";
+
+  //boton de remover
+  let btnRemoverActividad = document.createElement("div")
+  btnRemoverActividad.classList.add("btn-remover-actividad")
+  let iconFile = document.createElement("i")
+  iconFile.classList.add("fa-solid")
+  iconFile.classList.add("fa-file-circle-xmark")
+  btnRemoverActividad.appendChild(iconFile)
+
   //añadiendo los input creados al div
   datosActividad.append(
     nombreActividad,
     peligroAspecto,
     riesgoImpacto,
-    accionesRecomendadas
+    accionesRecomendadas,
+    btnRemoverActividad
   );
   //añadir el div con los input dentro al DOM
   contenedorActividades.appendChild(datosActividad);
@@ -53,6 +63,21 @@ btnAniadirActividad.addEventListener("click", function (e) {
 });
 /*--- AÑADIR ACTIVIDADES END ---*/
 
+//el manejo de los click están delegados al un contenedor de una actividad en específico
+contenedorActividades.addEventListener("click", function (ev) {
+  //condición, si el evento causado es por alguien que contiene esa clase
+  if (ev.target.classList.contains("btn-remover-actividad") || ev.target.classList.contains("fa-file-circle-xmark")) {
+    const containerActividad = ev.target.closest(".actividades-datos");
+    //se ejecuta la función eliminarActividad llevando como argumento el contenedor guardado
+    eliminarActividad(containerActividad);
+  }
+});
+
+function eliminarActividad(contenedor) {
+  //contenedorActividades es una variable declarada con un elemento del dom, muchas líneas atrás
+  contenedorActividades.removeChild(contenedor);
+}
+
 /*--- AÑADIR PARTICIPANTE O PERSONAL START ---*/
 let btnAniadirParticipante = document.getElementById("btn-aniadir");
 let contenedorParticipante = document.getElementById("contenedor-inputs");
@@ -63,40 +88,43 @@ let contenedorParticipante = document.getElementById("contenedor-inputs");
 fetch("../scripts/datos.json")
   .then((response) => response.json())
   .then((data) => {
+    //la data obtenida será nombrada como users
     users = data;
 
-    //llena las opciones del primer select que aparecerá por defecto
+    /*Autocompletado y llenado para los técnicos*/
+    //llena las opciones de 'participantes tecnicos' del primer select que aparecerá por defecto
+    //funcion
     llenarSelect(document.querySelector(".participante-nombre"));
     //auocompleta los campos relacionados al primer select, que aparece por defecto
-    autocompletarCampos(
-      document.querySelector(".participante-nombre"),
-      document.querySelector(".participante-datos")
-    );
+    autocompletarCampos(document.querySelector(".participante-nombre"), document.querySelector(".participante-datos"));
+
+
     funcionalidadesPersonal();
   })
   .catch((error) => console.error("Error al cargar los datos:", error));
 
-// Función para llenar el select con opciones de nombres
+// Función para llenar el select con opciones de nombres de los técnicos
 function llenarSelect(elementoSelect) {
-  users.forEach((user) => {
+  //una vez con la data 'users' obtenida se podrá acceder a cada uno de los elementos dentro de ella
+  users.tecnico.forEach((tecnico) => {
     const option = document.createElement("option");
-    option.value = user.name;
-    option.textContent = user.name;
+    option.value = tecnico.name;
+    option.textContent = tecnico.name;
     elementoSelect.appendChild(option);
   });
 }
 
-//función para autocompletar los campos al seleccionar un nombre
+/*Autocompletado de los técnicos*/
+//función para autocompletar los campos al seleccionar un nombre 
 //parámetros, (select, elemento que será actualizado usando su .value)
 function autocompletarCampos(elementoSelect, datosParticipante) {
   elementoSelect.addEventListener("change", function () {
     const nombreSeleccionado = elementoSelect.value;
-    const usuarioSeleccionado = users.find(
-      (user) => user.name === nombreSeleccionado
+    const usuarioSeleccionado = users.tecnico.find(
+      (tecnico) => tecnico.name === nombreSeleccionado
     );
-
     //autocompletar los campos correspondientes
-    //datosParticipante.querySelector(".participante-dni"), obviamente hace referencia al elemento html
+    //datosParticipante.querySelector(".participante-dni"), //obviamente hace referencia al elemento html
     datosParticipante.querySelector(".participante-dni").value =
       usuarioSeleccionado.dni;
     datosParticipante.querySelector(".participante-firma").value =
@@ -127,8 +155,8 @@ function funcionalidadesPersonal() {
     // Crear un select para los nombres
     let nombreParticipante = document.createElement("select");
     let option0 = document.createElement("option");
-    option0.value = "";
-    option0.textContent = "";
+    option0.value = "Seleccionar";
+    option0.textContent = "--Seleccionar Nombre--";
     nombreParticipante.appendChild(option0);
     nombreParticipante.classList.add("participante-nombre");
 
@@ -138,11 +166,13 @@ function funcionalidadesPersonal() {
     //creación de input
     let participanteDNI = document.createElement("input");
     participanteDNI.classList.add("participante-dni");
+    participanteDNI.readOnly = true
     participanteDNI.placeholder = "DNI.";
     //creación de input
     let participanteFirma = document.createElement("input");
     participanteFirma.classList.add("participante-firma");
     participanteFirma.placeholder = "Firma.";
+    participanteFirma.readOnly = true;
     //creacion de los contenedores para las horas y span
 
     //contenedor de ingreso
@@ -265,6 +295,16 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       doc.text(fecha, 58, 41);
       doc.setFontSize(8);
       doc.text(responsable1, 143, 41);
+      //para que aparezca el nombre y la firma
+
+      /*importante evaluar que posiblemente para la sección de encargado sea necesario integrar sus datos al json
+       para así también autocompletar su firma
+      */
+      //texto posicionado para el final de la hoja y firma respectiva
+      doc.text(responsable1, 59, 282)
+      //se puede cargar directaente la dirección de la imagen desde el json
+      doc.addImage("../recursos/firma12.png", "PNG", 164, 278, 25, 5)
+
       return true;
     } else {
       alert("Complete todos los campos de la parte superior del formulario");
@@ -487,14 +527,14 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let nombreY = 241;
     let nombresPersonas = document.querySelectorAll(".participante-nombre");
     nombresPersonas.forEach((persona) => {
-      if (persona.value != "") {
+      if (persona.value != "" && persona.value != "Seleccionar") {
         doc.setFontSize(9);
         doc.text(persona.value, 27, nombreY);
         nombreY += 5.2;
         //si persona es diferennte de vacio
         vl1 = "1";
       } else {
-        alert("complete los datos de los participantes");
+        alert("Complete el nombre del participante");
         vl1 = "0";
       }
     });

@@ -117,13 +117,46 @@ input{
     display: grid;
     margin: 1.5rem 0;
     padding: .5rem;
-    grid-template-columns: 1fr 1fr;
+    /*grid-template-columns: 1fr 1fr;*/
+    grid-template-areas:"actividad peligro removerActividad"
+                        "riesgo acciones removerActividad";
     gap: 1rem 2rem;
     border: solid 1px rgb(202, 202, 202);
 }
 
 .actividades-datos input{
     padding: .5em;
+}
+
+.actividad-nombre{
+    grid-area: actividad;
+}
+.peligro-aspecto-nombre{
+    grid-area: peligro;
+}
+.riesgo-impacto-nombre{
+    grid-area: riesgo;
+}
+.acciones-nombre{
+    grid-area: acciones;
+}
+
+.btn-remover-actividad{
+    margin: auto;
+    cursor: pointer;
+    border-radius: 5px;
+    color: rgb(211, 5, 5);
+    border: solid rgb(211, 5, 5) 1px;
+    font-size: 1.5rem;
+    padding: .2rem;
+    transition: all ease-in-out .3s;
+    grid-area: removerActividad;
+}
+
+.btn-remover-actividad:hover{
+    background: rgb(211, 5, 5);
+    transition: all ease-in-out .4s;
+    color: white;
 }
 
 .contenedor-procedimientos{
@@ -371,6 +404,15 @@ input{
                             "firma"
                             "hora-i" 
                             "hora-s";
+    }
+
+    .actividades-datos{
+        grid-template-areas: 
+                            "actividad"
+                            "peligro"
+                            "riesgo"
+                            "acciones"
+                            "removerActividad";
     }
 
     .participante-nombre{
