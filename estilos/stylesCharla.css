@@ -208,9 +208,14 @@ h3{
     padding: 1.4em 0;
 }
 
+#dexp1{
+    display: none;
+}
+
 .expositor-datos{
     display: flex;
     width: 50%;
+    gap: 1rem;
     margin: .5em 0;
 }
 
@@ -221,6 +226,7 @@ h3{
 }
 
 #expositor-nombre{
+    
     padding: .5em;
     width: 100%;
 }

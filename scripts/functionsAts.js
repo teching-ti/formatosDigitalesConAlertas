@@ -94,9 +94,13 @@ fetch("../scripts/datos.json")
     /*Autocompletado y llenado para los técnicos*/
     //llena las opciones de 'participantes tecnicos' del primer select que aparecerá por defecto
     //funcion
-    llenarSelect(document.querySelector(".participante-nombre"));
-    //auocompleta los campos relacionados al primer select, que aparece por defecto
-    autocompletarCampos(document.querySelector(".participante-nombre"), document.querySelector(".participante-datos"));
+    llenarSelect(document.querySelector(".participante-nombre"))
+    //auocompleta los campos relacionados al primer select del personal, que aparece por defecto
+    autocompletarCampos(document.querySelector(".participante-nombre"), document.querySelector(".participante-datos"))
+    
+    //llena el select del responsable del proyecto
+    llenarSelectResponsable(document.getElementById("responsable-nombre"))
+    autocompletarCamposResponsable(document.getElementById("responsable-nombre"), document.getElementById("responsable-firma"))
 
 
     funcionalidadesPersonal();
@@ -114,6 +118,15 @@ function llenarSelect(elementoSelect) {
   });
 }
 
+function llenarSelectResponsable(elementoSelect){
+  users.supervisor.forEach((supervisor)=>{
+      const opcion = document.createElement("option")
+      opcion.value = supervisor.name
+      opcion.textContent = supervisor.name
+      elementoSelect.appendChild(opcion)
+  })
+}
+
 /*Autocompletado de los técnicos*/
 //función para autocompletar los campos al seleccionar un nombre 
 //parámetros, (select, elemento que será actualizado usando su .value)
@@ -129,6 +142,19 @@ function autocompletarCampos(elementoSelect, datosParticipante) {
       usuarioSeleccionado.dni;
     datosParticipante.querySelector(".participante-firma").value =
       usuarioSeleccionado.firma;
+  });
+}
+
+/*Autocompletado del expositor*/
+function autocompletarCamposResponsable(elementoSelect, datosSupervisor) {
+  elementoSelect.addEventListener("change", function () {
+      const nombreSeleccionado = elementoSelect.value;
+      const supervisorSeleccionado = users.supervisor.find(
+          (supervisor) => supervisor.name === nombreSeleccionado
+      );
+      //autocompletar los campos correspondientes
+      datosSupervisor.value =
+      supervisorSeleccionado.firma;
   });
 }
 
@@ -342,11 +368,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
   //funcion que se usa para colocar las actividades
   let reconocerActividades = () => {
-    //variables que serán utilizadas para la validación
-    let val1;
-    let val2;
-    let val3;
-    let val4;
+    let resEvalActividades = true
 
     //la suma de las coordenadas y debe ser de 6.5 para rellenar las actividades
     //definiendo las posiciones iniciales para las actividades
@@ -367,12 +389,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         doc.setFontSize(9);
         doc.text(nombreA.value, XnombreActividad, YnombreActividad);
         YnombreActividad += 6.5;
-        //si no hay campos vacios
-        val1 = "1";
       } else {
         //si hay campos vacios
         alert("Complete el campo 'actividades' ");
-        val1 = "0";
+        resEvalActividades = false
+        return
+
       }
     });
 
@@ -384,12 +406,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         doc.setFontSize(9);
         doc.text(peligro.value, XpeligroActividad, YpeligroActividad);
         YpeligroActividad += 6.5;
-        //si no hay campos vacios
-        val2 = "1";
+
       } else {
         //si hay campos vacios
         alert("Complete el campo 'peligro actividad' ");
-        val2 = "0";
+        resEvalActividades = false
+        return
       }
     });
 
@@ -401,12 +423,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         doc.setFontSize(9);
         doc.text(riesgo.value, XriesgoActividad, YriesgoActividad);
         YriesgoActividad += 6.5;
-        //si no hay campos vacios
-        val3 = "1";
+
       } else {
         //si hay campos vacios
         alert("Complete el campo 'riesgo impacto'");
-        val3 = "0";
+        resEvalActividades = false
+        return
       }
     });
 
@@ -422,16 +444,16 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
           YrecomendacionActividad
         );
         YrecomendacionActividad += 6.5;
-        //si no hay campos vacios
-        val4 = "1";
+
       } else {
         //si hay campos vacios
         alert("Complete el campo 'recomendaciones' ");
-        val4 = "0";
+        resEvalActividades = false
+        return
       }
     });
     //si todos los campos tienen datos, sus variables tendrán un número asignado, diferente a a0
-    if (val1 != "0" && val2 != "0" && val3 != "0" && val4 != "0") {
+    if (resEvalActividades) {
       //si los valores son diferentes a 0, esta función retornará un true
       return true;
     } else {
@@ -453,18 +475,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         document.getElementById("proc7"),
         document.getElementById("proc8")
     ]
-    /*
-    let listaCheckbox = [
-      check1,
-      check2,
-      check3,
-      check4,
-      check5,
-      check6,
-      check7,
-      check8,
-    ];
-    */
 
     //column 1 SI
     //doc.text("x", 89.4,200.5)
@@ -519,9 +529,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
   //funcion para evaluar datos de trabajadores
   let evaluarPersonas = () => {
-    let vl1;
-    let vl2;
-    let vl3;
+    //validación corregida, antes si tenías tres contenedores
+    //con solo el primero y tercero completos se podía generar
+    //el documento, 'solucionado'
+    let resEvalPersonas = true
 
     //Colocar nombres
     let nombreY = 241;
@@ -531,11 +542,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         doc.setFontSize(9);
         doc.text(persona.value, 27, nombreY);
         nombreY += 5.2;
-        //si persona es diferennte de vacio
-        vl1 = "1";
       } else {
         alert("Complete el nombre del participante");
-        vl1 = "0";
+        resEvalPersonas = false
+        return
       }
     });
 
@@ -546,17 +556,13 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       if (dniPersona.value != "") {
         doc.text(dniPersona.value, 110, dniY);
         dniY += 5.2;
-        //si dni es diferennte de vacio
-        vl2 = "1";
       } else {
         alert("Campo DNI vacío");
-        vl2 = "0";
+        resEvalPersonas = false
+        return
       }
     });
-    /*
-    tengo un archivo excel ya cread, con tablas, colores y celdas ya estabelicdas, hay forma de usar una página web a modo de formulario
-    para escribir información como nombres, fechas y datos que quisiera que aparezcan dentro de ese excel modificado en celdas específicas?
-    */
+
     //ColocarFirma
     let firmaY = 236.2;
     let firmasPersonas = document.querySelectorAll(".participante-firma");
@@ -565,11 +571,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         console.log(firmaPersona.value)
         doc.addImage(firmaPersona.value, "PNG", 144, firmaY, 19.2, 4.8);
         firmaY += 5.3;
-        //si firma es diferente de vacio
-        vl3 = "1";
       } else {
         alert("Campo firma se encuentra vacío");
-        vl3 = "0";
+        resEvalPersonas = false
+        return
       }
     });
     //ColocarHoraIngreso
@@ -587,13 +592,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       horaSalidaY += 5.2;
     });
 
-    //si todos los campos tienen datos, sus variables tendrán un número asignado, diferente a a0
-    if (vl1 != "0" && vl2 != "0" && vl3 != "0") {
-      //si los valores son diferentes a 0, esta función retornará un true
-      return true;
+     // Si todos los campos son válidos, continuar con el resto de la función
+    if (resEvalPersonas) {
+      return true
     } else {
-      //si al menos uno de los valores es 0, esta función retornará un false
-      return false;
+      return false
     }
   };
 
@@ -614,7 +617,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   //introduciendo datos
   doc.setFontSize(10);
   //validar que todas las funciones den true, sino, parecerá el alert y solo eso
-  evaluarObservaciones();
   if (
     evaluarEmpresa() &&
     evaluarDatosPrincipales() &&
@@ -624,8 +626,8 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     evaluarPersonas() &&
     evaluarObservaciones()
   ) {
-    var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob));
+     var blob = doc.output("blob");
+     window.open(URL.createObjectURL(blob));
     //doc.save(analisis_trabajo_seguro.pdf)
   } else {
     alert("Asegúrse de competar todos los campos para generar el documento");

@@ -66,7 +66,10 @@
             <div class="section-body">
               <label for="responsable-nombre"
                 >3. Responsable del Proyecto: </label
-              ><input type="text" id="responsable-nombre" />
+              >
+              <select name="responsable-nombre" id="responsable-nombre">
+                <option value="Seleccionar">--Seleccionar Nombre--</option>
+              </select>
             </div>
             <br />
             <!-- Seccion de actividades -->
@@ -228,19 +231,11 @@
               ></textarea>
             </section>
             <hr />
-            <!--
-            <h3>Responsable</h3>
-            <section id="responsable">
-              <div id="resp1" class="responsable-datos">
-                <label for="responsable-nombre">Nombre: </label>
-                <input type="text" id="responsable-nombre-final" />
-              </div>
-              <div id="resp2" class="responsable-datos">
-                <label for="responsable-firma">Firma: </label>
-                <input type="text" id="responsable-firma" />
-              </div>
-            </section>
-            -->
+
+            <div id="resp2" class="responsable-datos">
+              <label for="responsable-firma">Firma: </label>
+              <input type="text" id="responsable-firma" />
+            </div>
           </div>
 
           <!--Fin Cuerpo del Formulario-->
