@@ -1,0 +1,93 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 10px 0;
+}
+
+.logo-title img{
+    max-width: 100%;
+    user-select: none;
+    pointer-events: none;
+}
+
+.logo-title div{
+    display: grid;
+    place-content: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.form-container{
+    background: #f3f4f6;
+}
+
+#datos-generales-documento div{
+    display: flex;
+    gap: .8rem;
+}
+
+#datos-generales-documento input, select{
+    outline: none;
+    border-style: none;
+    height: 35px;
+    border-radius: .4rem;
+}
+
+#trabajo, #lugar{
+    width: 60%;
+}
+
+
+@media (max-width: 720px){
+    .main{
+        width: 100%;
+    }
+
+    .logo-title{
+        flex-direction: column;
+        justify-content: center;
+        place-items: center;
+    }
+
+    .logo-title div{
+        font-size: 1rem;
+    }
+
+    #datos-generales-documento{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.4rem;
+        padding: .5rem .2rem;
+    }
+
+
+
+    
+
+
+
+
+}

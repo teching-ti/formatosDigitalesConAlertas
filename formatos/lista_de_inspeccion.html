@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Inspección Diaria</title>
+    <link
+      rel="icon"
+      href="../recursos/favicon-teching.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="../estilos/stylesListIns.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <main class="main">
+      <figure class="logo-title">
+        <a href="../">
+          <img src="../recursos/logo_teching.png" alt="teching_logo" />
+        </a>
+        <div>
+          <span>Lista de Inspección Diaria</span>
+        </div>
+      </figure>
+      <section class="form-container">
+        <!--Inicia Cuerpo del Formulario-->
+        <div class="form-body">
+          <section
+            class="datos-generales-documento"
+            id="datos-generales-documento"
+          >
+            <div class="contenedor-empresa">
+              <label for="empresa">Seleccionar Empresa</label>
+              <select name="empresa" id="empresa">
+                <option selected>- Seleccionar -</option>
+                <option value="TECHING">TECHING</option>
+                <option value="CONTRATISTA1">CONTRATISTA1</option>
+                <option value="CONTRATISTA2">CONTRATISTA2</option>
+              </select>
+            </div>
+            <div class="contenedor-fecha">
+              <label for="fecha">Fecha: </label
+              ><input type="text" value="00-00-00" id="fecha" readonly />
+            </div>
+            <div class="contenedor-hora">
+              <label for="hora">Hora: </label>
+              <input type="time" id="hora"/>
+            </div>
+            <div class="contenedor-trabajo">
+              <label for="trabajo">Trabajo a Realizar: </label
+              ><input type="text" id="trabajo" />
+            </div>
+            <div class="contendor-lugar">
+              <label for="lugar">Lugar: </label><input type="text" id="lugar" />
+            </div>
+            <div class="contenedor-responsable">
+              <label for="responsable-nombre">Responsable del Proyecto: </label>
+              <select name="responsable-nombre" id="responsable-nombre">
+                <option value="Seleccionar">--Seleccionar Nombre--</option>
+              </select>
+            </div>
+          </section>
+          <hr>
+          <section class="section-todo-personal">
+            <article class="contenedor-trabajador">
+              <h3>Datos Personales</h3>
+              <div class="cargo-nombre">
+                <div class="contenedor-cargo">
+                  <select name="select-cargo" class="trabajador-cargo">
+                    <option value="">-Seleccione un cargo-</option>
+                    <option value="1">Ayudante</option>
+                    <option value="2">Conductor</option>
+                    <option value="3">Técnico</option>
+                    <option value="4">Jefe de Cuadrilla</option>
+                    <option value="5">Responsable de Grupo</option>
+                  </select>
+                </div>
+                <div class="contenedor-nombre">
+                  <select name="select-nombre" class="trabajador-nombre">
+                    <option value="">-Seleccione nombre-</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="elementos-evaluar">
+                <div class="contenedor-EPP">
+                  <h4>EQUIPO DE PROTECCIÓN PERSONAL</h4>
+                  <ul class="lista-epp">
+                    <li class="elemento-lista-epp">
+                      <!-- evaluar los tamaños de texto para esta sección -->
+                      <span>Camisa de Verano/Invierno</span>
+                      <span>
+                        <!-- aquí irían los raddio button o checkbox para calificar este apartado  -->
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+
+            </article>
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
