@@ -51,11 +51,46 @@ h1{
     justify-content: center;
 }
 
+/*clase para formatos en desarrollo*/
+.en-proceso{
+    font-size: 1.5rem;
+    margin-right: .5rem;
+    animation-name: proceso;
+    animation-duration: 2s;
+    animation-delay: .5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes proceso{
+    10%{
+        color: rgb(31, 31, 106);
+    }
+    20%{
+        color: red;
+        transform: rotate(45deg);
+    }
+    40%{
+        color: rgb(31, 31, 106);
+        transform: rotate(0deg);
+    }
+    60%{
+        color: red;
+        transform: rotate(45deg);
+    }
+    80%{
+        color: rgb(31, 31, 106);
+        transform: rotate(0deg);
+
+    }
+    100%{
+        transform: scale(100%);
+    }
+}
+
 @media (max-width: 600px){
     main{
         width: 100%;
     }
-
     .imagen-logo{
         width: 45%;
     }

@@ -3,8 +3,8 @@
 /*colocar fecha en base al reloj del sistema, dentro de la casilla 'fecha'*/
 function cargarFecha() {
   let inputFecha = document.getElementById("fecha");
-  let dia = new Date();
-  inputFecha.value = dia.toLocaleDateString();
+  let dia = new Date().toLocaleDateString();
+  inputFecha.value = dia;
 }
 cargarFecha();
 /*colocar fecha end*/

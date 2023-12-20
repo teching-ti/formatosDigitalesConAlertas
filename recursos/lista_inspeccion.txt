@@ -1,3 +1,10 @@
+20_12 - Anotaciones
+///////////////////
+1. Se preguntará al comienzo "cuantos usuarios van a ser evaluados" y así al momento de 
+que se clonen los elementos al inicio en base al número de participantes para este formato,
+de esa manera se salta el paso de usar el botón de añadir.
+
+
 19_12 - Anotaciones
 ///////////////////
 0. Convertir el documento excel respectivo a imagen png/jpeg, de preferencia dos imágenes, para hacerlo en dos hojas
@@ -28,3 +35,4 @@ Para este formato se tendrá que modificar parte de la estructura básica de los
 
 5. Para agilizar el trabajo, solo se usarán radio buttons
 6. En la parte superior de cada container, en parte del título, deberá ser visible el botón del dropdown y de eliminar
+
