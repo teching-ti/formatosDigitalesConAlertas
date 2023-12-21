@@ -61,6 +61,8 @@ body{
 
 .cargo-nombre{
     display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
     margin: 1rem 0;
     justify-content: space-around;
 }
@@ -87,6 +89,7 @@ body{
 .inactivo{
     display: none;
 }
+/*colocar antes de dar push end*/
 
 #botones{
     display: flex;
@@ -164,6 +167,10 @@ body{
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .elemento-cantidad select{
+        width: 20%;
     }
 
     .elemento-opciones{

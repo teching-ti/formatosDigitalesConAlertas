@@ -1,3 +1,10 @@
+21_12 - Anotaciones
+///////////////////
+1. Se genera el documento pdf y se cargan los datos, formateando el pdf, ultimo colocar firmas
+
+
+
+
 20_12 - Anotaciones
 ///////////////////
 1. Se preguntará al comienzo "cuantos usuarios van a ser evaluados" y así al momento de 
@@ -35,4 +42,6 @@ Para este formato se tendrá que modificar parte de la estructura básica de los
 
 5. Para agilizar el trabajo, solo se usarán radio buttons
 6. En la parte superior de cada container, en parte del título, deberá ser visible el botón del dropdown y de eliminar
+
+
 

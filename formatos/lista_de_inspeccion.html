@@ -33,19 +33,19 @@
         </div>
       </figure>
       <!-- editando -->
-      <section class="form-container editando">
+      <section class="form-container">
         <!--Inicia Cuerpo del Formulario-->
         <!-- icon -->
         <!-- <i class="fa-solid fa-mug-hot fa-bounce fa-2xl"></i> -->
         <!-- inactivo -->
-        <div class="form-body inactivo">
+        <div class="form-body">
           <section
             class="datos-generales-documento"
             id="datos-generales-documento"
           >
             <div class="contenedor-empresa">
               <label for="empresa">Seleccionar Empresa</label>
-              <select name="empresa" id="empresa">
+              <select name="empresa" id="empresa" class="clase-empresa">
                 <option selected>- Seleccionar -</option>
                 <option value="TECHING">TECHING</option>
                 <option value="CONTRATISTA1">CONTRATISTA1</option>
@@ -126,10 +126,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="camisa-verano-invierno" value="Bueno"></label>
-                        <label>M <input type="radio" name="camisa-verano-invierno" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="camisa-verano-invierno" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="camisa-verano-invierno" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="camisa-verano-invierno" value="B"></label>
+                        <label>M <input type="radio" name="camisa-verano-invierno" value="M"></label>              
+                        <label>NT <input type="radio" name="camisa-verano-invierno" value="NT"></label>      
+                        <label>NA <input type="radio" name="camisa-verano-invierno" value="NA" checked></label>
+                        <label>FV <input type="radio" name="camisa-verano-invierno" value="FV"></label>
                       </span>
                     </li>
                     <!-- pantalón de verano -->
@@ -143,10 +144,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="pantalon-verano-invierno" value="Bueno"></label>
-                        <label>M <input type="radio" name="pantalon-verano-invierno" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="pantalon-verano-invierno" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="pantalon-verano-invierno" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="pantalon-verano-invierno" value="B"></label>
+                        <label>M <input type="radio" name="pantalon-verano-invierno" value="M"></label>              
+                        <label>NT <input type="radio" name="pantalon-verano-invierno" value="NT"></label>      
+                        <label>NA <input type="radio" name="pantalon-verano-invierno" value="NA" checked></label>
+                        <label>FV <input type="radio" name="pantalon-verano-invierno" value="FV"></label>
                       </span>
                     </li>
                     <!-- camisa antiflama -->
@@ -160,10 +162,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="camisa-antiflama" value="Bueno"></label>
-                        <label>M <input type="radio" name="camisa-antiflama" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="camisa-antiflama" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="camisa-antiflama" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="camisa-antiflama" value="B"></label>
+                        <label>M <input type="radio" name="camisa-antiflama" value="M"></label>              
+                        <label>NT <input type="radio" name="camisa-antiflama" value="NT"></label>      
+                        <label>NA <input type="radio" name="camisa-antiflama" value="NA" checked></label>
+                        <label>FV <input type="radio" name="camisa-antiflama" value="FV"></label>
                       </span>
                     </li>
                     <!-- pantalon antiflama -->
@@ -177,10 +180,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="pantalon-antiflama" value="Bueno"></label>
-                        <label>M <input type="radio" name="pantalon-antiflama" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="pantalon-antiflama" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="pantalon-antiflama" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="pantalon-antiflama" value="B"></label>
+                        <label>M <input type="radio" name="pantalon-antiflama" value="M"></label>              
+                        <label>NT <input type="radio" name="pantalon-antiflama" value="NT"></label>      
+                        <label>NA <input type="radio" name="pantalon-antiflama" value="NA" checked></label>
+                        <label>FV <input type="radio" name="pantalon-antiflama" value="FV"></label>
                       </span>
                     </li>
                     <!-- zapatos dieléctricos -->
@@ -194,10 +198,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="zapatos-dielectricos" value="Bueno"></label>
-                        <label>M <input type="radio" name="zapatos-dielectricos" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="zapatos-dielectricos" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="zapatos-dielectricos" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="zapatos-dielectricos" value="B"></label>
+                        <label>M <input type="radio" name="zapatos-dielectricos" value="M"></label>              
+                        <label>NT <input type="radio" name="zapatos-dielectricos" value="NT"></label>      
+                        <label>NA <input type="radio" name="zapatos-dielectricos" value="NA" checked></label>
+                        <label>FV <input type="radio" name="zapatos-dielectricos" value="FV"></label>
                       </span>
                     </li>
                     <!-- Chaleco preventivo de seguridad -->
@@ -211,10 +216,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="chaleco-preventivo" value="Bueno"></label>
-                        <label>M <input type="radio" name="chaleco-preventivo" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="chaleco-preventivo" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="chaleco-preventivo" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="chaleco-preventivo" value="B"></label>
+                        <label>M <input type="radio" name="chaleco-preventivo" value="M"></label>              
+                        <label>NT <input type="radio" name="chaleco-preventivo" value="NT"></label>      
+                        <label>NA <input type="radio" name="chaleco-preventivo" value="NA" checked></label>
+                        <label>FV <input type="radio" name="chaleco-preventivo" value="FV"></label>
                       </span>
                     </li>
                     <!-- Lentes con protección UV -->
@@ -228,10 +234,29 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="lentes-uv" value="Bueno"></label>
-                        <label>M <input type="radio" name="lentes-uv" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="lentes-uv" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="lentes-uv" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="lentes-uv" value="B"></label>
+                        <label>M <input type="radio" name="lentes-uv" value="M"></label>              
+                        <label>NT <input type="radio" name="lentes-uv" value="NT"></label>      
+                        <label>NA <input type="radio" name="lentes-uv" value="NA" checked></label>
+                        <label>FV <input type="radio" name="lentes-uv" value="FV"></label>
+                      </span>
+                    </li>
+                    <!-- Lentes contra impacto -->
+                    <li class="elemento-lista">
+                      <h4 class="elemento-titulo">- Lentes contra impacto</h4>
+                      <label class="elemento-cantidad">Cantidad:
+                        <select name="cantidad" class="lentes-impacto-cantidad">
+                          <option value="1" selected>1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
+                      </label>
+                      <span class="elemento-opciones">
+                        <label>B <input type="radio" name="lentes-impacto" value="B"></label>
+                        <label>M <input type="radio" name="lentes-impacto" value="M"></label>              
+                        <label>NT <input type="radio" name="lentes-impacto" value="NT"></label>      
+                        <label>NA <input type="radio" name="lentes-impacto" value="NA" checked></label>
+                        <label>FV <input type="radio" name="lentes-impacto" value="FV"></label>
                       </span>
                     </li>
                     <!-- Bloqueador solar -->
@@ -245,10 +270,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="bloqueador-solar" value="Bueno"></label>
-                        <label>M <input type="radio" name="bloqueador-solar" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="bloqueador-solar" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="bloqueador-solar" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="bloqueador-solar" value="B"></label>
+                        <label>M <input type="radio" name="bloqueador-solar" value="M"></label>              
+                        <label>NT <input type="radio" name="bloqueador-solar" value="NT"></label>      
+                        <label>NA <input type="radio" name="bloqueador-solar" value="NA" checked></label>
+                        <label>FV <input type="radio" name="bloqueador-solar" value="FV"></label>
                       </span>
                     </li>
                     <!-- Casco Dieléctrico normado con barbiqueo -->
@@ -262,10 +288,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="casco-dielectrico" value="Bueno"></label>
-                        <label>M <input type="radio" name="casco-dielectrico" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="casco-dielectrico" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="casco-dielectrico" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="casco-dielectrico" value="B"></label>
+                        <label>M <input type="radio" name="casco-dielectrico" value="M"></label>              
+                        <label>NT <input type="radio" name="casco-dielectrico" value="NT"></label>      
+                        <label>NA <input type="radio" name="casco-dielectrico" value="NA" checked></label>
+                        <label>FV <input type="radio" name="casco-dielectrico" value="FV"></label>
                       </span>
                     </li>
                     <!-- Guantes Dieléctricos BT-Clase 0, TIPO I -->
@@ -279,10 +306,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="guantes-dielectricos" value="Bueno"></label>
-                        <label>M <input type="radio" name="guantes-dielectricos" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="guantes-dielectricos" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="guantes-dielectricos" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="guantes-dielectricos" value="B"></label>
+                        <label>M <input type="radio" name="guantes-dielectricos" value="M"></label>              
+                        <label>NT <input type="radio" name="guantes-dielectricos" value="NT"></label>      
+                        <label>NA <input type="radio" name="guantes-dielectricos" value="NA" checked></label>
+                        <label>FV <input type="radio" name="guantes-dielectricos" value="FV"></label>
                       </span>
                     </li>
                     <!-- Careta facial policarbonato -->
@@ -296,10 +324,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="careta-policarbonato" value="Bueno"></label>
-                        <label>M <input type="radio" name="careta-policarbonato" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="careta-policarbonato" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="careta-policarbonato" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="careta-policarbonato" value="B"></label>
+                        <label>M <input type="radio" name="careta-policarbonato" value="M"></label>              
+                        <label>NT <input type="radio" name="careta-policarbonato" value="NT"></label>      
+                        <label>NA <input type="radio" name="careta-policarbonato" value="NA" checked></label>
+                        <label>FV <input type="radio" name="careta-policarbonato" value="FV"></label>
                       </span>
                     </li>
                     <!-- Careta facial antiarco -->
@@ -313,10 +342,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="careta-antiarco" value="Bueno"></label>
-                        <label>M <input type="radio" name="careta-antiarco" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="careta-antiarco" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="careta-antiarco" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="careta-antiarco" value="B"></label>
+                        <label>M <input type="radio" name="careta-antiarco" value="M"></label>              
+                        <label>NT <input type="radio" name="careta-antiarco" value="NT"></label>      
+                        <label>NA <input type="radio" name="careta-antiarco" value="NA" checked></label>
+                        <label>FV <input type="radio" name="careta-antiarco" value="FV"></label>
                       </span>
                     </li>
                     <!-- Guante de badana -->
@@ -330,10 +360,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="guante-badana" value="Bueno"></label>
-                        <label>M <input type="radio" name="guante-badana" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="guante-badana" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="guante-badana" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="guante-badana" value="B"></label>
+                        <label>M <input type="radio" name="guante-badana" value="M"></label>              
+                        <label>NT <input type="radio" name="guante-badana" value="NT"></label>      
+                        <label>NA <input type="radio" name="guante-badana" value="NA" checked></label>
+                        <label>FV <input type="radio" name="guante-badana" value="FV"></label>
                       </span>
                     </li>
                     <!-- Guante de cuero -->
@@ -347,10 +378,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="guante-cuero" value="Bueno"></label>
-                        <label>M <input type="radio" name="guante-cuero" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="guante-cuero" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="guante-cuero" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="guante-cuero" value="B"></label>
+                        <label>M <input type="radio" name="guante-cuero" value="M"></label>              
+                        <label>NT <input type="radio" name="guante-cuero" value="NT"></label>      
+                        <label>NA <input type="radio" name="guante-cuero" value="NA" checked></label>
+                        <label>FV <input type="radio" name="guante-cuero" value="FV"></label>
                       </span>
                     </li>
                     <!-- Guante de hilo -->
@@ -364,10 +396,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="guante-hilo" value="Bueno"></label>
-                        <label>M <input type="radio" name="guante-hilo" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="guante-hilo" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="guante-hilo" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="guante-hilo" value="B"></label>
+                        <label>M <input type="radio" name="guante-hilo" value="M"></label>              
+                        <label>NT <input type="radio" name="guante-hilo" value="NT"></label>      
+                        <label>NA <input type="radio" name="guante-hilo" value="NA" checked></label>
+                        <label>FV <input type="radio" name="guante-hilo" value="FV"></label>
                       </span>
                     </li>
                     <!-- Mascarilla contra polvo -->
@@ -381,10 +414,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="mascarilla-polvo" value="Bueno"></label>
-                        <label>M <input type="radio" name="mascarilla-polvo" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="mascarilla-polvo" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="mascarilla-polvo" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="mascarilla-polvo" value="B"></label>
+                        <label>M <input type="radio" name="mascarilla-polvo" value="M"></label>              
+                        <label>NT <input type="radio" name="mascarilla-polvo" value="NT"></label>      
+                        <label>NA <input type="radio" name="mascarilla-polvo" value="NA" checked></label>
+                        <label>FV <input type="radio" name="mascarilla-polvo" value="FV"></label>
                       </span>
                     </li>
                     <!-- Correa Porta Herramientas -->
@@ -398,10 +432,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="correa-herramientas" value="Bueno"></label>
-                        <label>M <input type="radio" name="correa-herramientas" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="correa-herramientas" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="correa-herramientas" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="correa-herramientas" value="B"></label>
+                        <label>M <input type="radio" name="correa-herramientas" value="M"></label>              
+                        <label>NT <input type="radio" name="correa-herramientas" value="NT"></label>      
+                        <label>NA <input type="radio" name="correa-herramientas" value="NA" checked></label>
+                        <label>FV <input type="radio" name="correa-herramientas" value="FV"></label>
                       </span>
                     </li>
                     <!-- Manta Dieléctrica -->
@@ -415,10 +450,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="manta-dielectrica" value="Bueno"></label>
-                        <label>M <input type="radio" name="manta-dielectrica" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="manta-dielectrica" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="manta-dielectrica" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="manta-dielectrica" value="B"></label>
+                        <label>M <input type="radio" name="manta-dielectrica" value="M"></label>              
+                        <label>NT <input type="radio" name="manta-dielectrica" value="NT"></label>      
+                        <label>NA <input type="radio" name="manta-dielectrica" value="NA" checked></label>
+                        <label>FV <input type="radio" name="manta-dielectrica" value="FV"></label>
                       </span>
                     </li>
                   </ul>
@@ -440,10 +476,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="alicate-universal" value="Bueno"></label>
-                        <label>M <input type="radio" name="alicate-universal" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="alicate-universal" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="alicate-universal" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="alicate-universal" value="B"></label>
+                        <label>M <input type="radio" name="alicate-universal" value="M"></label>              
+                        <label>NT <input type="radio" name="alicate-universal" value="NT"></label>      
+                        <label>NA <input type="radio" name="alicate-universal" value="NA" checked></label>
+                        <label>FV <input type="radio" name="alicate-universal" value="FV"></label>
                       </span>
                     </li>
                     <!-- Alicate de corte aislado 6" -->
@@ -457,10 +494,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="alicate-corte" value="Bueno"></label>
-                        <label>M <input type="radio" name="alicate-corte" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="alicate-corte" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="alicate-corte" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="alicate-corte" value="B"></label>
+                        <label>M <input type="radio" name="alicate-corte" value="M"></label>              
+                        <label>NT <input type="radio" name="alicate-corte" value="NT"></label>      
+                        <label>NA <input type="radio" name="alicate-corte" value="NA" checked></label>
+                        <label>FV <input type="radio" name="alicate-corte" value="FV"></label>
                       </span>
                     </li>
                     <!-- Alicate de punta aislada 6" -->
@@ -474,10 +512,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="alicate-punnta" value="Bueno"></label>
-                        <label>M <input type="radio" name="alicate-punnta" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="alicate-punnta" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="alicate-punnta" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="alicate-punnta" value="B"></label>
+                        <label>M <input type="radio" name="alicate-punnta" value="M"></label>              
+                        <label>NT <input type="radio" name="alicate-punnta" value="NT"></label>      
+                        <label>NA <input type="radio" name="alicate-punnta" value="NA" checked></label>
+                        <label>FV <input type="radio" name="alicate-punnta" value="FV"></label>
                       </span>
                     </li>
                     <!-- Destornillador plano aislado 6" -->
@@ -491,10 +530,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="destornillador-plano" value="Bueno"></label>
-                        <label>M <input type="radio" name="destornillador-plano" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="destornillador-plano" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="destornillador-plano" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="destornillador-plano" value="B"></label>
+                        <label>M <input type="radio" name="destornillador-plano" value="M"></label>              
+                        <label>NT <input type="radio" name="destornillador-plano" value="NT"></label>      
+                        <label>NA <input type="radio" name="destornillador-plano" value="NA" checked></label>
+                        <label>FV <input type="radio" name="destornillador-plano" value="FV"></label> 
                       </span>
                     </li>
                     <!-- Perillero (opcional) -->
@@ -508,10 +548,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="perillero" value="Bueno"></label>
-                        <label>M <input type="radio" name="perillero" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="perillero" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="perillero" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="perillero" value="B"></label>
+                        <label>M <input type="radio" name="perillero" value="M"></label>              
+                        <label>NT <input type="radio" name="perillero" value="NT"></label>      
+                        <label>NA <input type="radio" name="perillero" value="NA" checked></label>
+                        <label>FV <input type="radio" name="perillero" value="FV"></label>
                       </span>
                     </li>
                     <!-- Destornillador estrella aislado 6" o 8" -->
@@ -525,10 +566,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="destornillador-estrella" value="Bueno"></label>
-                        <label>M <input type="radio" name="destornillador-estrella" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="destornillador-estrella" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="destornillador-estrella" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="destornillador-estrella" value="B"></label>
+                        <label>M <input type="radio" name="destornillador-estrella" value="M"></label>              
+                        <label>NT <input type="radio" name="destornillador-estrella" value="NT"></label>      
+                        <label>NA <input type="radio" name="destornillador-estrella" value="NA" checked></label>
+                        <label>FV <input type="radio" name="destornillador-estrella" value="FV"></label>
                       </span>
                     </li>
                     <!-- Destornillador hexagonal -->
@@ -542,10 +584,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="destornillador-hexagonal" value="Bueno"></label>
-                        <label>M <input type="radio" name="destornillador-hexagonal" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="destornillador-hexagonal" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="destornillador-hexagonal" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="destornillador-hexagonal" value="B"></label>
+                        <label>M <input type="radio" name="destornillador-hexagonal" value="M"></label>              
+                        <label>NT <input type="radio" name="destornillador-hexagonal" value="NT"></label>      
+                        <label>NA <input type="radio" name="destornillador-hexagonal" value="NA" checked></label>
+                        <label>FV <input type="radio" name="destornillador-hexagonal" value="FV"></label>
                       </span>
                     </li>
                     <!-- Juego de llave allen -->
@@ -559,10 +602,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="llaves-allen" value="Bueno"></label>
-                        <label>M <input type="radio" name="llaves-allen" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="llaves-allen" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="llaves-allen" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="llaves-allen" value="B"></label>
+                        <label>M <input type="radio" name="llaves-allen" value="M"></label>              
+                        <label>NT <input type="radio" name="llaves-allen" value="NT"></label>      
+                        <label>NA <input type="radio" name="llaves-allen" value="NA" checked></label>
+                        <label>FV <input type="radio" name="llaves-allen" value="FV"></label>
                       </span>
                     </li>
                     <!-- juego de llave ratchets Aislado -->
@@ -576,10 +620,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="llaves-ratchets-aislado" value="Bueno"></label>
-                        <label>M <input type="radio" name="llaves-ratchets-aislado" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="llaves-ratchets-aislado" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="llaves-ratchets-aislado" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="llaves-ratchets-aislado" value="B"></label>
+                        <label>M <input type="radio" name="llaves-ratchets-aislado" value="M"></label>              
+                        <label>NT <input type="radio" name="llaves-ratchets-aislado" value="NT"></label>      
+                        <label>NA <input type="radio" name="llaves-ratchets-aislado" value="NA" checked></label>
+                        <label>FV <input type="radio" name="llaves-ratchets-aislado" value="FV"></label>
                       </span>
                     </li>
                     <!-- Revelador de tensión BT -->
@@ -593,10 +638,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="rev-tension-bt" value="Bueno"></label>
-                        <label>M <input type="radio" name="rev-tension-bt" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="rev-tension-bt" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="rev-tension-bt" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="rev-tension-bt" value="B"></label>
+                        <label>M <input type="radio" name="rev-tension-bt" value="M"></label>              
+                        <label>NT <input type="radio" name="rev-tension-bt" value="NT"></label>      
+                        <label>NA <input type="radio" name="rev-tension-bt" value="NA" checked></label>
+                        <label>FV <input type="radio" name="rev-tension-bt" value="FV"></label>
                       </span>
                     </li>
                     <!-- Pinza Volt amperimétrica -->
@@ -610,10 +656,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="pinza-amperimetrica" value="Bueno"></label>
-                        <label>M <input type="radio" name="pinza-amperimetrica" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="pinza-amperimetrica" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="pinza-amperimetrica" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="pinza-amperimetrica" value="B"></label>
+                        <label>M <input type="radio" name="pinza-amperimetrica" value="M"></label>              
+                        <label>NT <input type="radio" name="pinza-amperimetrica" value="NT"></label>      
+                        <label>NA <input type="radio" name="pinza-amperimetrica" value="NA" checked></label>
+                        <label>FV <input type="radio" name="pinza-amperimetrica" value="FV"></label>
                       </span>
                     </li>
                     <!-- Linterna grande -->
@@ -627,10 +674,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="linterna-grande" value="Bueno"></label>
-                        <label>M <input type="radio" name="linterna-grande" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="linterna-grande" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="linterna-grande" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="linterna-grande" value="B"></label>
+                        <label>M <input type="radio" name="linterna-grande" value="M"></label>              
+                        <label>NT <input type="radio" name="linterna-grande" value="NT"></label>      
+                        <label>NA <input type="radio" name="linterna-grande" value="NA" checked></label>
+                        <label>FV <input type="radio" name="linterna-grande" value="FV"></label>
                       </span>
                     </li>
                     <!-- Llave Francesa Aislado / Mecánica -->
@@ -644,10 +692,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="llave-francesa" value="Bueno"></label>
-                        <label>M <input type="radio" name="llave-francesa" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="llave-francesa" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="llave-francesa" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="llave-francesa" value="B"></label>
+                        <label>M <input type="radio" name="llave-francesa" value="M"></label>              
+                        <label>NT <input type="radio" name="llave-francesa" value="NT"></label>      
+                        <label>NA <input type="radio" name="llave-francesa" value="NA" checked></label>
+                        <label>FV <input type="radio" name="llave-francesa" value="FV"></label>
                       </span>
                     </li>
                     <!-- Bolsa y recipiente para almacenar residuos -->
@@ -661,10 +710,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="bolsa-residuos" value="Bueno"></label>
-                        <label>M <input type="radio" name="bolsa-residuos" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="bolsa-residuos" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="bolsa-residuos" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="bolsa-residuos" value="B"></label>
+                        <label>M <input type="radio" name="bolsa-residuos" value="M"></label>              
+                        <label>NT <input type="radio" name="bolsa-residuos" value="NT"></label>      
+                        <label>NA <input type="radio" name="bolsa-residuos" value="NA" checked></label>
+                        <label>FV <input type="radio" name="bolsa-residuos" value="FV"></label>
                       </span>
                     </li>
                     <!-- Arnés de seguridad con accesorios -->
@@ -678,10 +728,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="arnes-seguridad" value="Bueno"></label>
-                        <label>M <input type="radio" name="arnes-seguridad" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="arnes-seguridad" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="arnes-seguridad" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="arnes-seguridad" value="B"></label>
+                        <label>M <input type="radio" name="arnes-seguridad" value="M"></label>              
+                        <label>NT <input type="radio" name="arnes-seguridad" value="NT"></label>      
+                        <label>NA <input type="radio" name="arnes-seguridad" value="NA" checked></label>
+                        <label>FV <input type="radio" name="arnes-seguridad" value="FV"></label>
                       </span>
                     </li>
                     <!-- Lima -->
@@ -695,10 +746,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="lima" value="Bueno"></label>
-                        <label>M <input type="radio" name="lima" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="lima" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="lima" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="lima" value="B"></label>
+                        <label>M <input type="radio" name="lima" value="M"></label>              
+                        <label>NT <input type="radio" name="lima" value="NT"></label>      
+                        <label>NA <input type="radio" name="lima" value="NA" checked></label>
+                        <label>FV <input type="radio" name="lima" value="FV"></label>
                       </span>
                     </li>
                     <!-- Cincel -->
@@ -712,10 +764,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="cincel" value="Bueno"></label>
-                        <label>M <input type="radio" name="cincel" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="cincel" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="cincel" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="cincel" value="B"></label>
+                        <label>M <input type="radio" name="cincel" value="M"></label>              
+                        <label>NT <input type="radio" name="cincel" value="NT"></label>      
+                        <label>NA <input type="radio" name="cincel" value="NA" checked></label>
+                        <label>FV <input type="radio" name="cincel" value="FV"></label>
                       </span>
                     </li>
                     <!-- Comba chica 4 o 5 libras -->
@@ -729,10 +782,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="comba-chica" value="Bueno"></label>
-                        <label>M <input type="radio" name="comba-chica" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="comba-chica" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="comba-chica" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="comba-chica" value="B"></label>
+                        <label>M <input type="radio" name="comba-chica" value="M"></label>              
+                        <label>NT <input type="radio" name="comba-chica" value="NT"></label>      
+                        <label>NA <input type="radio" name="comba-chica" value="NA" checked></label>
+                        <label>FV <input type="radio" name="comba-chica" value="FV"></label>
                       </span>
                     </li>
                     <!-- Martillo -->
@@ -746,10 +800,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="martillo" value="Bueno"></label>
-                        <label>M <input type="radio" name="martillo" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="martillo" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="martillo" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="martillo" value="B"></label>
+                        <label>M <input type="radio" name="martillo" value="M"></label>              
+                        <label>NT <input type="radio" name="martillo" value="NT"></label>      
+                        <label>NA <input type="radio" name="martillo" value="NA" checked></label>
+                        <label>FV <input type="radio" name="martillo" value="FV"></label>
                       </span>
                     </li>
                     <!-- Linterna portátil adaptable para casco -->
@@ -763,10 +818,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="linterna-casco" value="Bueno"></label>
-                        <label>M <input type="radio" name="linterna-casco" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="linterna-casco" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="linterna-casco" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="linterna-casco" value="B"></label>
+                        <label>M <input type="radio" name="linterna-casco" value="M"></label>              
+                        <label>NT <input type="radio" name="linterna-casco" value="NT"></label>      
+                        <label>NA <input type="radio" name="linterna-casco" value="NA" checked></label>
+                        <label>FV <input type="radio" name="linterna-casco" value="FV"></label>
                       </span>
                     </li>
                     <!-- Nivel -->
@@ -780,10 +836,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="nivel" value="Bueno"></label>
-                        <label>M <input type="radio" name="nivel" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="nivel" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="nivel" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="nivel" value="B"></label>
+                        <label>M <input type="radio" name="nivel" value="M"></label>              
+                        <label>NT <input type="radio" name="nivel" value="NT"></label>      
+                        <label>NA <input type="radio" name="nivel" value="NA" checked></label> 
+                        <label>FV <input type="radio" name="nivel" value="FV"></label>
                       </span>
                     </li>
                     <!-- Cinta pasa cable -->
@@ -797,10 +854,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="cinta-pasacable" value="Bueno"></label>
-                        <label>M <input type="radio" name="cinta-pasacable" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="cinta-pasacable" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="cinta-pasacable" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="cinta-pasacable" value="B"></label>
+                        <label>M <input type="radio" name="cinta-pasacable" value="M"></label>              
+                        <label>NT <input type="radio" name="cinta-pasacable" value="NT"></label>      
+                        <label>NA <input type="radio" name="cinta-pasacable" value="NA" checked></label>
+                        <label>FV <input type="radio" name="cinta-pasacable" value="FV"></label>
                       </span>
                     </li>
                     <!-- Prensa terminal -->
@@ -814,10 +872,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="prensa-terminal" value="Bueno"></label>
-                        <label>M <input type="radio" name="prensa-terminal" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="prensa-terminal" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="prensa-terminal" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="prensa-terminal" value="B"></label>
+                        <label>M <input type="radio" name="prensa-terminal" value="M"></label>              
+                        <label>NT <input type="radio" name="prensa-terminal" value="NT"></label>      
+                        <label>NA <input type="radio" name="prensa-terminal" value="NA" checked></label>
+                        <label>FV <input type="radio" name="prensa-terminal" value="FV"></label>
                       </span>
                     </li>
 
@@ -840,10 +899,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="maquina-soldar" value="Bueno"></label>
-                        <label>M <input type="radio" name="maquina-soldar" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="maquina-soldar" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="maquina-soldar" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="maquina-soldar" value="B"></label>
+                        <label>M <input type="radio" name="maquina-soldar" value="M"></label>              
+                        <label>NT <input type="radio" name="maquina-soldar" value="NT"></label>      
+                        <label>NA <input type="radio" name="maquina-soldar" value="NA" checked></label>
+                        <label>FV <input type="radio" name="maquina-soldar" value="FV"></label>
                       </span>
                     </li>
                     <!-- Equipo de soldar (mandil, máscara y mangas) -->
@@ -857,10 +917,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="equipo-soldar" value="Bueno"></label>
-                        <label>M <input type="radio" name="equipo-soldar" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="equipo-soldar" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="equipo-soldar" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="equipo-soldar" value="B"></label>
+                        <label>M <input type="radio" name="equipo-soldar" value="M"></label>              
+                        <label>NT <input type="radio" name="equipo-soldar" value="NT"></label>      
+                        <label>NA <input type="radio" name="equipo-soldar" value="NA" checked></label>
+                        <label>FV <input type="radio" name="equipo-soldar" value="FV"></label>
                       </span>
                     </li>
                     <!-- Amoladora con disco de corte -->
@@ -874,10 +935,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="amoladora-disco" value="Bueno"></label>
-                        <label>M <input type="radio" name="amoladora-disco" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="amoladora-disco" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="amoladora-disco" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="amoladora-disco" value="B"></label>
+                        <label>M <input type="radio" name="amoladora-disco" value="M"></label>              
+                        <label>NT <input type="radio" name="amoladora-disco" value="NT"></label>      
+                        <label>NA <input type="radio" name="amoladora-disco" value="NA" checked></label>
+                        <label>FV <input type="radio" name="amoladora-disco" value="FV"></label>
                       </span>
                     </li>
                     <!-- Cámara fotográfica digital -->
@@ -891,10 +953,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="camara-fotografica" value="Bueno"></label>
-                        <label>M <input type="radio" name="camara-fotografica" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="camara-fotografica" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="camara-fotografica" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="camara-fotografica" value="B"></label>
+                        <label>M <input type="radio" name="camara-fotografica" value="M"></label>              
+                        <label>NT <input type="radio" name="camara-fotografica" value="NT"></label>      
+                        <label>NA <input type="radio" name="camara-fotografica" value="NA" checked></label>
+                        <label>FV <input type="radio" name="camara-fotografica" value="FV"></label>
                       </span>
                     </li>
                     <!-- Escalera (tipo tijera) (telescópica) -->
@@ -908,10 +971,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="escalera" value="Bueno"></label>
-                        <label>M <input type="radio" name="escalera" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="escalera" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="escalera" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="escalera" value="B"></label>
+                        <label>M <input type="radio" name="escalera" value="M"></label>              
+                        <label>NT <input type="radio" name="escalera" value="NT"></label>      
+                        <label>NA <input type="radio" name="escalera" value="NA" checked></label>
+                        <label>FV <input type="radio" name="escalera" value="FV"></label>
                       </span>
                     </li>
                     <!-- Banco escalera -->
@@ -925,10 +989,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="banco-escalera" value="Bueno"></label>
-                        <label>M <input type="radio" name="banco-escalera" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="banco-escalera" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="banco-escalera" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="banco-escalera" value="B"></label>
+                        <label>M <input type="radio" name="banco-escalera" value="M"></label>              
+                        <label>NT <input type="radio" name="banco-escalera" value="NT"></label>      
+                        <label>NA <input type="radio" name="banco-escalera" value="NA" checked></label>
+                        <label>FV <input type="radio" name="banco-escalera" value="FV"></label>
                       </span>
                     </li>
                     <!-- Extensión de cable vulcanizado Industrial -->
@@ -942,10 +1007,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="extension-cable-vulcanizado" value="Bueno"></label>
-                        <label>M <input type="radio" name="extension-cable-vulcanizado" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="extension-cable-vulcanizado" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="extension-cable-vulcanizado" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="extension-cable-vulcanizado" value="B"></label>
+                        <label>M <input type="radio" name="extension-cable-vulcanizado" value="M"></label>              
+                        <label>NT <input type="radio" name="extension-cable-vulcanizado" value="NT"></label>      
+                        <label>NA <input type="radio" name="extension-cable-vulcanizado" value="NA" checked></label>
+                        <label>FV <input type="radio" name="extension-cable-vulcanizado" value="FV"></label>
                       </span>
                     </li>
                     <!-- Reflector -->
@@ -959,10 +1025,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="reflector" value="Bueno"></label>
-                        <label>M <input type="radio" name="reflector" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="reflector" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="reflector" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="reflector" value="B"></label>
+                        <label>M <input type="radio" name="reflector" value="M"></label>              
+                        <label>NT <input type="radio" name="reflector" value="NT"></label>      
+                        <label>NA <input type="radio" name="reflector" value="NA" checked></label>
+                        <label>FV <input type="radio" name="reflector" value="FV"></label>
                       </span>
                     </li>
                     <!-- Taladro -->
@@ -976,10 +1043,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="taladro" value="Bueno"></label>
-                        <label>M <input type="radio" name="taladro" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="taladro" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="taladro" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="taladro" value="B"></label>
+                        <label>M <input type="radio" name="taladro" value="M"></label>              
+                        <label>NT <input type="radio" name="taladro" value="NT"></label>      
+                        <label>NA <input type="radio" name="taladro" value="NA" checked></label>
+                        <label>FV <input type="radio" name="taladro" value="FV"></label>
                       </span>
                     </li>
                     <!-- Rotomartillo -->
@@ -993,10 +1061,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="rotomartillo" value="Bueno"></label>
-                        <label>M <input type="radio" name="rotomartillo" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="rotomartillo" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="rotomartillo" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="rotomartillo" value="B"></label>
+                        <label>M <input type="radio" name="rotomartillo" value="M"></label>              
+                        <label>NT <input type="radio" name="rotomartillo" value="NT"></label>      
+                        <label>NA <input type="radio" name="rotomartillo" value="NA" checked></label>
+                        <label>FV <input type="radio" name="rotomartillo" value="FV"></label>
                       </span>
                     </li>
                     <!-- Caja de Herramientas -->
@@ -1010,10 +1079,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="caja-herramientas" value="Bueno"></label>
-                        <label>M <input type="radio" name="caja-herramientas" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="caja-herramientas" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="caja-herramientas" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="caja-herramientas" value="B"></label>
+                        <label>M <input type="radio" name="caja-herramientas" value="M"></label>              
+                        <label>NT <input type="radio" name="caja-herramientas" value="NT"></label>      
+                        <label>NA <input type="radio" name="caja-herramientas" value="NA" checked></label>
+                        <label>FV <input type="radio" name="caja-herramientas" value="FV"></label>
                       </span>
                     </li>
                   </ul>
@@ -1035,10 +1105,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="cercos-verano-invierno" value="Bueno"></label>
-                        <label>M <input type="radio" name="cercos-verano-invierno" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="cercos-verano-invierno" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="cercos-verano-invierno" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="cercos-verano-invierno" value="B"></label>
+                        <label>M <input type="radio" name="cercos-verano-invierno" value="M"></label>              
+                        <label>NT <input type="radio" name="cercos-verano-invierno" value="NT"></label>      
+                        <label>NA <input type="radio" name="cercos-verano-invierno" value="NA" checked></label>
+                        <label>FV <input type="radio" name="cercos-verano-invierno" value="FV"></label>
                       </span>
                     </li>
                     <!-- Malla con parantes -->
@@ -1052,17 +1123,17 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="malla-parantes" value="Bueno"></label>
-                        <label>M <input type="radio" name="malla-parantes" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="malla-parantes" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="malla-parantes" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="malla-parantes" value="B"></label>
+                        <label>M <input type="radio" name="malla-parantes" value="M"></label>              
+                        <label>NT <input type="radio" name="malla-parantes" value="NT"></label>      
+                        <label>NA <input type="radio" name="malla-parantes" value="NA" checked></label>
+                        <label>FV <input type="radio" name="malla-parantes" value="FV"></label>
                       </span>
                     </li>
                   </ul>
                 </div>
                 <hr>
                 
-                <!-- En el apartado de la documentación -->
                 <!-- DOCUMENTACIÓN -->
                 <div class="contenedor-documentacion">
                   <h4 class="elemento-titulo-general">* DOCUMENTACIÓN</h4>
@@ -1078,10 +1149,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="ast-asg-sgi" value="Bueno"></label>
-                        <label>M <input type="radio" name="ast-asg-sgi" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="ast-asg-sgi" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="ast-asg-sgi" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="ast-asg-sgi" value="B"></label>
+                        <label>M <input type="radio" name="ast-asg-sgi" value="M"></label>              
+                        <label>NT <input type="radio" name="ast-asg-sgi" value="NT"></label>      
+                        <label>NA <input type="radio" name="ast-asg-sgi" value="NA" checked></label>
+                        <label>FV <input type="radio" name="ast-asg-sgi" value="FV"></label>
                       </span>
                     </li>
                     <!-- Charla pre operacional -->
@@ -1095,10 +1167,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="charla-pre" value="Bueno"></label>
-                        <label>M <input type="radio" name="charla-pre" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="charla-pre" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="charla-pre" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="charla-pre" value="B"></label>
+                        <label>M <input type="radio" name="charla-pre" value="M"></label>              
+                        <label>NT <input type="radio" name="charla-pre" value="NT"></label>      
+                        <label>NA <input type="radio" name="charla-pre" value="NA" checked></label>
+                        <label>FV <input type="radio" name="charla-pre" value="FV"></label>
                       </span>
                     </li>
                     <!-- Check list vehicular -->
@@ -1112,10 +1185,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="check-vehicular" value="Bueno"></label>
-                        <label>M <input type="radio" name="check-vehicular" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="check-vehicular" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="check-vehicular" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="check-vehicular" value="B"></label>
+                        <label>M <input type="radio" name="check-vehicular" value="M"></label>              
+                        <label>NT <input type="radio" name="check-vehicular" value="NT"></label>      
+                        <label>NA <input type="radio" name="check-vehicular" value="NA" checked></label>
+                        <label>FV <input type="radio" name="check-vehicular" value="FV"></label>
                       </span>
                     </li>
                     <!-- Registro de residuos generados  -->
@@ -1129,10 +1203,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="registro-residuos" value="Bueno"></label>
-                        <label>M <input type="radio" name="registro-residuos" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="registro-residuos" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="registro-residuos" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="registro-residuos" value="B"></label>
+                        <label>M <input type="radio" name="registro-residuos" value="M"></label>              
+                        <label>NT <input type="radio" name="registro-residuos" value="NT"></label>      
+                        <label>NA <input type="radio" name="registro-residuos" value="NA" checked></label>
+                        <label>FV <input type="radio" name="registro-residuos" value="FV"></label>
                       </span>
                     </li>
                     <!-- Protocolo de guantes  -->
@@ -1146,10 +1221,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="protocolo-guantes" value="Bueno"></label>
-                        <label>M <input type="radio" name="protocolo-guantes" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="protocolo-guantes" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="protocolo-guantes" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="protocolo-guantes" value="B"></label>
+                        <label>M <input type="radio" name="protocolo-guantes" value="M"></label>              
+                        <label>NT <input type="radio" name="protocolo-guantes" value="NT"></label>      
+                        <label>NA <input type="radio" name="protocolo-guantes" value="NA" checked></label>
+                        <label>FV <input type="radio" name="protocolo-guantes" value="FV"></label>
                       </span>
                     </li>
 
@@ -1172,10 +1248,11 @@
                         </select>
                       </label>
                       <span class="elemento-opciones">
-                        <label>B <input type="radio" name="medio-comunicacion" value="Bueno"></label>
-                        <label>M <input type="radio" name="medio-comunicacion" value="Malogrado"></label>              
-                        <label>NT <input type="radio" name="medio-comunicacion" value="No tiene"></label>      
-                        <label>NA <input type="radio" name="medio-comunicacion" value="No aplica" checked></label> 
+                        <label>B <input type="radio" name="medio-comunicacion" value="B"></label>
+                        <label>M <input type="radio" name="medio-comunicacion" value="M"></label>              
+                        <label>NT <input type="radio" name="medio-comunicacion" value="NT"></label>      
+                        <label>NA <input type="radio" name="medio-comunicacion" value="NA" checked></label>
+                        <label>FV <input type="radio" name="medio-comunicacion" value="FV"></label>
                       </span>
                     </li>
 
@@ -1186,6 +1263,10 @@
               </div>
 
             </article>
+            <!-- locura -->
+                        
+            
+            <!-- end locura -->
           </section>
         </div>
       </section>

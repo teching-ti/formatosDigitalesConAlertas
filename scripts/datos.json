@@ -3,60 +3,96 @@
     {
       "name": "José Luis Diaz Vasquez",
       "dni": "43692772",
+      "celular": "993 998 516",
       "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma1.png",
-      "cargo": "Técnico de Medición"
+      "cargo": "Jefe Cuadrilla de Balance"
     },
     {
       "name": "Rodrigo Marco Lopez Acuña",
       "dni": "74444960",
+      "celular":"943 044 131",
       "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma2.png",
-      "cargo": "Técnico de Medición"
+      "cargo": "Jefe Cuadrilla de Balance"
     },
     {
       "name": "Luis David Enriquez Quispe",
       "dni": "48072457",
-      "firma": "firma.d.prueba.3",
-      "cargo": "Técnico de Medición"
+      "celular":"977 231 771",
+      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma1.png",
+      "cargo": "Jefe Cuadrilla de Balance"
     },
     {
       "name": "Juan José Alcantara Soto",
       "dni": "77028233",
-      "firma": "firma.d.prueba.4",
-      "cargo": "Técnico de Medición"
+      "celular":"953 289 739",
+      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma2.png",
+      "cargo": "Jefe Cuadrilla de Balance"
     },
     {
       "name": "Erich Ofni Gonzalo Laguna",
       "dni": "48058039",
-      "firma": "firma.d.prueba.5",
-      "cargo": "Técnico Auxiliar"
+      "celular":"921 696 606",
+      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma1.png",
+      "cargo": "Operario de Balance"
     },
     {
       "name": "Frank Brayan Morales Quispe",
       "dni": "73876867",
-      "firma": "firma.d.prueba.6",
-      "cargo": "Técnico Auxiliar"
+      "celular":"986 969 783",
+      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma2.png",
+      "cargo": "Operario de Balance"
     },
     {
       "name": "Robin Valentino Asensios Cardenas",
       "dni": "77913680",
-      "firma": "firma.d.prueba.7",
-      "cargo": "Técnico Auxiliar"
+      "celular":"918 260 797",
+      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma1.png",
+      "cargo": "Operario de Balance"
     },
     {
       "name": "Jordy Alquett Acosta Fernandez",
       "dni": "47935322",
-      "firma": "firma.d.prueba.8",
-      "cargo": "Técnico Auxiliar"
+      "celular":"988 259 588",
+      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma2.png",
+      "cargo": "Operario de Balance"
+    },
+    {
+      "name": "José Luis Vela Vasquez",
+      "dni": "42668852",
+      "celular":"923 833 421",
+      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma2.png",
+      "cargo": "Chofer Ayudante de Balance"
+    },
+    {
+      "name": "Ronald Guiler Mendoza Cueva",
+      "dni": "43469067",
+      "celular":"931 808 866",
+      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma2.png",
+      "cargo": "Chofer Ayudante de Balance"
+    },
+    {
+      "name":"Sergio Shimabukuro Cornejo",
+      "dni": "74992464",
+      "celular":"912 748 639",
+      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma2.png",
+      "cargo": "Inspeccionador de Balance"
     }
   ],
 
   "supervisor": [
     {
-      "name":"Victor Adrian Gonzales Vidal",
-      "dni": "O7984815",
+      "name":"Roberto Carlos Luis Bailon",
+      "dni": "45387327",
+      "celular": "910 729 152",
+      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma1.png",
+      "cargo":"Supervisor"
+    },
+    {
+      "name":"Bernabé Oscco León",
+      "dni": "77777777",
+      "celular" : "999 555 111",
       "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma2.png",
       "cargo":"Supervisor"
-
     }
   ]
 }
