@@ -44,11 +44,12 @@ body{
 }
 
 #datos-generales-documento div{
-    display: flex;
-    gap: .8rem;
+    /* display: flex;
+    gap: .8rem; */
+    padding: .5rem;
 }
 
-#datos-generales-documento input, select{
+#datos-generales-documento input, datalist{
     outline: none;
     border-style: none;
     height: 35px;
@@ -57,6 +58,20 @@ body{
 
 #trabajo, #lugar{
     width: 60%;
+}
+
+.contenedor-comentarios{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+#comentarios{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: .2rem;
+    resize: none;
 }
 
 .cargo-nombre{
@@ -68,11 +83,32 @@ body{
 }
 
 .contenedor-trabajador{
-    margin: 2rem 0;
+    margin: 2rem 0 0 1.5rem;
 }
 
 .contenedor-trabajador h3{
     margin: 0 1rem;
+}
+
+
+.trabajador-firma, .trabajador-dni{
+    display: none;
+}
+
+#firma-responsable{
+    display: none;
+}
+
+.lista{
+    list-style: none;
+}
+
+.elemento-lista{
+    margin: 1.5rem 0;
+}
+
+.elemento-cantidad{
+    margin-left: 2rem;
 }
 
 .elemento-titulo-general{
@@ -137,6 +173,10 @@ body{
         flex-direction: column;
         gap: 1.4rem;
         padding: .5rem .2rem;
+    }
+
+    .contenedor-trabajador{
+        margin: 2rem 0 0 0;
     }
 
     .lista{

@@ -64,7 +64,9 @@
             </div>
             <div class="section-body">
               <label for="responsable">3. Responsable del Proyecto: </label
-              ><input type="text" id="responsable" />
+              ><select name="responsable-nombre" id="responsable-nombre">
+                <option value="Seleccionar">--Seleccionar Nombre--</option>
+              </select>
             </div>
             <br />
             <div class="contenedor-preguntas">
@@ -152,6 +154,7 @@
                   option.innterText(nombre)
                 })
                 -->
+                
                 <div class="participante-datos">
                   <select name="participante-nombre" class="participante-nombre">
                     <option value="Seleccionar">--Seleccionar Nombre--</option>

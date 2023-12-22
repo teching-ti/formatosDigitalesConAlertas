@@ -372,16 +372,31 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
     //la suma de las coordenadas y debe ser de 6.5 para rellenar las actividades
     //definiendo las posiciones iniciales para las actividades
-    XnombreActividad = 11.5;
-    YnombreActividad = 58.5;
-    XpeligroActividad = 73.5;
-    YpeligroActividad = 58.5;
-    XriesgoActividad = 107.5;
-    YriesgoActividad = 58.5;
-    XrecomendacionActividad = 142.5;
-    YrecomendacionActividad = 58.5;
 
-    //nombre de las actividades
+    //actividades introducidas de forma estática
+    let datosEstaticos=[
+      ["Preparación e Identificación", "Preparación e Identificación", "Preparación e Identificación", "Preparación e Identificación",
+      "Preparación e Identificación", "Preparación e Identificación", "Ejecución", "Ejecución", "Ejecución", "Ejecución", "Ejecución",
+      "Ejecución", "Ejecución", "Culminación y Retiro", "Culminación y Retiro"],
+      ["Covid 19 Contagio", "Suelo en mal estado/ irregular/ desnivelado/ con pendiente", "Radiación solar", "Trabajo a la intemperie", "Tránsito vehicular", "Manipulación de herramientas", "Redes de BT/MT", "Hostilidad, Clientes agresivos, zona peligrosa", "Presencia de animales", "Superficie resbaladiza, irregular o desnivelado, Obstáculos en el piso", "Otro Trabajos en altura con BH", "Otro Condición subestándar en campo", "Covid 19", "Suelo en mal estado/irregular"],
+      ["Enfermedad", "Caída al mismo nivel", "Daños a la piel", "Fatiga o estrés", "Colisión/ Atropello/ Volcadura", "Corte", "Contacto eléctrico directo o indirecto", "Agresión por terceros", "Agresión de animales", "Caída al mismo nivel", "Caida a distinto nivel", "Caída de personas a distinto nivel - caida de objetos", "Contagio, enfermedad", "Caída al mismo nivel"],
+      ["Lavado constante de manos,uso de mascarilla,mantener distanciamiento 1.5m, cumpli plan COVID.", "Inspeccion de area de trabajo/ Realizar orden y Limpieza en el área de trabajo/ Señalizar zonas de peligro en el área de trabajo.", "Uso de bloqueador solar.", "Pausas activas.", "Inspección de pre uso de equipos móviles."]
+    ]
+
+
+
+    
+
+    /*datos introducidos desde la página INICIO*/
+    XnombreActividad = 11.5;
+    YnombreActividad = 150;
+    XpeligroActividad = 73.5;
+    YpeligroActividad = 150;
+    XriesgoActividad = 107.5;
+    YriesgoActividad = 150;
+    XrecomendacionActividad = 142.5;
+    YrecomendacionActividad = 150;
+    //nombre de las actividades introducidas desde la página
     nombresActs = document.querySelectorAll(".actividad-nombre");
 
     nombresActs.forEach((nombreA) => {
@@ -391,9 +406,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         YnombreActividad += 6.5;
       } else {
         //si hay campos vacios
-        alert("Complete el campo 'actividades' ");
-        resEvalActividades = false
-        return
+        // deshabilitado puesto que quizá ya no sea necesario
+        // alert("Complete el campo 'actividades' ");
+        // resEvalActividades = false
+        // return
 
       }
     });
@@ -408,10 +424,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         YpeligroActividad += 6.5;
 
       } else {
-        //si hay campos vacios
-        alert("Complete el campo 'peligro actividad' ");
-        resEvalActividades = false
-        return
+        // si hay campos vacios
+        // deshabilitado puesto que quizá ya no sea necesario
+        // alert("Complete el campo 'peligro actividad' ");
+        // resEvalActividades = false
+        // return
       }
     });
 
@@ -425,10 +442,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         YriesgoActividad += 6.5;
 
       } else {
-        //si hay campos vacios
-        alert("Complete el campo 'riesgo impacto'");
-        resEvalActividades = false
-        return
+        // si hay campos vacios
+        // deshabilitado puesto que quizá ya no sea necesario
+        // alert("Complete el campo 'riesgo impacto'");
+        // resEvalActividades = false
+        // return
       }
     });
 
@@ -446,12 +464,16 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         YrecomendacionActividad += 6.5;
 
       } else {
-        //si hay campos vacios
-        alert("Complete el campo 'recomendaciones' ");
-        resEvalActividades = false
-        return
+        // si hay campos vacios
+        // deshabilitado puesto que quizá ya no sea necesario
+        // alert("Complete el campo 'recomendaciones' ");
+        // resEvalActividades = false
+        // return
       }
     });
+    /*datos introducidos desde la página FIN*/
+
+
     //si todos los campos tienen datos, sus variables tendrán un número asignado, diferente a a0
     if (resEvalActividades) {
       //si los valores son diferentes a 0, esta función retornará un true
@@ -461,6 +483,8 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       return false;
     }
   };
+
+  
 
   //función para evaluar las casillas marcadas
   let evaluarCheckbox = () => {

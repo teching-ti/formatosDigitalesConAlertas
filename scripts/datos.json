@@ -81,17 +81,17 @@
 
   "supervisor": [
     {
-      "name":"Roberto Carlos Luis Bailon",
-      "dni": "45387327",
-      "celular": "910 729 152",
-      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma1.png",
-      "cargo":"Supervisor"
-    },
-    {
       "name":"Bernabé Oscco León",
       "dni": "77777777",
       "celular" : "999 555 111",
       "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma2.png",
+      "cargo":"Supervisor"
+    },
+    {
+      "name":"Roberto Carlos Luis Bailon",
+      "dni": "45387327",
+      "celular": "910 729 152",
+      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma1.png",
       "cargo":"Supervisor"
     }
   ]

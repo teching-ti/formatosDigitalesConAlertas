@@ -44,6 +44,7 @@ fetch("../scripts/datos.json")
 
     //expositor
     llenarSelectExpositor(document.getElementById("expositor-nombre"))
+    llenarSelectExpositor(document.getElementById("responsable-nombre"))
     autocompletarCamposExpositor(document.getElementById("expositor-nombre"), document.getElementById("expositor-firma"))
 
 
@@ -227,7 +228,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         let fecha = document.getElementById("fecha").value
         let tema = document.getElementById("tema").value
         let lugar = document.getElementById("lugar").value
-        let responsable = document.getElementById("responsable").value
+        let responsable = document.getElementById("responsable-nombre").value
         //condicional para determminar si los campos del formulario han sido completados
         if(tema!="" && lugar!="" && responsable!=""){
             doc.setFontSize(9)
