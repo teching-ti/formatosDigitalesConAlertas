@@ -304,7 +304,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   //doc, objeto
   var doc = new jsPDF();
   //imagen del documento vacía
-  const image = await loadImage("../recursos/formatoAts.png");
+  const image = await loadImage("../recursos/formatoAts4.png");
   //colocar la imagen
   doc.addImage(image, "PNG", 0, 0, 200, 300);
 
@@ -327,9 +327,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
        para así también autocompletar su firma
       */
       //texto posicionado para el final de la hoja y firma respectiva
-      doc.text(responsable1, 59, 282)
+      doc.text(responsable1, 59, 286)
       //se puede cargar directaente la dirección de la imagen desde el json
-      doc.addImage("../recursos/firma12.png", "PNG", 164, 278, 25, 5)
+      doc.addImage("../recursos/firma12.png", "PNG", 164, 282, 25, 4.5)
 
       return true;
     } else {
@@ -366,44 +366,122 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     return true;
   };
 
+  let datosEstaticos=[
+    ["Preparación e Identificación", "Preparación e Identificación", "Preparación e Identificación", "Preparación e Identificación",
+    "Preparación e Identificación", "Preparación e Identificación", "Ejecución", "Ejecución", "Ejecución", "Ejecución", "Ejecución",
+    "Ejecución", "Ejecución", "Culminación y Retiro", "Culminación y Retiro"],
+    ["Covid 19 Contagio", "Suelo en mal estado/ irregular/ desnivelado/ con pendiente", "Radiación solar", "Trabajo a la intemperie", "Tránsito vehicular", "Manipulación de herramientas", "Redes de BT/MT", "Hostilidad, Clientes agresivos, zona peligrosa", "Presencia de animales", "Superficie resbaladiza, irregular o desnivelado, Obstáculos en el piso", "Trabajos en altura","Otro Trabajos en altura con BH", "Otro Condición subestándar en campo", "Covid 19", "Suelo en mal estado/irregular"],
+    ["Enfermedad", "Caída al mismo nivel", "Daños a la piel", "Fatiga o estrés", "Colisión/ Atropello/ Volcadura", "Corte", "Contacto eléctrico directo o indirecto", "Agresión por terceros", "Agresión de animales", "Caída al mismo nivel", "Caida a distinto nivel", "Caída de personas a distinto nivel - caida de objetos", "Accidentes e incidentes", "Contagio, enfermedad", "Caída al mismo nivel"],
+    ["Lavado constante de manos,uso de mascarilla,mantener distanciamiento 1.5m, cumpli plan COVID.", "Inspeccion de area de trabajo/ Realizar orden y Limpieza en el área de trabajo/ Señalizar zonas de peligro en el área de trabajo.", "Uso de bloqueador solar.", "Pausas activas.", "Inspección de pre uso de equipos móviles.", "Verificar estado de herramientas, uso de de epp básicos ( guantes), estar atento.", "Personal capacitado, en caso de liberación del cirucito aplicar las 5 reglas de oro, para con circuitos energizados verificar estado de instalaciones, revelar tensión, uso de EPPS ignífugos (capucha, uniforme antiflama, careta anti arco), uso de EPPS dieléctricos (guantes dieléctricos, calzado dieléctrico, etc.)", "Solicitar resguardo policial, no enfrentarse. Si el colaborador es agredido física o verbalmente, debe pro-tegerse y ponerse a buen recaudo.", "Estar atento, no enfrentar, retirarse de la zona de trabajo.", " Inspecciones SSOMA, Orden y Limpieza.", "Verificar el estado del poste o estructura, check list de la escalera y del sistema anticaídas, uso de 3 puntos de apoyo, uso del arnes, estrobo y freno de ascenso.", "Uso de arnés de cuerpo completo/ Llenado de PETAR/ Señalizar zona de trabajo. Verificación previa del BH.", "Aplicar política Stop the Work.", "Lavado constante de manos, uso de mascarilla, mantener distanciamiento 1.5m, cumplir plan COVID.", "Mantenimiento de Instalaciones, realizar el reporte de Condiciones Inseguras"]
+  ]
+
+  let actDefinidasX = 11.5
+  let actDefinidasY = 55.3
+  let actDefinidasYafJ = 103.5
+  let j = 0
+  doc.setFontSize(7)
+  for(let i = 0; i<4; i++){
+    j=0
+    datosEstaticos[i].forEach(d=>{
+      
+      
+      if(i==0){
+        if(j<7){
+          doc.text(d, actDefinidasX, actDefinidasY)
+          actDefinidasY+=6.3
+        }else{
+          doc.text(d, actDefinidasX, actDefinidasYafJ)
+          actDefinidasYafJ+=6.3
+        }
+        j+=1
+
+      }else if(i==1){
+        actDefinidasX = 46.5
+        if(j<7){
+          doc.text(d, actDefinidasX, actDefinidasY, {
+          maxWidth: 40,
+          lineHeightFactor: 0.9
+        })
+        }else{
+          doc.text(d, actDefinidasX, actDefinidasYafJ,{
+            maxWidth: 40,
+            lineHeightFactor: 0.9
+          })
+          actDefinidasYafJ+=6.3
+        }
+        actDefinidasY+=6.3
+        j+=1
+
+      }else if(i==2){
+        actDefinidasX = 95
+        if(j<7){
+        doc.text(d, actDefinidasX, actDefinidasY,{
+          maxWidth: 32,
+          lineHeightFactor: 0.8
+        })
+        }else{
+          doc.text(d, actDefinidasX, actDefinidasYafJ,{
+            maxWidth: 32,
+          lineHeightFactor: 0.8
+          })
+          actDefinidasYafJ+=6.3
+        }
+        actDefinidasY+=6.3
+        j+=1
+      }else if(i==3){
+        doc.setFontSize(5.7)
+        actDefinidasX = 131.5
+        if(j<7){
+        doc.text(d, actDefinidasX, actDefinidasY,{
+          maxWidth: 58,
+          lineHeightFactor: 0.9
+        })
+      }else{
+        doc.text(d, actDefinidasX, actDefinidasYafJ,{
+          maxWidth: 58,
+          lineHeightFactor: 0.9
+        })
+        actDefinidasYafJ+=6.2
+      }
+        actDefinidasY+=6.2
+        j+=1
+      }
+    })
+    actDefinidasYafJ = 103.
+    actDefinidasY = 55.3
+  }
+
   //funcion que se usa para colocar las actividades
   let reconocerActividades = () => {
     let resEvalActividades = true
 
     //la suma de las coordenadas y debe ser de 6.5 para rellenar las actividades
     //definiendo las posiciones iniciales para las actividades
-
     //actividades introducidas de forma estática
-    let datosEstaticos=[
-      ["Preparación e Identificación", "Preparación e Identificación", "Preparación e Identificación", "Preparación e Identificación",
-      "Preparación e Identificación", "Preparación e Identificación", "Ejecución", "Ejecución", "Ejecución", "Ejecución", "Ejecución",
-      "Ejecución", "Ejecución", "Culminación y Retiro", "Culminación y Retiro"],
-      ["Covid 19 Contagio", "Suelo en mal estado/ irregular/ desnivelado/ con pendiente", "Radiación solar", "Trabajo a la intemperie", "Tránsito vehicular", "Manipulación de herramientas", "Redes de BT/MT", "Hostilidad, Clientes agresivos, zona peligrosa", "Presencia de animales", "Superficie resbaladiza, irregular o desnivelado, Obstáculos en el piso", "Otro Trabajos en altura con BH", "Otro Condición subestándar en campo", "Covid 19", "Suelo en mal estado/irregular"],
-      ["Enfermedad", "Caída al mismo nivel", "Daños a la piel", "Fatiga o estrés", "Colisión/ Atropello/ Volcadura", "Corte", "Contacto eléctrico directo o indirecto", "Agresión por terceros", "Agresión de animales", "Caída al mismo nivel", "Caida a distinto nivel", "Caída de personas a distinto nivel - caida de objetos", "Contagio, enfermedad", "Caída al mismo nivel"],
-      ["Lavado constante de manos,uso de mascarilla,mantener distanciamiento 1.5m, cumpli plan COVID.", "Inspeccion de area de trabajo/ Realizar orden y Limpieza en el área de trabajo/ Señalizar zonas de peligro en el área de trabajo.", "Uso de bloqueador solar.", "Pausas activas.", "Inspección de pre uso de equipos móviles."]
-    ]
-
-
-
+  
+    
     
 
     /*datos introducidos desde la página INICIO*/
     XnombreActividad = 11.5;
-    YnombreActividad = 150;
-    XpeligroActividad = 73.5;
-    YpeligroActividad = 150;
-    XriesgoActividad = 107.5;
-    YriesgoActividad = 150;
-    XrecomendacionActividad = 142.5;
-    YrecomendacionActividad = 150;
+    YnombreActividad = 153.3;
+    XpeligroActividad = 46.5;
+    YpeligroActividad = 153.3;
+    XriesgoActividad = 95;
+    YriesgoActividad = 153.3;
+    XrecomendacionActividad = 131.5;
+    YrecomendacionActividad = 153;
     //nombre de las actividades introducidas desde la página
     nombresActs = document.querySelectorAll(".actividad-nombre");
 
     nombresActs.forEach((nombreA) => {
       if (nombreA.value != "") {
-        doc.setFontSize(9);
-        doc.text(nombreA.value, XnombreActividad, YnombreActividad);
-        YnombreActividad += 6.5;
+        doc.setFontSize(7);
+        doc.text(nombreA.value, XnombreActividad, YnombreActividad,{
+          maxWidth: 30,
+          lineHeightFactor: 0.8
+        });
+        YnombreActividad += 6.3;
       } else {
         //si hay campos vacios
         // deshabilitado puesto que quizá ya no sea necesario
@@ -419,9 +497,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
     peligros.forEach((peligro) => {
       if (peligro.value != "") {
-        doc.setFontSize(9);
-        doc.text(peligro.value, XpeligroActividad, YpeligroActividad);
-        YpeligroActividad += 6.5;
+        doc.setFontSize(7);
+        doc.text(peligro.value, XpeligroActividad, YpeligroActividad,  {
+          maxWidth: 40,
+          lineHeightFactor: 0.9
+        });
+        YpeligroActividad += 6.3;
 
       } else {
         // si hay campos vacios
@@ -437,9 +518,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
     riesgos.forEach((riesgo) => {
       if (riesgo.value != "") {
-        doc.setFontSize(9);
-        doc.text(riesgo.value, XriesgoActividad, YriesgoActividad);
-        YriesgoActividad += 6.5;
+        doc.setFontSize(7);
+        doc.text(riesgo.value, XriesgoActividad, YriesgoActividad, {
+          maxWidth: 32,
+          lineHeightFactor: 0.8
+        });
+        YriesgoActividad += 6.3;
 
       } else {
         // si hay campos vacios
@@ -450,18 +534,21 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       }
     });
 
-    //acciones recomendadas
+    //  iones recomendadas
     recomendaciones = document.querySelectorAll(".acciones-nombre");
 
     recomendaciones.forEach((recomendacion) => {
       if (recomendacion.value != "") {
-        doc.setFontSize(9);
+        doc.setFontSize(5.7);
         doc.text(
           recomendacion.value,
           XrecomendacionActividad,
-          YrecomendacionActividad
+          YrecomendacionActividad, {
+            maxWidth: 58,
+            lineHeightFactor: 0.9
+          }
         );
-        YrecomendacionActividad += 6.5;
+        YrecomendacionActividad += 6.2;
 
       } else {
         // si hay campos vacios
@@ -515,17 +602,18 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     //este contador se usa para calcular cuando se deberá realizar el salto de llenado de una columna a otra en el documento pdf
     let contador = 1;
     //posición y de cada una de las columnas
-    let colum1Y = 200.5;
-    let colum2Y = 200.5;
+    let colum1Y = 204.2;
+    let colum2Y = 204;
     //se toma cada elemento de la lista para ser evaluado y en base a si se encuentra marcado o no, se posiciona el marcado
     //dentro del documento pdf
+    doc.setFontSize(9)
     listaCheckbox.forEach((el) => {
       if (contador <= 4) {
         if (el.checked) {
           doc.text("x", 89.4, colum1Y);
           colum1Y += 3.5;
         } else {
-          doc.text("x", 100.4, colum1Y);
+          doc.text("x", 97.4, colum1Y);
           colum1Y += 3.5;
         }
       } else if (contador >= 4) {
@@ -544,10 +632,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
   //funcion para evaluar los datos de clinica
   let evaluarClinica = () => {
+    doc.setFontSize(9);
     let clincaNombre = document.getElementById("clinica-nombre").value;
     let clinicaDireccion = document.getElementById("clinica-direccion").value;
-    doc.text(clincaNombre, 44.5, 225.2);
-    doc.text(clinicaDireccion, 29.5, 229);
+    doc.text(clincaNombre, 44.5, 229);
+    doc.text(clinicaDireccion, 29.5, 232.8);
     return true;
   };
 
@@ -559,7 +648,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let resEvalPersonas = true
 
     //Colocar nombres
-    let nombreY = 241;
+    let nombreY = 243;
     let nombresPersonas = document.querySelectorAll(".participante-nombre");
     nombresPersonas.forEach((persona) => {
       if (persona.value != "" && persona.value != "Seleccionar") {
@@ -574,7 +663,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     });
 
     //ColocarDNI
-    let dniY = 241;
+    let dniY = 243;
     let dniPersonas = document.querySelectorAll(".participante-dni");
     dniPersonas.forEach((dniPersona) => {
       if (dniPersona.value != "") {
@@ -588,12 +677,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     });
 
     //ColocarFirma
-    let firmaY = 236.2;
+    let firmaY = 240;
     let firmasPersonas = document.querySelectorAll(".participante-firma");
     firmasPersonas.forEach((firmaPersona) => {
       if (firmaPersona.value != "") {
         console.log(firmaPersona.value)
-        doc.addImage(firmaPersona.value, "PNG", 144, firmaY, 19.2, 4.8);
+        doc.addImage(firmaPersona.value, "PNG", 144.6, firmaY, 18.5, 4.5);
         firmaY += 5.3;
       } else {
         alert("Campo firma se encuentra vacío");
@@ -602,14 +691,14 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       }
     });
     //ColocarHoraIngreso
-    let horaIngresoY = 241;
+    let horaIngresoY = 243;
     let horaIngresos = document.querySelectorAll(".h-ingreso");
     horaIngresos.forEach((horaIngreso) => {
       doc.text(horaIngreso.value, 166, horaIngresoY);
       horaIngresoY += 5.2;
     });
     //ColocarHoraSalida
-    let horaSalidaY = 241;
+    let horaSalidaY = 243;
     let horasSalida = document.querySelectorAll(".h-salida");
     horasSalida.forEach((horaSalida) => {
       doc.text(horaSalida.value, 180, horaSalidaY);
@@ -628,7 +717,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let observaciones = document.getElementById("input-observaciones").value;
     if (observaciones != "") {
       doc.setFontSize(9);
-      doc.text(observaciones, 12, 274, {
+      doc.text(observaciones, 12, 277.8, {
         maxWidth: 185,
         lineHeightFactor: 0.8,
       });
