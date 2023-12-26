@@ -303,15 +303,8 @@ input{
     resize: none;
 }
 
-#responsable{
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    padding: 1.4em 0;
-}
-
-#resp2{
-    display: none;
+#resp{
+    display: block;
 }
 
 .responsable-datos{
@@ -321,15 +314,16 @@ input{
     margin: .5em 0;
 }
 
+#responsable-trabajo{
+    padding: 0.5em;
+    width:  100%;
+}
+
 #responsable-firma{
     pointer-events: none;
     background: #d1d5db;
     padding: .5em;
-}
-
-#responsable-nombre-final{
-    padding: .5em;
-    width: 100%;
+    display: none;
 }
 
 #btn-aniadir-actividad{
@@ -425,10 +419,6 @@ input{
 
     #input-observaciones{
         width: 100%;
-    }
-
-    #responsable{
-        flex-direction: column;
     }
 
     .responsable-datos{

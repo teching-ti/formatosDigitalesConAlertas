@@ -49,7 +49,7 @@ body{
     padding: .5rem;
 }
 
-#datos-generales-documento input, datalist{
+#datos-generales-documento input{
     outline: none;
     border-style: none;
     height: 35px;

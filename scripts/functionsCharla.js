@@ -44,9 +44,7 @@ fetch("../scripts/datos.json")
 
     //expositor
     llenarSelectExpositor(document.getElementById("expositor-nombre"))
-    llenarSelectExpositor(document.getElementById("responsable-nombre"))
     autocompletarCamposExpositor(document.getElementById("expositor-nombre"), document.getElementById("expositor-firma"))
-
 
     funcionalidadesPersonal();
   })
@@ -64,10 +62,10 @@ function llenarSelectPersonal(elementoSelect) {
   }
 
   function llenarSelectExpositor(elementoSelect){
-    users.supervisor.forEach((supervisor)=>{
+    users.tecnico.forEach((tecnico)=>{
         const opcion = document.createElement("option")
-        opcion.value = supervisor.name
-        opcion.textContent = supervisor.name
+        opcion.value = tecnico.name
+        opcion.textContent = tecnico.name
         elementoSelect.appendChild(opcion)
     })
   }
@@ -91,15 +89,15 @@ function autocompletarCamposPersonal(elementoSelect, datosParticipante) {
 }
 
 /*Autocompletado del expositor*/
-function autocompletarCamposExpositor(elementoSelect, datosSupervisor) {
+function autocompletarCamposExpositor(elementoSelect, datosExpositor) {
     elementoSelect.addEventListener("change", function () {
         const nombreSeleccionado = elementoSelect.value;
-        const supervisorSeleccionado = users.supervisor.find(
-            (supervisor) => supervisor.name === nombreSeleccionado
+        const tecnicoSeleccionado = users.tecnico.find(
+            (tecnico) => tecnico.name === nombreSeleccionado
         );
         //autocompletar los campos correspondientes
-        datosSupervisor.value =
-        supervisorSeleccionado.firma;
+        datosExpositor.value =
+        tecnicoSeleccionado.firma;
     });
 }
 
@@ -324,7 +322,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         nombres.forEach((nombre)=>{
             if(nombre.value != "" && nombre.value != "Seleccionar"){
                 doc.text(nombre.value, nombresX, nombresY)
-                nombresY+=10
+                nombresY+=10.3
             }else{
                 alert("Seleccionar un nombre de participante")
                 resEvalNombres = false
@@ -336,7 +334,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         dnis.forEach((dni)=>{
             if(dni.value != ""){
                 doc.text(dni.value, dniX, dniY)
-                dniY+=10
+                dniY+=10.3
             }else{
                 alert("Campo DNI vacío")
                 resEvalNombres = false
@@ -348,8 +346,8 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         //este bucle será para cargar las imágenes
         firmas.forEach((firma)=>{
             if(firma.value != ""){
-                doc.addImage(firma.value, "PNG", firmasX, firmasY, 47, 8.2)
-                firmasY+=10
+                doc.addImage(firma.value, "PNG", firmasX, firmasY, 46, 8)
+                firmasY+=10.3
             }else{
                 alert("Campo Firma vacío")
                 resEvalNombres = false
@@ -364,6 +362,8 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         }
     }
 
+    /*
+    */
     /*--- ESTO DEBE EVALUARSE PARA COLOCAR LAS FIRMAS COMO IMÁGENES ---*/
     /*inicia datos para el registro de participantes*/
     /*probando los espacios para las firmas*/
@@ -379,11 +379,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     /*termina datos para el registro de participantes*/
 
     let evaluarExpositor = ()=>{
+        let expFirma = document.getElementById("expositor-firma").value
         let expNombre = document.getElementById("expositor-nombre").value
         //imagen de la firma cargada con transparencia
         //let firmaExpositor = document.getElementById("expositor-firma").value
         //doc.addImage(firmaExpositor, "PNG", 35, 275, 58, 11)
-        doc.addImage("../recursos/firma12.png", "PNG", 35, 275, 58, 11)
+        doc.addImage(expFirma, "PNG", 35, 275, 58, 11)
         doc.text(expNombre, 112, 283)
         return true
     }
@@ -394,7 +395,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     // evaluarNombres()
     // evaluarExpositor()
     if(evaluarDatosPrincipales() && evaluarEmpresa() && evaluarMarcadoOpciones() && evaluarNombres() && evaluarExpositor()){
-        alert("Correcto")
+        //alert("Correcto")
         //hacer previsualización
         var blob = doc.output("blob");
         window.open(URL.createObjectURL(blob))

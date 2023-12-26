@@ -99,8 +99,10 @@ fetch("../scripts/datos.json")
     autocompletarCampos(document.querySelector(".participante-nombre"), document.querySelector(".participante-datos"))
     
     //llena el select del responsable del proyecto
-    llenarSelectResponsable(document.getElementById("responsable-nombre"))
-    autocompletarCamposResponsable(document.getElementById("responsable-nombre"), document.getElementById("responsable-firma"))
+    llenarSelect(document.getElementById("responsable-trabajo"))
+    autocompletarCamposResponsable(document.getElementById("responsable-trabajo"), document.getElementById("responsable-firma"))
+
+
 
 
     funcionalidadesPersonal();
@@ -116,15 +118,6 @@ function llenarSelect(elementoSelect) {
     option.textContent = tecnico.name;
     elementoSelect.appendChild(option);
   });
-}
-
-function llenarSelectResponsable(elementoSelect){
-  users.supervisor.forEach((supervisor)=>{
-      const opcion = document.createElement("option")
-      opcion.value = supervisor.name
-      opcion.textContent = supervisor.name
-      elementoSelect.appendChild(opcion)
-  })
 }
 
 /*Autocompletado de los técnicos*/
@@ -149,12 +142,12 @@ function autocompletarCampos(elementoSelect, datosParticipante) {
 function autocompletarCamposResponsable(elementoSelect, datosSupervisor) {
   elementoSelect.addEventListener("change", function () {
       const nombreSeleccionado = elementoSelect.value;
-      const supervisorSeleccionado = users.supervisor.find(
-          (supervisor) => supervisor.name === nombreSeleccionado
+      const responsableSeleccionado = users.tecnico.find(
+          (tecnico) => tecnico.name === nombreSeleccionado
       );
       //autocompletar los campos correspondientes
       datosSupervisor.value =
-      supervisorSeleccionado.firma;
+      responsableSeleccionado.firma;
   });
 }
 
@@ -314,6 +307,8 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let lugar = document.getElementById("lugar").value;
     let fecha = document.getElementById("fecha").value;
     let responsable1 = document.getElementById("responsable-nombre").value;
+    let responsableTrabajo = document.getElementById("responsable-trabajo").value
+    let responableTrabajoFirma = document.getElementById("responsable-firma").value
 
     if (trabajo != "" && lugar != "" && responsable1 != "") {
       doc.text(trabajo, 58, 32.5);
@@ -327,10 +322,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
        para así también autocompletar su firma
       */
       //texto posicionado para el final de la hoja y firma respectiva
-      doc.text(responsable1, 59, 286)
+      doc.text(responsableTrabajo, 59, 286)
       //se puede cargar directaente la dirección de la imagen desde el json
-      doc.addImage("../recursos/firma12.png", "PNG", 164, 282, 25, 4.5)
-
+      doc.addImage(responableTrabajoFirma, "PNG", 164, 282, 24, 4.2)
       return true;
     } else {
       alert("Complete todos los campos de la parte superior del formulario");
@@ -681,7 +675,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let firmasPersonas = document.querySelectorAll(".participante-firma");
     firmasPersonas.forEach((firmaPersona) => {
       if (firmaPersona.value != "") {
-        console.log(firmaPersona.value)
+        //console.log(firmaPersona.value)
         doc.addImage(firmaPersona.value, "PNG", 144.6, firmaY, 18.5, 4.5);
         firmaY += 5.3;
       } else {

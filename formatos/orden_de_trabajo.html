@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orden de Trabajo</title>
+    <link
+      rel="icon"
+      href="../recursos/favicon-teching.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="../estilos/stylesOrden.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <main class="main">
+      <figure class="logo-title">
+        <a href="../">
+          <img src="../recursos/logo_teching.png" alt="teching_logo" />
+        </a>
+        <div>
+          <span>Orden de Trabajo</span>
+        </div>
+      </figure>
+
+      <section class="form-container">
+        <!--Inicia Cuerpo del Formulario-->
+        <div class="form-body">
+          <section
+            class="datos-generales-documento"
+            id="datos-generales-documento"
+          >
+            <h4>Datos Generales</h4>
+            <div class="dg dg-1">
+              <input type="text" value="00-00-00" id="fecha" readonly />
+              <input type="text" id="proyecto" placeholder="PROYECTO." />
+            </div>
+            <div class="dg-2">
+              <div>
+                <input type="text" id="nproyecto" placeholder="N° PROYECTO." />
+                <input type="text" id="ot" placeholder="OT." />
+              </div>
+              <input type="text" id="actividad" placeholder="ACTIVIDAD." />
+            </div>
+            <div class="dg dg-3">
+              <input type="text" id="contacto" placeholder="CONTACTO." />
+              <input type="text" id="telefono" placeholder="TELEFONO." />
+            </div>
+            <div class="dg dg-4">
+              <input type="text" id="direccion" placeholder="DIRECCION." />
+              <input type="text" id="referencia" placeholder="REFERENCIA." />
+              <input type="text" id="ceco" placeholder="CECO." />
+            </div>
+          </section>
+
+          <div class="solicitud-autorizacion">
+            <div class="contenedor-solicitado">
+              <label for="solicitado">Solicitado por: </label>
+              <input type="text" id="solicitado" />
+              <input
+                type="text"
+                alt="firma-solicitante"
+                id="firma-solicitado"
+              />
+            </div>
+            <div class="contenedor-autorizado">
+              <label for="autorizado">Autorizado por:</label>
+              <input type="text" id="autorizado" />
+              <input
+                type="text"
+                alt="firma-solicitante"
+                id="firma-autorizado"
+              />
+            </div>
+          </div>
+
+          <!-- TAREAS A EJECUTAR -->
+          <!-- Considerar el tema de los comentarios para los que ya están insertados por defecto -->
+
+          <!-- EQUIPOS Y MATERIALES -->
+
+          <!-- HERRAMIENTAS -->
+          <section class="herramientas">
+            <h3>Herramientas</h3>
+            <div class="contenedor-herramientas">
+              <label
+                >Descripción <input type="text" class="descripcion-herramienta"
+              /></label>
+
+              <label class="cantidad"
+                >Cantidad Planificada <input type="number" class="cantidad-p"
+              /></label>
+
+              <label class="cantidad"
+                >Cantidad Utilizada <input type="number" class="cantidad-u"
+              /></label>
+
+              <label
+                >Observaciones
+                <textarea
+                  cols="30"
+                  rows="10"
+                  class="observaciones"
+                  class="observaciones"
+                ></textarea>
+              </label>
+            </div>
+          </section>
+
+          <!-- PERSONAL -->
+
+          <section class="section-todo-personal">
+            <h3>Personal</h3>
+
+            <div id="botones">
+              <div class="agregar-personal">
+                Añadir <i class="fa-solid fa-user-plus"></i>
+              </div>
+              <div class="terminar">
+                Generar <i class="fa-solid fa-check"></i>
+              </div>
+            </div>
+            <h4>Participantes</h4>
+            <div class="contenedor-personal">
+              <select class="nombre-participante">
+                <option value="Seleccionar">-Seleccionar-</option>
+              </select>
+              <input type="text" class="dni" placeholder="DNI." readonly />
+              <input type="text" class="cargo" placeholder="Cargo." readonly />
+
+              <div class="contenedor-inicio">
+                <span>Hora inicio</span>
+                <input type="time" class="h-ingreso" />
+              </div>
+              <div class="contenedor-fin">
+                <span>Hora final</span>
+                <input type="time" class="h-salida" />
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="..//scripts/functionsOrden.js"></script>
+  </body>
+</html>

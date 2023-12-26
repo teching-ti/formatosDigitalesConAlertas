@@ -24,7 +24,7 @@ fetch("../scripts/datos.json")
     );
 
     //llena el select del responsable del proyecto
-    llenarSelectResponsable(document.getElementById("responsable-nombre"));
+    llenarSelect(document.getElementById("responsable-nombre"));
     autocompletarCamposResponsable(
       document.getElementById("responsable-nombre"),
       document.getElementById("firma-responsable")
@@ -58,24 +58,24 @@ function autocompletarCampos(elementoSelect, datosParticipante) {
 }
 
 //Llenar el select del responsable
-function llenarSelectResponsable(elementoSelect) {
-  users.supervisor.forEach((supervisor) => {
-    const opcion = document.createElement("option");
-    opcion.value = supervisor.name;
-    opcion.textContent = supervisor.name;
-    elementoSelect.appendChild(opcion);
-  });
-}
+// function llenarSelectResponsable(elementoSelect) {
+//   users.supervisor.forEach((supervisor) => {
+//     const opcion = document.createElement("option");
+//     opcion.value = supervisor.name;
+//     opcion.textContent = supervisor.name;
+//     elementoSelect.appendChild(opcion);
+//   });
+// }
 
 /*Autocompletado del responsable*/
-function autocompletarCamposResponsable(elementoSelect, datosSupervisor) {
+function autocompletarCamposResponsable(elementoSelect, datosResponsable) {
   elementoSelect.addEventListener("change", function () {
     const nombreSeleccionado = elementoSelect.value;
-    const supervisorSeleccionado = users.supervisor.find(
-      (supervisor) => supervisor.name === nombreSeleccionado
+    const responsableSeleccionado = users.tecnico.find(
+      (tecnico) => tecnico.name === nombreSeleccionado
     );
     //autocompletar los campos correspondientes
-    datosSupervisor.value = supervisorSeleccionado.firma;
+    datosResponsable.value = responsableSeleccionado.firma;
   });
 }
 
@@ -116,7 +116,7 @@ btnAgregarPersonal.addEventListener("click", function () {
 
 //funcion para agregar personal al listado
 function agregarContenedorPersona(numUser) {
-  alert("Se ha creado uno similar");
+  alert("Se añadió un nuevo participante, completar sus datos correctamente");
   // Clona el contenedor-trabajador
   const contenedorTrabajador = document.querySelector(".contenedor-trabajador");
   const nuevoContenedor = contenedorTrabajador.cloneNode(true);
@@ -223,13 +223,20 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       doc.text(lugar, 95, 65);
       doc.text(fecha, 95, 75);
       doc.text(hora, 200, 75);
-      doc.text(responsable1, 380, 70);
+      doc.text("Bernabe Oscco León", 380, 70);
+
+      //tecnico responsable
+      doc.text(responsable1, 215, 876.5)
       doc.addImage(responsableFirma, "PNG", 217, 850, 80, 20);
 
+      
+      /*nombre supervisor*/
       /*firma supervisor*/
       //En caso sea necesario, esta es la firma para el supervisor
       //se debería de crear un input en el html y una variable para obtener su nombre
       //y con ello también su firma, similar a como se hace con el resto, pero una única vez
+      doc.text("Roberto Carlos Luis Bailon", 445, 876.5);
+      //modificar por la firma de roberto carlos luis bailon
       doc.addImage(responsableFirma, "PNG", 440, 850, 80, 20);
       //para que aparezca el nombre y la firma
 
