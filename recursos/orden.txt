@@ -1,0 +1,14 @@
+27/12
+- observaciones, personal, herramientas, equipos y materiales , imprimiendo en el pdf (aún no valida que no haya campos vacíos)
+- solicitado por y autorizado por, imprime datos y firmas correctamente
+- datos generales se imprimen correctamente
+
+/Faltante 
+- Tareas a ejecutar, en html secciones ya creadas
+ *falta terminar la toma de datos para su impresión, se está trabajando en el apartado de observaciones, ya imprime datos para
+ para las tareas iniciales que aparecen por defecto
+
+ *falta la toma de tiempo real con su respectivo cálculo
+ *falta a toma de tiempo estimado con su respectivo cálculo
+ *falta la creación en html de los trabajos adicionales, sumado a su clonación en javascript
+ *el algoritmo para la sumatoria de los tiempo se encuentra en el archivo scriptPrueba.js

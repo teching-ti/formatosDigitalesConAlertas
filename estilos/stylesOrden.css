@@ -137,6 +137,45 @@ body{
     display: none;
 }
 
+.tareas{
+    display: flex;
+    flex-direction: column;
+}
+
+.tareas-iniciales{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+.tareas-iniciales input, select{
+    outline: none;
+    border: none;
+    padding: .5rem;
+    height: 35px;
+    border: solid 1px rgb(211, 5, 5);
+}
+
+.tarea-inicial{
+    display: flex;
+    flex-direction: column;
+    border-bottom: solid 1px rgb(208, 205, 205);
+    gap: .4rem;
+    padding: .5rem;
+}
+
+.tarea-inicial label{
+    display: flex;
+}
+
+.tarea-inicial select{
+    width: min-content;
+}
+.obs-tarea-inicial{
+    width: 100%;
+}
+
 #botones{
     display: flex;
     margin: 1rem auto;
@@ -145,14 +184,17 @@ body{
     gap: 2rem;
 }
 
-.agregar-personal, .terminar{
+.agregar-personal, .agregar-herramienta, .agregar-equipo{
+    display: flex;
+    width: min-content;
     cursor: pointer;
     border: solid 1px black;
     padding: .5rem;
     transition: all ease-in .2s;
+    margin: 1rem 0 0 .5rem;
 }
 
-.agregar-personal:hover, .terminar:hover{
+.agregar-personal:hover, .agregar-herramienta:hover, .agregar-equipo:hover{
     background: black;
     color: #fff;
     transition: all ease-in .2s;
@@ -184,27 +226,204 @@ body{
 
 .firma{
     display: none;
+    width: 100%;
 }
+
+.btn-remover-participante{
+    cursor: pointer;
+    border-radius: 5px;
+    color: rgb(211, 5, 5);
+    border: solid rgb(211, 5, 5) 1px;
+    font-size: 1.2rem;
+    padding: .2rem .4rem;
+    transition: all ease-in-out .3s;
+}
+
+.btn-remover-participante:hover{
+    background: rgb(211, 5, 5);
+    transition: all ease-in-out .4s;
+    color: white;
+}
+
+/*Equipos*/
+.equipos{
+    display: flex;
+    flex-direction: column;
+}
+
+/*equipos iniciales*/
+.equipos-iniciales{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+.equipos-iniciales label{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto;
+    width: 80%;
+    gap: 2rem;
+}
+
+.equipos-iniciales input{
+    outline: none;
+    border: 1px red solid;
+    padding: .5rem;
+    height: 35px;
+}
+
+.contenedor-equipos{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 1rem auto;
+    gap: 1rem;
+    padding-bottom: .5rem;
+    border-bottom: rgb(199, 199, 199) solid 1px;
+}
+
+.contenedor-equipos input, textarea{
+    outline: none;
+    border: none;
+    padding: .5rem;
+    height: 35px;
+}
+
+.contenedor-equipos label{
+    display: flex;
+    font-size: 1rem;
+}
+
+.observaciones-e{
+    resize: none;
+}
+
+.equipo-num{
+    display: flex;
+}
+
+.btn-remover-equipo{
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    padding: .5rem;
+    border: solid 1px rgb(211, 5, 5);
+    color: rgb(211, 5, 5);
+    font-size: .8rem;
+    width: min-content;
+    margin: 0 auto;
+}
+
+.btn-remover-equipo:hover{
+    background: rgb(211, 5, 5);
+    color: #fff;
+}
+
+/*HERRAMIENTAS*/
 
 .herramientas{
     display: flex;
     flex-direction: column;
 }
 
+/*herramientas iniciales*/
+.herramientas-iniciales{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+.herramientas-iniciales label{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto;
+    width: 80%;
+    gap: 2rem;
+}
+.herramientas-iniciales input{
+    outline: none;
+    border: 1px red solid;
+    padding: .5rem;
+    height: 35px;
+}
+
 .contenedor-herramientas{
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    margin: 1rem auto;
     gap: 1rem;
+    padding-bottom: .5rem;
+    border-bottom: rgb(199, 199, 199) solid 1px;
 }
 
 .contenedor-herramientas input, textarea{
     outline: none;
     border: none;
     padding: .5rem;
+    height: 35px;
+}
+
+.contenedor-herramientas label{
+    display: flex;
+    font-size: 1rem;
+} 
+
+.observaciones{
+    resize: none;
 }
 
 .cantidad{
     display: flex;
+}
+
+.btn-remover-herramienta{
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    padding: .5rem;
+    border: solid 1px rgb(211, 5, 5);
+    color: rgb(211, 5, 5);
+    font-size: .8rem;
+    width: min-content;
+    margin: 0 auto;
+}
+
+.btn-remover-herramienta:hover{
+    background: rgb(211, 5, 5);
+    color: #fff;
+}
+
+.comentarios{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#comentario{
+    display: flex;
+    margin: .5rem;
+    resize: none;
+}
+
+#btnGenerar{
+    cursor: pointer;
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    color: red;
+    padding: .5rem;
+    width: min-content;
+    border-radius: 60%;
+    border: solid 1px red;
+    transition: all ease-in-out .2s;
+}
+
+#btnGenerar:hover{
+    transform: scale(1.4);
 }
 
 @media (max-width: 720px){
@@ -246,10 +465,30 @@ body{
     #referencia{
         width: 100%;
     }
+
+    .tarea-inicial label{
+        flex-direction: column;
+    }
    
     .contenedor-herramientas{
-        margin: 0 auto;
         width: 90%;
         flex-direction: column;
+    }
+
+    .contenedor-herramientas label{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .contenedor-equipos{
+        width: 90%;
+        flex-direction: column;
+    }
+
+    .contenedor-equipos label{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
     } 
 }

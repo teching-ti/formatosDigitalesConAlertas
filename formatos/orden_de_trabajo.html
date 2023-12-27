@@ -66,7 +66,9 @@
           <div class="solicitud-autorizacion">
             <div class="contenedor-solicitado">
               <label for="solicitado">Solicitado por: </label>
-              <input type="text" id="solicitado" />
+              <select type="text" id="solicitado">
+                <option value="Seleccionar">-Seleccionar-</option>
+              </select>
               <input
                 type="text"
                 alt="firma-solicitante"
@@ -75,23 +77,423 @@
             </div>
             <div class="contenedor-autorizado">
               <label for="autorizado">Autorizado por:</label>
-              <input type="text" id="autorizado" />
+              <input
+                type="text"
+                id="autorizado"
+                value="Josué Hidalgo Deza"
+                readonly
+              />
               <input
                 type="text"
                 alt="firma-solicitante"
                 id="firma-autorizado"
+                value="https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma2.png"
               />
             </div>
           </div>
 
           <!-- TAREAS A EJECUTAR -->
-          <!-- Considerar el tema de los comentarios para los que ya están insertados por defecto -->
+          <!--Considerar el tema de los comentarios para los que ya están insertados por defecto-->
+          <section class="tareas">
+            <h3>Tareas a Ejecutar</h3>
+            <div class="tareas-iniciales">
+              <div class="tarea-inicial">
+                <label
+                  >- Traslado de personal, equipos y herramientas 
+                  <input
+                    type="text"
+                    placeholder="Observaciones."
+                    class="obs-tarea-inicial"
+                /></label>
+                <select class="tiempo-real-inicial">
+                  <option selected>-Tiempo REAL-</option>
+                  <option>5 minutos</option>
+                  <option>10 minutos</option>
+                  <option>20 minutos</option>
+                  <option>30 minutos</option>
+                  <option>1 hora</option>
+                  <option>1:30 horas</option>
+                  <option>2 horas</option>
+                  <option>2:30 horas</option>
+                  <option>3 horas</option>
+                  <option>3:30 horas</option>
+                  <option>4 horas</option>
+                </select>
+              </div>
+              <div class="tarea-inicial">
+                <label
+                  >- Identificar area de trabajo
+                  <input
+                    type="text"
+                    placeholder="Observaciones."
+                    class="obs-tarea-inicial"
+                /></label>
+                <select class="tiempo-real-inicial">
+                  <option selected>-Tiempo REAL-</option>
+                  <option>5 minutos</option>
+                  <option>10 minutos</option>
+                  <option>20 minutos</option>
+                  <option>30 minutos</option>
+                  <option>1 hora</option>
+                  <option>1:30 horas</option>
+                  <option>2 horas</option>
+                  <option>2:30 horas</option>
+                  <option>3 horas</option>
+                  <option>3:30 horas</option>
+                  <option>4 horas</option>
+                </select>
+              </div>
+              <div class="tarea-inicial">
+                <label
+                  >- Inspección visual de subestación
+                  <input
+                    type="text"
+                    placeholder="Observaciones."
+                    class="obs-tarea-inicial"
+                /></label>
+                <select class="tiempo-real-inicial">
+                  <option selected>-Tiempo REAL-</option>
+                  <option>5 minutos</option>
+                  <option>10 minutos</option>
+                  <option>20 minutos</option>
+                  <option>30 minutos</option>
+                  <option>1 hora</option>
+                  <option>1:30 horas</option>
+                  <option>2 horas</option>
+                  <option>2:30 horas</option>
+                  <option>3 horas</option>
+                  <option>3:30 horas</option>
+                  <option>4 horas</option>
+                </select>
+              </div>
+              <div class="tarea-inicial">
+                <label
+                  >- Armado y posicionamiento de escalera telescópica
+                  <input
+                    type="text"
+                    placeholder="Observaciones."
+                    class="obs-tarea-inicial"
+                /></label>
+                <select class="tiempo-real-inicial">
+                  <option selected>-Tiempo REAL-</option>
+                  <option>5 minutos</option>
+                  <option>10 minutos</option>
+                  <option>20 minutos</option>
+                  <option>30 minutos</option>
+                  <option>1 hora</option>
+                  <option>1:30 horas</option>
+                  <option>2 horas</option>
+                  <option>2:30 horas</option>
+                  <option>3 horas</option>
+                  <option>3:30 horas</option>
+                  <option>4 horas</option>
+                </select>
+              </div>
+              <div class="tarea-inicial">
+                <label
+                  >- Toma de cargas de subestación/ Inyección de carga
+                  <input
+                    type="text"
+                    placeholder="Observaciones."
+                    class="obs-tarea-inicial"
+                /></label>
+                <select class="tiempo-real-inicial">
+                  <option selected>-Tiempo REAL-</option>
+                  <option>5 minutos</option>
+                  <option>10 minutos</option>
+                  <option>20 minutos</option>
+                  <option>30 minutos</option>
+                  <option>1 hora</option>
+                  <option>1:30 horas</option>
+                  <option>2 horas</option>
+                  <option>2:30 horas</option>
+                  <option>3 horas</option>
+                  <option>3:30 horas</option>
+                  <option>4 horas</option>
+                </select>
+              </div>
+              <div class="tarea-inicial">
+                <label
+                  >- Inspección de Totalizador aéreo/ subterráneo
+                  <input
+                    type="text"
+                    placeholder="Observaciones."
+                    class="obs-tarea-inicial"
+                /></label>
+                <select class="tiempo-real-inicial">
+                  <option selected>-Tiempo REAL-</option>
+                  <option>5 minutos</option>
+                  <option>10 minutos</option>
+                  <option>20 minutos</option>
+                  <option>30 minutos</option>
+                  <option>1 hora</option>
+                  <option>1:30 horas</option>
+                  <option>2 horas</option>
+                  <option>2:30 horas</option>
+                  <option>3 horas</option>
+                  <option>3:30 horas</option>
+                  <option>4 horas</option>
+                </select>
+              </div>
+              <div class="tarea-inicial">
+                <label
+                  >- Toma de lecturas por suministro
+                  <input
+                    type="text"
+                    placeholder="Observaciones."
+                    class="obs-tarea-inicial"
+                /></label>
+                <select class="tiempo-real-inicial">
+                  <option selected>-Tiempo REAL-</option>
+                  <option>5 minutos</option>
+                  <option>10 minutos</option>
+                  <option>20 minutos</option>
+                  <option>30 minutos</option>
+                  <option>1 hora</option>
+                  <option>1:30 horas</option>
+                  <option>2 horas</option>
+                  <option>2:30 horas</option>
+                  <option>3 horas</option>
+                  <option>3:30 horas</option>
+                  <option>4 horas</option>
+                </select>
+              </div>
+              <div class="tarea-inicial">
+                <label
+                  >- Retiro de escalera 
+                  <input
+                    type="text"
+                    placeholder="Observaciones."
+                    class="obs-tarea-inicial"
+                /></label>
+                <select class="tiempo-real-inicial">
+                  <option selected>-Tiempo REAL-</option>
+                  <option>5 minutos</option>
+                  <option>10 minutos</option>
+                  <option>20 minutos</option>
+                  <option>30 minutos</option>
+                  <option>1 hora</option>
+                  <option>1:30 horas</option>
+                  <option>2 horas</option>
+                  <option>2:30 horas</option>
+                  <option>3 horas</option>
+                  <option>3:30 horas</option>
+                  <option>4 horas</option>
+                </select>
+              </div>
+              <div class="tarea-inicial">
+                <label
+                  >- Llenado de plano de subestación
+                  <input
+                    type="text"
+                    placeholder="Observaciones."
+                    class="obs-tarea-inicial"
+                /></label>
+                <select class="tiempo-real-inicial">
+                  <option selected>-Tiempo REAL-</option>
+                  <option>5 minutos</option>
+                  <option>10 minutos</option>
+                  <option>20 minutos</option>
+                  <option>30 minutos</option>
+                  <option>1 hora</option>
+                  <option>1:30 horas</option>
+                  <option>2 horas</option>
+                  <option>2:30 horas</option>
+                  <option>3 horas</option>
+                  <option>3:30 horas</option>
+                  <option>4 horas</option>
+                </select>
+              </div>
+
+            </div>
+          </section>
+
+
 
           <!-- EQUIPOS Y MATERIALES -->
+          <section class="equipos">
+            <h3>Equipos/ Materiales</h3>
+            <!-- Equipos Iniciales-->
+            <div class="equipos-iniciales">
+              <label
+                >Escalera telescopica
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+
+              <label
+                >Carga resistiva 60A
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+
+              <label
+                >Pinza Volt-amperimetrica BT
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+
+              <label
+                >Pinza amperimétrica MT
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+
+              <label
+                >Estrobo/Linea de anclaje
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+
+              <label
+                >Tie Off
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+
+              <label
+                >Mosquetón de acero
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+
+              <label
+                >Polea
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+
+              <label
+                >Freno de cuerda
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+
+              <label
+                >Gri-Gri
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+
+              <label
+                >Cuerda semiestatica 11mm
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+
+              <label
+                >Soga de sujeción de poste
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+
+              <label
+                >Cercos de seguridad PVC
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+
+              <label
+                >Revelador de tensión
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+
+              <label
+                >Manta aislante
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-equip-inicial"
+              /></label>
+            </div>
+
+            <!--Herramientas Añadidas-->
+            <div class="agregar-equipo">
+              Añadir<i class="fa-solid fa-screwdriver-wrench"></i>
+            </div>
+            <div class="contenedor-equipos">
+              <label
+                >Descripción <input type="text" class="descripcion-equipo"
+              /></label>
+
+              <label class="equipo-num"
+                >Unidad <input type="text" class="unidad"
+              /></label>
+
+              <label class="equipo-num"
+                >Cantidad <input type="number" class="cantidad-e"
+              /></label>
+              <label
+                >Observaciones
+                <textarea cols="30" rows="10" class="observaciones-e"></textarea>
+              </label>
+              <div class="btn-remover-equipo">Quitar Equipo/Material</div>
+            </div>
+          </section>
+
+
+
 
           <!-- HERRAMIENTAS -->
           <section class="herramientas">
             <h3>Herramientas</h3>
+            <!-- Herramientas Iniciales-->
+            <div class="herramientas-iniciales">
+              <label
+                >Juego de destornilladores
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-herr-inicial"
+              /></label>
+              <label
+                >Juego de alicates
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-herr-inicial"
+              /></label>
+              <label
+                >Juego de llaves 5 pines, triangular, circular
+                <input
+                  type="text"
+                  placeholder="Observaciones."
+                  class="obs-herr-inicial"
+              /></label>
+            </div>
+            <!--Herramientas Añadidas-->
+            <div class="agregar-herramienta">
+              Añadir<i class="fa-solid fa-screwdriver-wrench"></i>
+            </div>
             <div class="contenedor-herramientas">
               <label
                 >Descripción <input type="text" class="descripcion-herramienta"
@@ -104,16 +506,11 @@
               <label class="cantidad"
                 >Cantidad Utilizada <input type="number" class="cantidad-u"
               /></label>
-
               <label
                 >Observaciones
-                <textarea
-                  cols="30"
-                  rows="10"
-                  class="observaciones"
-                  class="observaciones"
-                ></textarea>
+                <textarea cols="30" rows="10" class="observaciones"></textarea>
               </label>
+              <div class="btn-remover-herramienta">Quitar Herramienta</div>
             </div>
           </section>
 
@@ -121,16 +518,9 @@
 
           <section class="section-todo-personal">
             <h3>Personal</h3>
-
-            <div id="botones">
-              <div class="agregar-personal">
-                Añadir <i class="fa-solid fa-user-plus"></i>
-              </div>
-              <div class="terminar">
-                Generar <i class="fa-solid fa-check"></i>
-              </div>
+            <div class="agregar-personal">
+              Añadir <i class="fa-solid fa-user-plus"></i>
             </div>
-            <h4>Participantes</h4>
             <div class="contenedor-personal">
               <select class="nombre-participante">
                 <option value="Seleccionar">-Seleccionar-</option>
@@ -146,10 +536,22 @@
                 <span>Hora final</span>
                 <input type="time" class="h-salida" />
               </div>
+
+              <!-- <div class="btn-remover-participante">
+                <i class="fa-solid fa-trash"></i>
+              </div> -->
+              <input type="text" class="firma" />
             </div>
+          </section>
+
+          <!-- Comentarios -->
+          <section class="comentarios">
+            <h3>Observaciones</h3>
+            <textarea name="comentario" id="comentario" cols="30" rows="10"></textarea>
           </section>
         </div>
       </section>
+      <div id="btnGenerar"><i class="fa-solid fa-file-pdf fa-lg"></i></div>
     </main>
 
     <script src="..//scripts/functionsOrden.js"></script>
