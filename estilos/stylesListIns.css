@@ -133,7 +133,7 @@ body{
     margin: 1rem 0;
 }
 
-.agregar-personal, .terminar{
+.agregar-personal{
     display: flex;
     flex-wrap: wrap;
     gap: .2rem;
@@ -145,11 +145,28 @@ body{
     transition: all ease-in-out .2s;
 }
 
-.agregar-personal:hover, .terminar:hover{
+.agregar-personal:hover{
     background: black;
     color: white;
     transform: translateY(4px);
     transition: all ease-in-out .4s;
+}
+
+#btnGenerar{
+    cursor: pointer;
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    color: red;
+    padding: .5rem;
+    width: min-content;
+    border-radius: 60%;
+    border: solid 1px red;
+    transition: all ease-in-out .2s;
+}
+
+#btnGenerar:hover{
+    transform: scale(1.4);
 }
 
 @media (max-width: 720px){

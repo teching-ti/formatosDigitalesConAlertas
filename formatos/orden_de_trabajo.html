@@ -67,7 +67,7 @@
             <div class="contenedor-solicitado">
               <label for="solicitado">Solicitado por: </label>
               <select type="text" id="solicitado">
-                <option value="Seleccionar">-Seleccionar-</option>
+                <option value="">-Seleccionar-</option>
               </select>
               <input
                 type="text"
@@ -99,14 +99,14 @@
             <div class="tareas-iniciales">
               <div class="tarea-inicial">
                 <label
-                  >- Traslado de personal, equipos y herramientas 
+                  >- Traslado de personal, equipos y herramientas
                   <input
                     type="text"
                     placeholder="Observaciones."
                     class="obs-tarea-inicial"
                 /></label>
-                <select class="tiempo-real-inicial">
-                  <option selected>-Tiempo REAL-</option>
+                <select class="tiempo-real">
+                  <option selected value="0">-Tiempo REAL-</option>
                   <option>5 minutos</option>
                   <option>10 minutos</option>
                   <option>20 minutos</option>
@@ -128,8 +128,8 @@
                     placeholder="Observaciones."
                     class="obs-tarea-inicial"
                 /></label>
-                <select class="tiempo-real-inicial">
-                  <option selected>-Tiempo REAL-</option>
+                <select class="tiempo-real">
+                  <option selected value="0">-Tiempo REAL-</option>
                   <option>5 minutos</option>
                   <option>10 minutos</option>
                   <option>20 minutos</option>
@@ -151,8 +151,8 @@
                     placeholder="Observaciones."
                     class="obs-tarea-inicial"
                 /></label>
-                <select class="tiempo-real-inicial">
-                  <option selected>-Tiempo REAL-</option>
+                <select class="tiempo-real">
+                  <option selected value="0">-Tiempo REAL-</option>
                   <option>5 minutos</option>
                   <option>10 minutos</option>
                   <option>20 minutos</option>
@@ -174,8 +174,8 @@
                     placeholder="Observaciones."
                     class="obs-tarea-inicial"
                 /></label>
-                <select class="tiempo-real-inicial">
-                  <option selected>-Tiempo REAL-</option>
+                <select class="tiempo-real">
+                  <option selected value="0">-Tiempo REAL-</option>
                   <option>5 minutos</option>
                   <option>10 minutos</option>
                   <option>20 minutos</option>
@@ -197,8 +197,8 @@
                     placeholder="Observaciones."
                     class="obs-tarea-inicial"
                 /></label>
-                <select class="tiempo-real-inicial">
-                  <option selected>-Tiempo REAL-</option>
+                <select class="tiempo-real">
+                  <option selected value="0">-Tiempo REAL-</option>
                   <option>5 minutos</option>
                   <option>10 minutos</option>
                   <option>20 minutos</option>
@@ -220,8 +220,8 @@
                     placeholder="Observaciones."
                     class="obs-tarea-inicial"
                 /></label>
-                <select class="tiempo-real-inicial">
-                  <option selected>-Tiempo REAL-</option>
+                <select class="tiempo-real">
+                  <option selected value="0">-Tiempo REAL-</option>
                   <option>5 minutos</option>
                   <option>10 minutos</option>
                   <option>20 minutos</option>
@@ -243,8 +243,8 @@
                     placeholder="Observaciones."
                     class="obs-tarea-inicial"
                 /></label>
-                <select class="tiempo-real-inicial">
-                  <option selected>-Tiempo REAL-</option>
+                <select class="tiempo-real">
+                  <option selected value="0">-Tiempo REAL-</option>
                   <option>5 minutos</option>
                   <option>10 minutos</option>
                   <option>20 minutos</option>
@@ -260,14 +260,14 @@
               </div>
               <div class="tarea-inicial">
                 <label
-                  >- Retiro de escalera 
+                  >- Retiro de escalera
                   <input
                     type="text"
                     placeholder="Observaciones."
                     class="obs-tarea-inicial"
                 /></label>
-                <select class="tiempo-real-inicial">
-                  <option selected>-Tiempo REAL-</option>
+                <select class="tiempo-real">
+                  <option selected value="0">-Tiempo REAL-</option>
                   <option>5 minutos</option>
                   <option>10 minutos</option>
                   <option>20 minutos</option>
@@ -289,8 +289,8 @@
                     placeholder="Observaciones."
                     class="obs-tarea-inicial"
                 /></label>
-                <select class="tiempo-real-inicial">
-                  <option selected>-Tiempo REAL-</option>
+                <select class="tiempo-real">
+                  <option selected value="0">-Tiempo REAL-</option>
                   <option>5 minutos</option>
                   <option>10 minutos</option>
                   <option>20 minutos</option>
@@ -304,11 +304,13 @@
                   <option>4 horas</option>
                 </select>
               </div>
-
             </div>
+            <!-- Tareas añadidas -->
+            <div class="agregar-tarea">
+              Nueva Tarea_<i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            
           </section>
-
-
 
           <!-- EQUIPOS Y MATERIALES -->
           <section class="equipos">
@@ -438,30 +440,10 @@
 
             <!--Herramientas Añadidas-->
             <div class="agregar-equipo">
-              Añadir<i class="fa-solid fa-screwdriver-wrench"></i>
+              Nuevo Equipo/Material_<i class="fa-solid fa-helmet-safety"></i>
             </div>
-            <div class="contenedor-equipos">
-              <label
-                >Descripción <input type="text" class="descripcion-equipo"
-              /></label>
-
-              <label class="equipo-num"
-                >Unidad <input type="text" class="unidad"
-              /></label>
-
-              <label class="equipo-num"
-                >Cantidad <input type="number" class="cantidad-e"
-              /></label>
-              <label
-                >Observaciones
-                <textarea cols="30" rows="10" class="observaciones-e"></textarea>
-              </label>
-              <div class="btn-remover-equipo">Quitar Equipo/Material</div>
-            </div>
+            
           </section>
-
-
-
 
           <!-- HERRAMIENTAS -->
           <section class="herramientas">
@@ -492,25 +474,7 @@
             </div>
             <!--Herramientas Añadidas-->
             <div class="agregar-herramienta">
-              Añadir<i class="fa-solid fa-screwdriver-wrench"></i>
-            </div>
-            <div class="contenedor-herramientas">
-              <label
-                >Descripción <input type="text" class="descripcion-herramienta"
-              /></label>
-
-              <label class="cantidad"
-                >Cantidad Planificada <input type="number" class="cantidad-p"
-              /></label>
-
-              <label class="cantidad"
-                >Cantidad Utilizada <input type="number" class="cantidad-u"
-              /></label>
-              <label
-                >Observaciones
-                <textarea cols="30" rows="10" class="observaciones"></textarea>
-              </label>
-              <div class="btn-remover-herramienta">Quitar Herramienta</div>
+              Nueva Herramienta<i class="fa-solid fa-screwdriver-wrench"></i>
             </div>
           </section>
 
@@ -519,7 +483,7 @@
           <section class="section-todo-personal">
             <h3>Personal</h3>
             <div class="agregar-personal">
-              Añadir <i class="fa-solid fa-user-plus"></i>
+              Adicionar Personal<i class="fa-solid fa-user-plus"></i>
             </div>
             <div class="contenedor-personal">
               <select class="nombre-participante">
@@ -537,9 +501,6 @@
                 <input type="time" class="h-salida" />
               </div>
 
-              <!-- <div class="btn-remover-participante">
-                <i class="fa-solid fa-trash"></i>
-              </div> -->
               <input type="text" class="firma" />
             </div>
           </section>
@@ -547,7 +508,12 @@
           <!-- Comentarios -->
           <section class="comentarios">
             <h3>Observaciones</h3>
-            <textarea name="comentario" id="comentario" cols="30" rows="10"></textarea>
+            <textarea
+              name="comentario"
+              id="comentario"
+              cols="30"
+              rows="10"
+            ></textarea>
           </section>
         </div>
       </section>

@@ -40,7 +40,7 @@ body{
 }
 
 .form-container{
-    background: #f3f4f6;
+    background: #e7e7e7;
 }
 
 #datos-generales-documento input{
@@ -176,28 +176,58 @@ body{
     width: 100%;
 }
 
-#botones{
+.contenedor-tareas{
     display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 90%;
     margin: 1rem auto;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
+    gap: .5rem;
+    padding: .8rem 0;
+    border-bottom: solid 1px rgb(13, 12, 12);
 }
 
-.agregar-personal, .agregar-herramienta, .agregar-equipo{
+.tarea-descripcion{
+    outline: none;
+    border: none;
+    padding: .5rem;
+    height: 35px;
+    border: solid 1px rgb(211, 5, 5);
+}
+
+.obs-tarea{
+    outline: none;
+    border: none;
+    padding: .5rem;
+    height: 35px;
+    border: solid 1px rgb(211, 5, 5);
+}
+
+
+.agregar-personal, .agregar-herramienta, .agregar-equipo, .agregar-tarea{
     display: flex;
-    width: min-content;
+    width: fit-content;
     cursor: pointer;
     border: solid 1px black;
+    color: #fff;
     padding: .5rem;
     transition: all ease-in .2s;
-    margin: 1rem 0 0 .5rem;
+    margin: 1rem 0 1rem .5rem;
+    background: grey;
 }
 
-.agregar-personal:hover, .agregar-herramienta:hover, .agregar-equipo:hover{
-    background: black;
-    color: #fff;
+.agregar-personal:hover, .agregar-herramienta:hover, .agregar-equipo:hover, .agregar-tarea:hover{
+    background: rgb(231, 229, 229);
+    color: #000;
     transition: all ease-in .2s;
+}
+
+.btn-eliminar-tarea, .btn-eliminar-equipo, .btn-eliminar-herramienta{
+    cursor: pointer;
+    border: solid 1px black;
+    width: fit-content;
+    padding: .3rem;
 }
 
 .contenedor-personal{
@@ -326,6 +356,7 @@ body{
 .herramientas{
     display: flex;
     flex-direction: column;
+    margin: 1rem 0;
 }
 
 /*herramientas iniciales*/

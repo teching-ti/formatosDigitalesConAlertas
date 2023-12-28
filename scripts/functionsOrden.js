@@ -25,6 +25,8 @@ fetch("../scripts/datos.json")
 
     llenarSelect(document.getElementById("solicitado"))
     completarFirmaSolicitante(document.getElementById("solicitado") ,document.getElementById("firma-solicitado"))
+
+    // llenarSelectEncargado(document.querySelector(".tarea-encargado"))
   })
   .catch((error) => console.error("Error al cargar los datos:", error));
 
@@ -39,7 +41,7 @@ function llenarSelect(elementoSelect) {
       elementoSelect.appendChild(option);
     });
   }
-  
+
   //autocompletar el select ya creado
   function autocompletarCampos(elementoSelect, datosParticipante) {
     elementoSelect.addEventListener("change", function () {
@@ -67,85 +69,282 @@ function llenarSelect(elementoSelect) {
     })
   }
 
+  /*Nuevas Tareas START*/
+  /*Agregar Tareas*/
+  let btnAgregarTarea = document.querySelector(".agregar-tarea")
+
+  //Solo se podrán agregar 3 equipos/materiales adicionales
+  btnAgregarTarea.addEventListener("click", function(){
+    let numTareasCreadas = document.querySelectorAll(".contenedor-tareas").length
+    if(numTareasCreadas<3){
+      agregarTarea()
+    }else{
+      alert("Se ha alcanzado el máximo número permitido")
+    }
+  })
+
+  /*Creando los elementos en agregar tarea*/
+  function agregarTarea(){
+    const contenedorTareas = document.querySelector(".tareas")
+    const nuevaTarea = document.createElement('div');
+    nuevaTarea.classList.add('contenedor-tareas');
+
+    const inputDescripcion = document.createElement('input');
+    inputDescripcion.type = 'text';
+    inputDescripcion.classList.add('tarea-descripcion');
+    inputDescripcion.placeholder = 'Tarea Descripción.';
+
+    //select de encargado
+    const selectEncargado = document.createElement('select');
+    selectEncargado.classList.add('tarea-encargado');
+
+    const optionEncargado = document.createElement('option');
+    optionEncargado.textContent = '-Encargado-';
+    optionEncargado.value = ""
+    const optionEncargado1 = document.createElement('option');
+    optionEncargado1.textContent = 'Jefe Cuadrilla de Balance';
+    const optionEncargado2 = document.createElement('option');
+    optionEncargado2.textContent = 'Operario de Balance';
+    const optionEncargado3 = document.createElement('option');
+    optionEncargado3.textContent = 'Chofer Ayudante de Balance';
+    const optionEncargado4 = document.createElement('option');
+    optionEncargado4.textContent = 'Inspeccionador de Balance';
+
+    selectEncargado.append(optionEncargado, optionEncargado1, optionEncargado2, optionEncargado3, optionEncargado4);
+
+    //select de tiempo estimado
+    const selectTiempoEstimado = document.createElement('select')
+    selectTiempoEstimado.classList.add('tiempo-estimado')
+
+    const opTiempoEstimado = document.createElement('option')
+    opTiempoEstimado.textContent = '-T. Estimado.-'
+    opTiempoEstimado.setAttribute("selected", true)
+    const opTiempoEstimado1 = document.createElement('option')
+    opTiempoEstimado1.textContent = "5 minutos"
+    const opTiempoEstimado2 = document.createElement('option')
+    opTiempoEstimado2.textContent = "10 minutos"
+    const opTiempoEstimado3 = document.createElement('option')
+    opTiempoEstimado3.textContent = "20 minutos"
+    const opTiempoEstimado4 = document.createElement('option')
+    opTiempoEstimado4.textContent = "30 minutos"
+    const opTiempoEstimado5 = document.createElement('option')
+    opTiempoEstimado5.textContent = "1 hora"
+    const opTiempoEstimado6 = document.createElement('option')
+    opTiempoEstimado6.textContent = "1:30 horas"
+    const opTiempoEstimado7 = document.createElement('option')
+    opTiempoEstimado7.textContent = "2 horas"
+    const opTiempoEstimado8 = document.createElement('option')
+    opTiempoEstimado8.textContent = "2:30 horas"
+    const opTiempoEstimado9 = document.createElement('option')
+    opTiempoEstimado9.textContent = "3 horas"
+    const opTiempoEstimado10 = document.createElement('option')
+    opTiempoEstimado10.textContent = "3:30 horas"
+    const opTiempoEstimado11 = document.createElement('option')
+    opTiempoEstimado11.textContent = "4 horas"
+
+    selectTiempoEstimado.append(opTiempoEstimado, opTiempoEstimado1, opTiempoEstimado2, opTiempoEstimado3, opTiempoEstimado4, opTiempoEstimado5, opTiempoEstimado6, opTiempoEstimado7, opTiempoEstimado8, opTiempoEstimado9, opTiempoEstimado10, opTiempoEstimado11)
+
+    //select de tiempo real
+    const selectTiempoReal = document.createElement('select')
+    selectTiempoReal.classList.add('tiempo-real')
+
+    const opTiempoReal = document.createElement('option')
+    opTiempoReal.textContent = '-T. Real.-'
+    opTiempoReal.setAttribute("selected", true)
+    const opTiempoReal1 = document.createElement('option')
+    opTiempoReal1.textContent = "5 minutos"
+    const opTiempoReal2 = document.createElement('option')
+    opTiempoReal2.textContent = "10 minutos"
+    const opTiempoReal3 = document.createElement('option')
+    opTiempoReal3.textContent = "20 minutos"
+    const opTiempoReal4= document.createElement('option')
+    opTiempoReal4.textContent = "30 minutos"
+    const opTiempoReal5 = document.createElement('option')
+    opTiempoReal5.textContent = "1 hora"
+    const opTiempoReal6 = document.createElement('option')
+    opTiempoReal6.textContent = "1:30 horas"
+    const opTiempoReal7 = document.createElement('option')
+    opTiempoReal7.textContent = "2 horas"
+    const opTiempoReal8 = document.createElement('option')
+    opTiempoReal8.textContent = "2:30 horas"
+    const opTiempoReal9 = document.createElement('option')
+    opTiempoReal9.textContent = "3 horas"
+    const opTiempoReal10 = document.createElement('option')
+    opTiempoReal10.textContent = "3:30 horas"
+    const opTiempoReal11 = document.createElement('option')
+    opTiempoReal11.textContent = "4 horas"
+
+    selectTiempoReal.append(opTiempoReal, opTiempoReal1, opTiempoReal2, opTiempoReal3, opTiempoReal4, opTiempoReal5, opTiempoReal6, opTiempoReal7, opTiempoReal8, opTiempoReal9, opTiempoReal10, opTiempoReal11)
+
+    //observaciones
+    const observacionesTareas = document.createElement("input")
+    observacionesTareas.placeholder = "Observaciones."
+    observacionesTareas.classList.add("obs-tarea")
+
+    const btnEliminarTarea = document.createElement('div');
+    btnEliminarTarea.textContent = 'Eliminar Tarea';
+    btnEliminarTarea.classList.add("btn-eliminar-tarea")
+    btnEliminarTarea.addEventListener('click', function() {
+      // Eliminar la tarea al hacer clic en el botón de eliminar
+      contenedorTareas.removeChild(nuevaTarea);
+    });
+
+    // Añadir elementos al contenedor de la tarea
+    nuevaTarea.appendChild(inputDescripcion);
+    nuevaTarea.appendChild(selectEncargado);
+    nuevaTarea.appendChild(selectTiempoEstimado);
+    nuevaTarea.appendChild(selectTiempoReal);
+    nuevaTarea.appendChild(observacionesTareas);
+    nuevaTarea.appendChild(btnEliminarTarea);
+    // ... Añadir los demás elementos al contenedor ...
+
+    // Añadir la nueva tarea al contenedor de tareas principal
+    contenedorTareas.appendChild(nuevaTarea);
+  }
+  /*Nuevas Tareas END*/
+
+
   /*Nuevos EQUIPOS/MATERIALES START*/
   /*Agregar Equipo/Material*/
   let btnAgregarEquipo = document.querySelector(".agregar-equipo")
   //Solo se podrán agregar 3 equipos/materiales adicionales
-  let numEquipment = 1;
+
   btnAgregarEquipo.addEventListener("click", function(){
-    if(numEquipment<3){
+    let numEquiposCreados = document.querySelectorAll(".contenedor-equipos").length
+    if(numEquiposCreados<3){
       agregarEquipo()
-      numEquipment+=1
     }else{
       alert("Se ha alcanzado el máximo número permitido")
     }
   })
 
   function agregarEquipo(){
-    alert("Se añadió nuevo equipo/material, completar sus datos correctamente");
-    // Clona el contenedor-equipos
-    const contenedorEquipo = document.querySelector(".contenedor-equipos");
-    const nuevoContenedor = contenedorEquipo.cloneNode(true);
+    const contenedorEquipos = document.querySelector(".equipos")
+    const nuevoEquipo = document.createElement('div');
+    nuevoEquipo.classList.add('contenedor-equipos');
 
-    nuevoContenedor.querySelectorAll("input").forEach((input)=>{
-      input.value=""
-    })
-  
-    nuevoContenedor.querySelectorAll(".observaciones-e").forEach((texta)=>{
-      texta.value=""
-    })
-    document.querySelector(".equipos").appendChild(nuevoContenedor);
+    const labelDescripcion = document.createElement('label');
+    labelDescripcion.textContent = 'Descripción ';
+    const inputDescripcion = document.createElement('input');
+    inputDescripcion.type = 'text';
+    inputDescripcion.classList.add('descripcion-equipo');
+    labelDescripcion.appendChild(inputDescripcion);
+
+    const labelUnidad = document.createElement('label');
+    labelUnidad.textContent = 'Unidad ';
+    const inputUnidad = document.createElement('input');
+    inputUnidad.type = 'text';
+    inputUnidad.classList.add('unidad');
+    labelUnidad.appendChild(inputUnidad);
+
+    const labelCantidad = document.createElement('label');
+    labelCantidad.textContent = 'Cantidad ';
+    const inputCantidad = document.createElement('input');
+    inputCantidad.type = 'number';
+    inputCantidad.classList.add('cantidad-e');
+    labelCantidad.appendChild(inputCantidad);
+
+    const labelObservaciones = document.createElement('label');
+    labelObservaciones.textContent = 'Observaciones ';
+    const textareaObservaciones = document.createElement('textarea');
+    textareaObservaciones.cols = '30';
+    textareaObservaciones.rows = '10';
+    textareaObservaciones.classList.add('observaciones-e');
+    labelObservaciones.appendChild(textareaObservaciones);
+
+    
+    // Crear botón de eliminar
+    const btnEliminarEquipo = document.createElement('div');
+    btnEliminarEquipo.textContent = 'Eliminar Equipo';
+    btnEliminarEquipo.classList.add('btn-eliminar-equipo')
+    btnEliminarEquipo.addEventListener('click', function() {
+      // Eliminar el equipo al hacer clic en el botón de eliminar
+      contenedorEquipos.removeChild(nuevoEquipo);
+    });
+
+    // Añadir elementos al contenedor del equipo
+    nuevoEquipo.appendChild(labelDescripcion);
+    nuevoEquipo.appendChild(labelUnidad);
+    nuevoEquipo.appendChild(labelCantidad);
+    nuevoEquipo.appendChild(labelObservaciones);
+    nuevoEquipo.appendChild(btnEliminarEquipo);
+
+    // Añadir el nuevo equipo al contenedor de equipos principal
+    contenedorEquipos.appendChild(nuevoEquipo);
   }
 
 /*Nuevas Herramientas START*/
 /*Agregar Herramienta*/
 let btnAgregarHerramienta = document.querySelector(".agregar-herramienta")
 //Solo se podrán agregar 4 herramientas adicionales
-let numTool = 1;
+
 btnAgregarHerramienta.addEventListener("click", function(){
-  if(numTool<4){
+  let numHerramientasCreadas = document.querySelectorAll(".contenedor-herramientas").length
+  if(numHerramientasCreadas<4){
     agregarHerramienta()
-    numTool+=1
   }else{
     alert("Se ha alcanzado el máximo número permitido")
   }
 })
 
-function agregarHerramienta(numTool){
-  alert("Se añadió nueva herramienta, completar sus datos correctamente");
-  // Clona el contenedor-herramientas
-  const contenedorHerramienta = document.querySelector(".contenedor-herramientas");
-  const nuevoContenedor = contenedorHerramienta.cloneNode(true);
+function agregarHerramienta(){
+  const contenedorHerramientas = document.querySelector(".herramientas")
 
-  nuevoContenedor.querySelectorAll("input").forEach((input)=>{
-    input.value=""
-  })
+  const nuevaHerramienta = document.createElement('div');
+  nuevaHerramienta.classList.add('contenedor-herramientas');
 
-  nuevoContenedor.querySelectorAll(".observaciones").forEach((texta)=>{
-    texta.value=""
-  })
-  document.querySelector(".herramientas").appendChild(nuevoContenedor);
+  const labelDescripcion = document.createElement('label');
+  labelDescripcion.textContent = 'Descripción ';
+  const inputDescripcion = document.createElement('input');
+  inputDescripcion.type = 'text';
+  inputDescripcion.classList.add('descripcion-herramienta');
+  labelDescripcion.appendChild(inputDescripcion);
+
+  const labelCantidadPlanificada = document.createElement('label');
+  labelCantidadPlanificada.textContent = 'Cantidad Planificada ';
+  const inputCantidadPlanificada = document.createElement('input');
+  inputCantidadPlanificada.type = 'number';
+  inputCantidadPlanificada.classList.add('cantidad-p');
+  labelCantidadPlanificada.appendChild(inputCantidadPlanificada);
+
+  const labelCantidadUtilizada = document.createElement('label');
+  labelCantidadUtilizada.textContent = 'Cantidad Utilizada ';
+  const inputCantidadUtilizada = document.createElement('input');
+  inputCantidadUtilizada.type = 'number';
+  inputCantidadUtilizada.classList.add('cantidad-u');
+  labelCantidadUtilizada.appendChild(inputCantidadUtilizada);
+
+  const labelObservaciones = document.createElement('label');
+  labelObservaciones.textContent = 'Observaciones ';
+  const textareaObservaciones = document.createElement('textarea');
+  textareaObservaciones.cols = '30';
+  textareaObservaciones.rows = '10';
+  textareaObservaciones.classList.add('observaciones');
+  labelObservaciones.appendChild(textareaObservaciones);
+
+  // Crear botón de eliminar
+  const btnEliminarHerramienta = document.createElement('button');
+  btnEliminarHerramienta.classList.add("btn-eliminar-herramienta")
+  btnEliminarHerramienta.textContent = 'Eliminar Herramienta';
+  btnEliminarHerramienta.addEventListener('click', function() {
+    // Eliminar la herramienta al hacer clic en el botón de eliminar
+    contenedorHerramientas.removeChild(nuevaHerramienta);
+  });
+
+  // Añadir elementos al contenedor de la herramienta
+  nuevaHerramienta.appendChild(labelDescripcion);
+  nuevaHerramienta.appendChild(labelCantidadPlanificada);
+  nuevaHerramienta.appendChild(labelCantidadUtilizada);
+  nuevaHerramienta.appendChild(labelObservaciones);
+  nuevaHerramienta.appendChild(btnEliminarHerramienta);
+
+  // Añadir la nueva herramienta al contenedor de herramientas principal
+  contenedorHerramientas.appendChild(nuevaHerramienta);
+
 }
-
-/*Remover Herramienta*/
-let contenedorPrincipalHerramientas = document.querySelector(".herramientas")
-//el manejo de los click están delegados al un contenedor de una actividad en específico
-contenedorPrincipalHerramientas.addEventListener("click", function (ev) {
-  //condición, si el evento causado es por alguien que contiene esa clase
-  if (ev.target.classList.contains("btn-remover-herramienta")) {
-    const contenedorHerramienta = ev.target.closest(".contenedor-herramientas");
-    //se ejecuta la función eliminarActividad llevando como argumento el contenedor guardado
-    eliminarHerramienta(contenedorHerramienta);
-  }
-});
-
-function eliminarHerramienta(contenedor) {
-  //contenedorActividades es una variable declarada con un elemento del dom, muchas líneas atrás
-  contenedorPrincipalHerramientas.removeChild(contenedor);
-}
-
 
 /*Nuevas Herramientas END*/
+
 
 /*Agregar Persona*/
 let btnAgregarPersonal = document.querySelector(".agregar-personal");
@@ -189,7 +388,11 @@ function agregarContenedorPersona(numUser) {
   // Clona el contenedor-trabajador
   const contenedorTrabajador = document.querySelector(".contenedor-personal");
   const nuevoContenedor = contenedorTrabajador.cloneNode(true);
-  //nuevoContenedor.classList.add("clon");
+  
+  nuevoContenedor.querySelectorAll("input").forEach((input)=>{
+    input.value=""
+  })
+
   document.querySelector(".section-todo-personal").appendChild(nuevoContenedor);
   /*se debe revisar la manera de hacer que cuando se realice la clonación 
   el resto de contenedores tengan también sus inputs en en NA
@@ -237,18 +440,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
    doc.addImage(image, "PNG", 0, 0, 666, 943);
     doc.setFontSize(16.5) //es el tamaño por defecto
     //Importante para resolver lo de tareas y personal
-   //descripcion tarea
-   doc.text("Text de Prueba", 29, 310)
-   doc.text("Text de Prueba", 29, 321)
-
-   //encargado, justificado y centrado
-   doc.text("Técnico de medición / Técnico Auxiliar", 330, 310, {
-    align: "center"
-   })
-   doc.text("Técnico de medición / Técnico Auxiliar123", 328, 321, {
-    align: "center"
-   })
-
+   
    //Datos Generales
    function evaluarDatosGenerales(){
     let fecha = document.getElementById("fecha").value
@@ -262,19 +454,28 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let referencia = document.getElementById("referencia").value
     let ceco = document.getElementById("ceco").value
 
-    doc.text(fecha, 118, 80)
-    doc.text(proyecto, 270,80)
-    doc.text(nproyecto, 465, 80)
-    doc.text(ot, 575, 80)
-    doc.text(actividad, 118, 118)
-    doc.text(contacto, 118, 92)
-    doc.text(telefono, 118, 105)
-    doc.text(direccion, 410, 92)
-    doc.text(referencia, 410, 105)
-    doc.text(ceco, 575, 105)
+    if(proyecto !="" && nproyecto !=="" && ot!="" && actividad !="" && contacto !="" && telefono !="" && direccion !="" && ceco !=""){
+      doc.text(fecha, 118, 80)
+      doc.text(proyecto, 270,80)
+      doc.text(nproyecto, 465, 80)
+      doc.text(ot, 575, 80)
+      doc.text(actividad, 118, 118)
+      doc.text(contacto, 118, 92)
+      doc.text(telefono, 118, 105)
+      doc.setFontSize(14)
+      doc.text(direccion, 405, 92)
+      doc.text(referencia, 405, 105)
+      doc.setFontSize(16.5)
+      doc.text(ceco, 575, 105)
+      return true
+    }else{
+      alert("Complete todos los campos  de Datos Generales")
+      return false
+      
+    }
    }
 
-   evaluarDatosGenerales()
+   
 
    //Nombres y Firmas para solicitud y autorizacion
    function evaluarSolicitudAutorizacion(){
@@ -283,21 +484,20 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let autorizaNombre = document.getElementById("autorizado").value
     let autorizaFirma = document.getElementById("firma-autorizado").value
 
-
-
-    doc.text(solicitanteNombre, 115, 160,{align: "center"})
-    doc.addImage(solicitanteFirma, 230, 145)
-
-    doc.text(autorizaNombre, 420, 160,{align: "center"})
-    doc.addImage(autorizaFirma, 540, 145)
-
+    if(solicitanteNombre !=""){
+      doc.text(solicitanteNombre, 115, 160,{align: "center"})
+      doc.addImage(solicitanteFirma, 230, 145)
+  
+      doc.text(autorizaNombre, 420, 160,{align: "center"})
+      doc.addImage(autorizaFirma, 540, 145)
+      return true
+    }else{
+      alert("Seleccione al solicitante")
+      return false
+    }
    }
 
-   evaluarSolicitudAutorizacion()
-
-    /*Tareas a Ejecutar*/
-    //9 tareas planificadas, considerar las observaciones, tema del tiempo estimado y del tiempo real ára sumarlos
-    //y colocar lo que sería la duración total del MO
+   
 
     /*Observaciones Tareas Iniciales*/
     let obsTareasIniciales = document.querySelectorAll(".obs-tarea-inicial")
@@ -311,6 +511,135 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       obiY+=12.3
     })
     doc.setFontSize(16.5)
+    
+
+    /*Tareas a ejecutar añadidas y calculos de tiempo*/
+    function evaluarTareasAdicionalesTiempos(){
+      let descripcionTarea = document.querySelectorAll(".tarea-descripcion")
+      let encargadoTarea = document.querySelectorAll(".tarea-encargado")
+      let tEstimadoAniadido = document.querySelectorAll(".tiempo-estimado")
+      let tRealAniadido = document.querySelectorAll(".tiempo-real")
+      let observacionesTareas = document.querySelectorAll(".obs-tarea")
+
+      dtY = 310
+      descripcionTarea.forEach(dt=>{
+        doc.text(dt.value, 29,dtY)
+        dtY+=11.5
+      })
+
+      etY = 310
+      encargadoTarea.forEach(et=>{
+        doc.text(et.value, 328, etY, {
+          align: "center"
+        })
+        etY+=11.5
+      })
+
+      /*TIEMPO TOTAL*/
+      // todos los datos de tiempo son convertidos a minutos para luego ser evaluados
+      // función general para convertir el tiempo a minutos
+
+      function convertirAMinutos(t) {
+        // Verificar si el tiempo incluye "hora" o "horas"
+        if (t.includes("hora") || t.includes("horas")) {
+          const partes = t.split(":");
+          return parseInt(partes[0]) * 60 + parseInt(partes[1] || 0);
+        } else if (t.includes("minuto") || t.includes("minutos")) {
+          return parseInt(t);
+        }
+        return 0;
+      }
+      
+      /*TIEMPO ESTIMADO*/
+      //para el tiempo esetimado se creará una lista con los datos que ya vienen predefindos en el documento pdf
+      let tiempoEstimado = ["2:30 horas", "10 minutos", "10 minuto", "30 minutos", "20 minutos", "20 minutos", "2:30 horas", "30 minutos", "1 hora"]
+
+      //se añaden los nuevos datos de tiempo a los ya existentes
+      teY = 310
+      tEstimadoAniadido.forEach(t=>{
+        //añadiendo los valores de la página al arreglo creado
+        tiempoEstimado.push(t.value)
+
+        //colocando los tiempos estimados en el documento
+        doc.text(t.value, 434, teY, {
+          align: "center"
+        })
+        teY+=11.5
+      })
+
+      // se calcula en minutos el tiempo total estimado
+      const tiempoEstimadoTotalEnMinutos = tiempoEstimado.reduce((total, tiempoEstimado) => total + convertirAMinutos(tiempoEstimado), 0);
+
+      // convertir el tiempo estimado total de nuevo a horas y minutos
+      const horasEstimadas = Math.floor(tiempoEstimadoTotalEnMinutos / 60);
+      const minutosEstimados = tiempoEstimadoTotalEnMinutos % 60;
+      //se hacen las comparaciones de minutps estimados para el mensaje
+      if(minutosEstimados==0){
+        doc.text(`${horasEstimadas} horas`, 420, 344)
+      }else{
+        //esta nueva condición examina si los minutos tienen solo un dígito como por ejemplo (5)
+        //si es así, entonces le agregará un 0 por delante
+        if(minutosEstimados.toString().length==1){
+          doc.text(`${horasEstimadas}:0${minutosEstimados} horas`, 420, 344)
+        }else{
+          doc.text(`${horasEstimadas}:${minutosEstimados} horas`, 420, 344)
+        }
+      }
+
+
+      /*TIEMPO REAL*/
+      let tiempoReal = []
+      let trY = 198
+      tRealAniadido.forEach(t=>{
+        tiempoReal.push(t.value)
+
+        doc.text(t.value, 492, trY, {
+          align: "center"
+        })
+        trY+=12.3
+      })
+      
+      // se calcula en minutos el tiempo total estimado
+      const tiempoRealTotalEnMinutos = tiempoReal.reduce((total, tiempoReal) => total + convertirAMinutos(tiempoReal), 0);
+
+      // convertir el tiempo estimado total de nuevo a horas y minutos
+      const horasReales = Math.floor(tiempoRealTotalEnMinutos / 60);
+      const minutosReales = tiempoRealTotalEnMinutos % 60;
+      //se hacen las comparaciones de minutos reales para el mensaje
+      if(minutosReales==0){
+        doc.text(`${horasReales} horas`, 482, 344)
+      }else{
+        //esta nueva condición examina si los minutos tienen solo un dígito como por ejemplo (5)
+        //si es así, entonces le agregará un 0 por delante
+        if(minutosReales.toString().length==1){
+          doc.text(`${horasReales}:0${minutosReales} horas`, 482, 344)
+        }else{
+          doc.text(`${horasReales}:${minutosReales} horas`, 482, 344)
+        }
+
+      }
+
+      let obtY = 304.5
+      observacionesTareas.forEach(ot=>{
+        doc.setFontSize(13.5)
+        doc.text(ot.value, 525, obtY, {
+          maxWidth: 110,
+          lineHeightFactor: 0.9
+        })
+        obtY+=12.3
+      })
+      doc.setFontSize(16.5)
+
+      return true
+    }
+
+    
+    
+
+
+
+
+
 
 
     /*EQUIPOS Y MATERIALES*/
@@ -364,10 +693,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       doc.text(obsE.value, 466, equipoY)
       equipoY+=12.3
     })
-
+    return true
    }
 
-   evaluarEquiposAdicionales()
+   
 
 
     //herramientas iniciales
@@ -419,81 +748,103 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       doc.text(obs.value, 466, herramientasY)
       herramientasY+=12
     })
-
+    return true
    }
 
-   evaluarHerrammientasAdicionales()
+   
 
    /*INTEGRANTES DE TRABAJO*/
-   let nombresParticipantes = document.querySelectorAll(".nombre-participante")
-   let dniParticipantes = document.querySelectorAll(".dni")
-   let cargoParticipantes = document.querySelectorAll(".cargo")
-   let hsInicio = document.querySelectorAll(".h-ingreso")
-   let hsFin = document.querySelectorAll(".h-salida")
-   let firmasParticipantes = document.querySelectorAll(".firma")
+   function evaluarTrabajadores(){
+    let nombresParticipantes = document.querySelectorAll(".nombre-participante")
+    let dniParticipantes = document.querySelectorAll(".dni")
+    let cargoParticipantes = document.querySelectorAll(".cargo")
+    let hsInicio = document.querySelectorAll(".h-ingreso")
+    let hsFin = document.querySelectorAll(".h-salida")
+    let firmasParticipantes = document.querySelectorAll(".firma")
 
-   let nombreParticipanteY = 752
-   nombresParticipantes.forEach(nombreP=>{
-    doc.text(nombreP.value, 220, nombreParticipanteY,{
-      align: "center"
+    let nombreParticipanteY = 752
+    let validarNombres = true
+    nombresParticipantes.forEach(nombreP=>{
+      if(nombreP!="" && nombreP!="Seleccionar"){
+        doc.text(nombreP.value, 220, nombreParticipanteY,{
+          align: "center"
+        })
+        nombreParticipanteY+=16.8
+      }else{
+        validarNombres = false
+        return 
+      }
+      
     })
-    nombreParticipanteY+=16.8
-   })
 
-   let dniParticipanteY = 752
-   dniParticipantes.forEach(dniP=>{
-    doc.text(dniP.value, 65, dniParticipanteY,{
-      align: "center"
+    let dniParticipanteY = 752
+    dniParticipantes.forEach(dniP=>{
+      doc.text(dniP.value, 65, dniParticipanteY,{
+        align: "center"
+      })
+      dniParticipanteY+=16.8
     })
-    dniParticipanteY+=16.8
-   })
-   
-   doc.setFontSize(14)
-   let cargoParticipanteY = 752
-   cargoParticipantes.forEach(cargoP=>{
-    doc.text(cargoP.value, 365, cargoParticipanteY, {
-      align: "center"
+    
+    doc.setFontSize(14)
+    let cargoParticipanteY = 752
+    cargoParticipantes.forEach(cargoP=>{
+      doc.text(cargoP.value, 365, cargoParticipanteY, {
+        align: "center"
+      })
+      cargoParticipanteY+=16.8
     })
-    cargoParticipanteY+=16.8
-   })
 
-   doc.setFontSize(16.5)
-   let hInicioY = 752
-   hsInicio.forEach(hi=>{
-    doc.text(hi.value, 430, hInicioY, {
-      align:"center"
+    doc.setFontSize(16.5)
+    let hInicioY = 752
+    hsInicio.forEach(hi=>{
+      doc.text(hi.value, 430, hInicioY, {
+        align:"center"
+      })
+      hInicioY+=16.8
     })
-    hInicioY+=16.8
-   })
 
-   let hFinY = 752
-   hsFin.forEach(hf=>{
-    doc.text(hf.value, 495, hFinY, {
-      align:"center"
+    let hFinY = 752
+    hsFin.forEach(hf=>{
+      doc.text(hf.value, 495, hFinY, {
+        align:"center"
+      })
+      hFinY+=16.8
     })
-    hFinY+=16.8
-   })
 
-   let firmasY = 742
-   firmasParticipantes.forEach(fp=>{
-    doc.addImage(fp.value, "PNG", 540, firmasY)
-    firmasY+=16
-   })
+    let firmasY = 742
+    firmasParticipantes.forEach(fp=>{
+      if(fp.value!=""){
+        doc.addImage(fp.value, "PNG", 540, firmasY)
+        firmasY+=16
+      }else{
+        validarNombres = false
+        return
+      }
+      
+    })
 
+    if(validarNombres){
+      return true
+    }else{
+      return false
+    }
+   }
 
    function evaluarObservacioProyecto(){
     let comentarioProyecto = document.getElementById("comentario").value
     doc.setFontSize(17)
-    doc.text(comentarioProyecto, 38, 855,{
+    doc.text(comentarioProyecto, 38, 862,{
         maxWidth: 600,
         lineHeightFactor: 0.9,
     })
+    return true
    }
 
-   evaluarObservacioProyecto()
-
-
-
-  var blob = doc.output("blob");
-  window.open(URL.createObjectURL(blob));
+   if(evaluarDatosGenerales() && evaluarSolicitudAutorizacion() && evaluarTareasAdicionalesTiempos() && evaluarEquiposAdicionales() && evaluarHerrammientasAdicionales() &&  evaluarObservacioProyecto() && evaluarTrabajadores()){
+    var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob));
+   }else{
+    alert("Complete todos los campos")
+   }
+  
 })

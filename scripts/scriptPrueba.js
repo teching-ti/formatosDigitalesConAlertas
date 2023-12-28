@@ -13,10 +13,10 @@ function convertirAMinutos(tiempo) {
   return 0;
 }
 
-// Calcular el tiempo total en minutos
+// calcular el tiempo total en minutos
 const tiempoTotalEnMinutos = tiempos.reduce((total, tiempo) => total + convertirAMinutos(tiempo), 0);
 
-// Convertir el tiempo total de nuevo a horas y minutos
+// convertir el tiempo total de nuevo a horas y minutos
 const horas = Math.floor(tiempoTotalEnMinutos / 60);
 const minutos = tiempoTotalEnMinutos % 60;
 
