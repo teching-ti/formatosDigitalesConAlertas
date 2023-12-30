@@ -162,8 +162,16 @@ function funcionalidadesPersonal() {
 
     //acción para añadir los cuadros para un participante adicional
     btnAniadir.addEventListener("click", function(e){
-        e.preventDefault()
-        aniadirParticipante()
+        let numParticipantes = document.querySelectorAll(".participante-datos").length
+
+        if(numParticipantes<12){
+            e.preventDefault()
+            aniadirParticipante()
+        }else{
+            e.preventDefault()
+            alert("Se ha alcanzado el máxmimo número de participantes")
+        }
+        
     })
 
     //el manejo de los click están delegados al un contenedor de participante en específico
@@ -311,7 +319,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     
     let evaluarNombres = ()=>{
         let resEvalNombres = true
-        nombresX = 17
+        nombresX = 18.5
         nombresY = 138.5
         dniX = 108.5
         dniY = 138.5

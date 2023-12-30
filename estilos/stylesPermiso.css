@@ -259,7 +259,7 @@ select{
 }
 
 .a-s-firma{
-    display: block;
+    display: none;
 }
 
 #responsable, #prevencionista{

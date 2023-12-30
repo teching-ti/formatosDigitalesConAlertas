@@ -264,6 +264,7 @@ input{
 }
 
 .participante-firma{
+    display: none;
     margin: 0;
     padding: 0;
     max-height: 35px;

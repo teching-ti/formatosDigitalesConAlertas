@@ -521,5 +521,19 @@ body{
         display: flex;
         justify-content: space-between;
         width: 100%;
-    } 
+    }
+
+    .contenedor-personal{
+        place-content: center;
+        flex-direction: column;
+    }
+
+    .nombre-participante{
+        width: 90%;
+    }
+    
+    .btn-remover-participante{
+        margin: 0 auto;
+        width: fit-content;
+    }
 }

@@ -82,10 +82,10 @@
   "supervisor": [
     {
       "name":"Bernabé Oscco León",
-      "dni": "77777777",
-      "celular" : "999 555 111",
+      "dni": "09583391",
+      "celular" : "905431985",
       "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma2.png",
-      "cargo":"Supervisor"
+      "cargo":"Gestor de Contrato"
     },
     {
       "name":"Roberto Carlos Luis Bailon",
@@ -93,6 +93,13 @@
       "celular": "910 729 152",
       "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma1.png",
       "cargo":"Supervisor"
+    },
+    {
+      "name":"Daniel Martin Saldarriaga Aliaga",
+      "dni": "45169277",
+      "celular": "944 686 506",
+      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firma1.png",
+      "cargo":"Prevencionista"
     }
   ]
 }

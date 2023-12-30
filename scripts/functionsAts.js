@@ -58,8 +58,16 @@ function aniadirActividad() {
 
 //acción para añadir los cuadros para una actividad adicional
 btnAniadirActividad.addEventListener("click", function (e) {
-  e.preventDefault();
-  aniadirActividad();
+  let numActividades = document.querySelectorAll(".actividades-datos").length
+
+  if(numActividades<7){
+    e.preventDefault();
+    aniadirActividad();
+  }else{
+    e.preventDefault();
+    alert("Se ha alcanzado el máximo número permitido")
+  }
+  
 });
 /*--- AÑADIR ACTIVIDADES END ---*/
 
@@ -244,8 +252,17 @@ function funcionalidadesPersonal() {
 
   //acción para añadir los cuadros para un participante adicional
   btnAniadirParticipante.addEventListener("click", function (ev) {
-    ev.preventDefault();
-    aniadirParticipante();
+
+    let numParticipantes = document.querySelectorAll(".participante-datos").length
+
+    if(numParticipantes<6){
+      ev.preventDefault();
+      aniadirParticipante();
+    }else{
+      ev.preventDefault();
+      alert("Se ha alcanzado el máximo número de participantes")
+    }
+    
   });
 
   //el manejo de los click están delegados al un contenedor de participante en específico

@@ -87,6 +87,7 @@ body{
 }
 
 .contenedor-trabajador h3{
+    color: red;
     margin: 0 1rem;
 }
 
@@ -167,6 +168,10 @@ body{
 
 #btnGenerar:hover{
     transform: scale(1.4);
+}
+
+.contenedor-accesorios{
+    border-bottom: dotted 2px red;
 }
 
 @media (max-width: 720px){

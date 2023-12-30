@@ -17,11 +17,11 @@ fetch("../scripts/datos.json")
     /*Autocompletado y llenado para los técnicos*/
     //llena las opciones de 'participantes tecnicos' del primer select que aparecerá por defecto
     //funcion
-    llenarSelect(document.querySelector(".nombre-participante"));
-    autocompletarCampos(
+    //llenarSelect(document.querySelector(".nombre-participante"));
+    /*autocompletarCampos(
       document.querySelector(".nombre-participante"),
       document.querySelector(".contenedor-personal")
-    );
+    );*/
 
     llenarSelect(document.getElementById("solicitado"))
     completarFirmaSolicitante(document.getElementById("solicitado") ,document.getElementById("firma-solicitado"))
@@ -351,53 +351,113 @@ let btnAgregarPersonal = document.querySelector(".agregar-personal");
 
 /*el btnAgregarPersonal ejecutará la función respectiva y al mismo tiempo también posee un contador
 , este servirá para evitar que los radio button creados tengan el mismo nombre que los anteriores*/
-let numUser = 1;
 btnAgregarPersonal.addEventListener("click", function () {
+
+  let numUser = document.querySelectorAll(".contenedor-personal").length
   //solo permitirá la creación de  usuarios
   if (numUser < 6) {
-    agregarContenedorPersona(numUser);
-    // todo lo correspondiente a selectores sirve como autocompletado para todos los selects clonados
-    // ya que la función normal de autocompletado solo se ejecuta con los elementos creados por default
-    let selectores = document.querySelectorAll(".nombre-participante");
-    //Importante para el autocompletado de los participantes clonados
-    selectores.forEach((selectorNombre) => {
-      selectorNombre.addEventListener("change", function (event) {
-        const nombreSeleccionado = selectorNombre.value;
-        const usuarioSeleccionado = users.tecnico.find(
-          (tecnico) => tecnico.name === nombreSeleccionado
-        );
-        const contenedor = event.target.closest(".contenedor-personal");
+    alert("Se ha añadido un nuevo participante")
+    agregarContenedorPersona();
 
-        contenedor.querySelector(".dni").value =
-          usuarioSeleccionado.dni;
-        contenedor.querySelector(".cargo").value =
-          usuarioSeleccionado.cargo;
-          contenedor.querySelector(".firma").value =
-          usuarioSeleccionado.firma;
-      });
-    });
-    numUser += 1;
   } else {
     alert("Ha alcanzado el número máximo de participantes");
   }
 });
 
 //funcion para agregar personal al listado
-function agregarContenedorPersona(numUser) {
-  alert("Se añadió un nuevo participante, completar sus datos correctamente");
-  // Clona el contenedor-trabajador
-  const contenedorTrabajador = document.querySelector(".contenedor-personal");
-  const nuevoContenedor = contenedorTrabajador.cloneNode(true);
-  
-  nuevoContenedor.querySelectorAll("input").forEach((input)=>{
-    input.value=""
+function agregarContenedorPersona() {
+
+  contenedorParticipante = document.querySelector(".section-todo-personal")
+  //div para contener a los inputs
+  let datosParticipante = document.createElement("div");
+  datosParticipante.classList.add("contenedor-personal");
+
+  //creacion del boton para remover personas
+  let botonRemoverPersona = document.createElement("div");
+  botonRemoverPersona.classList.add("btn-remover-participante");
+  let iconTrash = document.createElement("i");
+  iconTrash.classList.add("fa-solid");
+  iconTrash.classList.add("fa-user-minus");
+  botonRemoverPersona.appendChild(iconTrash);
+  botonRemoverPersona.addEventListener("click", function(){
+    contenedorParticipante.removeChild(datosParticipante)
   })
 
-  document.querySelector(".section-todo-personal").appendChild(nuevoContenedor);
-  /*se debe revisar la manera de hacer que cuando se realice la clonación 
-  el resto de contenedores tengan también sus inputs en en NA
-  de esta manera se evitará inconvenientes.
-  */
+  // Crear un select para los nombres
+  let nombreParticipante = document.createElement("select");
+  let option0 = document.createElement("option");
+  option0.value = "Seleccionar";
+  option0.textContent = "--Seleccionar Nombre--";
+  nombreParticipante.appendChild(option0);
+  nombreParticipante.classList.add("nombre-participante");
+
+  //se completan las opciones con los nombres de los usuarios obtenidos para que luego pueda realizar su respectivo autocompletado
+  llenarSelect(nombreParticipante);
+
+  //creación de input
+  let participanteDNI = document.createElement("input");
+  participanteDNI.classList.add("dni");
+  participanteDNI.readOnly = true
+  participanteDNI.placeholder = "DNI.";
+
+  //creación de input
+  let participanteCargo = document.createElement("input");
+  participanteDNI.classList.add("cargo");
+  participanteDNI.readOnly = true
+  participanteDNI.placeholder = "Cargo.";
+  //creación de input
+  let participanteFirma = document.createElement("input");
+  participanteFirma.classList.add("firma");
+  participanteFirma.placeholder = "Firma.";
+  participanteFirma.readOnly = true;
+  //creacion de los contenedores para las horas y span
+
+  //contenedor de ingreso
+  let contEntrada = document.createElement("div");
+  contEntrada.classList.add("contenedor-ingreso");
+  //span de ingreso
+  let spanEntrada = document.createElement("span");
+  spanEntrada.textContent = "Hora de Ingreso";
+
+  //contenedor de salida
+  let contSalida = document.createElement("div");
+  contSalida.classList.add("contenedor-salida");
+  //span de salida
+  let spanSalida = document.createElement("span");
+  spanSalida.textContent = "Hora de Salida";
+
+  /*creando las horas*/
+  //creación de la hora de entrada
+  let horaEntrada = document.createElement("input");
+  horaEntrada.type = "time";
+  horaEntrada.classList.add("h-ingreso");
+
+  //creación de la hora de salida
+  let horaSalida = document.createElement("input");
+  horaSalida.type = "time";
+  horaSalida.classList.add("h-salida");
+  /*creando las horas*/
+
+  //función creada con anterioridad para el autocompletado en base al nombre seleccionado
+  //param 'nombreParticipante' es el dato que se obtiene desde el select
+  //param 'datosParticipante' se usará para los elementos html a modificar
+  autocompletarCampos(nombreParticipante, datosParticipante);
+
+  //añadiendo las horas a sus respectivos contenedores
+  contEntrada.append(spanEntrada, horaEntrada);
+  contSalida.append(spanSalida, horaSalida);
+
+  //añadiendo los input creados al div
+  datosParticipante.append(
+    nombreParticipante,
+    participanteDNI,
+    participanteFirma,
+    contEntrada,
+    contSalida,
+    botonRemoverPersona
+  );
+  //añadir el div con los input dentro del contenedor
+  contenedorParticipante.appendChild(datosParticipante);
 }
 
 

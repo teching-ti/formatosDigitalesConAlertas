@@ -228,6 +228,7 @@ async function loadImage(url) {
         let elementosMantenimientoElectrico = document.querySelectorAll(".elemento-mantenimiento-electrico")
 
         meY = 225.5
+        //opciones
         elementosMantenimientoElectrico.forEach(e=>{
             inputsEvaluar = e.querySelectorAll("input")
 
@@ -243,6 +244,22 @@ async function loadImage(url) {
                 
             })
         })
+
+
+        meObsY = 219.5  
+        doc.setFontSize(13)
+        elementosMantenimientoElectrico.forEach(o=>{
+            textArea = o.querySelectorAll("textarea")
+
+            textArea.forEach(t=>{
+                doc.text(t.value, 486, meObsY, {
+                    maxWidth: 90,
+                    lineHeightFactor: 0.9
+                })
+                meObsY+=14.4
+            })
+        })
+
         return true
     }
 
@@ -265,6 +282,20 @@ async function loadImage(url) {
                 
             })
         })
+
+        taObsY = 330.5
+        doc.setFontSize(13)
+        elementosTrabajoAltura.forEach(o=>{
+            textArea = o.querySelectorAll("textarea")
+
+            textArea.forEach(t=>{
+                doc.text(t.value, 486, taObsY, {
+                    maxWidth: 90,
+                    lineHeightFactor: 0.9
+                })
+                taObsY+=14.2
+            })
+        })
         return true
     }
 
@@ -285,6 +316,20 @@ async function loadImage(url) {
                     ecY+=14.2
                 }
                 
+            })
+        })
+
+        ecObsY = 441.5
+        doc.setFontSize(13)
+        elementosEspaciosConfinados.forEach(o=>{
+            textArea = o.querySelectorAll("textarea")
+
+            textArea.forEach(t=>{
+                doc.text(t.value, 486, ecObsY, {
+                    maxWidth: 90,
+                    lineHeightFactor: 0.9
+                })
+                ecObsY+=14.2
             })
         })
         return true
@@ -344,7 +389,7 @@ async function loadImage(url) {
                 alert("Seleccione un responsable en 'Personal Involucrado en la Tarea'")
                 return
             }
-            pY+=11
+            pY+=9.7
         })
         
         /*Probarlo con las firmas verdaderas*/
@@ -358,7 +403,7 @@ async function loadImage(url) {
                 alert("Seleccione un responsable en 'Personal Involucrado en la Tarea'")
                 return
             }
-            pY+=11
+            pY+=9.7
         })
 
         if(evalPersonal){
@@ -434,24 +479,25 @@ async function loadImage(url) {
 
 
     function evaluarAutorizacionSupervision(){
+        doc.setFontSize(16)
         let supervisor = document.getElementById("supervisor-responsable").value
-        doc.text(supervisor, 190,799,{
+        doc.text(supervisor, 360, 855,{
             align: "center"
         })
         let responsable = document.getElementById("responsable").value
-        doc.text(responsable, 200,815,{
+        doc.text(responsable, 360, 874,{
             align: "center"
         })
         let prevencionista = document.getElementById("prevencionista").value
-        doc.text(prevencionista, 205,820,{
+        doc.text(prevencionista, 360, 893,{
             align: "center"
         })
 
         let firmas = document.querySelectorAll(".a-s-firma")
-        let fY = 810
+        let fY = 843
         firmas.forEach(f=>{
-            doc.addImage(f.value, "PNG", 510, fY)
-            fY+=12
+            doc.addImage(f.value, "PNG", 502, fY)
+            fY+=19
         })
 
         return true
@@ -459,7 +505,7 @@ async function loadImage(url) {
     
     
     
-    if(/*evaluarDatosGenerales() && evaluarMantenimientoElectrico() && evaluarTrabajoAltura() && evaluarEspaciosConfinados() && evaluarDescripcionTarea() && evaluarPersonal() && evaluarEquiposProteccion() && evaluarHerramientas() && evaluarProcedimiento()*/evaluarAutorizacionSupervision()){
+    if(evaluarDatosGenerales() && evaluarMantenimientoElectrico() && evaluarTrabajoAltura() && evaluarEspaciosConfinados() && evaluarDescripcionTarea() && evaluarPersonal() && evaluarEquiposProteccion() && evaluarHerramientas() && evaluarProcedimiento() && evaluarAutorizacionSupervision()){
         var blob = doc.output("blob");
         window.open(URL.createObjectURL(blob));
     }

@@ -178,6 +178,7 @@ h3{
 }
 
 .participante-firma{
+    display: none;
     pointer-events: none;
     background: #d1d5db;
 }
