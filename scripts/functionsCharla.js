@@ -392,7 +392,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         //imagen de la firma cargada con transparencia
         //let firmaExpositor = document.getElementById("expositor-firma").value
         //doc.addImage(firmaExpositor, "PNG", 35, 275, 58, 11)
-        doc.addImage(expFirma, "PNG", 35, 275, 58, 11)
+        doc.addImage(expFirma, "PNG", 39, 275, 54, 11)
         doc.text(expNombre, 112, 283)
         return true
     }

@@ -57,16 +57,6 @@ function autocompletarCampos(elementoSelect, datosParticipante) {
   });
 }
 
-//Llenar el select del responsable
-// function llenarSelectResponsable(elementoSelect) {
-//   users.supervisor.forEach((supervisor) => {
-//     const opcion = document.createElement("option");
-//     opcion.value = supervisor.name;
-//     opcion.textContent = supervisor.name;
-//     elementoSelect.appendChild(opcion);
-//   });
-// }
-
 /*Autocompletado del responsable*/
 function autocompletarCamposResponsable(elementoSelect, datosResponsable) {
   elementoSelect.addEventListener("change", function () {
@@ -231,13 +221,16 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
       
       /*nombre supervisor*/
+      /*La firma del supervisor estará siendo colocada desde aquí*/
       /*firma supervisor*/
       //En caso sea necesario, esta es la firma para el supervisor
       //se debería de crear un input en el html y una variable para obtener su nombre
       //y con ello también su firma, similar a como se hace con el resto, pero una única vez
-      doc.text("Roberto Carlos Luis Bailon", 445, 876.5);
+      let supervisorNombre = "Roberto Carlos Luis Bailon"
+      let supervisorFirma = "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/RobertoLuisBailon.png"
+      doc.text(supervisorNombre, 445, 876.5);
       //modificar por la firma de roberto carlos luis bailon
-      doc.addImage(responsableFirma, "PNG", 440, 850, 80, 20);
+      doc.addImage(supervisorFirma, "PNG", 440, 850, 80, 20);
       //para que aparezca el nombre y la firma
 
       return true;
