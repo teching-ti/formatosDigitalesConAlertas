@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checklist de Inspección Vehicular</title>
+    <link
+      rel="icon"
+      href="../recursos/favicon-teching.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="../estilos/stylesChecklist.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <main class="main">
+      <figure class="logo-title">
+        <a href="../">
+          <img src="../recursos/logo_teching.png" alt="teching_logo" />
+        </a>
+        <div>
+          <span>Checklist de Inspección Vehicular</span>
+        </div>
+      </figure>
+
+      <section class="form-container">
+        <!--Inicia Cuerpo del Formulario-->
+        <div class="form-body">
+          <section
+            class="datos-generales-documento"
+            id="datos-generales-documento"
+          >
+            <h4>Datos Generales</h4>
+            <div class="dg-contenedor">
+              <div class="dg">
+                <label for="fecha"
+                  >Fecha: <input type="text" id="fecha" readonly
+                /></label>
+                <select name="nombre-conductor" id="nombre-conductor">
+                  <option></option>
+                </select>
+                <input
+                  type="text"
+                  id="firma-conductor"
+                  placeholder="firma-conductor"
+                />
+                <input type="text" placeholder="PLACA" id="placa" />
+                <input
+                  type="text"
+                  name="tarjeta-propiedad"
+                  id="tarjeta-propiedad"
+                  placeholder="TARJETA DE PROPIEDAD"
+                />
+                <input
+                  type="text"
+                  name="empresa"
+                  id="empresa"
+                  placeholder="EMPRESA"
+                />
+                <label for="usa-lentes"
+                  ><input type="checkbox" name="usa-lentes" id="usa-lentes"
+                /></label>
+                <label>Inicio(Km)<input type="number" id="inicio-km" /></label>
+                <label>Final(Km)<input type="number" id="inicio-km" /></label>
+                <input type="text" placeholder="SOAT" id="soat" />
+                <label
+                  ><input
+                    type="time"
+                    name="hora-inspeccion"
+                    id="hora-inspeccion"
+                /></label>
+              </div>
+            </div>
+          </section>
+
+          <section class="selectores">
+            <div class="selector-elemento">
+                <span class="verificar">Nivel de aceite de motor *</span>
+                <div>
+                    <label>B<input type="radio" name="v1" value="Bueno"></label>
+                    <label>M<input type="radio" name="v1" value="Malo"></label>
+                    <label>NT<input type="radio" name="v1" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v1" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+            <div class="selector-elemento">
+                <span class="verificar">Nivel de líquido de freno *</span>
+                <div>
+                    <label>B<input type="radio" name="v2" value="Bueno"></label>
+                    <label>M<input type="radio" name="v2" value="Malo"></label>
+                    <label>NT<input type="radio" name="v2" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v2" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+            <div class="selector-elemento">
+                <span class="verificar">Nivel de hidrolina de dirección *</span>
+                <div>
+                    <label>B<input type="radio" name="v3" value="Bueno"></label>
+                    <label>M<input type="radio" name="v3" value="Malo"></label>
+                    <label>NT<input type="radio" name="v3" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v3" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+            <div class="selector-elemento">
+                <span class="verificar">Nivel de agua del radiador *</span>
+                <div>
+                    <label>B<input type="radio" name="v4" value="Bueno"></label>
+                    <label>M<input type="radio" name="v4" value="Malo"></label>
+                    <label>NT<input type="radio" name="v4" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v4" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+            <div class="selector-elemento">
+                <span class="verificar">Luces de alta/ baja *</span>
+                <div>
+                    <label>B<input type="radio" name="v5" value="Bueno"></label>
+                    <label>M<input type="radio" name="v5" value="Malo"></label>
+                    <label>NT<input type="radio" name="v5" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v5" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+            <div class="selector-elemento">
+                <span class="verificar">Luces direccionales *</span>
+                <div>
+                    <label>B<input type="radio" name="v6" value="Bueno"></label>
+                    <label>M<input type="radio" name="v6" value="Malo"></label>
+                    <label>NT<input type="radio" name="v6" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v6" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+            <div class="selector-elemento">
+                <span class="verificar">Luces de freno</span>
+                <div>
+                    <label>B<input type="radio" name="v7" value="Bueno"></label>
+                    <label>M<input type="radio" name="v7" value="Malo"></label>
+                    <label>NT<input type="radio" name="v7" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v7" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+            <div class="selector-elemento">
+                <span class="verificar">Luces de emergencia</span>
+                <div>
+                    <label>B<input type="radio" name="v8" value="Bueno"></label>
+                    <label>M<input type="radio" name="v8" value="Malo"></label>
+                    <label>NT<input type="radio" name="v8" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v8" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+            <div class="selector-elemento">
+                <span class="verificar">Luces de faros pirata</span>
+                <div>
+                    <label>B<input type="radio" name="v9" value="Bueno"></label>
+                    <label>M<input type="radio" name="v9" value="Malo"></label>
+                    <label>NT<input type="radio" name="v9" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v9" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+            <div class="selector-elemento">
+                <span class="verificar">Luces de neblinero *</span>
+                <div>
+                    <label>B<input type="radio" name="v10" value="Bueno"></label>
+                    <label>M<input type="radio" name="v10" value="Malo"></label>
+                    <label>NT<input type="radio" name="v10" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v10" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+            <div class="selector-elemento">
+                <span class="verificar">Espejos retrovisores laterales *</span>
+                <div>
+                    <label>B<input type="radio" name="v11" value="Bueno"></label>
+                    <label>M<input type="radio" name="v11" value="Malo"></label>
+                    <label>NT<input type="radio" name="v11" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v11" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+            <div class="selector-elemento">
+                <span class="verificar">Botiquín de primeros auxilios *</span>
+                <div>
+                    <label>B<input type="radio" name="v12" value="Bueno"></label>
+                    <label>M<input type="radio" name="v12" value="Malo"></label>
+                    <label>NT<input type="radio" name="v12" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v12" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+            <div class="selector-elemento">
+                <span class="verificar">Cinturón de seguridad de conductor *</span>
+                <div>
+                    <label>B<input type="radio" name="v13" value="Bueno"></label>
+                    <label>M<input type="radio" name="v13" value="Malo"></label>
+                    <label>NT<input type="radio" name="v13" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v13" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+            <div class="selector-elemento">
+                <span class="verificar">Cinturón de seguridad de copiloto</span>
+                <div>
+                    <label>B<input type="radio" name="v14" value="Bueno"></label>
+                    <label>M<input type="radio" name="v14" value="Malo"></label>
+                    <label>NT<input type="radio" name="v14" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v14" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+            <div class="selector-elemento">
+                <span class="verificar">Cinturón de seguridad de asientos posteriores</span>
+                <div>
+                    <label>B<input type="radio" name="v15" value="Bueno"></label>
+                    <label>M<input type="radio" name="v15" value="Malo"></label>
+                    <label>NT<input type="radio" name="v15" value="No Tiene"></label>
+                    <label>NA<input type="radio" name="v15" value="No Aplica"></label>
+                </div>
+                <span>Atención</span>
+                <select>
+                    <option>NA</option>
+                    <option value="Inmediata">Inmediata</option>
+                    <option value="Antes 24 h.">Antes 24 h.</option>
+                </select>
+            </div>
+
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

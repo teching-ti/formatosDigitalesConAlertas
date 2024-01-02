@@ -1,0 +1,3 @@
+02_01_2024
+- Desarrollando nuevo formato de checklist vehicular
+- Completandos los buttons
