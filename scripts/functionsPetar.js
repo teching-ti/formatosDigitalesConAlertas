@@ -17,6 +17,11 @@ fetch("../scripts/datos.json")
     //Para la parte de autorización
     llenarSelect(document.querySelector("#supervisor-responsable"))
     autocompletarCamposSup(document.querySelector("#supervisor-responsable"), document.querySelector(".contenedor-sup"))
+
+    //colocar las firmas del supervisor y prevencionista
+    document.getElementById("supervisor-firma").value = users.supervisor[0].firma
+    document.getElementById("prevencionista-firma").value = users.prevencionista[0].firma
+    
   })
   .catch((error) => console.error("Error al cargar los datos:", error));
 

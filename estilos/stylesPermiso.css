@@ -317,7 +317,13 @@ select{
     .horas{
         display: flex;
         flex-direction: row;
-        gap: 1rem;
+        gap: .5rem;
+    }
+
+    .horas label{
+        font-size: .8rem;
+        font-weight: bold;
+        gap: .5rem;
     }
 
     .ocupacion{

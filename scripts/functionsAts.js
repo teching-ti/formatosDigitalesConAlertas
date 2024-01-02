@@ -341,7 +341,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //texto posicionado para el final de la hoja y firma respectiva
       doc.text(responsableTrabajo, 59, 286)
       //se puede cargar directaente la dirección de la imagen desde el json
-      doc.addImage(responableTrabajoFirma, "PNG", 164, 282, 24, 4.2)
+      doc.addImage(responableTrabajoFirma, "PNG", 164, 282.5, 24, 4.2)
       return true;
     } else {
       alert("Complete todos los campos de la parte superior del formulario");
