@@ -824,18 +824,26 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
     let nombreParticipanteY = 752
     let validarNombres = true
-    nombresParticipantes.forEach(nombreP=>{
-      if(nombreP!="" && nombreP!="Seleccionar"){
-        doc.text(nombreP.value, 220, nombreParticipanteY,{
-          align: "center"
-        })
-        nombreParticipanteY+=16.8
-      }else{
-        validarNombres = false
-        return 
-      }
+
+    if(nombresParticipantes.length>0){
+      nombresParticipantes.forEach(nombreP=>{
+        if(nombreP!="" && nombreP!="Seleccionar"){
+          doc.text(nombreP.value, 220, nombreParticipanteY,{
+            align: "center"
+          })
+          nombreParticipanteY+=16.8
+        }else{
+          validarNombres = false
+          return 
+        }
+      })
       
-    })
+    }else{
+      alert("Debe agregar participantes y completar todos sus datos")
+      validarNombres = false
+      return
+    }
+    
 
     let dniParticipanteY = 752
     dniParticipantes.forEach(dniP=>{

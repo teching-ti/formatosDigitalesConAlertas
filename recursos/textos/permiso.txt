@@ -1,8 +1,11 @@
+03_01_2024
+- Completado, esperando revisión
+
 29_12
 
- - casi todo validado, falta seccion de firmas
- - Necesario implementar las firmas lo antes posible
- - Validando desde arriba hasta involucrados en la tarea  ...probarconFirmasVerdaderas
+ - casi todo validado, falta seccion de firmas..ok
+ - Necesario implementar las firmas lo antes posible...ok
+ - Validando desde arriba hasta involucrados en la tarea  ...probarconFirmasVerdaderas...ok
  - Validando datos generales ...ok
  - Escrutura ...ok
 

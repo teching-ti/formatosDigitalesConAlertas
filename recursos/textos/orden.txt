@@ -1,3 +1,6 @@
+03_01_2024
+- Completado, esperando revisión
+
 28/12
 - Validaciones en Datos Generales, solicitad, personal; realizan sus validaciones ...ok
 28/12

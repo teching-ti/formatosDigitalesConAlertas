@@ -1,5 +1,8 @@
+03_01_2024
+-completado, esperando revisión
+
 28_12
-- validar el tema de los usuarios, su eliinacion y el error de las imagenes por si hay campos sin selecconar
+- validar el tema de los usuarios, su eliminacion y el error de las imagenes por si hay campos sin selecconar
 - revisar el tema de los cargos, si es necesario el autocompletado
 
 22_12
