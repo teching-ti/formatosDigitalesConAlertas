@@ -15,8 +15,8 @@ fetch("../scripts/datos.json")
     
 
     //Para la parte de autorización
-    llenarSelect(document.querySelector("#supervisor-responsable"))
-    autocompletarCamposSup(document.querySelector("#supervisor-responsable"), document.querySelector(".contenedor-sup"))
+    llenarSelect(document.querySelector("#responsable"))
+    autocompletarCamposSup(document.querySelector("#responsable"), document.querySelector(".contenedor-resp"))
 
     //colocar las firmas del supervisor y prevencionista
     document.getElementById("supervisor-firma").value = users.supervisor[0].firma
@@ -118,7 +118,6 @@ fetch("../scripts/datos.json")
       contenedorPersonas.removeChild(contenedorPersonal);
     });
 
-
     contenedorPersonal.append(nombrePersonal, ocupacion, firmaInicio, firmaSalida, btnEliminarPersona)
 
     contenedorPersonas.append(contenedorPersonal)
@@ -162,8 +161,6 @@ async function loadImage(url) {
     //colocar imagen desde una posicion en especifico, con las dimensiones especificas
     doc.addImage(image, "PNG", 0, 0, 666, 943);
     doc.setFontSize(16.5) //es el tamaño por defecto
-
-    
 
     function evaluarDatosGenerales(){
         let evalDatosGenerales = true
@@ -482,17 +479,24 @@ async function loadImage(url) {
         return true
     }
 
-
     function evaluarAutorizacionSupervision(){
+        let evalAuto = true
         doc.setFontSize(16)
         let supervisor = document.getElementById("supervisor-responsable").value
         doc.text(supervisor, 360, 855,{
             align: "center"
         })
         let responsable = document.getElementById("responsable").value
-        doc.text(responsable, 360, 874,{
-            align: "center"
-        })
+        if(responsable.value==""){
+            alert("Ingrese el nombre del responsable en la parte inferior de la página")
+            evalAuto = false
+            return
+        }else{
+            doc.text(responsable, 360, 874,{
+                align: "center"
+            })
+        }
+        
         let prevencionista = document.getElementById("prevencionista").value
         doc.text(prevencionista, 360, 893,{
             align: "center"
@@ -505,16 +509,18 @@ async function loadImage(url) {
             fY+=19
         })
 
-        return true
+        if(evalAuto){
+            return true
+        }else{
+            return false
+        }
+
+        
     }
     
-    
-    
-    if(evaluarDatosGenerales() && evaluarMantenimientoElectrico() && evaluarTrabajoAltura() && evaluarEspaciosConfinados() && evaluarDescripcionTarea() && evaluarPersonal() && evaluarEquiposProteccion() && evaluarHerramientas() && evaluarProcedimiento() && evaluarAutorizacionSupervision()){
+    if(evaluarDatosGenerales() && evaluarMantenimientoElectrico() && evaluarTrabajoAltura() && evaluarEspaciosConfinados() && evaluarDescripcionTarea() && evaluarPersonal() && evaluarEquiposProteccion() && evaluarHerramientas() && evaluarProcedimiento() &&  evaluarAutorizacionSupervision()){
         var blob = doc.output("blob");
         window.open(URL.createObjectURL(blob));
     }
-    
-
 
   })

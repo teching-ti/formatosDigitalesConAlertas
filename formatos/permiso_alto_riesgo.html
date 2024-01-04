@@ -503,7 +503,12 @@
                   Eslinga de posicionamiento<input type="checkbox" class="c3"
                 /></label>
                 <label for="otros">Otros</label>
-                <textarea name="otros" id="otros" cols="30" rows="10"></textarea>
+                <textarea
+                  name="otros"
+                  id="otros"
+                  cols="30"
+                  rows="10"
+                ></textarea>
               </div>
             </div>
           </section>
@@ -515,25 +520,55 @@
 
           <section class="contenedor-procedimiento">
             <h3>Procedimiento</h3>
-            <textarea name="procedimiento" id="procedimiento" cols="30" rows="10"></textarea>
+            <textarea
+              name="procedimiento"
+              id="procedimiento"
+              cols="30"
+              rows="10"
+            ></textarea>
           </section>
 
           <section class="contenedor-autorizacion">
             <h3>Autorización y Supervisión</h3>
-            <div class="contenedor-sup">
-              <label>Supervisor de la Empresa Ejecutora o 
-                Responsable de cuadrilla operativa <select name="supervisor-responsable" id="supervisor-responsable">
-                  <option value=""></option>
-                </select></label>
-              <input type="text" class="a-s-firma">
-            </div>
+
             <div>
-              <label>Responsable de la cuadrilla operativa <input type="text" name="responsable" id="responsable" value="Roberto Carlos Luis Bailon" readonly/></label>
-              <input type="text" class="a-s-firma" id="supervisor-firma">
+              <label
+                >Supervisor de la Empresa Ejecutora o Responsable de cuadrilla
+                operativa
+                <input
+                  type="text"
+                  name="supervisor-responsable"
+                  id="supervisor-responsable"
+                  value="Roberto Carlos Luis Bailon"
+                  readonly
+              /></label>
+              <input type="text" class="a-s-firma" id="supervisor-firma"/>
             </div>
+
+            <div class="contenedor-resp">
+              <label
+                >Responsable de la cuadrilla operativa
+                <select
+                  name="responsable"
+                  id="responsable"
+                >
+                  <option value=""></option></select
+              ></label>
+              <input type="text" class="a-s-firma"  />
+            </div>
+
             <div>
-              <label>Prevencionista de Riesgos o Responsable de la cuadrilla operativa <input type="text" name="prevencionista" id="prevencionista" value="Daniel Martin Saldarriaga Aliaga" readonly/></label>
-              <input type="text" class="a-s-firma" id="prevencionista-firma">
+              <label
+                >Prevencionista de Riesgos o Responsable de la cuadrilla
+                operativa
+                <input
+                  type="text"
+                  name="prevencionista"
+                  id="prevencionista"
+                  value="Daniel Martin Saldarriaga Aliaga"
+                  readonly
+              /></label>
+              <input type="text" class="a-s-firma" id="prevencionista-firma" />
             </div>
           </section>
         </div>
@@ -543,4 +578,3 @@
     <script src="../scripts/functionsPetar.js"></script>
   </body>
 </html>
-<!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni amet in assumenda nobis ut et facilis culpa earum impedit eos voluptate ad debitis qui eaque, beatae repellat? Hic, officia illum. -->

@@ -12,18 +12,18 @@ cargarFecha()
 /*Sección de los radio button y preguntas*/
 let respuesta1 = ""
 let opcionesPreguntas = document.querySelectorAll(".op1")
-    opcionesPreguntas.forEach(e=>{
-        e.addEventListener("click", ()=>{
-                respuesta1 = e.id
-        })
+opcionesPreguntas.forEach(e=>{
+    e.addEventListener("click", ()=>{
+            respuesta1 = e.id
     })
+})
 
 let respuesta2 = ""
 let opcionesPreguntas2 = document.querySelectorAll(".op2")
-    opcionesPreguntas2.forEach(e=>{
-        e.addEventListener("click", ()=>{
-            respuesta2 = e.id
-        })
+opcionesPreguntas2.forEach(e=>{
+    e.addEventListener("click", ()=>{
+        respuesta2 = e.id
+    })
 })
 
 //obtener los datos del archivo
@@ -41,9 +41,8 @@ fetch("../scripts/datos.json")
     //auocompleta los campos relacionados al primer select, que aparece por defecto
     autocompletarCamposPersonal(document.querySelector(".participante-nombre"), document.querySelector(".participante-datos"));
 
-
     //expositor
-    llenarSelectExpositor(document.getElementById("expositor-nombre"))
+    llenarSelectPersonal(document.getElementById("expositor-nombre"))
     autocompletarCamposExpositor(document.getElementById("expositor-nombre"), document.getElementById("expositor-firma"))
 
     funcionalidadesPersonal();
@@ -59,16 +58,7 @@ function llenarSelectPersonal(elementoSelect) {
       option.textContent = tecnico.name;
       elementoSelect.appendChild(option);
     });
-  }
-
-  function llenarSelectExpositor(elementoSelect){
-    users.tecnico.forEach((tecnico)=>{
-        const opcion = document.createElement("option")
-        opcion.value = tecnico.name
-        opcion.textContent = tecnico.name
-        elementoSelect.appendChild(opcion)
-    })
-  }
+}
 
 /*Autocompletado de los técnicos*/
 //función para autocompletar los campos al seleccionar un nombre 
@@ -370,41 +360,18 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         }
     }
 
-    /*
-    */
-    /*--- ESTO DEBE EVALUARSE PARA COLOCAR LAS FIRMAS COMO IMÁGENES ---*/
-    /*inicia datos para el registro de participantes*/
-    /*probando los espacios para las firmas*/
-    //let f1 = "../recursos/firma1.png"
-    //let f2 = "../recursos/firma2.png"
-    /*coordenadas para añadir las firmas*/
-    /*Argumentos para añadir imágnes*/
-    /*(imagen, formato, posicionX, posicionY, width, height)*/
-    //Posicion para la firma1
-    //doc.addImage(f1, "PNG", 144, 130.5, 47, 8.2)
-    //Posicion para la firma2
-    //doc.addImage(f2, "PNG", 144, 141, 47, 8.2)
     /*termina datos para el registro de participantes*/
 
     let evaluarExpositor = ()=>{
         let expFirma = document.getElementById("expositor-firma").value
         let expNombre = document.getElementById("expositor-nombre").value
-        //imagen de la firma cargada con transparencia
-        //let firmaExpositor = document.getElementById("expositor-firma").value
-        //doc.addImage(firmaExpositor, "PNG", 35, 275, 58, 11)
+
         doc.addImage(expFirma, "PNG", 39, 275, 54, 11)
         doc.text(expNombre, 112, 283)
         return true
     }
 
-    // evaluarDatosPrincipales()
-    // evaluarEmpresa()
-    // evaluarMarcadoOpciones()
-    // evaluarNombres()
-    // evaluarExpositor()
     if(evaluarDatosPrincipales() && evaluarEmpresa() && evaluarMarcadoOpciones() && evaluarNombres() && evaluarExpositor()){
-        //alert("Correcto")
-        //hacer previsualización
         var blob = doc.output("blob");
         window.open(URL.createObjectURL(blob))
     }else{

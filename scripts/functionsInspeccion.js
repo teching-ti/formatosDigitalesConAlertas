@@ -76,9 +76,6 @@ async function loadImage(url) {
     doc.addImage(image, "PNG", 0, 0, 210, 295);
     doc.setFontSize(7)
 
-
-    
-
     let evaluar = true
     function evaluarDatosGenerales(){
         let dia = fecha
@@ -229,9 +226,6 @@ async function loadImage(url) {
                 if(contarSaltoX%10==0){
                     positionY=60
                 }
-
-
-
             })
         })
         return true
@@ -385,7 +379,6 @@ async function loadImage(url) {
         align: "center"
     })
     doc.addImage("https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/RobertoLuisBailon.png", "PNG", 153, 268,  35, 5.8)
-
 
     if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarTodoVehiculo() && evaluarLLantas() && evaluarAccesorios() && evaluarTapas() && evaluarEpp() && evaluarPma()){
         var blob = doc.output("blob");

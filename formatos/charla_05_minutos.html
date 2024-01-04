@@ -27,9 +27,6 @@
           <span>Charla de 5 Minutos</span>
         </div>
       </figure>
-
-
-
       <section class="form-container">
         <form class="principal-form" id="principal-form">
           <!--Inicia parte superior del Formulario-->
@@ -141,18 +138,6 @@
                   <h3>Participantes de la Charla</h3>
                   <button id="btn-aniadir">Añadir <i class="fa-solid fa-user-plus"></i></button>
                 </div>
-                <!--Agregar el autocompletado haciendo uso de una petición fetch,
-                y una vez obtenida se deberá realizar el foreach
-                users=data
-                let nombreContenedor = document.createElement("select")
-                users.forEach((user)=>{
-                  let nombre = user.name
-                  let dni = user.dni
-                  option = document.createElement(option)
-                  option.innterText(nombre)
-                })
-                -->
-                
                 <div class="participante-datos">
                   <select name="participante-nombre" class="participante-nombre">
                     <option value="Seleccionar">--Seleccionar Nombre--</option>
@@ -191,11 +176,9 @@
           </div>
           <!--Creando autocompletado de expositor, (firma)-->
           <!--Fin Cuerpo del Formulario-->
-          <a href="https://github.com/jvalladares741/formatosDigitales/settings" target="_blank">Archivo</a>
+          <a class="subir-audio" href="https://techindustrias.sharepoint.com/sites/ProyectosyServicios/Documentos%20compartidos/Forms/AllItems.aspx?ga=1&id=%2Fsites%2FProyectosyServicios%2FDocumentos%20compartidos%2F2%2EGESTION%20DE%20PROYECTOS%2FPROYECTOS%2F1%2E%20PROYECTOS%20EN%20CURSO%2FSE%2D23%2D135%20%2D%20%20ENEL%20D%20%2D%20BALANCE%20DE%20ENERGIA%20Y%20CORRECCION%20CADENA%2F2%2E%20PLANIFICACI%C3%93N%2FCHARLA%205%20MINUTOS%20%2D%20AUDIOS&viewid=c546e89a%2D18b7%2D4d45%2D8e9b%2Df7703d423794" target="_blank">Subir Audio <i class="fa-solid fa-music"></i></a>
           <button id="btn-generar">Generar PDF</button>
-
         </form>
-
       </section>
     </main>
     <script src="../scripts/functionsCharla.js"></script>

@@ -233,6 +233,13 @@ h3{
     width: 100%;
 }
 
+.subir-audio{
+    color: blue;
+    font-weight: 500;
+    margin-left: 1rem;
+    text-decoration: none;
+}
+
 #btn-generar{
     margin: 2em;
     padding: .5em;
@@ -241,7 +248,7 @@ h3{
     font-size: 1rem;
 }
 
-@media (max-width: 600px){
+@media (max-width: 720px){
 
     .main{
         width: 100%;

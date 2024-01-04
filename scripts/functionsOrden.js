@@ -16,12 +16,6 @@ fetch("../scripts/datos.json")
     users = data;
     /*Autocompletado y llenado para los técnicos*/
     //llena las opciones de 'participantes tecnicos' del primer select que aparecerá por defecto
-    //funcion
-    //llenarSelect(document.querySelector(".nombre-participante"));
-    /*autocompletarCampos(
-      document.querySelector(".nombre-participante"),
-      document.querySelector(".contenedor-personal")
-    );*/
 
     llenarSelect(document.getElementById("solicitado"))
     completarFirmaSolicitante(document.getElementById("solicitado") ,document.getElementById("firma-solicitado"))
@@ -340,7 +334,6 @@ function agregarHerramienta(){
 
   // Añadir la nueva herramienta al contenedor de herramientas principal
   contenedorHerramientas.appendChild(nuevaHerramienta);
-
 }
 
 /*Nuevas Herramientas END*/
@@ -461,7 +454,6 @@ function agregarContenedorPersona() {
 }
 
 
-
 /*---- PARTE 2 DEL CÓDIGO ----*/
 /* cargar documento */
 //Constante que permitirá usar el objeto jspdf
@@ -535,8 +527,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     }
    }
 
-   
-
    //Nombres y Firmas para solicitud y autorizacion
    function evaluarSolicitudAutorizacion(){
     let solicitanteNombre = document.getElementById("solicitado").value
@@ -557,8 +547,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     }
    }
 
-   
-
     /*Observaciones Tareas Iniciales*/
     let obsTareasIniciales = document.querySelectorAll(".obs-tarea-inicial")
     let obiY = 191.3
@@ -572,7 +560,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     })
     doc.setFontSize(16.5)
     
-
     /*Tareas a ejecutar añadidas y calculos de tiempo*/
     function evaluarTareasAdicionalesTiempos(){
       let descripcionTarea = document.querySelectorAll(".tarea-descripcion")
@@ -646,7 +633,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         }
       }
 
-
       /*TIEMPO REAL*/
       let tiempoReal = []
       let trY = 198
@@ -692,15 +678,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
       return true
     }
-
-    
-    
-
-
-
-
-
-
 
     /*EQUIPOS Y MATERIALES*/
     let codigosEquiposMateriales = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"]
@@ -756,9 +733,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     return true
    }
 
-   
-
-
     //herramientas iniciales
     //añadir codigos a herramientas
     let codigosHerramientas = new Array("1","2","3","4","5","6","7")
@@ -810,8 +784,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     })
     return true
    }
-
-   
 
    /*INTEGRANTES DE TRABAJO*/
    function evaluarTrabajadores(){

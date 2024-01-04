@@ -109,10 +109,6 @@ fetch("../scripts/datos.json")
     //llena el select del responsable del proyecto
     llenarSelect(document.getElementById("responsable-trabajo"))
     autocompletarCamposResponsable(document.getElementById("responsable-trabajo"), document.getElementById("responsable-firma"))
-
-
-
-
     funcionalidadesPersonal();
   })
   .catch((error) => console.error("Error al cargar los datos:", error));
@@ -465,14 +461,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   //funcion que se usa para colocar las actividades
   let reconocerActividades = () => {
     let resEvalActividades = true
-
-    //la suma de las coordenadas y debe ser de 6.5 para rellenar las actividades
-    //definiendo las posiciones iniciales para las actividades
-    //actividades introducidas de forma estática
   
-    
-    
-
     /*datos introducidos desde la página INICIO*/
     XnombreActividad = 11.5;
     YnombreActividad = 153.3;
@@ -496,9 +485,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       } else {
         //si hay campos vacios
         // deshabilitado puesto que quizá ya no sea necesario
-        // alert("Complete el campo 'actividades' ");
-        // resEvalActividades = false
-        // return
+        alert("Complete el campo 'actividades' ");
+        resEvalActividades = false
+        return
 
       }
     });
@@ -518,9 +507,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       } else {
         // si hay campos vacios
         // deshabilitado puesto que quizá ya no sea necesario
-        // alert("Complete el campo 'peligro actividad' ");
-        // resEvalActividades = false
-        // return
+        alert("Complete el campo 'peligro actividad' ");
+        resEvalActividades = false
+        return
       }
     });
 
@@ -539,9 +528,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       } else {
         // si hay campos vacios
         // deshabilitado puesto que quizá ya no sea necesario
-        // alert("Complete el campo 'riesgo impacto'");
-        // resEvalActividades = false
-        // return
+        alert("Complete el campo 'riesgo impacto'");
+        resEvalActividades = false
+        return
       }
     });
 
@@ -564,9 +553,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       } else {
         // si hay campos vacios
         // deshabilitado puesto que quizá ya no sea necesario
-        // alert("Complete el campo 'recomendaciones' ");
-        // resEvalActividades = false
-        // return
+        alert("Complete el campo 'recomendaciones' ");
+        resEvalActividades = false
+        return
       }
     });
     /*datos introducidos desde la página FIN*/
@@ -582,8 +571,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     }
   };
 
-  
-
   //función para evaluar las casillas marcadas
   let evaluarCheckbox = () => {
     //se obtiene cada uno de los checkbox y se guardan dentro de una lista para luego ser evaluado
@@ -597,18 +584,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         document.getElementById("proc7"),
         document.getElementById("proc8")
     ]
-
-    //column 1 SI
-    //doc.text("x", 89.4,200.5)
-    //column1 NO
-    //doc.text("x", 100.4, 200.5)
-    //la diferencia entre las y es de 3.5
-    //para la primera columna la diferencia de las x es de 11
-    //Para la segunda columa la diferencia de las x es de 13
-    //column 2 SI
-    //doc.text("z", 170,207.5)
-    //column2 NO
-    //doc.text("o", 183, 207.5)
 
     //este contador se usa para calcular cuando se deberá realizar el salto de llenado de una columna a otra en el documento pdf
     let contador = 1;
