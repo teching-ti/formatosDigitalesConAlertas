@@ -381,8 +381,10 @@ async function loadImage(url) {
     doc.addImage("https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/RobertoLuisBailon.png", "PNG", 153, 268,  35, 5.8)
 
     if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarTodoVehiculo() && evaluarLLantas() && evaluarAccesorios() && evaluarTapas() && evaluarEpp() && evaluarPma()){
-        var blob = doc.output("blob");
-        window.open(URL.createObjectURL(blob));
+        /*var blob = doc.output("blob");
+        window.open(URL.createObjectURL(blob));*/
+        fechaActual.replace("/","_")
+        doc.save(`inspeccion_vehicular_${fechaActual}.pdf`)
     }else{
         //alert("Completar todos los campos")
     }

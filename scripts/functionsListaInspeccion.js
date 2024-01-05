@@ -216,7 +216,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       doc.text("Bernabe Oscco León", 380, 70);
 
       //tecnico responsable
-      doc.text(responsable1, 215, 876.5)
+      doc.text(responsable1, 250, 876.5, {align: "center"})
       doc.addImage(responsableFirma, "PNG", 217, 850, 80, 20);
 
       
@@ -617,8 +617,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   });
 
   if (evaluarEmpresa() && evaluarDatosPrincipales() && evaluarNombreCargo()) {
-    var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob));
+    /*var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob));*/
+    dia.replace("/","_")
+    doc.save(`lista_inspeccion_${dia}.pdf`)
   } else {
     alert("Complete los campos solicitados para generar el documento");
   }

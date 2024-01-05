@@ -1,12 +1,11 @@
 //1. Manipulación de estructura
 
 /*colocar fecha start*/
-function cargarFecha(){
+
     let inputFecha = document.getElementById("fecha")
-    let dia = new Date
-    inputFecha.value = dia.toLocaleDateString()
-}
-cargarFecha()
+    let dia = new Date().toLocaleDateString()
+    inputFecha.value = dia
+
 /*colocar fecha end*/
 
 /*Sección de los radio button y preguntas*/
@@ -365,15 +364,31 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let evaluarExpositor = ()=>{
         let expFirma = document.getElementById("expositor-firma").value
         let expNombre = document.getElementById("expositor-nombre").value
+        let supFirma = "../recursos/firmas/RobertoLuisBailon.png"
+        let supNombre = "Roberto Carlos Luis Bailon"
 
-        doc.addImage(expFirma, "PNG", 39, 275, 54, 11)
+        doc.addImage(expFirma, "PNG", 42, 278, 48, 8)
         doc.text(expNombre, 112, 283)
+        
+        //Insertar datos del supervisor
+        doc.setFontSize(11)
+        doc.text("Firma del Supervisor: ", 12, 266)
+        doc.addImage(supFirma, "PNG", 43, 261, 48, 8)
+        doc.text("Nombre del Supervisor: ", 90, 266)
+        doc.setFontSize(9)
+        doc.text(supNombre, 134 , 266)
+        
+
+
+        //Colocando Nombre y firma del Supervisor
         return true
     }
 
     if(evaluarDatosPrincipales() && evaluarEmpresa() && evaluarMarcadoOpciones() && evaluarNombres() && evaluarExpositor()){
-        var blob = doc.output("blob");
-        window.open(URL.createObjectURL(blob))
+        /*var blob = doc.output("blob");
+        window.open(URL.createObjectURL(blob))*/
+        dia.replace("/","_")
+        doc.save(`charla_05_minutos_${dia}.pdf`)
     }else{
         alert("Complete todos los campos")
     }

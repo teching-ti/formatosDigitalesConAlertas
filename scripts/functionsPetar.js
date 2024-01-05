@@ -1,6 +1,6 @@
 let fecha = document.getElementById("fecha")
-let fechaActual = new Date()
-fecha.value = fechaActual.toLocaleDateString()
+let fechaActual = new Date().toLocaleDateString()
+fecha.value = fechaActual
 
 //obtener los datos del archivo
 //uso de una petición fetch
@@ -154,13 +154,13 @@ async function loadImage(url) {
     e.preventDefault()
     //doc, objeto}
     //dimensiones del documento pdf
-    var doc = new jsPDF("p", "mm", [666, 943]);
+    var doc = new jsPDF();
     //imagen del documento vacía
-    const image = await loadImage("../recursos/formatoPetar.png");
+    const image = await loadImage("../recursos/formatoPetar.jpg");
     //colocar la imagen
     //colocar imagen desde una posicion en especifico, con las dimensiones especificas
-    doc.addImage(image, "PNG", 0, 0, 666, 943);
-    doc.setFontSize(16.5) //es el tamaño por defecto
+    doc.addImage(image, "JPG", 0, 0, 210, 297);
+    doc.setFontSize(6.5) //es el tamaño por defecto
 
     function evaluarDatosGenerales(){
         let evalDatosGenerales = true
@@ -172,7 +172,7 @@ async function loadImage(url) {
         let hFInal = document.getElementById("h-final").value
 
         if(area!=""){
-            doc.text(area, 124, 103)
+            doc.text(area, 24.5, 25.5)
         }else{
             alert("Complete el campo de area")  
             evalDatosGenerales = false
@@ -180,7 +180,7 @@ async function loadImage(url) {
         }
 
         if(lugar!=""){
-            doc.text(lugar, 124, 113)
+            doc.text(lugar, 24.5, 29)
         }else{
             alert("Complete el campo de lugar")  
             evalDatosGenerales = false
@@ -188,7 +188,7 @@ async function loadImage(url) {
         }
 
         if(fecha.value!=""){
-            doc.text(fecha.value, 124, 123)
+            doc.text(fecha.value, 24.5, 32.5)
         }else{
             alert("Complete el campo de lugar")  
             evalDatosGenerales = false
@@ -196,7 +196,7 @@ async function loadImage(url) {
         }
 
         if(empresa!=""){
-            doc.text(empresa, 487, 103)
+            doc.text(empresa, 163, 25.5)
         }else{
             alert("Complete el campo de empresa")  
             evalDatosGenerales = false
@@ -204,7 +204,7 @@ async function loadImage(url) {
         }
 
         if(hInicio!=""){
-            doc.text(hInicio, 487, 113)
+            doc.text(hInicio, 163, 29)
         }else{
             alert("Complete la hora de inicio")  
             evalDatosGenerales = false
@@ -212,7 +212,7 @@ async function loadImage(url) {
         }
 
         if(hFInal!=""){
-            doc.text(hFInal, 487, 123)
+            doc.text(hFInal, 163, 32.5)
         }else{
             alert("Complete la hora de salida")  
             evalDatosGenerales = false
@@ -229,7 +229,7 @@ async function loadImage(url) {
     function evaluarMantenimientoElectrico(){
         let elementosMantenimientoElectrico = document.querySelectorAll(".elemento-mantenimiento-electrico")
 
-        meY = 225.5
+        meY = 67
         //opciones
         elementosMantenimientoElectrico.forEach(e=>{
             inputsEvaluar = e.querySelectorAll("input")
@@ -237,101 +237,103 @@ async function loadImage(url) {
             inputsEvaluar.forEach(ie=>{
                 if(ie.checked){
                     if(ie.value=="SI"){
-                        doc.text("X", 432, meY)
+                        doc.text("X", 142.5, meY)
                     }else{
-                        doc.text("X", 464.5, meY)
+                        doc.text("X", 155.5, meY)
                     }
-                    meY+=14.2
+                    meY+=4.8
                 }
                 
             })
         })
 
 
-        meObsY = 219.5  
-        doc.setFontSize(13)
+        meObsY = 65
+        doc.setFontSize(4.5)
         elementosMantenimientoElectrico.forEach(o=>{
             textArea = o.querySelectorAll("textarea")
 
             textArea.forEach(t=>{
-                doc.text(t.value, 486, meObsY, {
-                    maxWidth: 90,
-                    lineHeightFactor: 0.9
+                doc.text(t.value, 163, meObsY, {
+                    maxWidth: 32,
+                    lineHeightFactor: 0.8
                 })
-                meObsY+=14.4
+                meObsY+=4.8
             })
         })
 
         return true
     }
-
+    
     function evaluarTrabajoAltura(){
+        doc.setFontSize(6.5)
         let elementosTrabajoAltura = document.querySelectorAll(".elemento-trabajo-altura")
 
-        taY = 335.
+        taY = 104
         elementosTrabajoAltura.forEach(e=>{
             inputsEvaluar = e.querySelectorAll("input")
 
             inputsEvaluar.forEach(ie=>{
                 if(ie.checked){
                     if(ie.value=="SI"){
-                        doc.text("X", 432, taY)
+                        doc.text("X", 142.5, taY)
                     }else{
-                        doc.text("X", 464.5, taY)
+                        doc.text("X", 155.5, taY)
                     }
-                    taY+=14.2
+                    taY+=4.8
                 }
                 
             })
         })
 
-        taObsY = 330.5
-        doc.setFontSize(13)
+        taObsY = 102
+        doc.setFontSize(4.5)
         elementosTrabajoAltura.forEach(o=>{
             textArea = o.querySelectorAll("textarea")
 
             textArea.forEach(t=>{
-                doc.text(t.value, 486, taObsY, {
-                    maxWidth: 90,
-                    lineHeightFactor: 0.9
+                doc.text(t.value, 163, taObsY, {
+                    maxWidth: 32,
+                    lineHeightFactor: 0.8
                 })
-                taObsY+=14.2
+                taObsY+=4.8
             })
         })
         return true
     }
 
     function evaluarEspaciosConfinados(){
+        doc.setFontSize(6.5)
         let elementosEspaciosConfinados = document.querySelectorAll(".elemento-espacios-confinados")
 
-        ecY = 446
+        ecY = 141
         elementosEspaciosConfinados.forEach(e=>{
             inputsEvaluar = e.querySelectorAll("input")
 
             inputsEvaluar.forEach(ie=>{
                 if(ie.checked){
                     if(ie.value=="SI"){
-                        doc.text("X", 432, ecY)
+                        doc.text("X", 142.5, ecY)
                     }else{
-                        doc.text("X", 464.5, ecY)
+                        doc.text("X", 155.5, ecY)
                     }
-                    ecY+=14.2
+                    ecY+=4.8
                 }
                 
             })
         })
 
-        ecObsY = 441.5
-        doc.setFontSize(13)
+        ecObsY = 139
+        doc.setFontSize(4.5)
         elementosEspaciosConfinados.forEach(o=>{
             textArea = o.querySelectorAll("textarea")
 
             textArea.forEach(t=>{
-                doc.text(t.value, 486, ecObsY, {
-                    maxWidth: 90,
-                    lineHeightFactor: 0.9
+                doc.text(t.value, 163, ecObsY, {
+                    maxWidth: 32,
+                    lineHeightFactor: 0.8
                 })
-                ecObsY+=14.2
+                ecObsY+=4.8
             })
         })
         return true
@@ -339,10 +341,10 @@ async function loadImage(url) {
 
     function evaluarDescripcionTarea(){
         let descripcionTarea = document.getElementById("descripcion-tarea").value
-        doc.setFontSize(14)
-        doc.text(descripcionTarea, 105, 528, {
-            maxWidth: 465,
-            lineHeightFactor: 2.2
+        doc.setFontSize(6.5)
+        doc.text(descripcionTarea, 21, 167.5, {
+            maxWidth: 180,
+            lineHeightFactor: 1.6
         })
 
         return true
@@ -351,61 +353,61 @@ async function loadImage(url) {
     
 
     function evaluarPersonal(){
-        doc.setFontSize(16.5)
+        doc.setFontSize(5)
         let evalPersonal = true
-        let pY = 586
+        let pY = 187
 
         let cargos = document.querySelectorAll(".ocupacion")
         cargos.forEach(c=>{
             if(c.value!=""){
-                doc.text(c.value, 108, pY)
+                doc.text(c.value, 20.2, pY)
             }else{
                 evalPersonal=false
-                alert("Seleccione un responsable en 'Personal Involucrado en la Tarea'")
+                //alert("Seleccione un responsable en 'Personal Involucrado en la Tarea'")
                 return
             }
-            pY+=10
+            pY+=3.3
         })
 
-        pY = 586
+        pY = 187
         let participantes = document.querySelectorAll(".nombre-participante")
         participantes.forEach(p=>{
             if(p.value!="Seleccionar" && p.value!=""){
-                doc.text(p.value, 240, pY)
+                doc.text(p.value, 72, pY)
             }else{
                 evalPersonal=false
                 alert("Seleccione un responsable en 'Personal Involucrado en la Tarea'")
                 return
             }
-            pY+=10
+            pY+=3.3
         })
 
         /*Probarlo con las firmas verdaderas*/
-        pY = 582
+        pY = 185
         let firmasInicio = document.querySelectorAll(".firma-inicio")
         firmasInicio.forEach(p=>{
             if(p.value!=""){
-                doc.addImage(p.value, 425, pY, 48, 5)
+                doc.addImage(p.value, 142, pY, 16.3, 2.1)
             }else{
                 evalPersonal=false
-                alert("Seleccione un responsable en 'Personal Involucrado en la Tarea'")
+                //alert("Seleccione un responsable en 'Personal Involucrado en la Tarea'")
                 return
             }
-            pY+=9.7
+            pY+=3.3
         })
         
         /*Probarlo con las firmas verdaderas*/
-        pY = 582
+        pY = 185
         let firmasSalida = document.querySelectorAll(".firma-salida")
         firmasSalida.forEach(p=>{
             if(p.value!=""){
-                doc.addImage(p.value, 510, pY, 48, 5)
+                doc.addImage(p.value, 172, pY, 16.3, 2.1)
             }else{
                 evalPersonal=false
-                alert("Seleccione un responsable en 'Personal Involucrado en la Tarea'")
+                //alert("Seleccione un responsable en 'Personal Involucrado en la Tarea'")
                 return
             }
-            pY+=9.7
+            pY+=3.3
         })
 
         if(evalPersonal){
@@ -418,50 +420,50 @@ async function loadImage(url) {
 
     function evaluarEquiposProteccion(){
         let column1 = document.querySelectorAll(".c1")
-        let cY = 669
+        let cY = 214.8
         column1.forEach(c=>{
             if(c.checked){
-                doc.text("X", 107.5, cY)
+                doc.text("X", 20, cY)
             }
-            cY+=8.3
+            cY+=2.8
         })
 
         let column2 = document.querySelectorAll(".c2")
-        cY = 669
+        cY = 214.8
         column2.forEach(c=>{
             if(c.checked){
-                doc.text("X", 242.5, cY)
+                doc.text("X", 71.3,  cY)
             }
-            cY+=8.3
+            cY+=2.8
         })
 
         let column3 = document.querySelectorAll(".c3")
-        cY = 669
+        cY = 214.8
         column3.forEach(c=>{
             if(c.checked){
-                doc.text("X", 442, cY)
+                doc.text("X", 146.6, cY)
             }
-            cY+=8.3
+            cY+=2.8
         })
-        doc.setFontSize(14)
-        doc.text(document.getElementById("guantes-clase").value, 325, 684)
+        doc.setFontSize(5)
+        doc.text(document.getElementById("guantes-clase").value, 102, 220)
 
         let otros = document.getElementById("otros").value
         if(otros!=""){
-            doc.text("X", 108.5, 731.2)
-            doc.text(otros, 165, 731.5)
+            doc.text("X", 20.5, 235.8)
+            doc.text(otros, 40, 235.5)
         }
-        doc.setFontSize(16.5)
+
         return true
     }
 
     function evaluarHerramientas(){
         let hEM = document.getElementById("hem").value
 
-        doc.setFontSize(14)
-        doc.text(hEM, 105, 754, {
-            maxWidth: 465,
-            lineHeightFactor: 2
+        doc.setFontSize(6.5)
+        doc.text(hEM, 21, 243.2, {
+            maxWidth: 180,
+            lineHeightFactor: 1.5
         })
 
         return true
@@ -470,10 +472,10 @@ async function loadImage(url) {
     function evaluarProcedimiento(){
         let proc = document.getElementById("procedimiento").value
 
-        doc.setFontSize(14)
-        doc.text(proc, 105, 796, {
-            maxWidth: 465,
-            lineHeightFactor: 2
+        doc.setFontSize(6.5)
+        doc.text(proc, 21, 256.8, {
+            maxWidth: 180,
+            lineHeightFactor: 1.5
         })
 
         return true
@@ -481,9 +483,9 @@ async function loadImage(url) {
 
     function evaluarAutorizacionSupervision(){
         let evalAuto = true
-        doc.setFontSize(16)
+        doc.setFontSize(6.5)
         let supervisor = document.getElementById("supervisor-responsable").value
-        doc.text(supervisor, 360, 855,{
+        doc.text(supervisor, 115, 278,{
             align: "center"
         })
         let responsable = document.getElementById("responsable").value
@@ -492,21 +494,21 @@ async function loadImage(url) {
             evalAuto = false
             return
         }else{
-            doc.text(responsable, 360, 874,{
+            doc.text(responsable, 115, 284,{
                 align: "center"
             })
         }
         
         let prevencionista = document.getElementById("prevencionista").value
-        doc.text(prevencionista, 360, 893,{
+        doc.text(prevencionista, 115, 290,{
             align: "center"
         })
 
         let firmas = document.querySelectorAll(".a-s-firma")
-        let fY = 843
+        let fY = 274
         firmas.forEach(f=>{
-            doc.addImage(f.value, "PNG", 502, fY)
-            fY+=19
+            doc.addImage(f.value, "PNG", 172, fY, 20, 4)
+            fY+=6
         })
 
         if(evalAuto){
@@ -518,9 +520,11 @@ async function loadImage(url) {
         
     }
     
-    if(evaluarDatosGenerales() && evaluarMantenimientoElectrico() && evaluarTrabajoAltura() && evaluarEspaciosConfinados() && evaluarDescripcionTarea() && evaluarPersonal() && evaluarEquiposProteccion() && evaluarHerramientas() && evaluarProcedimiento() &&  evaluarAutorizacionSupervision()){
-        var blob = doc.output("blob");
-        window.open(URL.createObjectURL(blob));
+    if(evaluarDatosGenerales() && evaluarMantenimientoElectrico() && evaluarTrabajoAltura() && evaluarEspaciosConfinados() && evaluarDescripcionTarea() && evaluarPersonal() && evaluarEquiposProteccion() && evaluarHerramientas() && evaluarProcedimiento() && evaluarAutorizacionSupervision()){
+        /*var blob = doc.output("blob");
+        window.open(URL.createObjectURL(blob));*/
+                fechaActual.replace("/", "_")
+        doc.save(`PETAR_${fechaActual}.pdf`)
     }
 
   })

@@ -262,7 +262,7 @@ select{
     display: none;
 }
 
-#responsable, #prevencionista{
+#supervisor-responsable, #responsable, #prevencionista{
     width: 50%;
 }
 

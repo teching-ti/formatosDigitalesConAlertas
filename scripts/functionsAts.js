@@ -1,12 +1,11 @@
 //1. Manipulación de estructura
 
 /*colocar fecha en base al reloj del sistema, dentro de la casilla 'fecha'*/
-function cargarFecha() {
+
   let inputFecha = document.getElementById("fecha");
   let dia = new Date().toLocaleDateString();
   inputFecha.value = dia;
-}
-cargarFecha();
+
 /*colocar fecha end*/
 
 /*--- AÑADIR ACTIVIDADES START ---*/
@@ -310,9 +309,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   //doc, objeto
   var doc = new jsPDF();
   //imagen del documento vacía
-  const image = await loadImage("../recursos/formatoAts4.png");
+  const image = await loadImage("../recursos/formatoAts.jpg");
   //colocar la imagen
-  doc.addImage(image, "PNG", 0, 0, 200, 300);
+  doc.addImage(image, "JPG", 0, 0, 210, 297);
 
   //funcion para obtener y colocar datos de la parte superior
   let evaluarDatosPrincipales = () => {
@@ -324,9 +323,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let responableTrabajoFirma = document.getElementById("responsable-firma").value
 
     if (trabajo != "" && lugar != "" && responsable1 != "") {
-      doc.text(trabajo, 58, 32.5);
-      doc.text(lugar, 58, 36.8);
-      doc.text(fecha, 58, 41);
+      doc.text(trabajo, 59, 32.5);
+      doc.text(lugar, 59, 36.8);
+      doc.text(fecha, 59, 41);
       doc.setFontSize(8);
       doc.text(responsable1, 143, 41);
       //para que aparezca el nombre y la firma
@@ -335,9 +334,18 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
        para así también autocompletar su firma
       */
       //texto posicionado para el final de la hoja y firma respectiva
-      doc.text(responsableTrabajo, 59, 286)
+      doc.text(responsableTrabajo, 60, 282.5)
       //se puede cargar directaente la dirección de la imagen desde el json
-      doc.addImage(responableTrabajoFirma, "PNG", 164, 282.5, 24, 4.2)
+      doc.addImage(responableTrabajoFirma, "PNG", 169, 279.5, 24, 4.2)
+
+      //Se procede a insertar el nombre y la firma del supervisor
+      let nombreSupervisor = "Roberto Carlos Luis Bailon"
+      let firmaSupervisor = "../recursos/firmas/RobertoLuisBailon.png"
+      doc.text("Nombre del Supervisor: ",12, 292)
+      doc.text(nombreSupervisor, 52, 291.5)
+      doc.text("Firma del Supervisor: ", 128, 292)
+      doc.addImage(firmaSupervisor, "PNG", 159, 288.5, 24, 4.2)
+
       return true;
     } else {
       alert("Complete todos los campos de la parte superior del formulario");
@@ -359,15 +367,15 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         alert("Complete la sección de Empresa");
         return false;
       case "TECHING":
-        doc.text("x", 34, 28);
+        doc.text("x", 36, 28);
         break;
       case "CONTRATISTA1":
-        doc.text("x", 81.3, 28);
-        doc.text(empresa.value, 94, 28.3);
+        doc.text("x", 85.3, 28);
+        doc.text(empresa.value, 95, 28.5);
         break;
       case "CONTRATISTA2":
-        doc.text("x", 81.3, 28);
-        doc.text(empresa.value, 94, 28.3);
+        doc.text("x", 85.3, 28);
+        doc.text(empresa.value, 95, 28.5);
         break;
     }
     return true;
@@ -383,8 +391,8 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   ]
 
   let actDefinidasX = 11.5
-  let actDefinidasY = 55.3
-  let actDefinidasYafJ = 103.5
+  let actDefinidasY = 55.2
+  let actDefinidasYafJ = 102
   let j = 0
   doc.setFontSize(7)
   for(let i = 0; i<4; i++){
@@ -395,15 +403,15 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       if(i==0){
         if(j<7){
           doc.text(d, actDefinidasX, actDefinidasY)
-          actDefinidasY+=6.3
+          actDefinidasY+=6.2
         }else{
           doc.text(d, actDefinidasX, actDefinidasYafJ)
-          actDefinidasYafJ+=6.3
+          actDefinidasYafJ+=6.2
         }
         j+=1
 
       }else if(i==1){
-        actDefinidasX = 46.5
+        actDefinidasX = 48.8
         if(j<7){
           doc.text(d, actDefinidasX, actDefinidasY, {
           maxWidth: 40,
@@ -414,13 +422,13 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             maxWidth: 40,
             lineHeightFactor: 0.9
           })
-          actDefinidasYafJ+=6.3
+          actDefinidasYafJ+=6.2
         }
-        actDefinidasY+=6.3
+        actDefinidasY+=6.2
         j+=1
 
       }else if(i==2){
-        actDefinidasX = 95
+        actDefinidasX = 100
         if(j<7){
         doc.text(d, actDefinidasX, actDefinidasY,{
           maxWidth: 32,
@@ -433,11 +441,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
           })
           actDefinidasYafJ+=6.3
         }
-        actDefinidasY+=6.3
+        actDefinidasY+=6.2
         j+=1
       }else if(i==3){
         doc.setFontSize(5.7)
-        actDefinidasX = 131.5
+        actDefinidasX = 138
         if(j<7){
         doc.text(d, actDefinidasX, actDefinidasY,{
           maxWidth: 58,
@@ -448,14 +456,14 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
           maxWidth: 58,
           lineHeightFactor: 0.9
         })
-        actDefinidasYafJ+=6.2
+        actDefinidasYafJ+=6.1
       }
-        actDefinidasY+=6.2
+        actDefinidasY+=6.1
         j+=1
       }
     })
-    actDefinidasYafJ = 103.
-    actDefinidasY = 55.3
+    actDefinidasYafJ = 102
+    actDefinidasY = 55.2
   }
 
   //funcion que se usa para colocar las actividades
@@ -464,13 +472,13 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   
     /*datos introducidos desde la página INICIO*/
     XnombreActividad = 11.5;
-    YnombreActividad = 153.3;
-    XpeligroActividad = 46.5;
-    YpeligroActividad = 153.3;
-    XriesgoActividad = 95;
-    YriesgoActividad = 153.3;
-    XrecomendacionActividad = 131.5;
-    YrecomendacionActividad = 153;
+    YnombreActividad = 151.5;
+    XpeligroActividad = 48.4;
+    YpeligroActividad = 151.5;
+    XriesgoActividad = 99.6;
+    YriesgoActividad = 151.5;
+    XrecomendacionActividad = 138;
+    YrecomendacionActividad = 151;
     //nombre de las actividades introducidas desde la página
     nombresActs = document.querySelectorAll(".actividad-nombre");
 
@@ -588,26 +596,26 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     //este contador se usa para calcular cuando se deberá realizar el salto de llenado de una columna a otra en el documento pdf
     let contador = 1;
     //posición y de cada una de las columnas
-    let colum1Y = 204.2;
-    let colum2Y = 204;
+    let colum1Y = 202.5;
+    let colum2Y = 202.4;
     //se toma cada elemento de la lista para ser evaluado y en base a si se encuentra marcado o no, se posiciona el marcado
     //dentro del documento pdf
     doc.setFontSize(9)
     listaCheckbox.forEach((el) => {
       if (contador <= 4) {
         if (el.checked) {
-          doc.text("x", 89.4, colum1Y);
+          doc.text("x", 94.2, colum1Y);
           colum1Y += 3.5;
         } else {
-          doc.text("x", 97.4, colum1Y);
+          doc.text("x", 102.5, colum1Y);
           colum1Y += 3.5;
         }
       } else if (contador >= 4) {
         if (el.checked) {
-          doc.text("x", 170, colum2Y);
+          doc.text("x", 178, colum2Y);
           colum2Y += 3.5;
         } else {
-          doc.text("x", 183, colum2Y);
+          doc.text("x", 192, colum2Y);
           colum2Y += 3.5;
         }
       }
@@ -621,8 +629,8 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     doc.setFontSize(9);
     let clincaNombre = document.getElementById("clinica-nombre").value;
     let clinicaDireccion = document.getElementById("clinica-direccion").value;
-    doc.text(clincaNombre, 44.5, 229);
-    doc.text(clinicaDireccion, 29.5, 232.8);
+    doc.text(clincaNombre, 46, 226.5);
+    doc.text(clinicaDireccion, 31, 230);
     return true;
   };
 
@@ -634,12 +642,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let resEvalPersonas = true
 
     //Colocar nombres
-    let nombreY = 243;
+    let nombreY = 241;
     let nombresPersonas = document.querySelectorAll(".participante-nombre");
     nombresPersonas.forEach((persona) => {
       if (persona.value != "" && persona.value != "Seleccionar") {
         doc.setFontSize(9);
-        doc.text(persona.value, 27, nombreY);
+        doc.text(persona.value, 27.5, nombreY);
         nombreY += 5.2;
       } else {
         alert("Complete el nombre del participante");
@@ -649,11 +657,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     });
 
     //ColocarDNI
-    let dniY = 243;
+    let dniY = 241;
     let dniPersonas = document.querySelectorAll(".participante-dni");
     dniPersonas.forEach((dniPersona) => {
       if (dniPersona.value != "") {
-        doc.text(dniPersona.value, 110, dniY);
+        doc.text(dniPersona.value, 114, dniY);
         dniY += 5.2;
       } else {
         alert("Campo DNI vacío");
@@ -663,12 +671,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     });
 
     //ColocarFirma
-    let firmaY = 240;
+    let firmaY = 237.8;
     let firmasPersonas = document.querySelectorAll(".participante-firma");
     firmasPersonas.forEach((firmaPersona) => {
       if (firmaPersona.value != "") {
         //console.log(firmaPersona.value)
-        doc.addImage(firmaPersona.value, "PNG", 144.6, firmaY, 18.5, 4.5);
+        doc.addImage(firmaPersona.value, "PNG", 152, firmaY, 18.5, 4.5);
         firmaY += 5.3;
       } else {
         alert("Campo firma se encuentra vacío");
@@ -677,17 +685,17 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       }
     });
     //ColocarHoraIngreso
-    let horaIngresoY = 243;
+    let horaIngresoY = 242;
     let horaIngresos = document.querySelectorAll(".h-ingreso");
     horaIngresos.forEach((horaIngreso) => {
-      doc.text(horaIngreso.value, 166, horaIngresoY);
+      doc.text(horaIngreso.value, 174.8, horaIngresoY);
       horaIngresoY += 5.2;
     });
     //ColocarHoraSalida
-    let horaSalidaY = 243;
+    let horaSalidaY = 242;
     let horasSalida = document.querySelectorAll(".h-salida");
     horasSalida.forEach((horaSalida) => {
-      doc.text(horaSalida.value, 180, horaSalidaY);
+      doc.text(horaSalida.value, 188.5, horaSalidaY);
       horaSalidaY += 5.2;
     });
 
@@ -703,7 +711,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let observaciones = document.getElementById("input-observaciones").value;
     if (observaciones != "") {
       doc.setFontSize(9);
-      doc.text(observaciones, 12, 277.8, {
+      doc.text(observaciones, 12, 274.5, {
         maxWidth: 185,
         lineHeightFactor: 0.8,
       });
@@ -716,18 +724,19 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   //introduciendo datos
   doc.setFontSize(10);
   //validar que todas las funciones den true, sino, parecerá el alert y solo eso
-  if (
-    evaluarEmpresa() &&
-    evaluarDatosPrincipales() &&
+  if (/*
+    evaluarEmpresa() &&*/
+    evaluarDatosPrincipales() /*&&
     reconocerActividades() &&
     evaluarCheckbox() &&
     evaluarClinica() &&
     evaluarPersonas() &&
-    evaluarObservaciones()
+    evaluarObservaciones()*/
   ) {
      var blob = doc.output("blob");
      window.open(URL.createObjectURL(blob));
-    //doc.save(analisis_trabajo_seguro.pdf)
+     /*dia.replace("/","_")
+    doc.save(`analisis_trabajo_seguro_${dia}.pdf`)*/
   } else {
     alert("Asegúrse de competar todos los campos para generar el documento");
   }

@@ -395,9 +395,9 @@ function agregarContenedorPersona() {
 
   //creación de input
   let participanteCargo = document.createElement("input");
-  participanteDNI.classList.add("cargo");
-  participanteDNI.readOnly = true
-  participanteDNI.placeholder = "Cargo.";
+  participanteCargo.classList.add("cargo");
+  participanteCargo.readOnly = true
+  participanteCargo.placeholder = "Cargo.";
   //creación de input
   let participanteFirma = document.createElement("input");
   participanteFirma.classList.add("firma");
@@ -444,6 +444,7 @@ function agregarContenedorPersona() {
   datosParticipante.append(
     nombreParticipante,
     participanteDNI,
+    participanteCargo,
     participanteFirma,
     contEntrada,
     contSalida,
@@ -515,8 +516,8 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       doc.text(contacto, 118, 92)
       doc.text(telefono, 118, 105)
       doc.setFontSize(14)
-      doc.text(direccion, 405, 92)
-      doc.text(referencia, 405, 105)
+      doc.text(direccion, 403, 92)
+      doc.text(referencia, 403, 105)
       doc.setFontSize(16.5)
       doc.text(ceco, 575, 105)
       return true
@@ -881,8 +882,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
    }
 
    if(evaluarDatosGenerales() && evaluarSolicitudAutorizacion() && evaluarTareasAdicionalesTiempos() && evaluarEquiposAdicionales() && evaluarHerrammientasAdicionales() &&  evaluarObservacioProyecto() && evaluarTrabajadores()){
-    var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob));
+    /*var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob));*/
+    dia.replace("/","_")
+    doc.save(`orden_de_trabajo_${dia}.pdf`)
    }else{
     alert("Complete todos los campos")
    }

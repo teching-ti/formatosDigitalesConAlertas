@@ -108,6 +108,10 @@ input{
     width: 45%;
 }
 
+.section-actividades{
+    margin: 1rem 0;
+}
+
 .sup-actividades{
     display: flex;
     gap: 1rem;
