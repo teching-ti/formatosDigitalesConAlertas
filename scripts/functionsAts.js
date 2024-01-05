@@ -724,14 +724,14 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   //introduciendo datos
   doc.setFontSize(10);
   //validar que todas las funciones den true, sino, parecerá el alert y solo eso
-  if (/*
-    evaluarEmpresa() &&*/
-    evaluarDatosPrincipales() /*&&
+  if (
+    evaluarEmpresa() &&
+    evaluarDatosPrincipales() &&
     reconocerActividades() &&
     evaluarCheckbox() &&
     evaluarClinica() &&
     evaluarPersonas() &&
-    evaluarObservaciones()*/
+    evaluarObservaciones()
   ) {
      var blob = doc.output("blob");
      window.open(URL.createObjectURL(blob));
