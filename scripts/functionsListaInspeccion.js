@@ -161,18 +161,17 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   e.preventDefault();
   //doc, objeto}
   //dimensiones del documento pdf
-  var doc = new jsPDF("p", "mm", [666, 943]);
+  var doc = new jsPDF();
   //imagen del documento vacía
-  const image = await loadImage("../recursos/formatoListaInspeccion.png");
+  const image = await loadImage("../recursos/formatoListaInspeccion.jpg");
   //colocar la imagen
   //colocar imagen desde una posicion en especifico, con las dimensiones especificas
-  doc.addImage(image, "PNG", 0, 0, 666, 943);
-
-  doc.setFontSize(15);
+  doc.addImage(image, "JPG", 0, 0, 210, 297);
 
   //funcion para obtener y evaluar datos de la empresa
   let evaluarEmpresa = () => {
     /*Seleccionar empresa start*/
+    doc.setFontSize(5)
     let empresa = document.getElementById("empresa");
     /*Seleccionar empresa end*/
 
@@ -185,15 +184,15 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         alert("Complete la sección de Empresa");
         return false;
       case "TECHING":
-        doc.text("X", 74.5, 45);
+        doc.text("X", 23.5, 14.3);
         break;
       case "CONTRATISTA1":
-        doc.text("X", 184.5, 45.4);
-        doc.text(empresa.value, 225, 45);
+        doc.text("X", 58.3, 14.3);
+        doc.text(empresa.value, 71, 14.8);
         break;
       case "CONTRATISTA2":
-        doc.text("X", 184.5, 45.4);
-        doc.text(empresa.value, 225, 45);
+        doc.text("X", 58.3, 14.3);
+        doc.text(empresa.value, 71, 14.8);
         break;
     }
     return true;
@@ -209,15 +208,15 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let responsableFirma = document.getElementById("firma-responsable").value;
 
     if (trabajo != "" && lugar != "" && responsable1 != "") {
-      doc.text(trabajo, 150, 55);
-      doc.text(lugar, 95, 65);
-      doc.text(fecha, 95, 75);
-      doc.text(hora, 200, 75);
-      doc.text("Bernabe Oscco León", 380, 70);
+      doc.text(trabajo, 48, 18);
+      doc.text(lugar, 30, 21);
+      doc.text(fecha, 30, 24);
+      doc.text(hora, 62, 24);
+      doc.text("Bernabe Oscco León", 120, 23);
 
       //tecnico responsable
-      doc.text(responsable1, 250, 876.5, {align: "center"})
-      doc.addImage(responsableFirma, "PNG", 217, 850, 80, 20);
+      doc.text(responsable1, 79.5, 276, {align: "center"})
+      doc.addImage(responsableFirma, "PNG", 67.5, 267.5, 24, 6);
 
       
       /*nombre supervisor*/
@@ -228,9 +227,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //y con ello también su firma, similar a como se hace con el resto, pero una única vez
       let supervisorNombre = "Roberto Carlos Luis Bailon"
       let supervisorFirma = "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/RobertoLuisBailon.png"
-      doc.text(supervisorNombre, 445, 876.5);
+      doc.text(supervisorNombre, 150, 276, {align: "center"});
       //modificar por la firma de roberto carlos luis bailon
-      doc.addImage(supervisorFirma, "PNG", 440, 850, 80, 20);
+      doc.addImage(supervisorFirma, "PNG", 138, 267.5, 24, 6);
       //para que aparezca el nombre y la firma
 
       return true;
@@ -254,20 +253,19 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let nombres = document.querySelectorAll(".trabajador-nombre");
     let firmas = document.querySelectorAll(".trabajador-firma");
     let dnis = document.querySelectorAll(".trabajador-dni");
-    doc.setFontSize(13);
+    doc.setFontSize(4.5);
 
     //colocar cargos
     //altura de 90 es buena para los cargos
-    //X DE 222 también es buena
-    let cargosX = 280;
+    let cargosX = 88;
     let contador = 0;
     cargos.forEach((cargo) => {
       if (cargo.value != "") {
         if (contador != 0) {
-          doc.text(cargo.value, cargosX, 88);
-          cargosX += 60;
+          doc.text(cargo.value, cargosX, 28);
+          cargosX += 19;
         } else {
-          doc.text(cargo.value, 237, 88);
+          doc.text(cargo.value, 74.5, 28);
           contador = 1;
         }
         return true;
@@ -279,21 +277,21 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     });
 
     //colocar nombres
-    let nombresX1 = 280;
+    let nombresX1 = 88;
     let contadorn = 0;
     nombres.forEach((nombre) => {
       if (nombre.value != "") {
         if (contadorn != 0) {
-          doc.text(nombre.value, nombresX1, 95, {
+          doc.text(nombre.value, nombresX1, 31, {
             align: "center",
-            maxWidth: 30,
+            maxWidth: 15,
             lineHeightFactor: 0.8,
           });
-          nombresX1 += 60;
+          nombresX1 += 19;
         } else {
-          doc.text(nombre.value, 237.5, 95, {
+          doc.text(nombre.value, 74.5, 31, {
             align: "center",
-            maxWidth: 20,
+            maxWidth: 15,
             lineHeightFactor: 0.8,
           });
           contadorn = 1;
@@ -308,7 +306,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     //colocarFirmas
     let firmasX = 150;
     firmas.forEach((firma) => {
-      doc.addImage(firma.value, "PNG", firmasX, 805, 60, 15);
+      doc.addImage(firma.value, "PNG", firmasX, 805, 24, 6);
       firmasX += 100;
     });
 
@@ -343,11 +341,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   let accesorios = document.querySelectorAll(".contenedor-accesorios");
 
   /*revisión de los select*/
-  doc.setFontSize(15);
+  doc.setFontSize(5);
   //EPP
   //posicionamiento inicial
-  positionSelectX = 206;
-  positionSelectY = 125.8;
+  positionSelectX = 65;
+  positionSelectY = 39.4;
   epp.forEach((e) => {
     //se crea un array que contenga a todos los inputs
     //que se encontraban dentro de ese contenedor
@@ -359,19 +357,19 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //se obtendrá su valor y se colocará en el documento
       doc.text(se.value, positionSelectX, positionSelectY);
       //la posicion y aumenta para completar el resto de elementos
-      positionSelectY += 10.3;
+      positionSelectY += 3.25;
       //}
     });
     //al terminar con el primer contenedor se corre el sitio de impresion en 60
     //y vuelve el punto y a su lugar de inicio
-    positionSelectX += 60;
-    positionSelectY = 125.8;
+    positionSelectX += 18.8;
+    positionSelectY = 39.4;
   });
 
   //HERRAMIENTAS
   //posicionamiento inicial
-  positionSelectX = 206;
-  positionSelectY = 341;
+  positionSelectX = 65;
+  positionSelectY = 107.8;
   herramientas.forEach((e) => {
     //se crea un array que contenga a todos los inputs
     //que se encontraban dentro de ese contenedor
@@ -383,19 +381,19 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //se obtendrá su valor y se colocará en el documento
       doc.text(se.value, positionSelectX, positionSelectY);
       //la posicion y aumenta para completar el resto de elementos
-      positionSelectY += 9.8;
+      positionSelectY += 3.08;
       //}
     });
     //al terminar con el primer contenedor se corre el sitio de impresion en 60
     //y vuelve el punto y a su lugar de inicio
-    positionSelectX += 60;
-    positionSelectY = 341;
+    positionSelectX += 18.8;
+    positionSelectY = 107.8;
   });
 
   //EQUIPOS
   //posicionamiento inicial
-  positionSelectX = 206;
-  positionSelectY = 587;
+  positionSelectX = 65;
+  positionSelectY = 185;
   equipos.forEach((e) => {
     //se crea un array que contenga a todos los inputs
     //que se encontraban dentro de ese contenedor
@@ -407,19 +405,19 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //se obtendrá su valor y se colocará en el documento
       doc.text(se.value, positionSelectX, positionSelectY);
       //la posicion y aumenta para completar el resto de elementos
-      positionSelectY += 9.8;
+      positionSelectY += 3.1;
       //}
     });
     //al terminar con el primer contenedor se corre el sitio de impresion en 60
     //y vuelve el punto y a su lugar de inicio
-    positionSelectX += 60;
-    positionSelectY = 587;
+    positionSelectX += 18.8;
+    positionSelectY = 185;
   });
 
   //SEÑALIZACION
   //posicionamiento inicial
-  positionSelectX = 206;
-  positionSelectY = 704;
+  positionSelectX = 65;
+  positionSelectY = 222;
   senializacion.forEach((e) => {
     //se crea un array que contenga a todos los inputs
     //que se encontraban dentro de ese contenedor
@@ -431,19 +429,19 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //se obtendrá su valor y se colocará en el documento
       doc.text(se.value, positionSelectX, positionSelectY);
       //la posicion y aumenta para completar el resto de elementos
-      positionSelectY += 9.8;
+      positionSelectY += 3.1;
       //}
     });
     //al terminar con el primer contenedor se corre el sitio de impresion en 60
     //y vuelve el punto y a su lugar de inicio
-    positionSelectX += 60;
-    positionSelectY = 704;
+    positionSelectX += 18.8;
+    positionSelectY = 222;
   });
 
   //DOCUMENTACION
   //posicionamiento inicial
-  positionSelectX = 206;
-  positionSelectY = 734;
+  positionSelectX = 65;
+  positionSelectY = 231;
   documentacion.forEach((e) => {
     //se crea un array que contenga a todos los inputs
     //que se encontraban dentro de ese contenedor
@@ -455,21 +453,21 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //se obtendrá su valor y se colocará en el documento
       doc.text(se.value, positionSelectX, positionSelectY);
       //la posicion y aumenta para completar el resto de elementos
-      positionSelectY += 9.8;
+      positionSelectY += 3.1;
       //}
     });
     //al terminar con el primer contenedor se corre el sitio de impresion en 60
     //y vuelve el punto y a su lugar de inicio
-    positionSelectX += 60;
-    positionSelectY = 734;
+    positionSelectX += 18.8;
+    positionSelectY = 231;
   });
 
   /*revisión de los inputs*/
 
   //EPP
   //posicionamiento inicial
-  positionX = 235;
-  positionY = 125.8;
+  positionX = 74.8;
+  positionY = 39.4;
   //recore todos los contenedores epp
   epp.forEach((e) => {
     //se crea un array que contenga a todos los inputs
@@ -480,21 +478,21 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //si el input ha sido marcado
       if (ie.checked) {
         //se obtendrá su valor y se colocará en el documento
-        doc.text(ie.value, positionX, positionY);
+        doc.text(ie.value, positionX, positionY, {align:"center"});
         //la posicion y aumenta para completar el resto de elementos
-        positionY += 10.3;
+        positionY += 3.28;
       }
     });
     //al terminar con el primer contenedor se corre el sitio de impresion en 60
     //y vuelve el punto y a su lugar de inicio
-    positionX += 60;
-    positionY = 125.8;
+    positionX += 18.7;
+    positionY = 39.4;
   });
 
   //HERRAMIENTAS
   //posicionamiento inicial
-  positionX = 235;
-  positionY = 341;
+  positionX = 74.8;
+  positionY = 107.8;
   //recore todos los contenedores epp
   herramientas.forEach((e) => {
     //se crea un array que contenga a todos los inputs
@@ -505,21 +503,21 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //si el input ha sido marcado
       if (ie.checked) {
         //se obtendrá su valor y se colocará en el documento
-        doc.text(ie.value, positionX, positionY);
+        doc.text(ie.value, positionX, positionY, {align: "center"});
         //la posicion y aumenta para completar el resto de elementos
-        positionY += 9.8;
+        positionY += 3.1;
       }
     });
     //al terminar con el primer contenedor se corre el sitio de impresion en 60
     //y vuelve el punto y a su lugar de inicio
-    positionX += 60;
-    positionY = 341;
+    positionX += 18.7;
+    positionY = 107.8;
   });
 
   //EQUIPOS
   //posicionamiento inicial
-  positionX = 235;
-  positionY = 587;
+  positionX = 74.8;
+  positionY = 185;
   //recore todos los contenedores epp
   equipos.forEach((e) => {
     //se crea un array que contenga a todos los inputs
@@ -530,21 +528,21 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //si el input ha sido marcado
       if (ie.checked) {
         //se obtendrá su valor y se colocará en el documento
-        doc.text(ie.value, positionX, positionY);
+        doc.text(ie.value, positionX, positionY, {align: "center"});
         //la posicion y aumenta para completar el resto de elementos
-        positionY += 9.8;
+        positionY += 3.1;
       }
     });
     //al terminar con el primer contenedor se corre el sitio de impresion en 60
     //y vuelve el punto y a su lugar de inicio
-    positionX += 60;
-    positionY = 587;
+    positionX += 18.7;
+    positionY = 185;
   });
 
   //SEÑALIZACION
   //posicionamiento inicial
-  positionX = 235;
-  positionY = 704;
+  positionX = 74.8;
+  positionY = 222;
   //recore todos los contenedores epp
   senializacion.forEach((e) => {
     //se crea un array que contenga a todos los inputs
@@ -555,21 +553,21 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //si el input ha sido marcado
       if (ie.checked) {
         //se obtendrá su valor y se colocará en el documento
-        doc.text(ie.value, positionX, positionY);
+        doc.text(ie.value, positionX, positionY, {align: "center"});
         //la posicion y aumenta para completar el resto de elementos
-        positionY += 9.8;
+        positionY += 3.1;
       }
     });
     //al terminar con el primer contenedor se corre el sitio de impresion en 60
     //y vuelve el punto y a su lugar de inicio
-    positionX += 60;
-    positionY = 704;
+    positionX += 18.7;
+    positionY = 222;
   });
 
   //DOCUMENTACIÓN
   //posicionamiento inicial
-  positionX = 235;
-  positionY = 734;
+  positionX = 74.8;
+  positionY = 231;
   //recore todos los contenedores epp
   documentacion.forEach((e) => {
     //se crea un array que contenga a todos los inputs
@@ -580,21 +578,21 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //si el input ha sido marcado
       if (ie.checked) {
         //se obtendrá su valor y se colocará en el documento
-        doc.text(ie.value, positionX, positionY);
+        doc.text(ie.value, positionX, positionY, {align:"center"});
         //la posicion y aumenta para completar el resto de elementos
-        positionY += 9.8;
+        positionY += 3.1;
       }
     });
     //al terminar con el primer contenedor se corre el sitio de impresion en 60
     //y vuelve el punto y a su lugar de inicio
-    positionX += 60;
-    positionY = 734;
+    positionX += 18.7;
+    positionY = 231;
   });
 
   //ACCESORIOS
   //posicionamiento inicial
-  positionX = 218;
-  positionY = 793;
+  positionX = 71;
+  positionY = 250;
   //recore todos los contenedores de accesorios
   accesorios.forEach((e) => {
     //se crea un array que contenga a todos los inputs
@@ -605,22 +603,22 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //si el input ha sido marcado
       if (ie.checked) {
         //se obtendrá su valor y se colocará en el documento
-        doc.text(ie.value, positionX, positionY);
+        doc.text(ie.value, positionX, positionY, {align: "center"});
         //la posicion y aumenta para completar el resto de elementos
-        //positionY+=9.8
+        //positionY+=3.1
       }
     });
     //al terminar con el primer contenedor se corre el sitio de impresion en 60
     //y vuelve el punto y a su lugar de inicio
-    positionX += 60;
-    //positionY = 734
+    positionX += 18.7;
+    //positionY = 250
   });
 
-  if (evaluarEmpresa() && evaluarDatosPrincipales() && evaluarNombreCargo()) {
-    /*var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob));*/
-    dia.replace("/","_")
-    doc.save(`lista_inspeccion_${dia}.pdf`)
+  if (/*evaluarEmpresa() && */ /*evaluarDatosPrincipales() && */evaluarNombreCargo()) {
+    var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob));
+    /*dia.replace("/","_")
+    doc.save(`lista_inspeccion_${dia}.pdf`)*/
   } else {
     alert("Complete los campos solicitados para generar el documento");
   }

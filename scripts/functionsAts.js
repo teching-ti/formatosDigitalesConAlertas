@@ -341,10 +341,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //Se procede a insertar el nombre y la firma del supervisor
       let nombreSupervisor = "Roberto Carlos Luis Bailon"
       let firmaSupervisor = "../recursos/firmas/RobertoLuisBailon.png"
-      doc.text("Nombre del Supervisor: ",12, 292)
-      doc.text(nombreSupervisor, 52, 291.5)
-      doc.text("Firma del Supervisor: ", 128, 292)
-      doc.addImage(firmaSupervisor, "PNG", 159, 288.5, 24, 4.2)
+      doc.text("Nombre del Supervisor: ",12, 290)
+      doc.text(nombreSupervisor, 52, 289.5)
+      doc.text("Firma del Supervisor: ", 136, 290)
+      doc.addImage(firmaSupervisor, "PNG", 167, 286.5, 24, 4.2)
 
       return true;
     } else {
@@ -710,7 +710,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   let evaluarObservaciones = () => {
     let observaciones = document.getElementById("input-observaciones").value;
     if (observaciones != "") {
-      doc.setFontSize(9);
+      doc.setFontSize(7);
       doc.text(observaciones, 12, 274.5, {
         maxWidth: 185,
         lineHeightFactor: 0.8,
@@ -733,10 +733,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     evaluarPersonas() &&
     evaluarObservaciones()
   ) {
-     var blob = doc.output("blob");
-     window.open(URL.createObjectURL(blob));
-     /*dia.replace("/","_")
-    doc.save(`analisis_trabajo_seguro_${dia}.pdf`)*/
+     /*var blob = doc.output("blob");
+     window.open(URL.createObjectURL(blob));*/
+     dia.replace("/","_")
+    doc.save(`ANALISIS_TRABAJO_SEGURO_${dia}.pdf`)
   } else {
     alert("Asegúrse de competar todos los campos para generar el documento");
   }

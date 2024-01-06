@@ -72,8 +72,8 @@ async function loadImage(url) {
     //doc, objeto
     var doc = new jsPDF();
     //imagen del documento vacía
-    const image = await loadImage("../recursos/formatoChecklist.png");
-    doc.addImage(image, "PNG", 0, 0, 210, 295);
+    const image = await loadImage("../recursos/formatoInspeccionVehicular.jpg");
+    doc.addImage(image, "jpg", 0, 0, 210, 295);
     doc.setFontSize(7)
 
     let evaluar = true
@@ -384,7 +384,7 @@ async function loadImage(url) {
         /*var blob = doc.output("blob");
         window.open(URL.createObjectURL(blob));*/
         fechaActual.replace("/","_")
-        doc.save(`inspeccion_vehicular_${fechaActual}.pdf`)
+        doc.save(`INSPECCION_VEHICULAR_${fechaActual}.pdf`)
     }else{
         //alert("Completar todos los campos")
     }

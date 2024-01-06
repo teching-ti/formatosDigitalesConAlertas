@@ -214,9 +214,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     //doc, objeto
     var doc = new jsPDF()
     //imagen del documento vacía
-    const image = await loadImage("../recursos/formatoCharla.png")
+    const image = await loadImage("../recursos/formatoCharla.jpg")
     //colocar la imagen
-    doc.addImage(image, "PNG", 0, 0, 200, 300)
+    doc.addImage(image, "PNG", 0, 0, 210, 297)
     //variables con la información obtenida del formulario
     
     let evaluarDatosPrincipales = ()=>{
@@ -228,13 +228,13 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         if(tema!="" && lugar!="" && responsable!=""){
             doc.setFontSize(9)
             //rellenar campo tema
-            doc.text(tema, 50, 54)
+            doc.text(tema, 51.5, 54)
             //rellenar campo lugar
-            doc.text(lugar, 50, 60)
+            doc.text(lugar, 51.5, 60)
             //rellenar campo fecha
-            doc.text(fecha, 50, 64)
+            doc.text(fecha, 51.5, 64)
             //rellenar campo responsable
-            doc.text(responsable, 142 , 61, {maxWidth: 45})
+            doc.text(responsable, 148.5 , 60, {maxWidth: 45})
             return true
         }else{
             alert("Complete los campos superiores del formulario")
@@ -250,15 +250,15 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             case "- Seleccionar -":
                 return false
             case "TECHING":
-                doc.text("x", 38.7, 43)
+                doc.text("x", 40.5, 42.5)
                 break;
             case "CONTRATISTA1":
-                doc.text("x", 75.8, 43)
-                doc.text(empresa.value, 90, 43)
+                doc.text("x", 79.5, 42.5)
+                doc.text(empresa.value, 93.5, 43)
                 break;
             case "CONTRATISTA2":
-                doc.text("x", 75.8, 43)
-                doc.text(empresa.value, 90, 43)
+                doc.text("x", 79.5, 42.5)
+                doc.text(empresa.value, 93.5, 43)
                 break;
         }
         return true
@@ -273,16 +273,16 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
                 alert("Responda la pregunta 1")
                 return false
             case "nada":
-                doc.text("x", 36.5, 89)
+                doc.text("x", 38.5, 88.5)
                 break;
             case "poco":
-                doc.text("x", 87.5, 89)
+                doc.text("x", 92, 88.5)
                 break;
             case "mucho":
-                doc.text("x", 120.2, 89)
+                doc.text("x", 126.2, 88.5)
                 break;
             case "otro":
-                doc.text("x", 152, 89)
+                doc.text("x", 159.5, 88.5)
                 break;
         }
         //condicional para el marcado de opciones pregunta 2
@@ -291,16 +291,16 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
                 alert("Responda la pregunta 2")
                 return false
             case "muyInteresante":
-                doc.text("x", 51, 110)
+                doc.text("x", 53.5, 109)
                 break;
             case "interesante":
-                doc.text("x", 96, 110)
+                doc.text("x", 101.5, 109)
                 break;
             case "pocoInteresante":
-                doc.text("x", 132, 110)
+                doc.text("x", 138.5, 109)
                 break;
             case "otro2":
-                doc.text("x", 151, 110)
+                doc.text("x", 158, 109)
                 break;
         }
         return true
@@ -309,11 +309,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let evaluarNombres = ()=>{
         let resEvalNombres = true
         nombresX = 18.5
-        nombresY = 138.5
-        dniX = 108.5
-        dniY = 138.5
-        firmasX = 144
-        firmasY = 130.5
+        nombresY = 136.5
+        dniX = 115
+        dniY = 136.5
+        firmasX = 150
+        firmasY = 128.8
 
         nombres = document.querySelectorAll(".participante-nombre")
         nombres.forEach((nombre)=>{
@@ -367,16 +367,16 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         let supFirma = "../recursos/firmas/RobertoLuisBailon.png"
         let supNombre = "Roberto Carlos Luis Bailon"
 
-        doc.addImage(expFirma, "PNG", 42, 278, 48, 8)
-        doc.text(expNombre, 112, 283)
+        doc.addImage(expFirma, "PNG", 44, 274, 48, 8)
+        doc.text(expNombre, 114, 281)
         
         //Insertar datos del supervisor
         doc.setFontSize(11)
-        doc.text("Firma del Supervisor: ", 12, 266)
-        doc.addImage(supFirma, "PNG", 43, 261, 48, 8)
-        doc.text("Nombre del Supervisor: ", 90, 266)
+        doc.text("Firma del Supervisor: ", 14, 266)
+        doc.addImage(supFirma, "PNG", 45, 261, 48, 8)
+        doc.text("Nombre del Supervisor: ", 92, 266)
         doc.setFontSize(9)
-        doc.text(supNombre, 134 , 266)
+        doc.text(supNombre, 136 , 266)
         
 
 
@@ -388,7 +388,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         /*var blob = doc.output("blob");
         window.open(URL.createObjectURL(blob))*/
         dia.replace("/","_")
-        doc.save(`charla_05_minutos_${dia}.pdf`)
+        doc.save(`CHARLA_05_MINUTOS_${dia}.pdf`)
     }else{
         alert("Complete todos los campos")
     }
