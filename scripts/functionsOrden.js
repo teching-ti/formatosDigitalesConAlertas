@@ -485,13 +485,13 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   e.preventDefault();
   //doc, objeto}
    //dimensiones del documento pdf
-   var doc = new jsPDF("p", "mm", [666, 943]);
+   var doc = new jsPDF();
    //imagen del documento vacía
-   const image = await loadImage("../recursos/formatoOrden3.png");
+   const image = await loadImage("../recursos/formatoOrden.jpg");
    //colocar la imagen
    //colocar imagen desde una posicion en especifico, con las dimensiones especificas
-   doc.addImage(image, "PNG", 0, 0, 666, 943);
-    doc.setFontSize(16.5) //es el tamaño por defecto
+   doc.addImage(image, "JPG", 0, 0, 210, 297);
+    doc.setFontSize(5) //es el tamaño por defecto
     //Importante para resolver lo de tareas y personal
    
    //Datos Generales
@@ -508,18 +508,20 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let ceco = document.getElementById("ceco").value
 
     if(proyecto !="" && nproyecto !=="" && ot!="" && actividad !="" && contacto !="" && telefono !="" && direccion !="" && ceco !=""){
-      doc.text(fecha, 118, 80)
-      doc.text(proyecto, 270,80)
-      doc.text(nproyecto, 465, 80)
-      doc.text(ot, 575, 80)
-      doc.text(actividad, 118, 118)
-      doc.text(contacto, 118, 92)
-      doc.text(telefono, 118, 105)
-      doc.setFontSize(14)
-      doc.text(direccion, 403, 92)
-      doc.text(referencia, 403, 105)
-      doc.setFontSize(16.5)
-      doc.text(ceco, 575, 105)
+      doc.setFontSize(5)
+      doc.text(fecha, 38, 25)
+      doc.text(proyecto, 84 ,25)
+      doc.text(nproyecto, 150, 25)
+      doc.text(ot, 182, 25)
+      //-
+      doc.text(actividad, 38, 37)
+      doc.text(contacto, 38, 28.5)
+      doc.text(telefono, 38, 32.5)
+      doc.setFontSize(4.5)
+      doc.text(direccion, 130, 28.5)
+      doc.text(referencia, 130, 32.5)
+      doc.setFontSize(4.8)
+      doc.text(ceco, 182, 32.5)
       return true
     }else{
       alert("Complete todos los campos  de Datos Generales")
@@ -536,11 +538,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let autorizaFirma = document.getElementById("firma-autorizado").value
 
     if(solicitanteNombre !=""){
-      doc.text(solicitanteNombre, 115, 160,{align: "center"})
-      doc.addImage(solicitanteFirma, 230, 145)
+      doc.text(solicitanteNombre, 34, 48,{align: "center"})
+      doc.addImage(solicitanteFirma, 70, 45, 24, 6)
   
-      doc.text(autorizaNombre, 420, 160,{align: "center"})
-      doc.addImage(autorizaFirma, 540, 145)
+      doc.text(autorizaNombre, 134, 48,{align: "center"})
+      doc.addImage(autorizaFirma, 170, 45, 24, 6)
       return true
     }else{
       alert("Seleccione al solicitante")
@@ -550,16 +552,16 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
     /*Observaciones Tareas Iniciales*/
     let obsTareasIniciales = document.querySelectorAll(".obs-tarea-inicial")
-    let obiY = 191.3
+    let obiY = 61
     obsTareasIniciales.forEach(oti=>{
-      doc.setFontSize(13.5)
-      doc.text(oti.value, 525, obiY, {
-        maxWidth: 110,
+      doc.setFontSize(3.8)
+      doc.text(oti.value, 166, obiY, {
+        maxWidth: 32,
         lineHeightFactor: 0.9
       })
-      obiY+=12.3
+      obiY+=3.8
     })
-    doc.setFontSize(16.5)
+    doc.setFontSize(4.5)
     
     /*Tareas a ejecutar añadidas y calculos de tiempo*/
     function evaluarTareasAdicionalesTiempos(){
@@ -569,18 +571,18 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       let tRealAniadido = document.querySelectorAll(".tiempo-real")
       let observacionesTareas = document.querySelectorAll(".obs-tarea")
 
-      dtY = 310
+      dtY = 97.2
       descripcionTarea.forEach(dt=>{
-        doc.text(dt.value, 29,dtY)
-        dtY+=11.5
+        doc.text(dt.value, 9.2,dtY)
+        dtY+=3.9
       })
 
-      etY = 310
+      etY = 97.2
       encargadoTarea.forEach(et=>{
-        doc.text(et.value, 328, etY, {
+        doc.text(et.value, 104, etY, {
           align: "center"
         })
-        etY+=11.5
+        etY+=3.9
       })
 
       /*TIEMPO TOTAL*/
@@ -603,16 +605,16 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       let tiempoEstimado = ["2:30 horas", "10 minutos", "10 minuto", "30 minutos", "20 minutos", "20 minutos", "2:30 horas", "30 minutos", "1 hora"]
 
       //se añaden los nuevos datos de tiempo a los ya existentes
-      teY = 310
+      teY = 97.2
       tEstimadoAniadido.forEach(t=>{
         //añadiendo los valores de la página al arreglo creado
         tiempoEstimado.push(t.value)
 
         //colocando los tiempos estimados en el documento
-        doc.text(t.value, 434, teY, {
+        doc.text(t.value, 136, teY, {
           align: "center"
         })
-        teY+=11.5
+        teY+=3.9
       })
 
       // se calcula en minutos el tiempo total estimado
@@ -623,27 +625,27 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       const minutosEstimados = tiempoEstimadoTotalEnMinutos % 60;
       //se hacen las comparaciones de minutps estimados para el mensaje
       if(minutosEstimados==0){
-        doc.text(`${horasEstimadas} horas`, 420, 344)
+        doc.text(`${horasEstimadas} horas`, 136, 108, {align: "center"})
       }else{
         //esta nueva condición examina si los minutos tienen solo un dígito como por ejemplo (5)
         //si es así, entonces le agregará un 0 por delante
         if(minutosEstimados.toString().length==1){
-          doc.text(`${horasEstimadas}:0${minutosEstimados} horas`, 420, 344)
+          doc.text(`${horasEstimadas}:0${minutosEstimados} horas`, 136, 108, {align: "center"})
         }else{
-          doc.text(`${horasEstimadas}:${minutosEstimados} horas`, 420, 344)
+          doc.text(`${horasEstimadas}:${minutosEstimados} horas`, 136, 108, {align: "center"})
         }
       }
 
       /*TIEMPO REAL*/
       let tiempoReal = []
-      let trY = 198
+      let trY = 62.5
       tRealAniadido.forEach(t=>{
         tiempoReal.push(t.value)
 
-        doc.text(t.value, 492, trY, {
+        doc.text(t.value, 156, trY, {
           align: "center"
         })
-        trY+=12.3
+        trY+=3.9
       })
       
       // se calcula en minutos el tiempo total estimado
@@ -654,47 +656,50 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       const minutosReales = tiempoRealTotalEnMinutos % 60;
       //se hacen las comparaciones de minutos reales para el mensaje
       if(minutosReales==0){
-        doc.text(`${horasReales} horas`, 482, 344)
+        doc.text(`${horasReales} horas`, 156, 108, {align: "center"})
       }else{
         //esta nueva condición examina si los minutos tienen solo un dígito como por ejemplo (5)
         //si es así, entonces le agregará un 0 por delante
         if(minutosReales.toString().length==1){
-          doc.text(`${horasReales}:0${minutosReales} horas`, 482, 344)
+          doc.text(`${horasReales}:0${minutosReales} horas`, 156, 108, {align: "center"})
         }else{
-          doc.text(`${horasReales}:${minutosReales} horas`, 482, 344)
+          doc.text(`${horasReales}:${minutosReales} horas`, 156, 108, {align: "center"})
         }
 
       }
 
-      let obtY = 304.5
+      let obtY = 96
       observacionesTareas.forEach(ot=>{
-        doc.setFontSize(13.5)
-        doc.text(ot.value, 525, obtY, {
-          maxWidth: 110,
+        doc.setFontSize(3.8)
+        doc.text(ot.value, 166, obtY, {
+          maxWidth: 32,
           lineHeightFactor: 0.9
         })
-        obtY+=12.3
+        obtY+=3.8
       })
-      doc.setFontSize(16.5)
+      //doc.setFontSize(4.5)
 
       return true
     }
 
     /*EQUIPOS Y MATERIALES*/
     let codigosEquiposMateriales = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"]
-    let codEmY = 384
+    let codEmY = 121
    codigosEquiposMateriales.forEach(c=>{
-    doc.text(c, 65, codEmY, {align: "center"})
-    codEmY+=12.3
+    doc.text(c, 21.5, codEmY, {align: "center"})
+    codEmY+= 3.85
    })
 
    //inputs, correspondientes a los equipos iniciales
    let obsEquiposIniciales = document.querySelectorAll(".obs-equip-inicial")
-   let eiy = 384
+   let eiy = 119.5
    obsEquiposIniciales.forEach(oei=>{
 
-     doc.text(oei.value, 466, eiy)
-     eiy+=12.3
+     doc.text(oei.value, 146.5, eiy, {
+      maxWidth: 54,
+      lineHeightFactor: 0.9
+     })
+     eiy+=3.85
    })
 
    /*Equipos y materiales agregados*/
@@ -704,32 +709,37 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let cantidadEquipo = document.querySelectorAll(".cantidad-e")
     let observacionesEquipo = document.querySelectorAll(".observaciones-e")
 
-    let equipoY = 568.5
+    let equipoY = 179
     descripcionEquipo.forEach(des=>{
-      doc.text(des.value, 220, equipoY,{
+      doc.text(des.value, 69, equipoY,{
         align: "center"
       })
-      equipoY+=12.3
+      equipoY+=3.9
     })
 
-    equipoY = 568.5
+    equipoY = 179
     unidadEquipo.forEach(uni=>{
-      doc.text(uni.value, 365, equipoY, {
+      doc.text(uni.value, 116, equipoY, {
         align: "center"
       })
-      equipoY+=12.3
+      equipoY+=3.9
     })
 
-    equipoY = 568.5
+    equipoY = 179
     cantidadEquipo.forEach(cantE=>{
-      doc.text(cantE.value, 430, equipoY)
-      equipoY+=12.3
+      doc.text(cantE.value, 136, equipoY, {
+        align:"center"
+      })
+      equipoY+=3.9
     })
 
-    equipoY = 568.5
+    equipoY = 178
     observacionesEquipo.forEach(obsE=>{
-      doc.text(obsE.value, 466, equipoY)
-      equipoY+=12.3
+      doc.text(obsE.value, 146.5, equipoY, {
+        maxWidth: 54,
+        lineHeightFactor: 0.9
+       })
+      equipoY+=3.85
     })
     return true
    }
@@ -737,19 +747,22 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     //herramientas iniciales
     //añadir codigos a herramientas
     let codigosHerramientas = new Array("1","2","3","4","5","6","7")
-    let codY = 635
+    let codY = 200
     codigosHerramientas.forEach(c=>{
-      doc.text(c, 65, codY)
-      codY+=12
+      doc.text(c, 21.5, codY, {align:"center"})
+      codY+=3.85
     })
 
     //inputs, correspondientes a las herramientas iniciales
     let obsHerramientasIniciales = document.querySelectorAll(".obs-herr-inicial")
-    let hiy = 635
+    let hiy = 198
     obsHerramientasIniciales.forEach(ohi=>{
 
-      doc.text(ohi.value, 466, hiy)
-      hiy+=12
+      doc.text(ohi.value, 146.5, hiy, {
+        maxWidth: 54,
+        lineHeightFactor: 0.9
+       })
+      hiy+=3.85
     })
 
    function evaluarHerrammientasAdicionales(){
@@ -758,30 +771,35 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let cantidadUtilizada = document.querySelectorAll(".cantidad-u")
     let observaciones = document.querySelectorAll(".observaciones")
 
-    let herramientasY = 672.5
+    let herramientasY = 211.2
     descripcionHerramienta.forEach(descripcion=>{
-      doc.text(descripcion.value, 220, herramientasY,{
+      doc.text(descripcion.value, 69, herramientasY,{
         align: "center"
       })
-      herramientasY+=12
+      herramientasY+=3.85
     })
 
-    herramientasY = 672.5
+    herramientasY =  211.2
     cantidadPlanificada.forEach(cant1=>{
-      doc.text(cant1.value, 365, herramientasY)
-      herramientasY+=12
+      doc.text(cant1.value, 116, herramientasY, {
+        align: "center"
+      })
+      herramientasY+=3.85
     })
 
-    herramientasY = 672.5
+    herramientasY =  211.2
     cantidadUtilizada.forEach(cant2=>{
-      doc.text(cant2.value, 430, herramientasY)
-      herramientasY+=12
+      doc.text(cant2.value, 136, herramientasY)
+      herramientasY+=3.85
     })
 
-    herramientasY = 672.5
+    herramientasY =  210.4
     observaciones.forEach(obs=>{
-      doc.text(obs.value, 466, herramientasY)
-      herramientasY+=12
+      doc.text(obs.value, 146.5, herramientasY, {
+        maxWidth: 54,
+        lineHeightFactor: 0.9
+       })
+      herramientasY+=3.85
     })
     return true
    }
@@ -795,16 +813,16 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let hsFin = document.querySelectorAll(".h-salida")
     let firmasParticipantes = document.querySelectorAll(".firma")
 
-    let nombreParticipanteY = 752
+    let nombreParticipanteY = 236
     let validarNombres = true
-
+    doc.setFontSize(5)
     if(nombresParticipantes.length>0){
       nombresParticipantes.forEach(nombreP=>{
         if(nombreP!="" && nombreP!="Seleccionar"){
-          doc.text(nombreP.value, 220, nombreParticipanteY,{
+          doc.text(nombreP.value, 69, nombreParticipanteY,{
             align: "center"
           })
-          nombreParticipanteY+=16.8
+          nombreParticipanteY+=5.2
         }else{
           validarNombres = false
           return 
@@ -818,45 +836,45 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     }
     
 
-    let dniParticipanteY = 752
+    let dniParticipanteY = 236
     dniParticipantes.forEach(dniP=>{
-      doc.text(dniP.value, 65, dniParticipanteY,{
+      doc.text(dniP.value, 21.5, dniParticipanteY,{
         align: "center"
       })
-      dniParticipanteY+=16.8
+      dniParticipanteY+=5.2
     })
     
-    doc.setFontSize(14)
-    let cargoParticipanteY = 752
+    doc.setFontSize(4.5)
+    let cargoParticipanteY = 236
     cargoParticipantes.forEach(cargoP=>{
-      doc.text(cargoP.value, 365, cargoParticipanteY, {
+      doc.text(cargoP.value, 115.7, cargoParticipanteY, {
         align: "center"
       })
-      cargoParticipanteY+=16.8
+      cargoParticipanteY+=5.2
     })
 
-    doc.setFontSize(16.5)
-    let hInicioY = 752
+    doc.setFontSize(5)
+    let hInicioY = 236
     hsInicio.forEach(hi=>{
-      doc.text(hi.value, 430, hInicioY, {
+      doc.text(hi.value, 136, hInicioY, {
         align:"center"
       })
-      hInicioY+=16.8
+      hInicioY+=5.2
     })
 
-    let hFinY = 752
+    let hFinY = 236
     hsFin.forEach(hf=>{
-      doc.text(hf.value, 495, hFinY, {
+      doc.text(hf.value, 156, hFinY, {
         align:"center"
       })
-      hFinY+=16.8
+      hFinY+=5.2
     })
 
-    let firmasY = 742
+    let firmasY = 233
     firmasParticipantes.forEach(fp=>{
       if(fp.value!=""){
-        doc.addImage(fp.value, "PNG", 540, firmasY)
-        firmasY+=16
+        doc.addImage(fp.value, "PNG", 175, firmasY, 18, 4.5)
+        firmasY+=5.2
       }else{
         validarNombres = false
         return
@@ -873,15 +891,22 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
    function evaluarObservacioProyecto(){
     let comentarioProyecto = document.getElementById("comentario").value
-    doc.setFontSize(17)
-    doc.text(comentarioProyecto, 38, 862,{
-        maxWidth: 600,
-        lineHeightFactor: 0.9,
+    doc.setFontSize(5)
+    doc.text(comentarioProyecto, 9.5, 271,{
+      align:"justify",  
+      maxWidth: 188,
+      lineHeightFactor: 1.2,
     })
     return true
    }
 
-   if(evaluarDatosGenerales() && evaluarSolicitudAutorizacion() && evaluarTareasAdicionalesTiempos() && evaluarEquiposAdicionales() && evaluarHerrammientasAdicionales() &&  evaluarObservacioProyecto() && evaluarTrabajadores()){
+   if(evaluarDatosGenerales() && 
+   evaluarSolicitudAutorizacion() && 
+   evaluarTareasAdicionalesTiempos() && 
+   evaluarEquiposAdicionales() && 
+   evaluarHerrammientasAdicionales() &&
+   evaluarObservacioProyecto() &&
+   evaluarTrabajadores()){
     /*var blob = doc.output("blob");
     window.open(URL.createObjectURL(blob));*/
     dia.replace("/","_")

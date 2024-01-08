@@ -226,7 +226,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       //se debería de crear un input en el html y una variable para obtener su nombre
       //y con ello también su firma, similar a como se hace con el resto, pero una única vez
       let supervisorNombre = "Roberto Carlos Luis Bailon"
-      let supervisorFirma = "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/RobertoLuisBailon.png"
+      let supervisorFirma = "../recursos/firmas/RobertoLuisBailon.png"
       doc.text(supervisorNombre, 150, 276, {align: "center"});
       //modificar por la firma de roberto carlos luis bailon
       doc.addImage(supervisorFirma, "PNG", 138, 267.5, 24, 6);
@@ -240,10 +240,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   };
 
   //colocar comentarios
+  doc.setFontSize(4)
   comentarios = document.getElementById("comentarios").value;
-  doc.text(comentarios, 90, 830, {
-    maxWidth: 510,
-    lineHeightFactor: 2,
+  doc.text(comentarios, 30, 261, {
+    maxWidth: 170,
+    lineHeightFactor: 2.4,
   });
 
   //INICIA COLOCAR CARGOS Y NOMBRES
@@ -253,7 +254,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let nombres = document.querySelectorAll(".trabajador-nombre");
     let firmas = document.querySelectorAll(".trabajador-firma");
     let dnis = document.querySelectorAll(".trabajador-dni");
-    doc.setFontSize(4.5);
+    doc.setFontSize(4);
 
     //colocar cargos
     //altura de 90 es buena para los cargos
@@ -282,17 +283,17 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     nombres.forEach((nombre) => {
       if (nombre.value != "") {
         if (contadorn != 0) {
-          doc.text(nombre.value, nombresX1, 31, {
+          doc.text(nombre.value, nombresX1, 30, {
             align: "center",
             maxWidth: 15,
-            lineHeightFactor: 0.8,
+            lineHeightFactor: 1,
           });
           nombresX1 += 19;
         } else {
-          doc.text(nombre.value, 74.5, 31, {
+          doc.text(nombre.value, 74.7, 30, {
             align: "center",
-            maxWidth: 15,
-            lineHeightFactor: 0.8,
+            maxWidth: 10,
+            lineHeightFactor: 1,
           });
           contadorn = 1;
         }
@@ -304,17 +305,17 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     });
 
     //colocarFirmas
-    let firmasX = 150;
+    let firmasX = 42;
     firmas.forEach((firma) => {
-      doc.addImage(firma.value, "PNG", firmasX, 805, 24, 6);
-      firmasX += 100;
+      doc.addImage(firma.value, "PNG", firmasX, 253.5, 20, 5);
+      firmasX += 30;
     });
 
     //colocarDNI
-    let dnisX = 213;
+    let dnisX = 61.5;
     dnis.forEach((dni) => {
-      doc.text(dni.value, dnisX, 813);
-      dnisX += 100;
+      doc.text(dni.value, dnisX, 256.5);
+      dnisX += 30;
     });
 
     if (resEvalNombreCargo) {
@@ -614,11 +615,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     //positionY = 250
   });
 
-  if (/*evaluarEmpresa() && */ /*evaluarDatosPrincipales() && */evaluarNombreCargo()) {
-    var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob));
-    /*dia.replace("/","_")
-    doc.save(`lista_inspeccion_${dia}.pdf`)*/
+  if (evaluarEmpresa() && evaluarDatosPrincipales() && evaluarNombreCargo()) {
+    /*var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob));*/
+    dia.replace("/","_")
+    doc.save(`lista_inspeccion_${dia}.pdf`)
   } else {
     alert("Complete los campos solicitados para generar el documento");
   }

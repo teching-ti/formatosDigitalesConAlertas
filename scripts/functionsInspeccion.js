@@ -378,7 +378,7 @@ async function loadImage(url) {
     doc.text("Roberto Carlos Luis Bailon", 171.5, 278.5, {
         align: "center"
     })
-    doc.addImage("https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/RobertoLuisBailon.png", "PNG", 153, 268,  35, 5.8)
+    doc.addImage("../recursos/firmas/RobertoLuisBailon.png", "PNG", 153, 268,  35, 5.8)
 
     if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarTodoVehiculo() && evaluarLLantas() && evaluarAccesorios() && evaluarTapas() && evaluarEpp() && evaluarPma()){
         /*var blob = doc.output("blob");

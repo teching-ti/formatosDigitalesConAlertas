@@ -4,70 +4,70 @@
       "name": "José Luis Diaz Vasquez",
       "dni": "43692772",
       "celular": "993 998 516",
-      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/JoseLuisDiazVasquez.png",
+      "firma": "../recursos/firmas/JoseLuisDiazVasquez.png",
       "cargo": "Jefe Cuadrilla de Balance"
     },
     {
       "name": "Rodrigo Marco Lopez Acuña",
       "dni": "74444960",
       "celular":"943 044 131",
-      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/RodrigoMarcoLopezAcuna.png",
+      "firma": "../recursos/firmas/RodrigoMarcoLopezAcuna.png",
       "cargo": "Jefe Cuadrilla de Balance"
     },
     {
       "name": "Luis David Enriquez Quispe",
       "dni": "48072457",
       "celular":"977 231 771",
-      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/LuisDavidEnriqueQuispe.png",
+      "firma": "../recursos/firmas/LuisDavidEnriqueQuispe.png",
       "cargo": "Jefe Cuadrilla de Balance"
     },
     {
       "name": "Juan José Alcantara Soto",
       "dni": "77028233",
       "celular":"953 289 739",
-      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/JuanJoseAlcantaraSoto.png",
+      "firma": "../recursos/firmas/JuanJoseAlcantaraSoto.png",
       "cargo": "Jefe Cuadrilla de Balance"
     },
     {
       "name": "Erich Ofni Gonzalo Laguna",
       "dni": "48058039",
       "celular":"921 696 606",
-      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/ErichOfniGonzaloLaguna.png",
+      "firma": "../recursos/firmas/ErichOfniGonzaloLaguna.png",
       "cargo": "Operario de Balance"
     },
     {
       "name": "Frank Brayan Morales Quispe",
       "dni": "73876867",
       "celular":"986 969 783",
-      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/FrankBrayanMoralesQuispe.png",
+      "firma": "../recursos/firmas/FrankBrayanMoralesQuispe.png",
       "cargo": "Operario de Balance"
     },
     {
       "name": "Robin Valentino Asensios Cardenas",
       "dni": "77913680",
       "celular":"918 260 797",
-      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/RobinAsensios.png",
+      "firma": "../recursos/firmas/RobinAsensios.png",
       "cargo": "Operario de Balance"
     },
     {
       "name": "Jordy Alquett Acosta Fernandez",
       "dni": "47935322",
       "celular":"988 259 588",
-      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/JordyAlquettAcostaFernandez.png",
+      "firma": "../recursos/firmas/JordyAlquettAcostaFernandez.png",
       "cargo": "Operario de Balance"
     },
     {
       "name": "José Luis Vela Vasquez",
       "dni": "42668852",
       "celular":"923 833 421",
-      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/JoseLuisVelaVasquez.png",
+      "firma": "../recursos/firmas/JoseLuisVelaVasquez.png",
       "cargo": "Chofer Ayudante de Balance"
     },
     {
       "name": "Ronald Guiler Mendoza Cueva",
       "dni": "43469067",
       "celular":"931 808 866",
-      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/RonaldGuilerMendozaCueva.png",
+      "firma": "../recursos/firmas/RonaldGuilerMendozaCueva.png",
       "cargo": "Chofer Ayudante de Balance"
     }
   ],
@@ -77,7 +77,7 @@
       "name":"Roberto Carlos Luis Bailon",
       "dni": "45387327",
       "celular": "910 729 152",
-      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/RobertoLuisBailon.png",
+      "firma": "../recursos/firmas/RobertoLuisBailon.png",
       "cargo":"Supervisor"
     }
   ],
@@ -87,7 +87,7 @@
       "name":"Daniel Martin Saldarriaga Aliaga",
       "dni": "45169277",
       "celular": "944 686 506",
-      "firma": "https://raw.githubusercontent.com/jvalladares741/formatosDigitales/main/recursos/firmas/DanielSaldarriagaAliaga.png",
+      "firma": "../recursos/firmas/DanielSaldarriagaAliaga.png",
       "cargo":"Prevencionista"
     }
   ]
