@@ -5,13 +5,25 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+body{
+    display: flex;
+    height: 100vh;
+    background: url("../recursos/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+}
+
 main{
     width: 50%;
+
     padding: 2rem;
-    margin: 0 auto;
+    margin: auto;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    background: linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.85));
+    background-size: cover;
 }
 
 .contenedor-imagen{
@@ -87,12 +99,11 @@ h1{
     }
 }
 
-@media (max-width: 600px){
+@media (max-width: 720px){
     main{
         width: 100%;
     }
     .imagen-logo{
-        width: 45%;
+        width: 35%;
     }
-
 }
