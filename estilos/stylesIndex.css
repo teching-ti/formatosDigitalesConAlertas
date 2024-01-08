@@ -7,8 +7,9 @@
 
 body{
     display: flex;
-    height: 100%;
+    height: 100vh;
     background: url("../recursos/background.jpg");
+    background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover; 
