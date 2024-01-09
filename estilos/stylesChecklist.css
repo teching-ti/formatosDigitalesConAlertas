@@ -232,7 +232,7 @@ body{
         padding: .8rem;
     }
 
-    .dg-contenedor{
+    /*.dg-contenedor{
         grid-template-areas: 
                             "fecha placa"
                             "nombre-conductor nombre-conductor"
@@ -240,17 +240,8 @@ body{
                             "empresa lentes" 
                             "inicio final"
                             "soat h-inspeccion";
-    }
+    }*/
 
-    .contenedor-nombres{
-        flex-direction: column;
-        width: 100%;
-        gap: .2rem;
-        place-items: center;
-    }
-}
-
-@media (max-width: 380px){
     #placa{
         max-width: 80%;
     }
@@ -279,5 +270,12 @@ body{
                             "final .."
                             "soat .."
                             "h-inspeccion ..";
+    }
+
+    .contenedor-nombres{
+        flex-direction: column;
+        width: 100%;
+        gap: .2rem;
+        place-items: center;
     }
 }
