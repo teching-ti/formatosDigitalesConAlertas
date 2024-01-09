@@ -512,6 +512,11 @@ body{
         width: 100%;
     }
 
+    .equipos-iniciales label{
+        flex-direction: column;
+        gap: 1rem;
+    }
+
     .contenedor-equipos{
         width: 90%;
         flex-direction: column;
@@ -521,6 +526,10 @@ body{
         display: flex;
         justify-content: space-between;
         width: 100%;
+    }
+
+    .herramientas-iniciales label{
+        flex-direction: column;
     }
 
     .contenedor-personal{

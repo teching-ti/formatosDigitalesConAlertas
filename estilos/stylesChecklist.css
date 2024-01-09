@@ -249,3 +249,35 @@ body{
         place-items: center;
     }
 }
+
+@media (max-width: 380px){
+    #placa{
+        max-width: 80%;
+    }
+
+    #nombre-conductor{
+        max-width: 80%;
+    }
+
+    #tarjeta-propiedad{
+        max-width: 80%;
+    }
+    
+    #empresa{
+        max-width: 80%;
+    }
+
+    .dg-contenedor{
+        grid-template-areas: 
+                            "fecha fecha"
+                            "placa placa"
+                            "nombre-conductor nombre-conductor"
+                            "tarjeta-propiedad tarjeta-propiedad" 
+                            "empresa empresa" 
+                            "lentes .."
+                            "inicio .."
+                            "final .."
+                            "soat .."
+                            "h-inspeccion ..";
+    }
+}
