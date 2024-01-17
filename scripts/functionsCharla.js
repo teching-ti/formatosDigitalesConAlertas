@@ -371,12 +371,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         doc.text(expNombre, 114, 281)
         
         //Insertar datos del supervisor
-        doc.setFontSize(11)
+        /*doc.setFontSize(11)
         doc.text("Firma del Supervisor: ", 14, 266)
         doc.addImage(supFirma, "PNG", 45, 261, 48, 8)
         doc.text("Nombre del Supervisor: ", 92, 266)
         doc.setFontSize(9)
-        doc.text(supNombre, 136 , 266)
+        doc.text(supNombre, 136 , 266)*/
         
 
 
@@ -385,10 +385,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     }
 
     if(evaluarDatosPrincipales() && evaluarEmpresa() && evaluarMarcadoOpciones() && evaluarNombres() && evaluarExpositor()){
-        /*var blob = doc.output("blob");
-        window.open(URL.createObjectURL(blob))*/
-        dia.replace("/","_")
-        doc.save(`CHARLA_05_MINUTOS_${dia}.pdf`)
+        var blob = doc.output("blob");
+        window.open(URL.createObjectURL(blob))
+        /*dia.replace("/","_")
+        doc.save(`CHARLA_05_MINUTOS_${dia}.pdf`)*/
     }else{
         alert("Complete todos los campos")
     }

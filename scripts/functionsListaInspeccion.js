@@ -283,6 +283,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     nombres.forEach((nombre) => {
       if (nombre.value != "") {
         if (contadorn != 0) {
+          doc.setFontSize(4)
           doc.text(nombre.value, nombresX1, 30, {
             align: "center",
             maxWidth: 15,
@@ -290,7 +291,8 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
           });
           nombresX1 += 19;
         } else {
-          doc.text(nombre.value, 74.7, 30, {
+          doc.setFontSize(3.8)
+          doc.text(nombre.value, 74.8, 30, {
             align: "center",
             maxWidth: 10,
             lineHeightFactor: 1,
@@ -305,17 +307,17 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     });
 
     //colocarFirmas
-    let firmasX = 42;
+    let firmasX = 64;
     firmas.forEach((firma) => {
-      doc.addImage(firma.value, "PNG", firmasX, 253.5, 20, 5);
-      firmasX += 30;
+      doc.addImage(firma.value, "PNG", firmasX, 253.5, 15, 4);
+      firmasX += 18.4;
     });
 
     //colocarDNI
-    let dnisX = 61.5;
+    let dnisX = 68;
     dnis.forEach((dni) => {
-      doc.text(dni.value, dnisX, 256.5);
-      dnisX += 30;
+      doc.text(dni.value, dnisX, 258.7);
+      dnisX += 18.4
     });
 
     if (resEvalNombreCargo) {
@@ -615,11 +617,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     //positionY = 250
   });
 
-  if (evaluarEmpresa() && evaluarDatosPrincipales() && evaluarNombreCargo()) {
-    /*var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob));*/
-    dia.replace("/","_")
-    doc.save(`lista_inspeccion_${dia}.pdf`)
+  if (/*evaluarEmpresa() && evaluarDatosPrincipales() &&*/ evaluarNombreCargo()) {
+    var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob));
+    /*dia.replace("/","_")
+    doc.save(`lista_inspeccion_${dia}.pdf`)*/
   } else {
     alert("Complete los campos solicitados para generar el documento");
   }

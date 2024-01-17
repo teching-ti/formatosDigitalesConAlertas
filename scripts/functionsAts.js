@@ -59,7 +59,7 @@ function aniadirActividad() {
 btnAniadirActividad.addEventListener("click", function (e) {
   let numActividades = document.querySelectorAll(".actividades-datos").length
 
-  if(numActividades<7){
+  if(numActividades<22){
     e.preventDefault();
     aniadirActividad();
   }else{
@@ -334,17 +334,17 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
        para así también autocompletar su firma
       */
       //texto posicionado para el final de la hoja y firma respectiva
-      doc.text(responsableTrabajo, 60, 282.5)
+      doc.text(responsableTrabajo, 60, 278.5)
       //se puede cargar directaente la dirección de la imagen desde el json
-      doc.addImage(responableTrabajoFirma, "PNG", 169, 279.5, 24, 4.2)
+      doc.addImage(responableTrabajoFirma, "PNG", 169, 275.5, 24, 4.2)
 
       //Se procede a insertar el nombre y la firma del supervisor
-      let nombreSupervisor = "Roberto Carlos Luis Bailon"
+      /*let nombreSupervisor = "Roberto Carlos Luis Bailon"
       let firmaSupervisor = "../recursos/firmas/RobertoLuisBailon.png"
       doc.text("Nombre del Supervisor: ",12, 290)
       doc.text(nombreSupervisor, 52, 289.5)
       doc.text("Firma del Supervisor: ", 136, 290)
-      doc.addImage(firmaSupervisor, "PNG", 167, 286.5, 24, 4.2)
+      doc.addImage(firmaSupervisor, "PNG", 167, 286.5, 24, 4.2)*/
 
       return true;
     } else {
@@ -381,15 +381,17 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     return true;
   };
 
-  let datosEstaticos=[
+  /*let datosEstaticos=[
     ["Preparación e Identificación", "Preparación e Identificación", "Preparación e Identificación", "Preparación e Identificación",
     "Preparación e Identificación", "Preparación e Identificación", "Ejecución", "Ejecución", "Ejecución", "Ejecución", "Ejecución",
     "Ejecución", "Ejecución", "Culminación y Retiro", "Culminación y Retiro"],
     ["Covid 19 Contagio", "Suelo en mal estado/ irregular/ desnivelado/ con pendiente", "Radiación solar", "Trabajo a la intemperie", "Tránsito vehicular", "Manipulación de herramientas", "Redes de BT/MT", "Hostilidad, Clientes agresivos, zona peligrosa", "Presencia de animales", "Superficie resbaladiza, irregular o desnivelado, Obstáculos en el piso", "Trabajos en altura","Otro Trabajos en altura con BH", "Otro Condición subestándar en campo", "Covid 19", "Suelo en mal estado/irregular"],
     ["Enfermedad", "Caída al mismo nivel", "Daños a la piel", "Fatiga o estrés", "Colisión/ Atropello/ Volcadura", "Corte", "Contacto eléctrico directo o indirecto", "Agresión por terceros", "Agresión de animales", "Caída al mismo nivel", "Caida a distinto nivel", "Caída de personas a distinto nivel - caida de objetos", "Accidentes e incidentes", "Contagio, enfermedad", "Caída al mismo nivel"],
     ["Lavado constante de manos,uso de mascarilla,mantener distanciamiento 1.5m, cumpli plan COVID.", "Inspeccion de area de trabajo/ Realizar orden y Limpieza en el área de trabajo/ Señalizar zonas de peligro en el área de trabajo.", "Uso de bloqueador solar.", "Pausas activas.", "Inspección de pre uso de equipos móviles.", "Verificar estado de herramientas, uso de de epp básicos ( guantes), estar atento.", "Personal capacitado, en caso de liberación del cirucito aplicar las 5 reglas de oro, para con circuitos energizados verificar estado de instalaciones, revelar tensión, uso de EPPS ignífugos (capucha, uniforme antiflama, careta anti arco), uso de EPPS dieléctricos (guantes dieléctricos, calzado dieléctrico, etc.)", "Solicitar resguardo policial, no enfrentarse. Si el colaborador es agredido física o verbalmente, debe pro-tegerse y ponerse a buen recaudo.", "Estar atento, no enfrentar, retirarse de la zona de trabajo.", " Inspecciones SSOMA, Orden y Limpieza.", "Verificar el estado del poste o estructura, check list de la escalera y del sistema anticaídas, uso de 3 puntos de apoyo, uso del arnes, estrobo y freno de ascenso.", "Uso de arnés de cuerpo completo/ Llenado de PETAR/ Señalizar zona de trabajo. Verificación previa del BH.", "Aplicar política Stop the Work.", "Lavado constante de manos, uso de mascarilla, mantener distanciamiento 1.5m, cumplir plan COVID.", "Mantenimiento de Instalaciones, realizar el reporte de Condiciones Inseguras"]
-  ]
+  ]*/
 
+  /*
+  //codigo creado para insertar información por defecto
   let actDefinidasX = 11.5
   let actDefinidasY = 55.2
   let actDefinidasYafJ = 102
@@ -464,7 +466,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     })
     actDefinidasYafJ = 102
     actDefinidasY = 55.2
-  }
+  }*/
 
   //funcion que se usa para colocar las actividades
   let reconocerActividades = () => {
@@ -472,13 +474,13 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   
     /*datos introducidos desde la página INICIO*/
     XnombreActividad = 11.5;
-    YnombreActividad = 151.5;
+    YnombreActividad = 55.5;
     XpeligroActividad = 48.4;
-    YpeligroActividad = 151.5;
-    XriesgoActividad = 99.6;
-    YriesgoActividad = 151.5;
-    XrecomendacionActividad = 138;
-    YrecomendacionActividad = 151;
+    YpeligroActividad = 55.5;
+    XriesgoActividad = 100.5;
+    YriesgoActividad = 55.5;
+    XrecomendacionActividad = 139;
+    YrecomendacionActividad = 54.8;
     //nombre de las actividades introducidas desde la página
     nombresActs = document.querySelectorAll(".actividad-nombre");
 
@@ -489,7 +491,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
           maxWidth: 30,
           lineHeightFactor: 0.8
         });
-        YnombreActividad += 6.3;
+        YnombreActividad += 6.15;
       } else {
         //si hay campos vacios
         // deshabilitado puesto que quizá ya no sea necesario
@@ -510,7 +512,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
           maxWidth: 40,
           lineHeightFactor: 0.9
         });
-        YpeligroActividad += 6.3;
+        YpeligroActividad += 6.15;
 
       } else {
         // si hay campos vacios
@@ -531,7 +533,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
           maxWidth: 32,
           lineHeightFactor: 0.8
         });
-        YriesgoActividad += 6.3;
+        YriesgoActividad += 6.15;
 
       } else {
         // si hay campos vacios
@@ -556,7 +558,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             lineHeightFactor: 0.9
           }
         );
-        YrecomendacionActividad += 6.2;
+        YrecomendacionActividad += 6.18;
 
       } else {
         // si hay campos vacios
@@ -596,8 +598,8 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     //este contador se usa para calcular cuando se deberá realizar el salto de llenado de una columna a otra en el documento pdf
     let contador = 1;
     //posición y de cada una de las columnas
-    let colum1Y = 202.5;
-    let colum2Y = 202.4;
+    let colum1Y = 198.5;
+    let colum2Y = 198.4;
     //se toma cada elemento de la lista para ser evaluado y en base a si se encuentra marcado o no, se posiciona el marcado
     //dentro del documento pdf
     doc.setFontSize(9)
@@ -607,7 +609,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
           doc.text("x", 94.2, colum1Y);
           colum1Y += 3.5;
         } else {
-          doc.text("x", 102.5, colum1Y);
+          doc.text("x", 102.8, colum1Y);
           colum1Y += 3.5;
         }
       } else if (contador >= 4) {
@@ -629,8 +631,8 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     doc.setFontSize(9);
     let clincaNombre = document.getElementById("clinica-nombre").value;
     let clinicaDireccion = document.getElementById("clinica-direccion").value;
-    doc.text(clincaNombre, 46, 226.5);
-    doc.text(clinicaDireccion, 31, 230);
+    doc.text(clincaNombre, 46.5, 222.8);
+    doc.text(clinicaDireccion, 31, 226.4);
     return true;
   };
 
@@ -642,7 +644,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let resEvalPersonas = true
 
     //Colocar nombres
-    let nombreY = 241;
+    let nombreY = 237;
     let nombresPersonas = document.querySelectorAll(".participante-nombre");
     nombresPersonas.forEach((persona) => {
       if (persona.value != "" && persona.value != "Seleccionar") {
@@ -657,7 +659,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     });
 
     //ColocarDNI
-    let dniY = 241;
+    let dniY = 237;
     let dniPersonas = document.querySelectorAll(".participante-dni");
     dniPersonas.forEach((dniPersona) => {
       if (dniPersona.value != "") {
@@ -671,7 +673,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     });
 
     //ColocarFirma
-    let firmaY = 237.8;
+    let firmaY = 233.8;
     let firmasPersonas = document.querySelectorAll(".participante-firma");
     firmasPersonas.forEach((firmaPersona) => {
       if (firmaPersona.value != "") {
@@ -685,14 +687,14 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       }
     });
     //ColocarHoraIngreso
-    let horaIngresoY = 242;
+    let horaIngresoY = 237.5;
     let horaIngresos = document.querySelectorAll(".h-ingreso");
     horaIngresos.forEach((horaIngreso) => {
       doc.text(horaIngreso.value, 174.8, horaIngresoY);
       horaIngresoY += 5.2;
     });
     //ColocarHoraSalida
-    let horaSalidaY = 242;
+    let horaSalidaY = 237.5;
     let horasSalida = document.querySelectorAll(".h-salida");
     horasSalida.forEach((horaSalida) => {
       doc.text(horaSalida.value, 188.5, horaSalidaY);
@@ -711,9 +713,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let observaciones = document.getElementById("input-observaciones").value;
     if (observaciones != "") {
       doc.setFontSize(7);
-      doc.text(observaciones, 12, 274.5, {
+      doc.text(observaciones, 12, 271.2, {
         maxWidth: 185,
-        lineHeightFactor: 0.8,
+        lineHeightFactor: 0.9,
       });
       return true;
     } else {
@@ -733,10 +735,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     evaluarPersonas() &&
     evaluarObservaciones()
   ) {
-     /*var blob = doc.output("blob");
-     window.open(URL.createObjectURL(blob));*/
-     dia.replace("/","_")
-    doc.save(`ANALISIS_TRABAJO_SEGURO_${dia}.pdf`)
+     var blob = doc.output("blob");
+     window.open(URL.createObjectURL(blob));
+     /*dia.replace("/","_")
+    doc.save(`ANALISIS_TRABAJO_SEGURO_${dia}.pdf`)*/
   } else {
     alert("Asegúrse de competar todos los campos para generar el documento");
   }
