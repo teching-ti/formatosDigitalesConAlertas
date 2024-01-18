@@ -1,3 +1,9 @@
+18_01
+- modificado el documento para establecer el nombre del proyecto
+- modificado el documento para establecer el número del proyecto
+- modificado el documento para retirar todas las tareas preestablecidas, todas serán añadidas 
+desde la web y se ha modificado el posicionamiento
+
 03_01_2024
 - Completado, esperando revisión
 

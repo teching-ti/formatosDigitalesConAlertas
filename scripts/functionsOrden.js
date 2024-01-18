@@ -70,7 +70,7 @@ function llenarSelect(elementoSelect) {
   //Solo se podrán agregar 3 equipos/materiales adicionales
   btnAgregarTarea.addEventListener("click", function(){
     let numTareasCreadas = document.querySelectorAll(".contenedor-tareas").length
-    if(numTareasCreadas<3){
+    if(numTareasCreadas<12){
       agregarTarea()
     }else{
       alert("Se ha alcanzado el máximo número permitido")
@@ -487,7 +487,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
    //dimensiones del documento pdf
    var doc = new jsPDF();
    //imagen del documento vacía
-   const image = await loadImage("../recursos/formatoOrden.jpg");
+   const image = await loadImage("../recursos/formatoOrden2.jpg");
    //colocar la imagen
    //colocar imagen desde una posicion en especifico, con las dimensiones especificas
    doc.addImage(image, "JPG", 0, 0, 210, 297);
@@ -551,7 +551,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
    }
 
     /*Observaciones Tareas Iniciales*/
-    let obsTareasIniciales = document.querySelectorAll(".obs-tarea-inicial")
+    /*let obsTareasIniciales = document.querySelectorAll(".obs-tarea-inicial")
     let obiY = 61
     obsTareasIniciales.forEach(oti=>{
       doc.setFontSize(3.8)
@@ -560,30 +560,50 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         lineHeightFactor: 0.9
       })
       obiY+=3.8
-    })
+    })*/
     doc.setFontSize(4.5)
     
     /*Tareas a ejecutar añadidas y calculos de tiempo*/
     function evaluarTareasAdicionalesTiempos(){
+      let validar = true
       let descripcionTarea = document.querySelectorAll(".tarea-descripcion")
       let encargadoTarea = document.querySelectorAll(".tarea-encargado")
       let tEstimadoAniadido = document.querySelectorAll(".tiempo-estimado")
       let tRealAniadido = document.querySelectorAll(".tiempo-real")
       let observacionesTareas = document.querySelectorAll(".obs-tarea")
 
-      dtY = 97.2
-      descripcionTarea.forEach(dt=>{
-        doc.text(dt.value, 9.2,dtY)
-        dtY+=3.9
-      })
+      dtY = 61
+      //validando la descripción de la tarea
+      if(descripcionTarea.length>0){
+        descripcionTarea.forEach(dt=>{
 
-      etY = 97.2
+          if(dt.value==""){
+            alert("Complete el campo de descripción de la tarea que va a realizar")
+            validar = false
+            return
+          }
+          doc.text(dt.value, 9.2,dtY)
+          dtY+=3.9
+        })
+      }else{
+        alert("Debe añadir las tareas que va a realizar")
+        validar = false
+        return 
+      }
+      //validando qu se haya ingresado contenido en el campo de encargado d cada tarea
+       etY = 61
       encargadoTarea.forEach(et=>{
+        if(et.value=="" || et.value=="-Encargado-"){
+          alert("Completar los campos de encargado en cada una de las tareas a ejecutar")
+          validar = false
+          return
+        }
         doc.text(et.value, 104, etY, {
           align: "center"
         })
         etY+=3.9
       })
+      
 
       /*TIEMPO TOTAL*/
       // todos los datos de tiempo son convertidos a minutos para luego ser evaluados
@@ -602,19 +622,24 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       
       /*TIEMPO ESTIMADO*/
       //para el tiempo esetimado se creará una lista con los datos que ya vienen predefindos en el documento pdf
-      let tiempoEstimado = ["2:30 horas", "10 minutos", "10 minuto", "30 minutos", "20 minutos", "20 minutos", "2:30 horas", "30 minutos", "1 hora"]
+      let tiempoEstimado = []
 
       //se añaden los nuevos datos de tiempo a los ya existentes
-      teY = 97.2
+      teY = 62.5
       tEstimadoAniadido.forEach(t=>{
-        //añadiendo los valores de la página al arreglo creado
-        tiempoEstimado.push(t.value)
-
-        //colocando los tiempos estimados en el documento
-        doc.text(t.value, 136, teY, {
-          align: "center"
-        })
-        teY+=3.9
+        if(t.value!="-T. Estimado.-"){
+          //añadiendo los valores de la página al arreglo creado
+          tiempoEstimado.push(t.value)
+          //colocando los tiempos estimados en el documento
+          doc.text(t.value, 136, teY, {
+            align: "center"
+          })
+          teY+=3.9
+        }else{
+          alert("Debe ingresar el tiempo estimado de cada tarea")
+          validar = false
+          return
+        }
       })
 
       // se calcula en minutos el tiempo total estimado
@@ -640,12 +665,17 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       let tiempoReal = []
       let trY = 62.5
       tRealAniadido.forEach(t=>{
-        tiempoReal.push(t.value)
-
-        doc.text(t.value, 156, trY, {
-          align: "center"
-        })
-        trY+=3.9
+        if(t.value!="-T. Real.-"){
+          tiempoReal.push(t.value)
+          doc.text(t.value, 156, trY, {
+            align: "center"
+          })
+          trY+=3.9
+        }else{
+          alert("Debe ingresar el tiempo real de cada tarea")
+          validar = false
+          return
+        }
       })
       
       // se calcula en minutos el tiempo total estimado
@@ -668,18 +698,22 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
       }
 
-      let obtY = 96
+      let obtY = 60.2
       observacionesTareas.forEach(ot=>{
         doc.setFontSize(3.8)
         doc.text(ot.value, 166, obtY, {
           maxWidth: 32,
           lineHeightFactor: 0.9
         })
-        obtY+=3.8
+        obtY+=3.89
       })
       //doc.setFontSize(4.5)
 
-      return true
+      if(validar){
+        return true
+      }else{
+        return false
+      }
     }
 
     /*EQUIPOS Y MATERIALES*/
@@ -907,10 +941,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
    evaluarHerrammientasAdicionales() &&
    evaluarObservacioProyecto() &&
    evaluarTrabajadores()){
-    /*var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob));*/
-    dia.replace("/","_")
-    doc.save(`orden_de_trabajo_${dia}.pdf`)
+    var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob));
+    /*dia.replace("/","_")
+    doc.save(`orden_de_trabajo_${dia}.pdf`)*/
    }else{
     alert("Complete todos los campos")
    }

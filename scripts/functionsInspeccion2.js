@@ -1,3 +1,18 @@
+let auto = document.getElementById("vehiculo-auto")
+let moto = document.getElementById("vehiculo-moto")
+let sectionAuto = document.querySelector(".selectores")
+let sectionMoto = document.querySelector(".selectores-motorizado")
+
+auto.addEventListener("click", function(){
+    sectionAuto.style.display = "block"
+    sectionMoto.style.display = "none"
+})
+
+moto.addEventListener("click", function(){
+    sectionMoto.style.display = "grid"
+    sectionAuto.style.display = "none"
+})
+
 //alert("Los elementos marcados de color rojo con un (*), son obligatorios")
 let fecha = document.getElementById("fecha")
 let fechaActual= new Date().toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
@@ -110,7 +125,7 @@ async function loadImage(url) {
     //doc, objeto
     var doc = new jsPDF();
     //imagen del documento vacía
-    const image = await loadImage("../recursos/fInspeccionVehicular.jpg");
+    const image = await loadImage("../recursos/formatoInspeccionVehicular21.jpg");
     doc.addImage(image, "jpg", 0, 0, 210, 295);
     doc.setFontSize(6)
 
@@ -118,7 +133,7 @@ async function loadImage(url) {
     function evaluarDatosGenerales(){
         doc.setFontSize(6)
         let dia = fecha
-        let placa = document.getElementById("placa").value
+        let placa = document.getElementById("placa").value.toUpperCase()
         let tarjeta = document.getElementById("tarjeta-propiedad").value
         let empresa = document.getElementById("empresa").value
         let lentes = document.getElementById("usa-lentes") //es checkbox
@@ -139,38 +154,38 @@ async function loadImage(url) {
         let vRevTecF = vSeparado.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
 
         let numBrevete = document.getElementById("numero-brevete").value
-        let categoria = document.getElementById("categoria").value  
+        let categoria = document.getElementById("categoria").value.toUpperCase()
 
         partesFecha = fechaVencimiento.value.split("-")
         vSeparado = new Date(partesFecha[0], partesFecha[1] - 1, partesFecha[2])
         let vencimiento = vSeparado.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
 
         if(placa!="" && tarjeta!="" && empresa!="" && inicio!="" && final!="" && soat!="" && horaInspeccion!="" && vRevTecF!="Invalid Date" && vSoatF!="Invalid Date" && vencimiento!="Invalid Date"){
-            console.log(vSoatF)
+
             //fecha de inspeccion
-            doc.text(fecha.value, 178, 43)
-            doc.text(empresa, 40, 30.6)
-            doc.text(placa, 40, 33.8)
-            doc.text(tarjeta, 40, 37)
-            doc.text(vRevTecF, 40, 45)
+            doc.text(fecha.value, 177, 40.5)
+            doc.text(empresa, 36.5, 25.2)
+            doc.text(placa, 36.5, 28.8)
+            doc.text(tarjeta, 36.5, 32.8)
+            doc.text(vRevTecF, 36.5, 42)
             
-            doc.text(numBrevete, 166, 33.8)
-            doc.text(categoria, 166, 37)
+            doc.text(numBrevete, 165, 28.8)
+            doc.text(categoria, 165, 32.5)
 
             if(lentes.checked){
-                doc.text("x", 178.3, 27.25)
+                doc.text("x", 177, 20)
             }else{
-                doc.text("x", 190.8, 27.25)
+                doc.text("x", 189.6, 20)
             }
             doc.setFontSize(4.5)
-            doc.text(inicio, 177, 30.6)
-            doc.text(final, 199.5, 30.6)
+            doc.text(inicio, 175., 24.5)
+            doc.text(final, 197.5, 24.5)
             doc.setFontSize(6)
-            doc.text(soat, 90, 33.8)
-            doc.text(eSoat, 90, 37)
-            doc.text(vSoatF, 90, 40.2)
-            doc.text(horaInspeccion, 180, 47.2)
-            doc.text(vencimiento, 166, 40.2)
+            doc.text(soat, 87, 28.8)
+            doc.text(eSoat, 87, 32.7)
+            doc.text(vSoatF, 87, 36.2)
+            doc.text(horaInspeccion, 177, 43.8)
+            doc.text(vencimiento, 165, 37)
         }else{
             evaluar = false
         }
@@ -188,8 +203,8 @@ async function loadImage(url) {
         let firmaConductor = document.getElementById("firma-conductor").value
 
         if(nombreConductor!="" && firmaConductor!=""){
-            doc.text(nombreConductor, 40, 27.6)
-            doc.addImage(firmaConductor, "PNG", 34, 264, 35, 5.8)
+            doc.text(nombreConductor, 36.5, 20.7)
+            doc.addImage(firmaConductor, "PNG", 34, 272, 35, 5.8)
         }else{
             evaluar = false
         }
@@ -204,7 +219,7 @@ async function loadImage(url) {
 
     function evaluarObservaciones(){
         let observaciones = document.getElementById("observaciones").value
-        doc.text(observaciones, 6.5, 238, {
+        doc.text(observaciones, 6.5, 255.4, {
             maxWidth: 192,
             lineHeightFactor: 1.48, 
             align: "justify"
@@ -215,7 +230,7 @@ async function loadImage(url) {
     }
 
     function evaluarTodoVehiculo(){
-        let positionY = 72.5
+        let positionY = 68
         let contarSaltoX = 0
         let contadorEspacio = 0
 
@@ -229,35 +244,35 @@ async function loadImage(url) {
                 if(i.checked){
 
                     if(contarSaltoX<10){
-                        doc.text(i.value, 54.4, positionY,{ align: "center"})
+                        doc.text(i.value, 51.75, positionY,{ align: "center"})
                     }else if(10<=contarSaltoX && contarSaltoX<=19){
-                        doc.text(i.value, 116.5, positionY,{ align: "center"})
+                        doc.text(i.value, 121.3, positionY,{ align: "center"})
                     }else if(19<contarSaltoX){
-                        doc.text(i.value, 176, positionY,{ align: "center"})
+                        doc.text(i.value, 181.4, positionY,{ align: "center"})
                     }
                     
                     if(contadorEspacio==4){
-                        positionY+=4.2
+                        positionY+=5.2
                     }else if(contadorEspacio==14){
-                        positionY+=4.2
+                        positionY+=5.2
                     }else if(contadorEspacio==24){
-                        positionY+=4.2
+                        positionY+=5.2
                     }else{
-                        positionY+=3.6
+                        positionY+=3.86
                     }
                     
                     contarSaltoX+=1
                     contadorEspacio+=1
 
                     if(contarSaltoX%10==0){
-                        positionY=60
+                        positionY=68
                     }
                 }
 
             })
         })
 
-        positionY = 60
+        positionY = 68
         contarSaltoX = 0
         contadorEspacio = 0
 
@@ -267,28 +282,28 @@ async function loadImage(url) {
             selectEvaluar.forEach((se)=>{
                 
                 if(contarSaltoX<10){
-                    doc.text(se.value, 61, positionY,{ align: "center"})
+                    doc.text(se.value, 60.5, positionY,{ align: "center"})
                 }else if(10<=contarSaltoX && contarSaltoX<=19){
-                    doc.text(se.value, 128.5, positionY,{ align: "center"})
+                    doc.text(se.value, 131, positionY,{ align: "center"})
                 }else if(19<contarSaltoX){
-                    doc.text(se.value, 194, positionY,{ align: "center"})
+                    doc.text(se.value, 196.5, positionY,{ align: "center"})
                 }
                 
                 if(contadorEspacio==4){
-                    positionY+=4.2
+                    positionY+=5.2
                 }else if(contadorEspacio==14){
-                    positionY+=4.2
+                    positionY+=5.2
                 }else if(contadorEspacio==24){
-                    positionY+=4.2
+                    positionY+=5.2
                 }else{
-                    positionY+=3.6
+                    positionY+=3.8
                 }
                 
                 contarSaltoX+=1
                 contadorEspacio+=1
 
                 if(contarSaltoX%10==0){
-                    positionY=60
+                    positionY=68
                 }
             })
         })
@@ -297,25 +312,25 @@ async function loadImage(url) {
 
     function evaluarLLantas(){
         let cl = document.querySelector(".contenedor-llantas").querySelectorAll(".selector-elemento")
-        positionLlantasY = 105.5
+        positionLlantasY = 111.8
         cl.forEach(c=>{
             inputsEvaluar = c.querySelectorAll("input")
             inputsEvaluar.forEach((i)=>{
                 if(i.checked){
-                    doc.text(i.value, 48.9, positionLlantasY,{
+                    doc.text(i.value, 51.75, positionLlantasY,{
                         align: "center"
                     })
-                    positionLlantasY+=4.2
+                    positionLlantasY+=3.8
                 }
             })
         })
 
-        positionLlantasY = 105.5
+        positionLlantasY = 111.8
         cl.forEach(c=>{
             selectEvaluar = c.querySelectorAll("select")
             selectEvaluar.forEach((i)=>{
-                doc.text(i.value, 61, positionLlantasY,{ align: "center"} )
-                positionLlantasY += 4.2
+                doc.text(i.value, 60.5, positionLlantasY,{ align: "center"} )
+                positionLlantasY += 3.8
             })
         })
 
@@ -325,25 +340,25 @@ async function loadImage(url) {
 
     function evaluarAccesorios(){
         let cl = document.querySelector(".contenedor-accesorios").querySelectorAll(".selector-elemento")
-        positionY = 105.5
+        positionY = 111.8
         cl.forEach(c=>{
             inputsEvaluar = c.querySelectorAll("input")
             inputsEvaluar.forEach((i)=>{
                 if(i.checked){
-                    doc.text(i.value, 116.5, positionY,{
+                    doc.text(i.value, 121.3, positionY,{
                         align: "center"
                     })
-                    positionY+=4.2
+                    positionY+=3.8
                 }
             })
         })
 
-        positionY = 105.5
+        positionY = 111.8
         cl.forEach(c=>{
             selectEvaluar = c.querySelectorAll("select")
             selectEvaluar.forEach((i)=>{
-                doc.text(i.value, 128.5, positionY,{ align: "center"} )
-                positionY += 4.2
+                doc.text(i.value, 131, positionY,{ align: "center"} )
+                positionY += 3.8
             })
         })
 
@@ -352,55 +367,142 @@ async function loadImage(url) {
 
     function evaluarTapas(){
         let cl = document.querySelector(".contenedor-tapas").querySelectorAll(".selector-elemento")
-        positionY = 105.5
+        positionY = 111.8
         cl.forEach(c=>{
             inputsEvaluar = c.querySelectorAll("input")
             inputsEvaluar.forEach((i)=>{
                 if(i.checked){
-                    doc.text(i.value, 176, positionY,{
+                    doc.text(i.value, 181.4, positionY,{
                         align: "center"
                     })
-                    positionY+=4.2
+                    positionY+=3.8
                 }
             })
         })
 
-        positionY = 105.5
+        positionY = 111.8
         cl.forEach(c=>{
             selectEvaluar = c.querySelectorAll("select")
             selectEvaluar.forEach((i)=>{
-                doc.text(i.value, 194, positionY,{ align: "center"} )
-                positionY += 4.2
+                doc.text(i.value, 196.5, positionY,{ align: "center"} )
+                positionY += 3.8
             })
         })
 
         return true
     }
 
-    function evaluarEpp(){
-        let contenedoresEpp = document.querySelectorAll(".elemento-epp")
-        positionY = 159
-        contenedoresEpp.forEach(c=>{
-            elemento = c.querySelectorAll("input")
-            elemento.forEach(i=>{
+    function evaluarMoto(){
+        doc.setFontSize(4.6)
+        
+        let positionY = 139
+        let contarSaltoX = 0
+        let contadorEspacio = 0
+
+        let motos = document.querySelectorAll(".selector-motorizado")
+        motos.forEach(mt=>{
+            inputsEvaluar = mt.querySelectorAll("input")
+            inputsEvaluar.forEach(i=>{
                 if(i.checked){
-                    doc.text(i.value, 55, positionY,{
-                        align: "center"
-                    } )
-                    positionY+=4.1
+
+                    if(contarSaltoX<4){
+                        doc.text(i.value, 51.75, positionY, {
+                            align: "center"
+                        })
+                    }else if(4<=contarSaltoX && contarSaltoX<=7){
+                        doc.text(i.value, 121.3, positionY, {
+                            align: "center"
+                        })
+                    }else{
+                        doc.text(i.value, 181.4, positionY, {
+                            align: "center"
+                        })
+                    }
+                    
+                    if(contadorEspacio==2){
+                        positionY+=7
+                    }else if(contadorEspacio==6){
+                        positionY+=7
+                    }else{
+                        positionY+=3.6
+                    }
+
+                    contarSaltoX+=1
+                    contadorEspacio+=1
+
+                    if(contarSaltoX%4==0){
+                        positionY=139
+                    }
+
                 }
             })
         })
 
-        positionY = 159
+        positionY = 139
+        contarSaltoX = 0
+        contadorEspacio = 0
+
+        motos.forEach(mt=>{
+            inputsEvaluar = mt.querySelectorAll("select")
+            inputsEvaluar.forEach(i=>{
+       
+                if(contarSaltoX<4){
+                    doc.text(i.value, 60.5, positionY, {
+                        align: "center"
+                    })
+                }else if(4<=contarSaltoX && contarSaltoX<=7){
+                    doc.text(i.value, 131, positionY, {
+                        align: "center"
+                    })
+                }else{
+                    doc.text(i.value, 196.5, positionY, {
+                        align: "center"
+                    })
+                }
+                    
+                if(contadorEspacio==2){
+                    positionY+=7
+                }else if(contadorEspacio==6){
+                    positionY+=7
+                }else{
+                    positionY+=3.6
+                }
+
+                contarSaltoX+=1
+                contadorEspacio+=1
+
+                if(contarSaltoX%4==0){
+                    positionY=139
+                }
+            })
+        })
+        return true
+    }
+
+    function evaluarEpp(){
+        let contenedoresEpp = document.querySelectorAll(".elemento-epp")
+        positionY = 175
+        contenedoresEpp.forEach(c=>{
+            elemento = c.querySelectorAll("input")
+            elemento.forEach(i=>{
+                if(i.checked){
+                    doc.text(i.value, 56.5, positionY,{
+                        align: "center"
+                    } )
+                    positionY+=3.8
+                }
+            })
+        })
+
+        positionY = 175
         contenedoresEpp.forEach(c=>{
             elemento = c.querySelectorAll("select")
             elemento.forEach(i=>{
 
-                    doc.text(i.value, 74, positionY,{
+                    doc.text(i.value, 75.5, positionY,{
                         align: "center"
                     } )
-                    positionY+=4.1
+                    positionY+=3.8
             })
         })
         
@@ -409,49 +511,81 @@ async function loadImage(url) {
 
     function evaluarPma(){
         let contenedoresPma = document.querySelectorAll(".elemento-pma")
-        positionY = 198.3
+        positionY = 222
         contenedoresPma.forEach(c=>{
             elemento = c.querySelectorAll("input")
             elemento.forEach(i=>{
                 if(i.checked){
-                    doc.text(i.value, 55, positionY,{
+                    doc.text(i.value, 56.5, positionY,{
                         align: "center"
                     } )
-                    positionY+=4.9
+                    positionY+=3.8
                 }
             })
         })
 
-        positionY = 198.2
+        positionY = 222
         contenedoresPma.forEach(c=>{
             elemento = c.querySelectorAll("select")
             elemento.forEach(i=>{
 
-                    doc.text(i.value, 74, positionY,{
+                    doc.text(i.value, 75.5, positionY,{
                         align: "center"
                     } )
-                    positionY+=4.7
+                    positionY+=3.8
             })
         })
         
         return true
     }
 
+    function evaluarConductor(){
+        evaluar = true
 
-    /*datos del supervisor directamente al documento*/
-    doc.text("Roberto Carlos Luis Bailon", 171.5, 278.5, {
-        align: "center"
-    })
-    doc.addImage("../recursos/firmas/RobertoLuisBailon.png", "PNG", 153, 268,  35, 5.8)
+        let eval1 = document.getElementById("ev-conductor1")
+        let eval2 = document.getElementById("ev-conductor2")
 
-    if(/*evaluarDatosGenerales() && evaluarNombre() && */evaluarObservaciones() && evaluarTodoVehiculo()    /* && evaluarLLantas() && evaluarAccesorios() && evaluarTapas() && evaluarEpp() && evaluarPma()*/){
-        var blob = doc.output("blob");
-        window.open(URL.createObjectURL(blob));
-        //fechaActual.replace("/","_")
-        //doc.save(`INSPECCION_VEHICULAR_${fechaActual}.pdf`)
-    }else{
-        //alert("Completar todos los campos")
+        if(!eval1.checked  || !eval2.checked){
+            alert("Ambas casillas de evaluación deben estar marcadas")
+            evaluar = false
+            return evaluar
+        }
+        doc.setFontSize(9)
+        doc.setTextColor(0, 0, 150);
+        doc.text("X", 172.8, 240)
+        doc.text("X", 172.8, 244)
+
+        return evaluar
     }
 
+    /*datos del supervisor directamente al documento*/
     
+    doc.setFontSize(5.2)
+    doc.text("Roberto Carlos Luis Bailon", 36.5, 36.5)
+    doc.text("Roberto Carlos Luis Bailon", 170, 286.8, {
+        maxWidth: "32"
+    })
+    doc.addImage("../recursos/firmas/RobertoLuisBailon.png", "PNG", 156, 272,  35, 5.8)
+
+    if(auto.checked){
+
+        if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarTodoVehiculo() && evaluarLLantas() && evaluarAccesorios() && evaluarTapas() && evaluarEpp() && evaluarPma() && evaluarConductor()){
+            var blob = doc.output("blob");
+            window.open(URL.createObjectURL(blob));
+            //fechaActual.replace("/","_")
+            //doc.save(`INSPECCION_VEHICULAR_${fechaActual}.pdf`)
+        }else{
+            alert("Completar todos los campos")
+        }
+    }else if(moto.checked){
+
+        if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarMoto() && evaluarEpp() && evaluarPma() && evaluarConductor()){
+            var blob = doc.output("blob");
+            window.open(URL.createObjectURL(blob));
+            //fechaActual.replace("/","_")
+            //doc.save(`INSPECCION_VEHICULAR_${fechaActual}.pdf`)
+        }else{
+            alert("Completar todos los campos")
+        }
+    }
   })

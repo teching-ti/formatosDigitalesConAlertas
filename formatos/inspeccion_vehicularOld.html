@@ -16,7 +16,7 @@
       rel="stylesheet"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <link rel="stylesheet" href="../estilos/stylesChecklist2.css" />
+    <link rel="stylesheet" href="../estilos/stylesChecklist.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -42,6 +42,9 @@
           >
             <h1>Datos Generales</h1>
             <div class="dg-contenedor">
+              <label for="fecha" id="container-fecha"
+                ><input type="text" id="fecha" readonly
+              /></label>
               <select name="nombre-conductor" id="nombre-conductor">
                 <option>-Seleccionar Conductor-</option>
               </select>
@@ -50,21 +53,19 @@
                 id="firma-conductor"
                 placeholder="firma-conductor"
               />
-              <input
-                type="text"
-                name="empresa"
-                id="empresa"
-                placeholder="EMPRESA"
-              />
-              <input type="text" placeholder="PLACA" id="placa" maxlength="7"/>
+              <input type="text" placeholder="PLACA" id="placa" />
               <input
                 type="text"
                 name="tarjeta-propiedad"
                 id="tarjeta-propiedad"
                 placeholder="TARJETA DE PROPIEDAD"
               />
-              <label>Supervisor inmediato: <input type="text" id="supervisor-inmediato-nombre"></label>
-              <label>Fecha de vencimiento de revisión técnica<input type="date" id="vencimiento-revision-tecnica" min='01-01-2022' max='31-12-2050'></label>
+              <input
+                type="text"
+                name="empresa"
+                id="empresa"
+                placeholder="EMPRESA"
+              />
               <label for="usa-lentes" id="cont-lentes"
                 >Usa lentes correctores
                 <input type="checkbox" name="usa-lentes" id="usa-lentes"
@@ -75,21 +76,7 @@
               <label id="cont-final"
                 >Final(Km) <input type="number" id="final-km"
               /></label>
-              <input type="text" placeholder="N° SOAT" id="numero-soat" />
-              <input type="text" placeholder="Empresa SOAT" id="empresa-soat" />
-              <label>
-                Vencimiento del SOAT
-                <input type="date" id="vencimiento-soat" min='01-01-2022' max='31-12-2050'/>
-              </label>
-
-              <input type="text" placeholder="Número Brevete" id="numero-brevete" />
-              <input type="text" placeholder="Categoría" id="categoria" />
-              <label>Fecha de Vencimiento <input type="date" id="fecha-vencimiento" min='01-01-2022' max='31-12-2050'></label>
-              
-              <!--fecha y hora de la inspección-->
-              <label for="fecha" id="container-fecha"
-                >Fecha de inspección <input type="text" id="fecha" readonly
-              /></label>
+              <input type="text" placeholder="SOAT" id="soat" />
               <label id="cont-h-inspeccion"
                 >Hora de Inspección<input
                   type="time"
@@ -1269,6 +1256,6 @@
       </section>
       <div id="btnGenerar"><i class="fa-solid fa-file-pdf fa-lg"></i></div>
     </main>
-    <script src="../scripts/functionsInspeccion2.js"></script>
+    <script src="../scripts/functionsInspeccion.js"></script>
   </body>
 </html>

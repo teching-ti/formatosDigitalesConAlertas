@@ -1,3 +1,6 @@
+18_01
+modificado el documento para que las firmas y dni de los evaluados aparezcan debajo de sus respectivas columnas
+
 03_01_2024
 -completado, esperando revisión
 

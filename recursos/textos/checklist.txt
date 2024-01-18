@@ -1,3 +1,11 @@
+18_01
+- para evitar eliminar el primer documento se procede a usar otro similar
+- se ha modificado el formato a la nueva versión en donde se agrega la opción de moto
+- se ha modificado la estructura html para admitir seleccionar entre auto y moto
+- se ha modificado el js para evaluar si se selecciona auto o moto en base a eso decidir que colocar el formato generado
+- se ha modificado la ruta del archivo en el index al nuvo html creado; así mismo se cuenta también con un nuevo archivo js y css
+
+
 03_01_2024
 - completado, esperando revisión
 02_01_2024
