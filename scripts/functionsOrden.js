@@ -890,17 +890,30 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     doc.setFontSize(5)
     let hInicioY = 236
     hsInicio.forEach(hi=>{
-      doc.text(hi.value, 136, hInicioY, {
-        align:"center"
-      })
+      if(hi!=""){
+        doc.text(hi.value, 136, hInicioY, {
+          align:"center"
+        })
+      }else{
+        alert("Debe colocar la hora de ingreso del personal")
+        validarNombres = false
+        return
+      }
       hInicioY+=5.2
     })
 
     let hFinY = 236
     hsFin.forEach(hf=>{
-      doc.text(hf.value, 156, hFinY, {
-        align:"center"
-      })
+      if(hf.value!=""){
+        doc.text(hf.value, 156, hFinY, {
+          align:"center"
+        })
+      }else{
+        alert("Debe colocar la hora de salida del personal")
+        validarNombres=false
+        return
+      }
+      
       hFinY+=5.2
     })
 
@@ -941,10 +954,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
    evaluarHerrammientasAdicionales() &&
    evaluarObservacioProyecto() &&
    evaluarTrabajadores()){
-    var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob));
-    /*dia.replace("/","_")
-    doc.save(`orden_de_trabajo_${dia}.pdf`)*/
+    /*var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob));*/
+    dia.replace("/","_")
+    doc.save(`orden_de_trabajo_${dia}.pdf`)
    }else{
     alert("Complete todos los campos")
    }

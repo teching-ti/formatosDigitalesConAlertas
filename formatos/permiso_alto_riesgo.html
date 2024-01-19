@@ -531,17 +531,12 @@
           <section class="contenedor-autorizacion">
             <h3>Autorización y Supervisión</h3>
 
-            <div>
+            <div class="contenedor-sup-res">
               <label
                 >Supervisor de la Empresa Ejecutora o Responsable de cuadrilla
-                operativa
-                <input
-                  type="text"
-                  name="supervisor-responsable"
-                  id="supervisor-responsable"
-                  value="Roberto Carlos Luis Bailon"
-                  readonly
-              /></label>
+                operativa<select name="supervisor-responsable" id="supervisor-responsable">
+                  <option value=""></option>
+                </select></label>
               <input type="text" class="a-s-firma" id="supervisor-firma"/>
             </div>
 
@@ -557,17 +552,13 @@
               <input type="text" class="a-s-firma"  />
             </div>
 
-            <div>
+            <div class="contenedor-prev-res">
               <label
                 >Prevencionista de Riesgos o Responsable de la cuadrilla
                 operativa
-                <input
-                  type="text"
-                  name="prevencionista"
-                  id="prevencionista"
-                  value="Daniel Martin Saldarriaga Aliaga"
-                  readonly
-              /></label>
+                <select name="prevencionista"
+              id="prevencionista">
+              <option value=""></option></select></label>
               <input type="text" class="a-s-firma" id="prevencionista-firma" />
             </div>
           </section>

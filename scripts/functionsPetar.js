@@ -13,54 +13,124 @@ fetch("../scripts/datos.json")
     llenarSelect(document.querySelector(".nombre-participante"))
     autocompletarCampos(document.querySelector(".nombre-participante"), document.querySelector(".contenedor-personal"))
     
-
     //Para la parte de autorización
+    //funcion para seleccionar entre los responsables de cuadrilla y el supervisor
+    llenarSelectRt(document.getElementById("supervisor-responsable"))
+    autocompletarCamposSup(document.querySelector("#supervisor-responsable"), document.querySelector(".contenedor-sup-res"))
+    //funcion para seleccionar entre los responsables de cuadrilla y el supervisor
     llenarSelect(document.querySelector("#responsable"))
     autocompletarCamposSup(document.querySelector("#responsable"), document.querySelector(".contenedor-resp"))
-
-    //colocar las firmas del supervisor y prevencionista
-    document.getElementById("supervisor-firma").value = users.supervisor[0].firma
-    document.getElementById("prevencionista-firma").value = users.prevencionista[0].firma
+    //funcion para seleccionar entre los responsables de cuadrilla y el prevencionista
+    llenarSelectRP(document.getElementById("prevencionista"))
+    autocompletarCamposSup(document.querySelector("#prevencionista"), document.querySelector(".contenedor-prev-res"))
     
   })
   .catch((error) => console.error("Error al cargar los datos:", error));
 
-  function llenarSelect(elementoSelect) {
-    users.tecnico.forEach((tecnico) => {
-      const option = document.createElement("option");
-      option.value = tecnico.name;
-      option.textContent = tecnico.name;
-      elementoSelect.appendChild(option);
-    });
-  }
+    function llenarSelect(elementoSelect) {
+        users.tecnico.forEach((tecnico) => {
+        const option = document.createElement("option");
+        option.value = tecnico.name;
+        option.textContent = tecnico.name;
+        elementoSelect.appendChild(option);
+        });
+    }
 
-  //datos personal será el elemento donde se encuentran todos los elementos a modificar
-  function autocompletarCampos(elementoSelect, datosPersonal) {
-    elementoSelect.addEventListener("change", function () {
-      const nombreSeleccionado = elementoSelect.value;
-      const usuarioSeleccionado = users.tecnico.find(
-        (tecnico) => tecnico.name === nombreSeleccionado
-      );
+    //datos personal será el elemento donde se encuentran todos los elementos a modificar
+    function autocompletarCampos(elementoSelect, datosPersonal) {
+        elementoSelect.addEventListener("change", function () {
+        const nombreSeleccionado = elementoSelect.value;
+        const usuarioSeleccionado = users.tecnico.find(
+            (tecnico) => tecnico.name === nombreSeleccionado
+        );
 
-      datosPersonal.querySelector(".ocupacion").value =
-        usuarioSeleccionado.cargo;
-        datosPersonal.querySelector(".firma-inicio").value =
-        usuarioSeleccionado.firma;
-        datosPersonal.querySelector(".firma-salida").value =
-        usuarioSeleccionado.firma;
-    });
-  }
+        datosPersonal.querySelector(".ocupacion").value =
+            usuarioSeleccionado.cargo;
+            datosPersonal.querySelector(".firma-inicio").value =
+            usuarioSeleccionado.firma;
+            datosPersonal.querySelector(".firma-salida").value =
+            usuarioSeleccionado.firma;
+        });
+    }
+    //autcompletado solo para el caso de autorizacion y supervisión, evaluar y revisar funciona bien
+    function autocompletarCamposSup(elementoSelect, df) {
+        elementoSelect.addEventListener("change", function () {
+          const nombreSeleccionado = elementoSelect.value;
+
+            // Buscar en la categoría "tecnico"
+            const tecnicoSeleccionado = users.tecnico.find(
+                (tecnico) => tecnico.name === nombreSeleccionado
+            );
+            // Buscar en la categoría "supervisor"
+            const supervisorSeleccionado = users.supervisor.find(
+                (supervisor) => supervisor.name === nombreSeleccionado
+            );
+            // Buscar en la categoría "prevencionista"
+            const prevencionistaSeleccionado = users.prevencionista.find(
+                (prevencionista) => prevencionista.name === nombreSeleccionado
+            );
+            // Verificar en qué categoría se encontró y completar la firma
+            if (tecnicoSeleccionado) {
+                df.querySelector(".a-s-firma").value = tecnicoSeleccionado.firma;
+            } else if (supervisorSeleccionado) {
+                df.querySelector(".a-s-firma").value = supervisorSeleccionado.firma;
+            } else if (prevencionistaSeleccionado) {
+                df.querySelector(".a-s-firma").value = prevencionistaSeleccionado.firma;
+            } else {
+                alert("Este espacio no puede permanecer vacío, seleccione al personal requerido")
+            }
+        });
+    }
+
+    //funcion para seleccionar entre los responsables de cuadrilla y el supervisor
+    function llenarSelectRt(elementoSelect) {
+        //obtiene los datos del supervisor
+        users.supervisor.forEach((supervisor) => {
+            const option = document.createElement("option");
+            option.value = supervisor.name;
+            option.textContent = supervisor.name;
+            //agrega los elementos obtenidos al select
+            elementoSelect.appendChild(option);
+        });
+        //obtiene los datos de los técnicos responsables de cuadrilla
+        users.tecnico.forEach((tecnico) => {
+        if (tecnico.cargo === "Jefe Cuadrilla de Balance") {
+            const option = document.createElement("option");
+            option.value = tecnico.name;
+            option.textContent = tecnico.name;
+            //agrega los elementos obtenidos al select
+            elementoSelect.appendChild(option);
+        }
+        });
+    }
+
+    //funcion para seleccionar entre los responsables de cuadrilla y el supervisor
+    function llenarSelectRP(elementoSelect) {
+        //obtiene los datos del supervisor
+        users.prevencionista.forEach((prevencionista) => {
+            const option = document.createElement("option");
+            option.value = prevencionista.name;
+            option.textContent = prevencionista.name;
+            //agrega los elementos obtenidos al select
+            elementoSelect.appendChild(option);
+        });
+        //obtiene los datos de los técnicos responsables de cuadrilla
+        users.tecnico.forEach((tecnico) => {
+        if (tecnico.cargo === "Jefe Cuadrilla de Balance") {
+            const option = document.createElement("option");
+            option.value = tecnico.name;
+            option.textContent = tecnico.name;
+            //agrega los elementos obtenidos al select
+            elementoSelect.appendChild(option);
+        }
+        });
+    }
+
+
+
   
-  function autocompletarCamposSup(elementoSelect, df) {
-    elementoSelect.addEventListener("change", function () {
-      const nombreSeleccionado = elementoSelect.value;
-      const usuarioSeleccionado = users.tecnico.find(
-        (tecnico) => tecnico.name === nombreSeleccionado
-      );
-        df.querySelector(".a-s-firma").value =
-        usuarioSeleccionado.firma;
-    });
-  }
+  
+  
   
 
   let contenedorPersonas = document.querySelector(".section-todo-personal")
@@ -340,14 +410,27 @@ async function loadImage(url) {
     }
 
     function evaluarDescripcionTarea(){
+        let evalDesc = true
         let descripcionTarea = document.getElementById("descripcion-tarea").value
-        doc.setFontSize(6.5)
-        doc.text(descripcionTarea, 21, 167.5, {
-            maxWidth: 180,
-            lineHeightFactor: 1.6
-        })
 
-        return true
+        if(descripcionTarea==""){
+            alert("Por favor, ingrese la descripción de la tarea a realizar, en la casilla correspondiente")
+            evalDesc = false
+            return
+        }else{
+            doc.setFontSize(6.5)
+            doc.text(descripcionTarea, 21, 167.5, {
+                maxWidth: 180,
+                lineHeightFactor: 1.6
+            })
+        }
+        
+        if(evalDesc){
+            return true
+        }else{
+            return false
+        }
+        
     }
 
     
@@ -415,7 +498,6 @@ async function loadImage(url) {
         }else{
             return false
         }
-
     }
 
     function evaluarEquiposProteccion(){
@@ -458,38 +540,68 @@ async function loadImage(url) {
     }
 
     function evaluarHerramientas(){
+        let evalH = true
         let hEM = document.getElementById("hem").value
+        
+        if(hEM!=""){
+            doc.setFontSize(6.5)
+            doc.text(hEM, 21, 243.2, {
+                maxWidth: 180,
+                lineHeightFactor: 1.5
+            })
+        }else{
+            alert("Debe completar el campo de herramientas, equipos y materiales")
+            evalH = false
+            return
+        }
 
-        doc.setFontSize(6.5)
-        doc.text(hEM, 21, 243.2, {
-            maxWidth: 180,
-            lineHeightFactor: 1.5
-        })
-
-        return true
+        if(evalH){
+            return true
+        }else{
+            return false
+        }
     }
 
     function evaluarProcedimiento(){
         let proc = document.getElementById("procedimiento").value
+        let evalP = true
 
-        doc.setFontSize(6.5)
-        doc.text(proc, 21, 256.8, {
-            maxWidth: 180,
-            lineHeightFactor: 1.5
-        })
-
-        return true
+        if(proc!=""){
+            doc.setFontSize(6.5)
+            doc.text(proc, 21, 256.8, {
+                maxWidth: 180,
+                lineHeightFactor: 1.5
+            })
+        }else{
+            alert("Debe completar el campo de procedimiento")
+            evalP = false
+            return
+        }
+        
+        if(evalP){
+            return true
+        }else{
+            return false
+        }
     }
 
     function evaluarAutorizacionSupervision(){
         let evalAuto = true
         doc.setFontSize(6.5)
+
         let supervisor = document.getElementById("supervisor-responsable").value
-        doc.text(supervisor, 115, 278,{
-            align: "center"
-        })
+        if(supervisor==""){
+            alert("Ingrese el nombre del supervisor o responsable en la parte inferior de la página")
+            evalAuto = false
+            return
+        }else{
+            doc.text(supervisor, 115, 278,{
+                align: "center"
+            })
+        }
+
         let responsable = document.getElementById("responsable").value
-        if(responsable.value==""){
+        if(responsable==""){
             alert("Ingrese el nombre del responsable en la parte inferior de la página")
             evalAuto = false
             return
@@ -500,10 +612,17 @@ async function loadImage(url) {
         }
         
         let prevencionista = document.getElementById("prevencionista").value
-        doc.text(prevencionista, 115, 290,{
-            align: "center"
-        })
 
+        if(prevencionista==""){
+            alert("Ingrese el nombre del prevencionista o responsable en la parte inferior de la página")
+            evalAuto = false
+            return
+        }else{
+            doc.text(prevencionista, 115, 290,{
+                align: "center"
+            })
+        }
+        
         let firmas = document.querySelectorAll(".a-s-firma")
         let fY = 274
         firmas.forEach(f=>{
@@ -515,15 +634,13 @@ async function loadImage(url) {
             return true
         }else{
             return false
-        }
-
-        
+        }   
     }
     
     if(evaluarDatosGenerales() && evaluarMantenimientoElectrico() && evaluarTrabajoAltura() && evaluarEspaciosConfinados() && evaluarDescripcionTarea() && evaluarPersonal() && evaluarEquiposProteccion() && evaluarHerramientas() && evaluarProcedimiento() && evaluarAutorizacionSupervision()){
         /*var blob = doc.output("blob");
         window.open(URL.createObjectURL(blob));*/
-                fechaActual.replace("/", "_")
+        fechaActual.replace("/", "_")
         doc.save(`PETAR_${fechaActual}.pdf`)
     }
 

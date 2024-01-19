@@ -735,10 +735,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     evaluarPersonas() &&
     evaluarObservaciones()
   ) {
-     var blob = doc.output("blob");
-     window.open(URL.createObjectURL(blob));
-     /*dia.replace("/","_")
-    doc.save(`ANALISIS_TRABAJO_SEGURO_${dia}.pdf`)*/
+    /*var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob));*/
+    dia.replace("/","_")
+    doc.save(`ANALISIS_TRABAJO_SEGURO_${dia}.pdf`)
   } else {
     alert("Asegúrse de competar todos los campos para generar el documento");
   }

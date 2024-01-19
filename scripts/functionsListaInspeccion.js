@@ -618,10 +618,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   });
 
   if (/*evaluarEmpresa() && evaluarDatosPrincipales() &&*/ evaluarNombreCargo()) {
-    var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob));
-    /*dia.replace("/","_")
-    doc.save(`lista_inspeccion_${dia}.pdf`)*/
+    /*var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob));*/
+    dia.replace("/","_")
+    doc.save(`lista_inspeccion_${dia}.pdf`)
   } else {
     alert("Complete los campos solicitados para generar el documento");
   }

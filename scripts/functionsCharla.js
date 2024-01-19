@@ -385,10 +385,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     }
 
     if(evaluarDatosPrincipales() && evaluarEmpresa() && evaluarMarcadoOpciones() && evaluarNombres() && evaluarExpositor()){
-        var blob = doc.output("blob");
-        window.open(URL.createObjectURL(blob))
-        /*dia.replace("/","_")
-        doc.save(`CHARLA_05_MINUTOS_${dia}.pdf`)*/
+        /*var blob = doc.output("blob");
+        window.open(URL.createObjectURL(blob))*/
+        dia.replace("/","_")
+        doc.save(`CHARLA_05_MINUTOS_${dia}.pdf`)
     }else{
         alert("Complete todos los campos")
     }

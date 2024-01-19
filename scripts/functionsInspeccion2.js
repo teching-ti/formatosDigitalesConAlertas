@@ -3,14 +3,37 @@ let moto = document.getElementById("vehiculo-moto")
 let sectionAuto = document.querySelector(".selectores")
 let sectionMoto = document.querySelector(".selectores-motorizado")
 
+let eppMoto1 = document.getElementsByName("e9")
+let eppMoto2 = document.getElementsByName("e10")
+let eppMoto3 = document.getElementsByName("e11")
+
 auto.addEventListener("click", function(){
     sectionAuto.style.display = "block"
     sectionMoto.style.display = "none"
+
+    
+    eppMoto1[3].checked = true
+    eppMoto1[0].checked = false
+
+    eppMoto2[3].checked = true
+    eppMoto2[0].checked = false
+
+    eppMoto3[3].checked = true
+    eppMoto3[0].checked = false
 })
 
 moto.addEventListener("click", function(){
     sectionMoto.style.display = "grid"
     sectionAuto.style.display = "none"
+
+    eppMoto1[3].checked = false
+    eppMoto1[0].checked = true
+
+    eppMoto2[3].checked = false
+    eppMoto2[0].checked = true
+
+    eppMoto3[3].checked = false
+    eppMoto3[0].checked = true
 })
 
 //alert("Los elementos marcados de color rojo con un (*), son obligatorios")
@@ -570,20 +593,20 @@ async function loadImage(url) {
     if(auto.checked){
 
         if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarTodoVehiculo() && evaluarLLantas() && evaluarAccesorios() && evaluarTapas() && evaluarEpp() && evaluarPma() && evaluarConductor()){
-            var blob = doc.output("blob");
-            window.open(URL.createObjectURL(blob));
-            //fechaActual.replace("/","_")
-            //doc.save(`INSPECCION_VEHICULAR_${fechaActual}.pdf`)
+            /*var blob = doc.output("blob");
+            window.open(URL.createObjectURL(blob));*/
+            fechaActual.replace("/","_")
+            doc.save(`INSPECCION_VEHICULAR_${fechaActual}.pdf`)
         }else{
             alert("Completar todos los campos")
         }
     }else if(moto.checked){
 
         if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarMoto() && evaluarEpp() && evaluarPma() && evaluarConductor()){
-            var blob = doc.output("blob");
-            window.open(URL.createObjectURL(blob));
-            //fechaActual.replace("/","_")
-            //doc.save(`INSPECCION_VEHICULAR_${fechaActual}.pdf`)
+            /*var blob = doc.output("blob");
+            window.open(URL.createObjectURL(blob));*/
+            fechaActual.replace("/","_")
+            doc.save(`INSPECCION_VEHICULAR_${fechaActual}.pdf`)
         }else{
             alert("Completar todos los campos")
         }
