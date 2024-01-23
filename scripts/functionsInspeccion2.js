@@ -183,35 +183,128 @@ async function loadImage(url) {
         vSeparado = new Date(partesFecha[0], partesFecha[1] - 1, partesFecha[2])
         let vencimiento = vSeparado.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
 
-        if(placa!="" && tarjeta!="" && empresa!="" && inicio!="" && final!="" && soat!="" && horaInspeccion!="" && vRevTecF!="Invalid Date" && vSoatF!="Invalid Date" && vencimiento!="Invalid Date"){
 
             //fecha de inspeccion
             doc.text(fecha.value, 177, 40.5)
-            doc.text(empresa, 36.5, 25.2)
-            doc.text(placa, 36.5, 28.8)
-            doc.text(tarjeta, 36.5, 32.8)
-            doc.text(vRevTecF, 36.5, 42)
-            
-            doc.text(numBrevete, 165, 28.8)
-            doc.text(categoria, 165, 32.5)
 
+            if(empresa!=""){
+                doc.text(empresa, 36.5, 25.2)
+            }else{
+                alert("Complete el campo de empresa")
+                evaluar = false
+                return
+            }
+
+            if(placa!=""){
+                doc.text(placa, 36.5, 28.8)
+            }else{
+                alert("Complete el campo de la placa del vehículo")
+                evaluar = false
+                return
+            }
+
+            if(tarjeta!=""){
+                doc.text(tarjeta, 36.5, 32.8)
+            }else{
+                alert("Complete el campo de tarjeta de propiedad")
+                evaluar = false
+                return
+            }
+
+            if(vRevTecF!="Invalid Date"){
+                doc.text(vRevTecF, 36.5, 42)
+            }else{
+                alert("Complete el campo de vencimiento de revisión técnica")
+                evaluar = false
+                return
+            }
+            
+            if(numBrevete!=""){
+                doc.text(numBrevete, 165, 28.8)
+            }else{
+                alert("Complete el campo de número de brevete")
+                evaluar = false
+                return
+            }
+
+            if(categoria!=""){
+                doc.text(categoria, 165, 32.5)
+            }else{
+                alert("Complete el campo de categoría")
+                evaluar = false
+                return
+            }
+            
             if(lentes.checked){
                 doc.text("x", 177, 20)
             }else{
                 doc.text("x", 189.6, 20)
             }
-            doc.setFontSize(4.5)
-            doc.text(inicio, 175., 24.5)
-            doc.text(final, 197.5, 24.5)
-            doc.setFontSize(6)
-            doc.text(soat, 87, 28.8)
-            doc.text(eSoat, 87, 32.7)
-            doc.text(vSoatF, 87, 36.2)
-            doc.text(horaInspeccion, 177, 43.8)
-            doc.text(vencimiento, 165, 37)
-        }else{
-            evaluar = false
-        }
+
+            
+            if(inicio!=""){
+                doc.setFontSize(4.5)
+                doc.text(inicio, 175., 24.5)
+            }else{
+                alert("Complete el campo de km de inicio")
+                evaluar = false
+                return
+            }
+
+            if(final!=""){
+                doc.setFontSize(4.5)
+                doc.text(final, 197.5, 24.5)
+            }else{
+                alert("Complete el campo de km final")
+                evaluar = false
+                return
+            }
+
+            if(soat!=""){
+                doc.setFontSize(6)
+                doc.text(soat, 87, 28.8)
+            }else{
+                alert("Complete el campo de km final")
+                evaluar = false
+                return
+            }
+
+            if(vSoatF!="Invalid Date"){
+                doc.setFontSize(6)
+                doc.text(vSoatF, 87, 36.2)
+            }else{
+                alert("Complete el campo de vencimiento de soat")
+                evaluar = false
+                return
+            }
+
+            if(eSoat!=""){
+                doc.setFontSize(6)
+                doc.text(eSoat, 87, 32.7)
+            }else{
+                alert("Complete el campo de empresa SOAT")
+                evaluar = false
+                return
+            }
+
+            if(horaInspeccion!=""){
+                doc.setFontSize(6)
+                doc.text(horaInspeccion, 177, 43.8)
+            }else{
+                alert("Complete el campo de empresa SOAT")
+                evaluar = false
+                return
+            }
+
+            if(vencimiento!="Invalid Date"){
+                doc.setFontSize(6)
+                doc.text(vencimiento, 165, 37)
+            }else{
+                alert("Complete el campo de empresa SOAT")
+                evaluar = false
+                return
+            }
+            
 
         if(evaluar){
             return true
@@ -595,8 +688,29 @@ async function loadImage(url) {
         if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarTodoVehiculo() && evaluarLLantas() && evaluarAccesorios() && evaluarTapas() && evaluarEpp() && evaluarPma() && evaluarConductor()){
             /*var blob = doc.output("blob");
             window.open(URL.createObjectURL(blob));*/
-            fechaActual.replace("/","_")
-            doc.save(`INSPECCION_VEHICULAR_${fechaActual}.pdf`)
+
+            fechaActual = fechaActual.replace(/\//g, "_")
+            const nombreDocumento =`INSPECCION_VEHICULAR_${fechaActual}.pdf`
+            doc.save(nombreDocumento)
+            //endodear el resultado del pdf
+            var file_data = btoa(doc.output())
+            var form_data = new FormData()
+            form_data.append("file", file_data)
+            form_data.append("nombre", "INSPECCION_VEHICULAR")
+            //alert(form_data)
+
+            $.ajax({
+                url: "../envios/enviar_alerta.php",
+                dataType: "text",
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type:"post",
+                success: function(php_script_response){
+                    alert("Archivo generado correctamente")
+                }
+            })
         }else{
             alert("Completar todos los campos")
         }
@@ -605,8 +719,28 @@ async function loadImage(url) {
         if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarMoto() && evaluarEpp() && evaluarPma() && evaluarConductor()){
             /*var blob = doc.output("blob");
             window.open(URL.createObjectURL(blob));*/
-            fechaActual.replace("/","_")
-            doc.save(`INSPECCION_VEHICULAR_${fechaActual}.pdf`)
+            fechaActual = fechaActual.replace(/\//g, "_")
+            const nombreDocumento =`INSPECCION_VEHICULAR_${fechaActual}.pdf`
+            doc.save(nombreDocumento)
+            //endodear el resultado del pdf
+            var file_data = btoa(doc.output())
+            var form_data = new FormData()
+            form_data.append("file", file_data)
+            form_data.append("nombre", "INSPECCION_VEHICULAR")
+            //alert(form_data)
+
+            $.ajax({
+                url: "../envios/enviar_alerta.php",
+                dataType: "text",
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type:"post",
+                success: function(php_script_response){
+                    alert("Archivo generado correctamente")
+                }
+            })
         }else{
             alert("Completar todos los campos")
         }

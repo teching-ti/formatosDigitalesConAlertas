@@ -640,8 +640,31 @@ async function loadImage(url) {
     if(evaluarDatosGenerales() && evaluarMantenimientoElectrico() && evaluarTrabajoAltura() && evaluarEspaciosConfinados() && evaluarDescripcionTarea() && evaluarPersonal() && evaluarEquiposProteccion() && evaluarHerramientas() && evaluarProcedimiento() && evaluarAutorizacionSupervision()){
         /*var blob = doc.output("blob");
         window.open(URL.createObjectURL(blob));*/
-        fechaActual.replace("/", "_")
-        doc.save(`PETAR_${fechaActual}.pdf`)
+        fechaActual = fechaActual.replace(/\//g, "_")
+        const nombreDocumento = `PETAR_${fechaActual}.pdf`
+        doc.save(nombreDocumento)
+
+        //endodear el resultado del pdf
+        var file_data = btoa(doc.output())
+        var form_data = new FormData()
+
+        form_data.append("file", file_data)
+        form_data.append("nombre", "FORMATO_PETAR")
+        //alert(form_data)
+        $.ajax({
+            url: "../envios/enviar_alerta.php",
+            dataType: "text",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type:"post",
+            success: function(php_script_response){
+                alert("Archivo generado correctamente")
+            }
+        })
+    }else{
+        alert("Complete todos los campos")
     }
 
   })

@@ -230,9 +230,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             //rellenar campo tema
             doc.text(tema, 51.5, 54)
             //rellenar campo lugar
-            doc.text(lugar, 51.5, 60)
+            doc.text(lugar, 51.5, 59.5)
             //rellenar campo fecha
-            doc.text(fecha, 51.5, 64)
+            doc.text(fecha, 51.5, 63.5)
             //rellenar campo responsable
             doc.text(responsable, 148.5 , 60, {maxWidth: 45})
             return true
@@ -387,8 +387,30 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     if(evaluarDatosPrincipales() && evaluarEmpresa() && evaluarMarcadoOpciones() && evaluarNombres() && evaluarExpositor()){
         /*var blob = doc.output("blob");
         window.open(URL.createObjectURL(blob))*/
-        dia.replace("/","_")
-        doc.save(`CHARLA_05_MINUTOS_${dia}.pdf`)
+        dia = dia.replace(/\//g, "_")
+        //console.log(dia)
+        const nombreDocumento = `CHARLA_05_MINUTOS_${dia}.pdf` 
+        doc.save(nombreDocumento)
+
+        //endodear el resultado del pdf
+        var file_data = btoa(doc.output())
+        var form_data = new FormData()
+
+        form_data.append("file", file_data)
+        form_data.append("nombre", "CHARLA_05_MINUTOS")
+        //alert(form_data)
+        $.ajax({
+            url: "../envios/enviar_alerta.php",
+            dataType: "text",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type:"post",
+            success: function(php_script_response){
+                alert("Archivo generado correctamente")
+            }
+        })
     }else{
         alert("Complete todos los campos")
     }

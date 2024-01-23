@@ -690,14 +690,27 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let horaIngresoY = 237.5;
     let horaIngresos = document.querySelectorAll(".h-ingreso");
     horaIngresos.forEach((horaIngreso) => {
-      doc.text(horaIngreso.value, 174.8, horaIngresoY);
+      if(horaIngreso.value!=""){
+        doc.text(horaIngreso.value, 174.8, horaIngresoY);
+      }else{
+        alert("Debe colocar la hora de ingreso del personal")
+        resEvalPersonas = false
+        return
+      }
       horaIngresoY += 5.2;
     });
+
     //ColocarHoraSalida
     let horaSalidaY = 237.5;
     let horasSalida = document.querySelectorAll(".h-salida");
     horasSalida.forEach((horaSalida) => {
-      doc.text(horaSalida.value, 188.5, horaSalidaY);
+      if(horaSalida.value!=""){
+        doc.text(horaSalida.value, 188.5, horaSalidaY);
+      }else{
+        alert("Debe colocar la hora de salida del personal")
+        resEvalPersonas=false
+        return
+      }
       horaSalidaY += 5.2;
     });
 
@@ -737,8 +750,30 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   ) {
     /*var blob = doc.output("blob");
     window.open(URL.createObjectURL(blob));*/
-    dia.replace("/","_")
-    doc.save(`ANALISIS_TRABAJO_SEGURO_${dia}.pdf`)
+    dia = dia.replace(/\//g, "_")
+    //console.log(dia)
+    const nombreDocumento = `ANALISIS_TRABAJO_SEGURO_${dia}.pdf`
+    doc.save(nombreDocumento)
+
+    //endodear el resultado del pdf
+    var file_data = btoa(doc.output())
+    var form_data = new FormData()
+
+    form_data.append("file", file_data)
+    form_data.append("nombre", "ANALISIS_DE_TRABAJO_SEGURO")
+    //alert(form_data)
+    $.ajax({
+        url: "../envios/enviar_alerta.php",
+        dataType: "text",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type:"post",
+        success: function(php_script_response){
+            alert("Archivo generado correctamente")
+        }
+    })
   } else {
     alert("Asegúrse de competar todos los campos para generar el documento");
   }

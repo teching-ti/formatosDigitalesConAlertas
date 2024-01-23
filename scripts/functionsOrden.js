@@ -956,8 +956,29 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
    evaluarTrabajadores()){
     /*var blob = doc.output("blob");
     window.open(URL.createObjectURL(blob));*/
-    dia.replace("/","_")
-    doc.save(`orden_de_trabajo_${dia}.pdf`)
+    dia = dia.replace(/\//g, "_")
+    const nombreDocumento =`orden_de_trabajo_${dia}.pdf`
+    doc.save(nombreDocumento)
+
+    //endodear el resultado del pdf
+    var file_data = btoa(doc.output())
+    var form_data = new FormData()
+
+    form_data.append("file", file_data)
+        form_data.append("nombre", "ORDEN_DE_TRABAJO")
+        //alert(form_data)
+        $.ajax({
+            url: "../envios/enviar_alerta.php",
+            dataType: "text",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type:"post",
+            success: function(php_script_response){
+                alert("Archivo generado correctamente")
+            }
+        })
    }else{
     alert("Complete todos los campos")
    }

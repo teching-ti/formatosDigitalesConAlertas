@@ -617,11 +617,33 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     //positionY = 250
   });
 
-  if (/*evaluarEmpresa() && evaluarDatosPrincipales() &&*/ evaluarNombreCargo()) {
+  if (evaluarEmpresa() && evaluarDatosPrincipales() && evaluarNombreCargo()) {
     /*var blob = doc.output("blob");
     window.open(URL.createObjectURL(blob));*/
-    dia.replace("/","_")
-    doc.save(`lista_inspeccion_${dia}.pdf`)
+
+    dia = dia.replace(/\//g, "_")
+    //console.log(dia)
+    const nombreDocumento = `lista_inspeccion_${dia}.pdf` 
+    doc.save(nombreDocumento)
+    //endodear el resultado del pdf
+    var file_data = btoa(doc.output())
+    var form_data = new FormData()
+
+    form_data.append("file", file_data)
+    form_data.append("nombre", "LISTA_DE_INSPECCION")
+    //alert(form_data)
+    $.ajax({
+        url: "../envios/enviar_alerta.php",
+        dataType: "text",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type:"post",
+        success: function(php_script_response){
+            alert("Archivo generado correctamente")
+        }
+    })
   } else {
     alert("Complete los campos solicitados para generar el documento");
   }
