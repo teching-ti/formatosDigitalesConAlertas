@@ -216,7 +216,7 @@ body{
     }
 
     .elemento-lista select{
-        width: 40%;
+        width: 30%;
     }
 
     .elemento-titulo{
@@ -231,9 +231,9 @@ body{
         align-items: center;
     }
 
-    .elemento-cantidad select{
+    /*.elemento-cantidad select{
         width: 20%;
-    }
+    }*/
 
     .elemento-opciones{
         grid-area: elemento-opciones;

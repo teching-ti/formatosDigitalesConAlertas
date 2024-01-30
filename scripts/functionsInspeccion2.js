@@ -727,6 +727,7 @@ async function loadImage(url) {
         if(evaluar){
             return true
         }else{
+            alert('Debe ingresar la fecha de vencimiento de los productos en el botiquín')
             return false
         }
         //fechas termina

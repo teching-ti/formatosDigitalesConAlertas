@@ -174,13 +174,13 @@ body{
     text-align: justify;
 }
 
-.elemento-epp div, .elemento-pma div, .elemento-botiquin div{
+.selector-motorizado div, .elemento-epp div, .elemento-pma div, .elemento-botiquin div{
     display: flex;
     gap: 1.4rem;
     font-size: .9rem;
 }
 
-.elemento-epp div label, .elemento-pma div label, .elemento-botiquin div label{
+.selector-motorizado label, .elemento-epp div label, .elemento-pma div label, .elemento-botiquin div label{
     display: flex;
     align-items: center;
     gap: .2rem;
@@ -277,16 +277,6 @@ body{
         padding: .8rem;
     }
 
-    /*.dg-contenedor{
-        grid-template-areas: 
-                            "fecha placa"
-                            "nombre-conductor nombre-conductor"
-                            "tarjeta-propiedad tarjeta-propiedad" 
-                            "empresa lentes" 
-                            "inicio final"
-                            "soat h-inspeccion";
-    }*/
-
     #placa{
         max-width: 80%;
     }
@@ -298,24 +288,21 @@ body{
     #tarjeta-propiedad{
         max-width: 80%;
     }
-    
+
     #empresa{
         max-width: 80%;
     }
 
-    /*.dg-contenedor{
-        grid-template-areas: 
-                            "fecha fecha"
-                            "placa placa"
-                            "nombre-conductor nombre-conductor"
-                            "tarjeta-propiedad tarjeta-propiedad" 
-                            "empresa empresa" 
-                            "lentes .."
-                            "inicio .."
-                            "final .."
-                            "soat .."
-                            "h-inspeccion ..";
-    }*/
+    /*Líneas para separaciones entre elementos*/
+    .selector-elemento p, .selector-motorizado p, .elemento-epp p, .elemento-pma p, .elemento-botiquin p{
+        font-weight: bold;
+        margin: .5rem 0;
+    }
+
+    .selector-elemento div, .selector-motorizado div, .elemento-epp div, .elemento-pma div, .elemento-botiquin div{
+        margin: .3rem 0;
+    }
+    /*Líneas para separaciones entre elementos*/
 
     .contenedor-nombres{
         flex-direction: column;
