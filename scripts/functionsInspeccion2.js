@@ -52,7 +52,7 @@ function validarFechas(campoFecha){
     let fechaMaxima = new Date(2999, 1, 1)
     
     if (fechaEvaluar < fechaMinima || fechaEvaluar>fechaMaxima) {
-        alert("Ingrese una fecha adecuada para el vencimiento de la revisión técnica.");
+        alert("Ingrese una fecha adecuada.");
         fechaIngresada.value = ""// Limpiar el campo de entrada
         return false
     }
@@ -68,12 +68,12 @@ let fechaVencimiento = document.getElementById("fecha-vencimiento")
 
 fechaVencimientoRt.addEventListener("blur", function(){
     validarFechas(fechaVencimientoRt)
-
 })
 fechaVencimientoSOAT.addEventListener("blur", function(){
     validarFechas(fechaVencimientoSOAT)
 })
 fechaVencimiento.addEventListener("blur", function(){
+    //console.log('revisando la fecha de vencimiento')
     validarFechas(fechaVencimiento)
 })
 
@@ -140,6 +140,14 @@ async function loadImage(url) {
       xhr.send();
     });
   }
+    //validar que las fechas que se colocan en el botiquin sean correctas
+    let contenedoresBotiquin = document.querySelectorAll(".elemento-botiquin")
+    contenedoresBotiquin.forEach(function(element){
+        let fecha_vencimiento = element.querySelector('input[type="date"]')
+        fecha_vencimiento.addEventListener("blur", function(){
+            validarFechas(fecha_vencimiento)
+        })
+    })
 
   let btnGenerar = document.getElementById("btnGenerar")
 
@@ -148,7 +156,7 @@ async function loadImage(url) {
     //doc, objeto
     var doc = new jsPDF();
     //imagen del documento vacía
-    const image = await loadImage("../recursos/formatoInspeccionVehicular21.jpg");
+    const image = await loadImage("../recursos/formatoInspeccionVehicular.jpg");
     doc.addImage(image, "jpg", 0, 0, 210, 295);
     doc.setFontSize(6)
 
@@ -164,7 +172,6 @@ async function loadImage(url) {
         let final = document.getElementById("final-km").value
         let soat = document.getElementById("numero-soat").value
         let eSoat = document.getElementById("empresa-soat").value
-
 
         let partesFecha = fechaVencimientoSOAT.value.split("-")
         let vSeparado = new Date(partesFecha[0], partesFecha[1] - 1, partesFecha[2]);
@@ -185,10 +192,10 @@ async function loadImage(url) {
 
 
             //fecha de inspeccion
-            doc.text(fecha.value, 177, 40.5)
+            doc.text(fecha.value, 177, 36)
 
             if(empresa!=""){
-                doc.text(empresa, 36.5, 25.2)
+                doc.text(empresa, 40.5, 24.5)
             }else{
                 alert("Complete el campo de empresa")
                 evaluar = false
@@ -196,7 +203,7 @@ async function loadImage(url) {
             }
 
             if(placa!=""){
-                doc.text(placa, 36.5, 28.8)
+                doc.text(placa, 40.5, 27.5)
             }else{
                 alert("Complete el campo de la placa del vehículo")
                 evaluar = false
@@ -204,7 +211,7 @@ async function loadImage(url) {
             }
 
             if(tarjeta!=""){
-                doc.text(tarjeta, 36.5, 32.8)
+                doc.text(tarjeta, 40.5, 30.5)
             }else{
                 alert("Complete el campo de tarjeta de propiedad")
                 evaluar = false
@@ -212,7 +219,7 @@ async function loadImage(url) {
             }
 
             if(vRevTecF!="Invalid Date"){
-                doc.text(vRevTecF, 36.5, 42)
+                doc.text(vRevTecF, 40.5, 38)
             }else{
                 alert("Complete el campo de vencimiento de revisión técnica")
                 evaluar = false
@@ -220,7 +227,7 @@ async function loadImage(url) {
             }
             
             if(numBrevete!=""){
-                doc.text(numBrevete, 165, 28.8)
+                doc.text(numBrevete, 165, 27.5)
             }else{
                 alert("Complete el campo de número de brevete")
                 evaluar = false
@@ -228,7 +235,7 @@ async function loadImage(url) {
             }
 
             if(categoria!=""){
-                doc.text(categoria, 165, 32.5)
+                doc.text(categoria, 165, 30.4)
             }else{
                 alert("Complete el campo de categoría")
                 evaluar = false
@@ -236,15 +243,15 @@ async function loadImage(url) {
             }
             
             if(lentes.checked){
-                doc.text("x", 177, 20)
+                doc.text("x", 178.5, 21)
             }else{
-                doc.text("x", 189.6, 20)
+                doc.text("x", 191.3, 21)
             }
 
             
             if(inicio!=""){
                 doc.setFontSize(4.5)
-                doc.text(inicio, 175., 24.5)
+                doc.text(inicio, 176.5, 24.5)
             }else{
                 alert("Complete el campo de km de inicio")
                 evaluar = false
@@ -253,7 +260,7 @@ async function loadImage(url) {
 
             if(final!=""){
                 doc.setFontSize(4.5)
-                doc.text(final, 197.5, 24.5)
+                doc.text(final, 199, 24.5)
             }else{
                 alert("Complete el campo de km final")
                 evaluar = false
@@ -262,34 +269,34 @@ async function loadImage(url) {
 
             if(soat!=""){
                 doc.setFontSize(6)
-                doc.text(soat, 87, 28.8)
+                doc.text(soat, 87, 27.5)
             }else{
                 alert("Complete el campo de km final")
                 evaluar = false
                 return
             }
 
-            if(vSoatF!="Invalid Date"){
-                doc.setFontSize(6)
-                doc.text(vSoatF, 87, 36.2)
-            }else{
-                alert("Complete el campo de vencimiento de soat")
-                evaluar = false
-                return
-            }
-
             if(eSoat!=""){
                 doc.setFontSize(6)
-                doc.text(eSoat, 87, 32.7)
+                doc.text(eSoat, 87, 30.5)
             }else{
                 alert("Complete el campo de empresa SOAT")
                 evaluar = false
                 return
             }
 
+            if(vSoatF!="Invalid Date"){
+                doc.setFontSize(6)
+                doc.text(vSoatF, 87, 33.5)
+            }else{
+                alert("Complete el campo de vencimiento de soat")
+                evaluar = false
+                return
+            }
+
             if(horaInspeccion!=""){
                 doc.setFontSize(6)
-                doc.text(horaInspeccion, 177, 43.8)
+                doc.text(horaInspeccion, 177, 39)
             }else{
                 alert("Complete el campo de empresa SOAT")
                 evaluar = false
@@ -298,7 +305,7 @@ async function loadImage(url) {
 
             if(vencimiento!="Invalid Date"){
                 doc.setFontSize(6)
-                doc.text(vencimiento, 165, 37)
+                doc.text(vencimiento, 165, 33.5)
             }else{
                 alert("Complete el campo de empresa SOAT")
                 evaluar = false
@@ -319,8 +326,8 @@ async function loadImage(url) {
         let firmaConductor = document.getElementById("firma-conductor").value
 
         if(nombreConductor!="" && firmaConductor!=""){
-            doc.text(nombreConductor, 36.5, 20.7)
-            doc.addImage(firmaConductor, "PNG", 34, 272, 35, 5.8)
+            doc.text(nombreConductor, 40.5, 21.4)
+            doc.addImage(firmaConductor, "PNG", 34, 270, 35, 5.8)
         }else{
             evaluar = false
         }
@@ -346,7 +353,7 @@ async function loadImage(url) {
     }
 
     function evaluarTodoVehiculo(){
-        let positionY = 68
+        let positionY = 58
         let contarSaltoX = 0
         let contadorEspacio = 0
 
@@ -360,35 +367,35 @@ async function loadImage(url) {
                 if(i.checked){
 
                     if(contarSaltoX<10){
-                        doc.text(i.value, 51.75, positionY,{ align: "center"})
+                        doc.text(i.value, 54, positionY,{ align: "center"})
                     }else if(10<=contarSaltoX && contarSaltoX<=19){
-                        doc.text(i.value, 121.3, positionY,{ align: "center"})
+                        doc.text(i.value, 122, positionY,{ align: "center"})
                     }else if(19<contarSaltoX){
-                        doc.text(i.value, 181.4, positionY,{ align: "center"})
+                        doc.text(i.value, 182, positionY,{ align: "center"})
                     }
                     
                     if(contadorEspacio==4){
-                        positionY+=5.2
+                        positionY+=5
                     }else if(contadorEspacio==14){
-                        positionY+=5.2
+                        positionY+=5
                     }else if(contadorEspacio==24){
-                        positionY+=5.2
+                        positionY+=5
                     }else{
-                        positionY+=3.86
+                        positionY+=3
                     }
                     
                     contarSaltoX+=1
                     contadorEspacio+=1
 
                     if(contarSaltoX%10==0){
-                        positionY=68
+                        positionY= 58
                     }
                 }
 
             })
         })
 
-        positionY = 68
+        positionY = 58
         contarSaltoX = 0
         contadorEspacio = 0
 
@@ -398,28 +405,28 @@ async function loadImage(url) {
             selectEvaluar.forEach((se)=>{
                 
                 if(contarSaltoX<10){
-                    doc.text(se.value, 60.5, positionY,{ align: "center"})
+                    doc.text(se.value, 63, positionY,{ align: "center"})
                 }else if(10<=contarSaltoX && contarSaltoX<=19){
-                    doc.text(se.value, 131, positionY,{ align: "center"})
+                    doc.text(se.value, 133, positionY,{ align: "center"})
                 }else if(19<contarSaltoX){
-                    doc.text(se.value, 196.5, positionY,{ align: "center"})
+                    doc.text(se.value, 197, positionY,{ align: "center"})
                 }
                 
                 if(contadorEspacio==4){
-                    positionY+=5.2
+                    positionY+=5
                 }else if(contadorEspacio==14){
-                    positionY+=5.2
+                    positionY+=5
                 }else if(contadorEspacio==24){
-                    positionY+=5.2
+                    positionY+=5
                 }else{
-                    positionY+=3.8
+                    positionY+=3
                 }
                 
                 contarSaltoX+=1
                 contadorEspacio+=1
 
                 if(contarSaltoX%10==0){
-                    positionY=68
+                    positionY = 58
                 }
             })
         })
@@ -428,25 +435,25 @@ async function loadImage(url) {
 
     function evaluarLLantas(){
         let cl = document.querySelector(".contenedor-llantas").querySelectorAll(".selector-elemento")
-        positionLlantasY = 111.8
+        positionLlantasY = 93.5
         cl.forEach(c=>{
             inputsEvaluar = c.querySelectorAll("input")
             inputsEvaluar.forEach((i)=>{
                 if(i.checked){
-                    doc.text(i.value, 51.75, positionLlantasY,{
+                    doc.text(i.value, 54, positionLlantasY,{
                         align: "center"
                     })
-                    positionLlantasY+=3.8
+                    positionLlantasY+=3
                 }
             })
         })
 
-        positionLlantasY = 111.8
+        positionLlantasY = 93.5
         cl.forEach(c=>{
             selectEvaluar = c.querySelectorAll("select")
             selectEvaluar.forEach((i)=>{
-                doc.text(i.value, 60.5, positionLlantasY,{ align: "center"} )
-                positionLlantasY += 3.8
+                doc.text(i.value, 63, positionLlantasY,{ align: "center"} )
+                positionLlantasY += 3
             })
         })
 
@@ -456,25 +463,25 @@ async function loadImage(url) {
 
     function evaluarAccesorios(){
         let cl = document.querySelector(".contenedor-accesorios").querySelectorAll(".selector-elemento")
-        positionY = 111.8
+        positionY = 93.5
         cl.forEach(c=>{
             inputsEvaluar = c.querySelectorAll("input")
             inputsEvaluar.forEach((i)=>{
                 if(i.checked){
-                    doc.text(i.value, 121.3, positionY,{
+                    doc.text(i.value, 122, positionY,{
                         align: "center"
                     })
-                    positionY+=3.8
+                    positionY+=3
                 }
             })
         })
 
-        positionY = 111.8
+        positionY = 93.5
         cl.forEach(c=>{
             selectEvaluar = c.querySelectorAll("select")
             selectEvaluar.forEach((i)=>{
-                doc.text(i.value, 131, positionY,{ align: "center"} )
-                positionY += 3.8
+                doc.text(i.value, 133, positionY,{ align: "center"} )
+                positionY += 3
             })
         })
 
@@ -483,25 +490,25 @@ async function loadImage(url) {
 
     function evaluarTapas(){
         let cl = document.querySelector(".contenedor-tapas").querySelectorAll(".selector-elemento")
-        positionY = 111.8
+        positionY = 93.5
         cl.forEach(c=>{
             inputsEvaluar = c.querySelectorAll("input")
             inputsEvaluar.forEach((i)=>{
                 if(i.checked){
-                    doc.text(i.value, 181.4, positionY,{
+                    doc.text(i.value, 182, positionY,{
                         align: "center"
                     })
-                    positionY+=3.8
+                    positionY+=3
                 }
             })
         })
 
-        positionY = 111.8
+        positionY = 93.5
         cl.forEach(c=>{
             selectEvaluar = c.querySelectorAll("select")
             selectEvaluar.forEach((i)=>{
-                doc.text(i.value, 196.5, positionY,{ align: "center"} )
-                positionY += 3.8
+                doc.text(i.value, 197, positionY,{ align: "center"} )
+                positionY += 3
             })
         })
 
@@ -511,7 +518,7 @@ async function loadImage(url) {
     function evaluarMoto(){
         doc.setFontSize(4.6)
         
-        let positionY = 139
+        let positionY = 114.5
         let contarSaltoX = 0
         let contadorEspacio = 0
 
@@ -522,39 +529,39 @@ async function loadImage(url) {
                 if(i.checked){
 
                     if(contarSaltoX<4){
-                        doc.text(i.value, 51.75, positionY, {
+                        doc.text(i.value, 54, positionY, {
                             align: "center"
                         })
                     }else if(4<=contarSaltoX && contarSaltoX<=7){
-                        doc.text(i.value, 121.3, positionY, {
+                        doc.text(i.value, 122, positionY, {
                             align: "center"
                         })
                     }else{
-                        doc.text(i.value, 181.4, positionY, {
+                        doc.text(i.value, 182, positionY, {
                             align: "center"
                         })
                     }
                     
                     if(contadorEspacio==2){
-                        positionY+=7
+                        positionY+=6
                     }else if(contadorEspacio==6){
-                        positionY+=7
+                        positionY+=6
                     }else{
-                        positionY+=3.6
+                        positionY+=3
                     }
 
                     contarSaltoX+=1
                     contadorEspacio+=1
 
                     if(contarSaltoX%4==0){
-                        positionY=139
+                        positionY=114.5
                     }
 
                 }
             })
         })
 
-        positionY = 139
+        positionY = 114.5
         contarSaltoX = 0
         contadorEspacio = 0
 
@@ -563,32 +570,32 @@ async function loadImage(url) {
             inputsEvaluar.forEach(i=>{
        
                 if(contarSaltoX<4){
-                    doc.text(i.value, 60.5, positionY, {
+                    doc.text(i.value, 63, positionY, {
                         align: "center"
                     })
                 }else if(4<=contarSaltoX && contarSaltoX<=7){
-                    doc.text(i.value, 131, positionY, {
+                    doc.text(i.value, 133, positionY, {
                         align: "center"
                     })
                 }else{
-                    doc.text(i.value, 196.5, positionY, {
+                    doc.text(i.value, 197, positionY, {
                         align: "center"
                     })
                 }
                     
                 if(contadorEspacio==2){
-                    positionY+=7
+                    positionY+=6
                 }else if(contadorEspacio==6){
-                    positionY+=7
+                    positionY+=6
                 }else{
-                    positionY+=3.6
+                    positionY+=3
                 }
 
                 contarSaltoX+=1
                 contadorEspacio+=1
 
                 if(contarSaltoX%4==0){
-                    positionY=139
+                    positionY=114.5
                 }
             })
         })
@@ -597,28 +604,28 @@ async function loadImage(url) {
 
     function evaluarEpp(){
         let contenedoresEpp = document.querySelectorAll(".elemento-epp")
-        positionY = 175
+        positionY = 144
         contenedoresEpp.forEach(c=>{
             elemento = c.querySelectorAll("input")
             elemento.forEach(i=>{
                 if(i.checked){
-                    doc.text(i.value, 56.5, positionY,{
+                    doc.text(i.value, 58, positionY,{
                         align: "center"
                     } )
-                    positionY+=3.8
+                    positionY+=2.75
                 }
             })
         })
 
-        positionY = 175
+        positionY = 144
         contenedoresEpp.forEach(c=>{
             elemento = c.querySelectorAll("select")
             elemento.forEach(i=>{
 
-                    doc.text(i.value, 75.5, positionY,{
+                    doc.text(i.value, 76.5, positionY,{
                         align: "center"
                     } )
-                    positionY+=3.8
+                    positionY+=2.75
             })
         })
         
@@ -627,33 +634,104 @@ async function loadImage(url) {
 
     function evaluarPma(){
         let contenedoresPma = document.querySelectorAll(".elemento-pma")
-        positionY = 222
+        positionY = 177
         contenedoresPma.forEach(c=>{
             elemento = c.querySelectorAll("input")
             elemento.forEach(i=>{
                 if(i.checked){
-                    doc.text(i.value, 56.5, positionY,{
+                    doc.text(i.value, 58, positionY,{
                         align: "center"
                     } )
-                    positionY+=3.8
+                    positionY+=2.8
                 }
             })
         })
 
-        positionY = 222
+        positionY = 177
         contenedoresPma.forEach(c=>{
             elemento = c.querySelectorAll("select")
             elemento.forEach(i=>{
 
-                    doc.text(i.value, 75.5, positionY,{
+                    doc.text(i.value, 76.5, positionY,{
                         align: "center"
                     } )
-                    positionY+=3.8
+                    positionY+=2.8
             })
         })
         
         return true
     }
+
+    //Section del botiquin
+    function evaluarBotiquin(){
+        evaluar = true
+        let botY = 193
+        let salto = 0
+        //fechas inicia
+        contenedoresBotiquin.forEach(f=>{
+            inputFecha = f.querySelector('input[type="date"]')
+            partesFecha = inputFecha.value.split("-")
+            vSeparado = new Date(partesFecha[0], partesFecha[1] - 1, partesFecha[2])
+            let fechaBotiquin = vSeparado.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+            
+            if(fechaBotiquin!="" && fechaBotiquin!="Invalid Date"){
+                if(salto==1 || salto==7){
+                    doc.text(fechaBotiquin, 72, botY, { align: 'center'})
+                    botY+=4.5
+                }else{
+                    doc.text(fechaBotiquin, 72, botY, { align: 'center'})
+                    botY+=2.86
+                }
+                
+            }else{
+                evaluar = false
+                return
+            }
+            salto+=1
+        })
+
+        botY = 193
+        salto = 0
+        contenedoresBotiquin.forEach(c=>{
+            elemento = c.querySelectorAll("input[type='radio']")
+            elemento.forEach(i=>{
+                if(i.checked){
+                    if(salto==1 || salto==7){
+                        doc.text(i.value, 101, botY, { align: 'center'})
+                        botY+=4.5
+                    }else{
+                        doc.text(i.value, 101, botY, { align: 'center'})
+                        botY+=2.86
+                    }
+                }
+            })
+            salto+=1
+        })
+
+        botY = 193
+        salto = 0
+        contenedoresBotiquin.forEach(c=>{
+            elemento = c.querySelectorAll("select")
+            elemento.forEach(i=>{
+                if(salto==1 || salto==7){
+                    doc.text(i.value, 122, botY, { align: 'center'})
+                    botY+=4.5
+                }else{
+                    doc.text(i.value, 122, botY, { align: 'center'})
+                    botY+=2.86
+                }
+            })
+            salto+=1
+        })
+
+        if(evaluar){
+            return true
+        }else{
+            return false
+        }
+        //fechas termina
+    }
+
 
     function evaluarConductor(){
         evaluar = true
@@ -666,10 +744,10 @@ async function loadImage(url) {
             evaluar = false
             return evaluar
         }
-        doc.setFontSize(9)
+        doc.setFontSize(8)
         doc.setTextColor(0, 0, 150);
-        doc.text("X", 172.8, 240)
-        doc.text("X", 172.8, 244)
+        doc.text("X", 173.6, 245.6)
+        doc.text("X", 173.6, 249)
 
         return evaluar
     }
@@ -677,15 +755,17 @@ async function loadImage(url) {
     /*datos del supervisor directamente al documento*/
     
     doc.setFontSize(5.2)
-    doc.text("Roberto Carlos Luis Bailon", 36.5, 36.5)
-    doc.text("Roberto Carlos Luis Bailon", 170, 286.8, {
+    doc.text("Roberto Carlos Luis Bailon", 40.5, 33.4)
+    doc.text("Roberto Carlos Luis Bailon", 172, 281, {
         maxWidth: "32"
     })
-    doc.addImage("../recursos/firmas/RobertoLuisBailon.png", "PNG", 156, 272,  35, 5.8)
+    doc.addImage("../recursos/firmas/RobertoLuisBailon.png", "PNG", 158, 268,  35, 6)
+
+    
 
     if(auto.checked){
 
-        if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarTodoVehiculo() && evaluarLLantas() && evaluarAccesorios() && evaluarTapas() && evaluarEpp() && evaluarPma() && evaluarConductor()){
+        if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarTodoVehiculo() && evaluarLLantas() && evaluarAccesorios() && evaluarTapas() && evaluarEpp() && evaluarPma() && evaluarBotiquin() && evaluarConductor()){
             /*var blob = doc.output("blob");
             window.open(URL.createObjectURL(blob));*/
 
@@ -716,7 +796,7 @@ async function loadImage(url) {
         }
     }else if(moto.checked){
 
-        if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarMoto() && evaluarEpp() && evaluarPma() && evaluarConductor()){
+        if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarMoto() && evaluarEpp() && evaluarPma() && evaluarBotiquin() && evaluarConductor()){
             /*var blob = doc.output("blob");
             window.open(URL.createObjectURL(blob));*/
             fechaActual = fechaActual.replace(/\//g, "_")

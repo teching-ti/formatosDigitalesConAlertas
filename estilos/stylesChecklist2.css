@@ -140,7 +140,7 @@ body{
     height: 35px;
 }
 
-.selectores-todo-vehiculo, .contenedor-llantas, .contenedor-accesorios, .contenedor-tapas, .equipos-proteccion-personal, .proteccion-medio-ambiente{
+.selectores-todo-vehiculo, .contenedor-llantas, .contenedor-accesorios, .contenedor-tapas, .equipos-proteccion-personal, .proteccion-medio-ambiente, .botiquin{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     border-bottom: solid 1px rgb(157, 154, 154);
@@ -174,13 +174,13 @@ body{
     text-align: justify;
 }
 
-.elemento-epp div, .elemento-pma div{
+.elemento-epp div, .elemento-pma div, .elemento-botiquin div{
     display: flex;
     gap: 1.4rem;
     font-size: .9rem;
 }
 
-.elemento-epp div label, .elemento-pma div label{
+.elemento-epp div label, .elemento-pma div label, .elemento-botiquin div label{
     display: flex;
     align-items: center;
     gap: .2rem;
