@@ -42,7 +42,7 @@ body{
 
 .form-container{
     /*display: none;*/
-    background: #f3f4f6;
+    background: #e7e7e7;
 }
 
 .form-body{
@@ -337,5 +337,9 @@ select{
 
     .contenedor-epp-requerido div label{
         width: fit-content;
+    }
+
+    #supervisor-responsable, #responsable, #prevencionista{
+        width: 100%;
     }
 }

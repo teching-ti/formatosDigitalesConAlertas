@@ -112,4 +112,8 @@ h1{
     .imagen-logo{
         width: 35%;
     }
+
+    .links{
+        text-align: center;
+    }
 }
