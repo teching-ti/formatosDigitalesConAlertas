@@ -53,7 +53,6 @@ body{
     outline: none;
     border-style: none;
     height: 35px;
-    border-radius: .4rem;
 }
 
 #trabajo, #lugar{
@@ -91,13 +90,39 @@ body{
     margin: 0 1rem;
 }
 
-
 .trabajador-firma, .trabajador-dni{
     display: none;
 }
 
-#firma-responsable{
+.contenedor-responsable, .contenedor-supervisor{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+#responsable-nombre, #supervisor-nombre{
+    height: 25px;
+    border: none;
+    border-bottom: 1px solid rgb(177, 176, 176);
+    outline: none;
+}
+
+#firma-responsable, #firma-supervisor{
     display: none;
+}
+
+.leyenda{
+    border: solid 1px black;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    font-size: .8rem;
+    margin: 0 auto;
+}
+
+th, td{
+    border-collapse: collapse;
+    border: solid 1px;
+    padding: .2rem;
 }
 
 .lista{
@@ -108,25 +133,41 @@ body{
     margin: 1.5rem 0;
 }
 
-.elemento-cantidad{
+/*Contenedor de la cantidad y opciones*/
+.elemento-cuerpo {
+    width: 100%;
+    display: flex;
     margin-left: 2rem;
+    gap: .5rem;
+}
+
+/*Contenedor del input*/
+.contenedor-codigo-fv{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: .5rem;
+    width: 100%;
+    gap: .5rem;
+}
+
+.contenedor-codigo-fv label{
+    display: flex;
+
+    gap: .5rem;
+}
+
+.cod{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(182, 178, 178);
+    height: 25px;
+    padding: .5rem;
 }
 
 .elemento-titulo-general{
     margin: .5rem 0rem 1.5rem .5rem;
 }
-
-/*colocar antes de dar push*/
-.editando{
-    display: grid;
-    height: 300px;
-    place-content: center;
-}
-
-.inactivo{
-    display: none;
-}
-/*colocar antes de dar push end*/
 
 #botones{
     display: flex;
@@ -145,6 +186,33 @@ body{
     padding: .5rem;
     transition: all ease-in-out .2s;
 }
+
+.contenedor-comentarios{
+    display: flex;
+    flex-direction: column;
+}
+
+.comentario-epp, .comentario-herramienta, .comentario-equipo, .comentario-senial, .comentario-documentacion, .comentario-accesorio{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: .5rem 0;
+    padding-left: .4rem;
+}
+
+.comentario-epp textarea,
+.comentario-herramienta textarea,
+.comentario-equipo textarea,
+.comentario-senial textarea,
+.comentario-documentacion textarea,
+.comentario-accesorio textarea{
+    width: 30%;
+    outline: none;
+    resize: none;
+    height: 45px;
+    padding: .4rem;
+}
+
 
 .agregar-personal:hover{
     background: black;
@@ -167,6 +235,40 @@ body{
 }
 
 #btnGenerar:hover{
+    transform: scale(1.4);
+}
+
+#btnListaPersonal{
+    cursor: pointer;
+    position: fixed;
+    top: 125px;
+    right: 10px;
+    color: rgb(53, 159, 0);
+    padding: .5rem;
+    width: min-content;
+    border-radius: 60%;
+    border: solid 1px rgb(53, 159, 0);
+    transition: all ease-in-out .2s;
+}
+
+#btnListaPersonal:hover{
+    transform: scale(1.4);
+}
+
+#btnComentarios{
+    cursor: pointer;
+    position: fixed;
+    top: 200px;
+    right: 10px;
+    color: rgb(47, 1, 185);
+    padding: .5rem;
+    width: min-content;
+    border-radius: 60%;
+    border: solid 1px rgb(47, 1, 185);
+    transition: all ease-in-out .2s;
+}
+
+#btnComentarios:hover{
     transform: scale(1.4);
 }
 
@@ -193,12 +295,16 @@ body{
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 1.4rem;
+        gap: .8rem;
         padding: .5rem .2rem;
     }
 
     .contenedor-trabajador{
         margin: 2rem 0 0 0;
+    }
+
+    .leyenda{
+        font-size: .6rem;
     }
 
     .lista{
@@ -212,6 +318,7 @@ body{
         grid-template-areas: 
                             "elemento-titulo elemento-titulo"
                             "elemento-cantidad elemento-opciones"
+                            "contenedor-codigo-fv contenedor-codigo-fv"
         ;
     }
 
@@ -231,10 +338,6 @@ body{
         align-items: center;
     }
 
-    /*.elemento-cantidad select{
-        width: 20%;
-    }*/
-
     .elemento-opciones{
         grid-area: elemento-opciones;
         display: flex;
@@ -242,4 +345,20 @@ body{
         align-items: center;
     }
 
+    .contenedor-codigo-fv{
+        grid-area: contenedor-codigo-fv;
+        display: flex;
+        align-items: center;
+    }
+
+    .comentario-epp textarea,
+    .comentario-herramienta textarea,
+    .comentario-equipo textarea,
+    .comentario-senial textarea,
+    .comentario-documentacion textarea,
+    .comentario-accesorio textarea{
+        margin: 0 auto;
+        width: 90%;
+        height: 35px;
+    }
 }

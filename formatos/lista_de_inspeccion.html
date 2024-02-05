@@ -71,10 +71,19 @@
             <div class="contenedor-responsable">
               <label for="responsable-nombre">Responsable: </label>
               <select name="responsable-nombre" id="responsable-nombre">
-                <option value="Seleccionar">--Seleccionar Nombre--</option>
+                <option value="Seleccionar">--Seleccionar Responsable--</option>
               </select>
               <input type="text" id="firma-responsable" />
             </div>
+
+            <div class="contenedor-supervisor">
+              <label for="supervisor-nombre">Supervisor: </label>
+              <select name="supervisor-nombre" id="supervisor-nombre">
+                <option value="Seleccionar">--Seleccionar Supervisor--</option>
+              </select>
+              <input type="text" id="firma-supervisor" />
+            </div>
+
             <div class="contenedor-comentarios">
               <label for="comentarios">Comentarios</label>
               <textarea
@@ -121,6 +130,22 @@
                   <input type="text" class="trabajador-dni" />
                 </div>
               </div>
+              <table class="leyenda">
+                <thead>
+                  <th>Bueno</th>
+                  <th>Malogrado/ Dañado</th>
+                  <th>No Tiene</th>
+                  <th>No requiere</th>
+                  <th>Fuera de Vigencia</th>
+                </thead>
+                <tbody>
+                  <td>B</td>
+                  <td>M</td>
+                  <td>NT</td>
+                  <td>NR</td>
+                  <td>FV</td>
+                </tbody>
+              </table>
 
               <div class="elementos-evaluar">
                 <!-- EPP -->
@@ -134,56 +159,63 @@
                       <h4 class="elemento-titulo">
                         1. Camisa de Verano/Invierno
                       </h4>
-                      <label class="elemento-cantidad"
-                        >Cantidad:
-                        <select name="cantidad" class="camisa-cantidad">
-                          <option value="1" selected>1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                        </select>
-                      </label>
-                      <span class="elemento-opciones">
-                        <label
-                          >B
-                          <input
-                            type="radio"
-                            name="camisa-verano-invierno"
-                            value="B"
-                        /></label>
-                        <label
-                          >M
-                          <input
-                            type="radio"
-                            name="camisa-verano-invierno"
-                            value="M"
-                        /></label>
-                        <label
-                          >NT
-                          <input
-                            type="radio"
-                            name="camisa-verano-invierno"
-                            value="NT"
-                        /></label>
-                        <label
-                          >NR
-                          <input
-                            type="radio"
-                            name="camisa-verano-invierno"
-                            value="NR"
-                            checked
-                        /></label>
-                        <label
-                          >FV
-                          <input
-                            type="radio"
-                            name="camisa-verano-invierno"
-                            value="FV"
-                        /></label>
-                      </span>
+                      <div class="elemento-cuerpo">
+                        <label class="elemento-cantidad"
+                          >Cantidad:
+                          <select name="cantidad" class="camisa-cantidad">
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                          </select>
+                        </label>
+                        <span class="elemento-opciones">
+                          <label
+                            >B
+                            <input
+                              type="radio"
+                              name="camisa-verano-invierno"
+                              value="B"
+                          /></label>
+                          <label
+                            >M
+                            <input
+                              type="radio"
+                              name="camisa-verano-invierno"
+                              value="M"
+                          /></label>
+                          <label
+                            >NT
+                            <input
+                              type="radio"
+                              name="camisa-verano-invierno"
+                              value="NT"
+                          /></label>
+                          <label
+                            >NR
+                            <input
+                              type="radio"
+                              name="camisa-verano-invierno"
+                              value="NR"
+                              checked
+                          /></label>
+                          <label
+                            >FV
+                            <input
+                              type="radio"
+                              name="camisa-verano-invierno"
+                              value="FV"
+                          /></label>
+                        </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- pantalón de verano -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">2. Pantalón de Verano</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="pantalon-cantidad">
@@ -230,10 +262,16 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- camisa antiflama -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">3. Camisa antiflama</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -277,10 +315,16 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- pantalon antiflama -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">4. Pantalón antiflama</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -330,10 +374,16 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- zapatos dieléctricos -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">5. Zapatos Dieléctricos</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -383,12 +433,18 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Chaleco preventivo de seguridad -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         6. Chaleco preventivo de seguridad
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -438,12 +494,18 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Lentes con protección UV -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         7. Lentes con protección UV
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="lentes-uv-cantidad">
@@ -474,10 +536,16 @@
                           >FV <input type="radio" name="lentes-uv" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Lentes contra impacto -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">8. Lentes contra impacto</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="lentes-impacto-cantidad">
@@ -512,10 +580,16 @@
                           <input type="radio" name="lentes-impacto" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Bloqueador solar -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">9. Bloqueador solar</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -559,12 +633,18 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Casco Dieléctrico normado con barbiqueo -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         10. Casco Dieléctrico normado con barbiqueo
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -614,12 +694,18 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Guantes Dieléctricos BT-Clase 0, TIPO I -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         11. Guantes Dieléctricos BT-Clase 0, TIPO I
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -669,12 +755,18 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Careta facial policarbonato -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         12. Careta facial policarbonato
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -724,10 +816,16 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Careta facial antiarco -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">13. Careta facial antiarco</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -765,10 +863,16 @@
                           <input type="radio" name="careta-antiarco" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Guante de badana -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">14. Guante de badana</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="guante-badana-cantidad">
@@ -801,10 +905,16 @@
                           <input type="radio" name="guante-badana" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Guante de cuero -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">15. Guante de cuero</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="guante-cuero-cantidad">
@@ -837,10 +947,16 @@
                           <input type="radio" name="guante-cuero" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Guante de hilo -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">16. Guante de hilo</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="guante-hilo-cantidad">
@@ -871,10 +987,16 @@
                           >FV <input type="radio" name="guante-hilo" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Mascarilla contra polvo -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">17. Mascarilla contra polvo</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -918,12 +1040,18 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Correa Porta Herramientas -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         18. Correa Porta Herramientas
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -973,10 +1101,16 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Manta Dieléctrica -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">19. Manta Dieléctrica</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -1026,10 +1160,16 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Capucha Ignífuga -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">20. Capucha Ignífuga</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -1079,6 +1219,11 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -1093,6 +1238,7 @@
                       <h4 class="elemento-titulo">
                         1. Alicate universal 8" de longitud 1000V
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -1142,12 +1288,18 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Alicate de corte aislado 6" -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         2. Alicate de corte aislado 6"
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="alicate-corte-cantidad">
@@ -1180,12 +1332,18 @@
                           <input type="radio" name="alicate-corte" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Alicate de punta aislada 6" -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         3. Alicate de punta aislada 6"
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="alicate-punnta-cantidad">
@@ -1220,12 +1378,18 @@
                           <input type="radio" name="alicate-punnta" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Destornillador plano aislado 6" -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         4. Destornillador plano aislado 6"
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -1275,10 +1439,16 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Perillero (opcional) -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">5.  Perillero (opcional)</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="perillero-cantidad">
@@ -1309,12 +1479,18 @@
                           >FV <input type="radio" name="perillero" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Destornillador estrella aislado 6" o 8" -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         6. Destornillador estrella aislado 6" o 8"
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -1364,12 +1540,18 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Destornillador hexagonal -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         7. Destornillador hexagonal
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -1419,10 +1601,16 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Juego de llave allen -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">8. Juego de llave allen</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="llaves-allen-cantidad">
@@ -1455,12 +1643,18 @@
                           <input type="radio" name="llaves-allen" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- juego de llave ratchets Aislado -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         9. juego de llave ratchets Aislado
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -1510,10 +1704,16 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Revelador de tensión BT -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">10. Revelador de tensión BT</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="rev-tension-bt-cantidad">
@@ -1548,12 +1748,18 @@
                           <input type="radio" name="rev-tension-bt" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Pinza Volt amperimétrica -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         11. Pinza Volt amperimétrica
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -1603,10 +1809,16 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Pinza MT -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">12. Pinza MT</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -1644,10 +1856,16 @@
                           <input type="radio" name="pinza-mt" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Linterna grande -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">13. Linterna grande</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -1685,12 +1903,18 @@
                           <input type="radio" name="linterna-grande" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Llave Francesa Aislado / Mecánica -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         14. Llave Francesa Aislado / Mecánica
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="llave-francesa-cantidad">
@@ -1725,12 +1949,18 @@
                           <input type="radio" name="llave-francesa" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Bolsa y recipiente para almacenar residuos -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         15. Bolsa y recipiente para almacenar residuos
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="bolsa-residuos-cantidad">
@@ -1765,12 +1995,18 @@
                           <input type="radio" name="bolsa-residuos" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Arnés de seguridad con accesorios -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         16. Arnés de seguridad con accesorios
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -1808,10 +2044,16 @@
                           <input type="radio" name="arnes-seguridad" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Lima -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">17. Lima</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="lima-cantidad">
@@ -1838,10 +2080,16 @@
                           >FV <input type="radio" name="lima" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Cincel -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">18. Cincel</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="cincel-cantidad">
@@ -1868,12 +2116,18 @@
                           >FV <input type="radio" name="cincel" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Comba chica 4 o 5 libras -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         19. Comba chica 4 o 5 libras
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="comba-chica-cantidad">
@@ -1904,10 +2158,16 @@
                           >FV <input type="radio" name="comba-chica" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Martillo -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">20. Martillo</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="martillo-cantidad">
@@ -1938,12 +2198,18 @@
                           >FV <input type="radio" name="martillo" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Linterna portátil adaptable para casco -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         21. Linterna portátil adaptable para casco
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="linterna-casco-cantidad">
@@ -1978,10 +2244,16 @@
                           <input type="radio" name="linterna-casco" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Nivel -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">22. Nivel</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="nivel-cantidad">
@@ -2008,10 +2280,16 @@
                           >FV <input type="radio" name="nivel" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Cinta pasa cable -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">23. Cinta pasa cable</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -2049,10 +2327,16 @@
                           <input type="radio" name="cinta-pasacable" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Prensa terminal -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">24. Prensa terminal</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -2090,9 +2374,15 @@
                           <input type="radio" name="prensa-terminal" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">25. Pertiga</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -2130,6 +2420,11 @@
                           <input type="radio" name="pertiga" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -2142,6 +2437,7 @@
                     <!-- Máquina de Soldar -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">1. Máquina de Soldar</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="maquina-soldar-cantidad">
@@ -2176,12 +2472,18 @@
                           <input type="radio" name="maquina-soldar" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Equipo de soldar (mandil, máscara y mangas) -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         2. Equipo de soldar (mandil, máscara y mangas)
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="equipo-soldar-cantidad">
@@ -2214,12 +2516,18 @@
                           <input type="radio" name="equipo-soldar" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Amoladora con disco de corte -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         3. Amoladora con disco de corte
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -2257,12 +2565,18 @@
                           <input type="radio" name="amoladora-disco" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Cámara fotográfica digital -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         4. Cámara fotográfica digital
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -2312,12 +2626,18 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Escalera (tipo tijera) (telescópica) -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         5. Escalera (tipo tijera) (telescópica)
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="escalera-cantidad">
@@ -2348,10 +2668,16 @@
                           >FV <input type="radio" name="escalera" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Banco escalera -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">6. Banco escalera</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="banco-escalera-cantidad">
@@ -2386,12 +2712,18 @@
                           <input type="radio" name="banco-escalera" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Extensión de cable vulcanizado Industrial -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         7. Extensión de cable vulcanizado Industrial
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -2441,10 +2773,16 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Reflector -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">8. Reflector</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="reflector-cantidad">
@@ -2475,10 +2813,16 @@
                           >FV <input type="radio" name="reflector" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Taladro -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">9. Taladro</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="taladro-cantidad">
@@ -2505,10 +2849,16 @@
                           >FV <input type="radio" name="taladro" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Rotomartillo -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">10. Rotomartillo</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="rotomartillo-cantidad">
@@ -2541,10 +2891,16 @@
                           <input type="radio" name="rotomartillo" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Caja de Herramientas -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">11. Caja de Herramientas</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -2594,6 +2950,11 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -2606,6 +2967,7 @@
                     <!-- Cercos -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">- Cercos</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="cercos-cantidad">
@@ -2652,10 +3014,16 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Malla con parantes -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">- Malla con parantes</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="malla-parantes-cantidad">
@@ -2690,6 +3058,11 @@
                           <input type="radio" name="malla-parantes" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -2702,6 +3075,7 @@
                     <!-- AST/ASG/SGI Vigentes -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">- AST/ASG/SGI Vigentes</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="ast-asg-sgi-cantidad">
@@ -2732,10 +3106,16 @@
                           >FV <input type="radio" name="ast-asg-sgi" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Charla pre operacional -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">- Charla pre operacional</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select name="cantidad" class="charla-pre-cantidad">
@@ -2766,10 +3146,16 @@
                           >FV <input type="radio" name="charla-pre" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Check list vehicular -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">- Check list vehicular</h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -2807,12 +3193,18 @@
                           <input type="radio" name="check-vehicular" value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                     <!-- Registro de residuos generados  -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
                         - Registro de residuos generados
                       </h4>
+                      <div class="elemento-cuerpo">
                       <label class="elemento-cantidad"
                         >Cantidad:
                         <select
@@ -2862,6 +3254,11 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -2874,10 +3271,16 @@
                     <!-- Medio de comunicación radio RPM -->
                     <li class="elemento-lista">
                       <h4 class="elemento-titulo">
-                        - Medio de comunicación radio RPM
+                        - Medio de comunicación radio (Celular)
                       </h4>
-                      <label class="elemento-cantidad"
-                        >
+                      <div class="elemento-cuerpo">
+                      <label class="elemento-cantidad">
+                        Cantidad:
+                        <select name="cantidad" class="accesorios-cantidad">
+                          <option value="1" selected>1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
                       </label>
                       <span class="elemento-opciones">
                         <label
@@ -2886,6 +3289,7 @@
                             type="radio"
                             name="medio-comunicacion"
                             value="B"
+                            checked
                         /></label>
                         <label
                           >M
@@ -2907,7 +3311,6 @@
                             type="radio"
                             name="medio-comunicacion"
                             value="NR"
-                            checked
                         /></label>
                         <label
                           >FV
@@ -2917,15 +3320,232 @@
                             value="FV"
                         /></label>
                       </span>
+                      </div>
+                      <div class="contenedor-codigo-fv">
+                        <label>Código<input type="text" class="cod"></label>
+                        <label>F. Vencimiento <input type="date" class="vencimiento"> </label>
+                      </div>
                     </li>
                   </ul>
                 </div>
               </div>
+
             </article>
           </section>
+
+          <h3 class="title-commentarios" id="title-commentarios">Comentarios</h3>
+          <div class="contenedor-comentarios">
+            <h4>Equipo de protección personal</h4>
+            <div class="comentarios-epp">
+              <div>
+                <label class="comentario-epp">1. Camisa de verano/Invierno<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">2. Pantalón de verano<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">3. Camisa antiflama<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">4. Pantalón antiflama<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">5. Zapatos Dieléctricos<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">6. Chaleco preventivo de seguridad<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">7. Lentes con protección UV<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">8. Lentes contra impacto<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">9. Bloqueador Solar<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">10. Casco dielectrico normado con barbiquejo<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">11. Guantes dielectricos BT-Clase 0, Tipo I<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">12. Careta facial policarbonato<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">13. Careta facial antiarco<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">14. Guante de badana<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">15. Guante de cuero<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">16. Guante de hilo<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">17. Mascarilla contra polvo<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">18. Correa porta herramientas<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">19. Manta Dielectrica<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-epp">20. Capucha Ignifuga<textarea></textarea></label>
+              </div>
+            </div>
+            <h4>Herramientas</h4>
+            <div class="comentarios-herramientas">
+              <div>
+                <label class="comentario-herramienta">1. Alicate universal 8" de longitud 1000V<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">2. Alicate de corte aislado 6"<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">3. Alicate de punta aislada 6"<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">4. Destornillador plano aislado 6"<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">5. Perillero (opcional)<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">6. Destornillador estrella aislado 6" o 8"<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">7. Destornillador hexagonal<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">8. Juego de llave allen<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">9. Juego de llave ratchets Aislado<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">10. Revelador de tensión BT<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">11. Pinza Volt amperimétrica<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">12. Pinza MT<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">13. Linterna Grande<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">14. Llave Francesa Aislado/ Mecánica<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">15. Bolsa y recipiente para almacenar residuos<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">16. Arnés de seguridad con accesorios<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">17. Lima<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">18. Cincel<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">19. Comba chica 4 o 5 libras<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">20. Martillo<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">21. Linterna portátil adaptable para casco<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">22. Nivel<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">23. Cinta pasacable<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">24. Prensa terminal<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-herramienta">25. Pertiga<textarea></textarea></label>
+              </div>
+            </div>
+            <h4>Equipos</h4>
+            <div class="comentarios-equipos">
+              <div>
+                <label class="comentario-equipo">1. Máquina de soldar<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-equipo">2. Equipo de soldar (mandil, máscara y mangas)<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-equipo">3. Amoladora con disco de corte<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-equipo">4. Cámara fotográfica digital<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-equipo">5. Escalera (tipo tijera) (telescópica)<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-equipo">6. Banco escalera<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-equipo">7. Extensión de cable vulcanizado industrial<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-equipo">8. Reflector<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-equipo">9. Taladro<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-equipo">10. Rotomartillo<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-equipo">11. Caja de herramientas<textarea></textarea></label>
+              </div>
+            </div>
+            <h4>Señalización</h4>
+            <div class="comentarios-senializacion">
+              <div>
+                <label class="comentario-senial">1. Cercos<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-senial">2. Mallas con parantes<textarea></textarea></label>
+              </div>
+            </div>
+            <h4>Documentación</h4>
+            <div class="comentarios-documentacion">
+              <div>
+                <label class="comentario-documentacion">1. AST/ASG/SGI Vigentes<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-documentacion">2. Charla pre operacional<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-documentacion">3. Check list vehicular<textarea></textarea></label>
+              </div>
+              <div>
+                <label class="comentario-documentacion">4. Registro de residuos generados<textarea></textarea></label>
+              </div>
+            </div>
+            <h4>Accesorios</h4>
+            <div class="comentarios-accesorios">
+              <label class="comentario-accesorio">1. Medio de comunicación radio (celular)<textarea></textarea></label>
+            </div>
+          </div>
         </div>
       </section>
       <div class="terminar" id="btnGenerar"><i class="fa-solid fa-file-pdf fa-lg"></i></div>
+      <div id="btnListaPersonal"><i class="fa-solid fa-address-book"></i></div>
+      <div id="btnComentarios"><i class="fa-solid fa-comment-dots"></i></div>
     </main>
     <script src="../scripts/functionsListaInspeccion.js"></script>
   </body>

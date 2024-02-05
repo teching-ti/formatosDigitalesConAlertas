@@ -1,3 +1,17 @@
+/*boton para dirigir a donde inicia el personal0*/
+let btnListaPersonal = document.getElementById("btnListaPersonal")
+btnListaPersonal.addEventListener("click", function(e){
+  e.preventDefault()
+  document.querySelector(".agregar-personal").scrollIntoView({ behavior: 'smooth' });
+})
+
+/* boton para dirigir a comentarios*/
+let btnComentarios = document.getElementById("btnComentarios")
+btnComentarios.addEventListener("click", function(e){
+  e.preventDefault()
+  document.getElementById('title-commentarios').scrollIntoView({ behavior: 'smooth' });
+})
+
 /*colocar fecha en base al reloj del sistema, dentro de la casilla 'fecha'*/
 let cargarFecha = () => {
   let fecha = document.getElementById("fecha");
@@ -23,12 +37,18 @@ fetch("../scripts/datos.json")
       document.querySelector(".contenedor-nombre")
     );
 
-    //llena el select del responsable del proyecto
+    //funcionalidades de llenado para el responsable
     llenarSelect(document.getElementById("responsable-nombre"));
     autocompletarCamposResponsable(
       document.getElementById("responsable-nombre"),
       document.getElementById("firma-responsable")
     );
+    //funcionalidades de llenado para el supervisor
+    llenarSelectSupervisor(document.getElementById("supervisor-nombre"))
+    autoCompletarCamposSupervisor(
+      document.getElementById("supervisor-nombre"),
+      document.getElementById("firma-supervisor")
+    )
   })
   .catch((error) => console.error("Error al cargar los datos:", error));
 
@@ -61,14 +81,78 @@ function autocompletarCampos(elementoSelect, datosParticipante) {
 function autocompletarCamposResponsable(elementoSelect, datosResponsable) {
   elementoSelect.addEventListener("change", function () {
     const nombreSeleccionado = elementoSelect.value;
+    console.log(nombreSeleccionado)
     const responsableSeleccionado = users.tecnico.find(
       (tecnico) => tecnico.name === nombreSeleccionado
     );
     //autocompletar los campos correspondientes
-    datosResponsable.value = responsableSeleccionado.firma;
+    if(nombreSeleccionado!="Seleccionar"){
+      datosResponsable.value = responsableSeleccionado.firma;
+    }else{
+      alert("Este espacio no puede permanecer vacío, seleccione al personal requerido")
+    }
   });
 }
 
+// Función para llenar el select con opciones de suoervisor, prevencionista y técnicos
+function llenarSelectSupervisor(elementoSelect) {
+  //una vez con la data 'users' obtenida se podrá acceder a cada uno de los elementos dentro de ella
+  users.supervisor.forEach((supervisor)=>{
+    const option = document.createElement("option");
+    option.value = supervisor.name;
+    option.textContent = supervisor.name;
+    elementoSelect.appendChild(option);
+  })
+
+  users.tecnico.forEach((tecnico) => {
+    const option = document.createElement("option");
+    option.value = tecnico.name;
+    if(tecnico.cargo=="Jefe Cuadrilla de Balance"){
+      option.textContent = tecnico.name;
+      elementoSelect.appendChild(option);
+    }
+  });
+
+  //una vez con la data 'users' obtenida se podrá acceder a cada uno de los elementos dentro de ella
+  users.prevencionista.forEach((prevencionista)=>{
+    const option = document.createElement("option");
+    option.value = prevencionista.name;
+    option.textContent = prevencionista.name;
+    elementoSelect.appendChild(option);
+  })
+}
+
+function autoCompletarCamposSupervisor(elementoSelect, campo){
+  elementoSelect.addEventListener("change", function () {
+    const nombreSeleccionado = elementoSelect.value;
+    console.log(nombreSeleccionado)
+
+    // Buscar en la categoría "tecnico"
+    const tecnicoSeleccionado = users.tecnico.find(
+      (tecnico) => tecnico.name === nombreSeleccionado
+    );
+    // Buscar en la categoría "supervisor"
+    const supervisorSeleccionado = users.supervisor.find(
+      (supervisor) => supervisor.name === nombreSeleccionado
+    );
+    // Buscar en la categoría "prevencionista"
+    const prevencionistaSeleccionado = users.prevencionista.find(
+      (prevencionista) => prevencionista.name === nombreSeleccionado
+    );
+
+    // Verificar en qué categoría se encontró y completar la firma
+    if (tecnicoSeleccionado) {
+      campo.value = tecnicoSeleccionado.firma;
+    } else if (supervisorSeleccionado) {
+      campo.value = supervisorSeleccionado.firma;
+    } else if (prevencionistaSeleccionado) {
+      campo.value = prevencionistaSeleccionado.firma;
+    } else {
+      alert("Este espacio no puede permanecer vacío, seleccione al personal requerido")
+    }
+
+  });
+}
 /*Agregar Persona*/
 
 let btnAgregarPersonal = document.querySelector(".agregar-personal");
@@ -204,10 +288,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let lugar = document.getElementById("lugar").value;
     let fecha = document.getElementById("fecha").value;
     let hora = document.getElementById("hora").value;
-    let responsable1 = document.getElementById("responsable-nombre").value;
+    let responsableNombre = document.getElementById("responsable-nombre").value;
     let responsableFirma = document.getElementById("firma-responsable").value;
+    let supervisorNombre = document.getElementById("supervisor-nombre").value;
+    let supervisorFirma = document.getElementById("firma-supervisor").value;
 
-    if (trabajo != "" && lugar != "" && responsable1 != "") {
+    if (trabajo != "" && lugar != "" && responsableNombre != "Seleccionar" && supervisorNombre != "Seleccionar") {
       doc.text(trabajo, 36, 13.6);
       doc.text(lugar, 24, 15.5);
       doc.text(fecha, 24, 17.9);
@@ -215,22 +301,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       doc.text("Bernabe Oscco León", 120, 16.5);
 
       //tecnico responsable
-      doc.text(responsable1, 79.5, 276, {align: "center"})
-      doc.addImage(responsableFirma, "PNG", 67.5, 267.5, 24, 6);
+      doc.text(responsableNombre, 65, 281.5 ,{align: "center"})
+      doc.addImage(responsableFirma, "PNG", 52, 274, 24, 6);
 
-      
-      /*nombre supervisor*/
-      /*La firma del supervisor estará siendo colocada desde aquí*/
-      /*firma supervisor*/
-      //En caso sea necesario, esta es la firma para el supervisor
-      //se debería de crear un input en el html y una variable para obtener su nombre
-      //y con ello también su firma, similar a como se hace con el resto, pero una única vez
-      let supervisorNombre = "Roberto Carlos Luis Bailon"
-      let supervisorFirma = "../recursos/firmas/RobertoLuisBailon.png"
-      doc.text(supervisorNombre, 150, 276, {align: "center"});
-      //modificar por la firma de roberto carlos luis bailon
-      doc.addImage(supervisorFirma, "PNG", 138, 267.5, 24, 6);
-      //para que aparezca el nombre y la firma
+      //supervisor
+      doc.text(supervisorNombre, 160, 281.5, {align: "center"});
+      doc.addImage(supervisorFirma, "PNG", 148, 274, 24, 6);
 
       return true;
     } else {
@@ -294,7 +370,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
           doc.setFontSize(3.8)
           doc.text(nombre.value, 59.5, 24, {
             align: "center",
-            maxWidth: 10,
+            maxWidth: 13,
             lineHeightFactor: 1,
           });
           contadorn = 1;
@@ -314,7 +390,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     });
 
     //colocarDNI
-    let dnisX = 53;
+    let dnisX = 54;
     dnis.forEach((dni) => {
       doc.text(dni.value, dnisX, 265);
       dnisX += 25
@@ -516,6 +592,36 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     positionSelectY = 237;
   });
 
+  //Accesorios
+  //posicionamiento inicial
+  contadorColumnas = 1
+  positionSelectX = 46.5;
+  positionSelectY = 255;
+  accesorios.forEach((e) => {
+    //se crea un array que contenga a todos los inputs
+    //que se encontraban dentro de ese contenedor
+    selectsEvaluar = e.querySelectorAll("select");
+    //se evalua a cada input
+    selectsEvaluar.forEach((se) => {
+      //si el input ha sido marcado
+      //if(se.checked){
+      //se obtendrá su valor y se colocará en el documento
+      doc.text(se.value, positionSelectX, positionSelectY);
+      //la posicion y aumenta para completar el resto de elementos
+      positionSelectY += 2.7;
+      //}
+    });
+    //al terminar con el primer contenedor se corre el sitio de impresion en 60
+    //y vuelve el punto y a su lugar de inicio
+    if(contadorColumnas==1){
+      positionSelectX += 25.4;
+    }else{
+      positionSelectX+=24
+    }
+    contadorColumnas += 1
+    positionSelectY = 255;
+  });
+
   /*revisión de los inputs*/
 
   //EPP
@@ -528,7 +634,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   epp.forEach((e) => {
     //se crea un array que contenga a todos los inputs
     //que se encontraban dentro de ese contenedor
-    inputsEvaluar = e.querySelectorAll("input");
+    inputsEvaluar = e.querySelectorAll("input[type='radio']");
     //se evalua a cada input
     inputsEvaluar.forEach((se) => {
 
@@ -576,7 +682,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   herramientas.forEach((e) => {
     //se crea un array que contenga a todos los inputs
     //que se encontraban dentro de ese contenedor
-    inputsEvaluar = e.querySelectorAll("input");
+    inputsEvaluar = e.querySelectorAll("input[type='radio']");
     //se evalua a cada input
     inputsEvaluar.forEach((ie) => {
       //si el input ha sido marcado
@@ -621,7 +727,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   equipos.forEach((e) => {
     //se crea un array que contenga a todos los inputs
     //que se encontraban dentro de ese contenedor
-    inputsEvaluar = e.querySelectorAll("input");
+    inputsEvaluar = e.querySelectorAll("input[type='radio']");
     //se evalua a cada input
     inputsEvaluar.forEach((ie) => {
       //si el input ha sido marcado
@@ -653,7 +759,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   senializacion.forEach((e) => {
     //se crea un array que contenga a todos los inputs
     //que se encontraban dentro de ese contenedor
-    inputsEvaluar = e.querySelectorAll("input");
+    inputsEvaluar = e.querySelectorAll("input[type='radio']");
     //se evalua a cada input
     inputsEvaluar.forEach((ie) => {
       //si el input ha sido marcado
@@ -684,7 +790,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   documentacion.forEach((e) => {
     //se crea un array que contenga a todos los inputs
     //que se encontraban dentro de ese contenedor
-    inputsEvaluar = e.querySelectorAll("input");
+    inputsEvaluar = e.querySelectorAll("input[type='radio']");
     //se evalua a cada input
     inputsEvaluar.forEach((ie) => {
       //si el input ha sido marcado
@@ -708,13 +814,14 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
   //ACCESORIOS
   //posicionamiento inicial
-  positionX = 71;
-  positionY = 250;
+  contadorColumnas = 1
+  positionX = 54;
+  positionY = 255;
   //recore todos los contenedores de accesorios
   accesorios.forEach((e) => {
     //se crea un array que contenga a todos los inputs
     //que se encontraban dentro de ese contenedor
-    inputsEvaluar = e.querySelectorAll("input");
+    inputsEvaluar = e.querySelectorAll("input[type='radio']");
     //se evalua a cada input
     inputsEvaluar.forEach((ie) => {
       //si el input ha sido marcado
@@ -722,16 +829,376 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         //se obtendrá su valor y se colocará en el documento
         doc.text(ie.value, positionX, positionY, {align: "center"});
         //la posicion y aumenta para completar el resto de elementos
-        //positionY+=3.1
+        positionY += 2.7;
       }
+      
     });
     //al terminar con el primer contenedor se corre el sitio de impresion en 60
     //y vuelve el punto y a su lugar de inicio
-    positionX += 18.7;
-    //positionY = 250
+    if(contadorColumnas==1){
+      positionX += 24.6
+    }else{
+      positionX+=24
+    }
+    contadorColumnas += 1
+    positionY = 255;
   });
 
-  if (evaluarEmpresa() && evaluarDatosPrincipales() && evaluarNombreCargo()) {
+  
+  /* Revisión de cod */
+  //EPP
+  let contadorCod = 1
+  contadorColumnas = 1
+  positionX = 63.5
+  positionY = 31.5
+  doc.setFontSize(3.2)
+  epp.forEach((codv)=>{
+    casillaCod = codv.querySelectorAll(".cod")
+    casillaCod.forEach((ie)=>{
+      if(contadorCod==11 || contadorCod==19){
+        doc.text(ie.value, positionX, positionY, {align:'center'})
+        positionY+=5.75
+      }else{
+        doc.text(ie.value, positionX, positionY, {align:'center'})
+        positionY+=2.69
+      }
+      contadorCod+=1
+      
+    }) 
+    if(contadorColumnas==1){
+      positionX += 24;
+    }else{
+      positionX+=23.8
+    }
+    contadorColumnas += 1
+    positionY = 31.5
+    contadorCod=1
+  })
+
+  //Herramientas
+  contadorCod = 1
+  contadorColumnas = 1
+  positionX = 63.5
+  positionY = 96.4
+  doc.setFontSize(3.2)
+  herramientas.forEach((codv)=>{
+    casillaCod = codv.querySelectorAll(".cod")
+    casillaCod.forEach((ie)=>{
+      if(contadorCod == 11 || contadorCod == 12||contadorCod == 25){
+        doc.text(ie.value, positionX, positionY, {align:'center'})
+        positionY+=5.75
+      }else{
+        doc.text(ie.value, positionX, positionY, {align:'center'})
+        positionY+=2.69
+      }
+      contadorCod+=1
+      
+    }) 
+    if(contadorColumnas==1){
+      positionX += 24;
+    }else{
+      positionX+=23.8
+    }
+    contadorColumnas += 1
+    positionY = 96.4
+    contadorCod=1
+  })
+
+  //Equipos
+  contadorColumnas = 1
+  positionX = 63.5
+  positionY = 180.4
+  doc.setFontSize(3.2)
+  equipos.forEach((codv)=>{
+    casillaCod = codv.querySelectorAll(".cod")
+    casillaCod.forEach((ie)=>{
+      doc.text(ie.value, positionX, positionY, {align:'center'})
+      positionY+=2.69
+    }) 
+    if(contadorColumnas==1){
+      positionX += 24;
+    }else{
+      positionX+=23.8
+    }
+    contadorColumnas += 1
+    positionY = 180.4
+  })
+
+  //Senializacion
+  contadorColumnas = 1
+  positionX = 63.5
+  positionY = 222.8
+  doc.setFontSize(3.2)
+  senializacion.forEach((codv)=>{
+    casillaCod = codv.querySelectorAll(".cod")
+    casillaCod.forEach((ie)=>{
+      doc.text(ie.value, positionX, positionY, {align:'center'})
+      positionY+=2.69
+    }) 
+    if(contadorColumnas==1){
+      positionX += 24;
+    }else{
+      positionX+=23.8
+    }
+    contadorColumnas += 1
+    positionY = 222.8
+  })
+
+  //Documentacion
+  contadorColumnas = 1
+  positionX = 63.5
+  positionY = 235.8
+  doc.setFontSize(3.2)
+  documentacion.forEach((codv)=>{
+    casillaCod = codv.querySelectorAll(".cod")
+    casillaCod.forEach((ie)=>{
+      doc.text(ie.value, positionX, positionY, {align:'center'})
+      positionY+=2.69
+    }) 
+    if(contadorColumnas==1){
+      positionX += 24;
+    }else{
+      positionX+=23.8
+    }
+    contadorColumnas += 1
+    positionY = 235.8
+  })
+
+  //Accesorios
+  contadorColumnas = 1
+  positionX = 63.5
+  positionY = 254
+  doc.setFontSize(3.2)
+  accesorios.forEach((codv)=>{
+    casillaCod = codv.querySelectorAll(".cod")
+    casillaCod.forEach((ie)=>{
+      doc.text(ie.value, positionX, positionY, {align:'center'})
+      positionY+=2.69
+    }) 
+    if(contadorColumnas==1){
+      positionX += 24;
+    }else{
+      positionX+=23.8
+    }
+    contadorColumnas += 1
+    positionY = 254
+  })
+
+  /* Revisión de fecha */
+  //EPP
+  contadorCod = 1
+  contadorColumnas = 1
+  positionX = 63.5
+  positionY = 32.8
+  doc.setFontSize(3.2)
+  epp.forEach((codv)=>{
+    casillaFecha = codv.querySelectorAll(".vencimiento")
+    casillaFecha.forEach((ie)=>{
+      if(contadorCod == 11 || contadorCod == 19){
+        doc.text(ie.value, positionX, positionY, {align:'center'})
+        positionY+=5.75
+      }else{
+        doc.text(ie.value, positionX, positionY, {align:'center'})
+        positionY+=2.69
+      }
+      contadorCod+=1
+    })
+    if(contadorColumnas==1){
+      positionX += 24;
+    }else{
+      positionX+=23.8
+    }
+    contadorColumnas += 1
+    positionY = 32.8
+    contadorCod=1
+  })
+
+  //Herramientas
+  contadorCod = 1
+  contadorColumnas = 1
+  positionX = 63.5
+  positionY = 97.7
+  doc.setFontSize(3.2)
+  herramientas.forEach((codv)=>{
+    casillaFecha = codv.querySelectorAll(".vencimiento")
+    casillaFecha.forEach((ie)=>{
+      if(contadorCod == 11 || contadorCod == 12||contadorCod == 25  ){
+        doc.text(ie.value, positionX, positionY, {align:'center'})
+        positionY+=5.75
+      }else{
+        doc.text(ie.value, positionX, positionY, {align:'center'})
+        positionY+=2.69
+      }
+
+      contadorCod+=1
+    })
+    if(contadorColumnas==1){
+      positionX += 24;
+    }else{
+      positionX+=23.8
+    }
+    contadorColumnas += 1
+    positionY = 97.7
+    contadorCod=1
+  })
+
+  //Equipos
+  contadorColumnas = 1
+  positionX = 63.5
+  positionY = 181.7
+  doc.setFontSize(3.2)
+  equipos.forEach((codv)=>{
+    casillaCod = codv.querySelectorAll(".vencimiento")
+    casillaCod.forEach((ie)=>{
+      doc.text(ie.value, positionX, positionY, {align:'center'})
+      positionY+=2.69
+    }) 
+    if(contadorColumnas==1){
+      positionX += 24;
+    }else{
+      positionX+=23.8
+    }
+    contadorColumnas += 1
+    positionY = 181.7
+  })
+
+  //Senializacion
+  contadorColumnas = 1
+  positionX = 63.5
+  positionY = 224.1
+  doc.setFontSize(3.2)
+  senializacion.forEach((codv)=>{
+    casillaCod = codv.querySelectorAll(".vencimiento")
+    casillaCod.forEach((ie)=>{
+      doc.text(ie.value, positionX, positionY, {align:'center'})
+      positionY+=2.69
+    }) 
+    if(contadorColumnas==1){
+      positionX += 24;
+    }else{
+      positionX+=23.8
+    }
+    contadorColumnas += 1
+    positionY = 224.1
+  })
+
+  //Documentacion
+  contadorColumnas = 1
+  positionX = 63.5
+  positionY = 237.1
+  doc.setFontSize(3.2)
+  documentacion.forEach((codv)=>{
+    casillaCod = codv.querySelectorAll(".vencimiento")
+    casillaCod.forEach((ie)=>{
+      doc.text(ie.value, positionX, positionY, {align:'center'})
+      positionY+=2.69
+    }) 
+    if(contadorColumnas==1){
+      positionX += 24;
+    }else{
+      positionX+=23.8
+    }
+    contadorColumnas += 1
+    positionY = 237.1
+  })
+
+  //Accesorios
+  contadorColumnas = 1
+  positionX = 63.5
+  positionY = 255.3
+  doc.setFontSize(3.2)
+  accesorios.forEach((codv)=>{
+    casillaCod = codv.querySelectorAll(".vencimiento")
+    casillaCod.forEach((ie)=>{
+      doc.text(ie.value, positionX, positionY, {align:'center'})
+      positionY+=2.69
+    }) 
+    if(contadorColumnas==1){
+      positionX += 24;
+    }else{
+      positionX+=23.8
+    }
+    contadorColumnas += 1
+    positionY = 255.3
+  })
+
+  /*Comentario de todos los elementos inspeccionados*/
+  //se obtienen todos los textarea de cada contenedor de comentarios epp
+  doc.setFontSize(3.2)
+  let contComentario = 1
+  positionX = 165.4
+  positionY = 31.6
+  let contentComentarioEpp = document.querySelector(".comentarios-epp")
+  let comentariosEpp = contentComentarioEpp.querySelectorAll("textarea")
+  comentariosEpp.forEach((e)=>{
+    if(contComentario==11 || contComentario==19){
+      doc.text(e.value, positionX, positionY, {
+        maxWidth: 34,
+        lineHeightFactor: 1
+      })
+      positionY+=5.7
+    }else{
+      doc.text(e.value, positionX, positionY, {
+        maxWidth: 34,
+        lineHeightFactor: 1
+      })
+      positionY+=2.69
+    }
+    contComentario+=1
+  })
+
+  //se obtienen todos los textarea de cada contenedor de comentarios herramientas
+  contComentario = 1
+  positionX = 165.4
+  positionY = 96.3
+  let contentComentarioHerramientas = document.querySelector(".comentarios-herramientas")
+  let comentariosHerramienta = contentComentarioHerramientas.querySelectorAll("textarea")
+  comentariosHerramienta.forEach((e)=>{
+    if(contComentario==11 || contComentario==12){
+      doc.text(e.value, positionX, positionY, {
+        maxWidth: 34,
+        lineHeightFactor: 1
+      })
+      positionY+=5.74
+    }else{
+      doc.text(e.value, positionX, positionY, {
+        maxWidth: 34,
+        lineHeightFactor: 1
+      })
+      positionY+=2.69
+    }
+    contComentario+=1
+  })
+
+  //se obtienen todos los textarea de cada contenedor de comentarios equipos
+  let contentComentarioEquipos = document.querySelector(".comentarios-equipos")
+  let comentariosEquipo = contentComentarioEquipos.querySelectorAll("textarea")
+  comentariosEquipo.forEach((e)=>{
+    console.log(e.value)
+  })
+
+  //se obtienen todos los textarea de cada contenedor de comentarios senializacion
+  let contentComentarioSenializacion = document.querySelector(".comentarios-senializacion")
+  let comentariosSenializacion = contentComentarioSenializacion.querySelectorAll("textarea")
+  comentariosSenializacion.forEach((e)=>{
+    console.log(e.value)
+  })
+
+  //se obtienen todos los textarea de cada contenedor de comentarios documentacion
+  let contentComentarioDocumentacion = document.querySelector(".comentarios-documentacion")
+  let comentariosDocumentacion = contentComentarioDocumentacion.querySelectorAll("textarea")
+  comentariosDocumentacion.forEach((e)=>{
+    console.log(e.value)
+  })
+
+  //se obtienen todos los textarea de cada contenedor de comentarios accesorios
+  let contentComentarioAccesorios = document.querySelector(".comentarios-accesorios")
+  let comentariosAccesorio = contentComentarioAccesorios.querySelectorAll("textarea")
+  comentariosAccesorio.forEach((e)=>{
+    console.log(e.value)
+  })
+
+  if (/*evaluarEmpresa() && evaluarDatosPrincipales() && evaluarNombreCargo()*/true) {
     var blob = doc.output("blob");
     window.open(URL.createObjectURL(blob));
 
