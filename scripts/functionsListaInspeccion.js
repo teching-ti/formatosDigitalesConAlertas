@@ -1251,7 +1251,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     /*var blob = doc.output("blob");
     window.open(URL.createObjectURL(blob));*/
 
-    /*dia = dia.replace(/\//g, "_")
+    dia = dia.replace(/\//g, "_")
     //console.log(dia)
     const nombreDocumento = `lista_inspeccion_${dia}.pdf` 
     doc.save(nombreDocumento)
@@ -1273,7 +1273,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         success: function(php_script_response){
             alert("Archivo generado correctamente")
         }
-    })*/
+    })
   } else {
     alert("Complete los campos solicitados para generar el documento");
   }

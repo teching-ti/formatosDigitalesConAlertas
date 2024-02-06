@@ -218,7 +218,30 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     escaleraApta()
     evaluarInspector()
     if(eval){
-        var blob = doc.output("blob");
-        window.open(URL.createObjectURL(blob));
+        /*var blob = doc.output("blob");
+        window.open(URL.createObjectURL(blob));*/
+
+        fechaActual = fechaActual.replace(/\//g, "_")
+        const nombreDocumento = `INSPECCION_DE_ESCALERA_${fechaActual}.pdf`
+        doc.save(nombreDocumento)
+        //endodear el resultado del pdf
+        var file_data = btoa(doc.output())
+        var form_data = new FormData()
+
+        form_data.append("file", file_data)
+        form_data.append("nombre", "INSPECCION_DE_ESCALERA")
+        //alert(form_data)
+        $.ajax({
+            url: "../envios/enviar_alerta.php",
+            dataType: "text",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type:"post",
+            success: function(php_script_response){
+                alert("Archivo generado correctamente")
+            }
+        })
     }
 })
