@@ -1,9 +1,9 @@
 /*boton para dirigir a donde inicia el personal0*/
-let btnListaPersonal = document.getElementById("btnListaPersonal")
+/*let btnListaPersonal = document.getElementById("btnListaPersonal")
 btnListaPersonal.addEventListener("click", function(e){
   e.preventDefault()
   document.querySelector(".agregar-personal").scrollIntoView({ behavior: 'smooth' });
-})
+})*/
 
 /* boton para dirigir a comentarios*/
 let btnComentarios = document.getElementById("btnComentarios")
@@ -81,7 +81,6 @@ function autocompletarCampos(elementoSelect, datosParticipante) {
 function autocompletarCamposResponsable(elementoSelect, datosResponsable) {
   elementoSelect.addEventListener("change", function () {
     const nombreSeleccionado = elementoSelect.value;
-    console.log(nombreSeleccionado)
     const responsableSeleccionado = users.tecnico.find(
       (tecnico) => tecnico.name === nombreSeleccionado
     );
@@ -125,7 +124,6 @@ function llenarSelectSupervisor(elementoSelect) {
 function autoCompletarCamposSupervisor(elementoSelect, campo){
   elementoSelect.addEventListener("change", function () {
     const nombreSeleccionado = elementoSelect.value;
-    console.log(nombreSeleccionado)
 
     // Buscar en la categoría "tecnico"
     const tecnicoSeleccionado = users.tecnico.find(
@@ -188,6 +186,9 @@ btnAgregarPersonal.addEventListener("click", function () {
   }
 });
 
+// la creación de esta variable servirá para hacer un scroll al momento de hacer presionar el boton verde que mostrará al personal
+let contenedoresTrabajadores = document.querySelectorAll(".contenedor-trabajador")
+
 //funcion para agregar personal al listado
 function agregarContenedorPersona(numUser) {
   alert("Se añadió un nuevo participante, completar sus datos correctamente");
@@ -195,6 +196,7 @@ function agregarContenedorPersona(numUser) {
   const contenedorTrabajador = document.querySelector(".contenedor-trabajador");
   const nuevoContenedor = contenedorTrabajador.cloneNode(true);
   nuevoContenedor.classList.add("clon");
+  nuevoContenedor.classList.add(numUser)
 
   // itera sobre los radio buttons que aparecerán dentro del nuevo contenedor de usuarios y cambia sus atributos "name"
   // ya que los radio buttons deben tener nombres específicos
@@ -211,7 +213,26 @@ function agregarContenedorPersona(numUser) {
     el resto de contenedores tengan también sus inputs en en NA
     de esta manera se evitará inconvenientes.
     */
+
+   //aquí la variable que contiene a todo el personal se reescribe cada vez que se añade un nuevo miembro 
+  contenedoresTrabajadores = document.querySelectorAll(".contenedor-trabajador")
+   
 }
+
+//evento en el boton que se encargará de hacer scroll a cada article del personal
+let btnListaPersonal = document.getElementById("btnListaPersonal")
+let indiceActual = 0
+btnListaPersonal.addEventListener("click", function(){
+  // Incrementa el índice actual y volver al primero si llegamos al máximo
+  indiceActual = (indiceActual + 1) % contenedoresTrabajadores.length;
+    
+  // se el elemento correspondiente al índice actual
+  const articuloActual = contenedoresTrabajadores[indiceActual];
+  
+  // scroll que dirigirá hasta el elemento actual
+  articuloActual.scrollIntoView({ behavior: 'smooth' });
+})
+
 
 /*---- PARTE 2 DEL CÓDIGO ----*/
 /* cargar documento */
@@ -240,6 +261,7 @@ async function loadImage(url) {
     xhr.send();
   });
 }
+
 
 btnGenerar.addEventListener("click", async function generarPDF(e) {
   e.preventDefault();
@@ -1171,34 +1193,61 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   })
 
   //se obtienen todos los textarea de cada contenedor de comentarios equipos
+  //en caso se de que exista una modificación en la altura de las casillas del formato
+  //introducir la variable del contador para saber cuando aumentar o disminuir la 
+  //posicion Y
+  positionX = 165.4
+  positionY = 180.5
   let contentComentarioEquipos = document.querySelector(".comentarios-equipos")
   let comentariosEquipo = contentComentarioEquipos.querySelectorAll("textarea")
   comentariosEquipo.forEach((e)=>{
-    console.log(e.value)
+    doc.text(e.value, positionX, positionY, {
+      maxWidth: 34,
+      lineHeightFactor: 1
+    })
+    positionY+=2.69
   })
 
   //se obtienen todos los textarea de cada contenedor de comentarios senializacion
+  positionX = 165.4
+  positionY = 222.8
   let contentComentarioSenializacion = document.querySelector(".comentarios-senializacion")
   let comentariosSenializacion = contentComentarioSenializacion.querySelectorAll("textarea")
   comentariosSenializacion.forEach((e)=>{
-    console.log(e.value)
+    doc.text(e.value, positionX, positionY, {
+      maxWidth: 34,
+      lineHeightFactor: 1
+    })
+    positionY+=2.69
   })
 
   //se obtienen todos los textarea de cada contenedor de comentarios documentacion
+  positionX = 165.4
+  positionY = 235.72
   let contentComentarioDocumentacion = document.querySelector(".comentarios-documentacion")
   let comentariosDocumentacion = contentComentarioDocumentacion.querySelectorAll("textarea")
   comentariosDocumentacion.forEach((e)=>{
-    console.log(e.value)
+    doc.text(e.value, positionX, positionY, {
+      maxWidth: 34,
+      lineHeightFactor: 1
+    })
+    positionY+=2.69
   })
 
   //se obtienen todos los textarea de cada contenedor de comentarios accesorios
+  positionX = 165.4
+  positionY = 254.2
   let contentComentarioAccesorios = document.querySelector(".comentarios-accesorios")
   let comentariosAccesorio = contentComentarioAccesorios.querySelectorAll("textarea")
   comentariosAccesorio.forEach((e)=>{
-    console.log(e.value)
+    doc.text(e.value, positionX, positionY, {
+      maxWidth: 34,
+      lineHeightFactor: 1
+    })
+    positionY+=2.69
   })
 
-  if (/*evaluarEmpresa() && evaluarDatosPrincipales() && evaluarNombreCargo()*/true) {
+  if (evaluarEmpresa() && evaluarDatosPrincipales() && evaluarNombreCargo()) {
     var blob = doc.output("blob");
     window.open(URL.createObjectURL(blob));
 

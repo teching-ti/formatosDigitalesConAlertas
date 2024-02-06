@@ -1,5 +1,4 @@
 <?php
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -7,7 +6,6 @@ use PHPMailer\PHPMailer\Exception;
 require '../PHPMailer/Exception.php';
 require '../PHPMailer/PHPMailer.php';
 require '../PHPMailer/SMTP.php';
-
 
 try {
     if(!empty($_POST["file"])){
@@ -23,14 +21,14 @@ try {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'magiidemonhunter@gmail.com';
-        $mail->Password   = 'yfhx ccgq kuve pjag';
+        $mail->Username   = 'correoemisor';
+        $mail->Password   = 'pass';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
         // Configuración del correo electrónico
-        $mail->setFrom('magiidemonhunter@gmail.com', 'Alerta - se ha generado un formato');
-        $mail->addAddress('jvp9830@gmail.com', 'Jordan');
+        $mail->setFrom('correoemisor', 'Alerta - se ha generado un formato');
+        $mail->addAddress('correodestino', 'nombre');
         $mail->Subject = 'Formato '. $_POST['nombre'];
 
         // Adjuntar el archivo PDF
