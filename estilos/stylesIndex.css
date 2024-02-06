@@ -104,6 +104,10 @@ h1{
     body{
         max-height: 100vh;
     }
+
+    h1{
+        font-size: 1.5rem;
+    }
     
     main{
         width: 100%;

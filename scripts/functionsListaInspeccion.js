@@ -339,10 +339,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
   //colocar comentarios
   doc.setFontSize(4)
-  comentarios = document.getElementById("comentarios").value;
-  doc.text(comentarios, 22, 274, {
+  let comentarios = document.getElementById("comentarios").value;
+  doc.text(comentarios, 22, 269.2, {
     maxWidth: 180,
-    lineHeightFactor: 2.4,
+    lineHeightFactor: 1.7,
   });
 
   //INICIA COLOCAR CARGOS Y NOMBRES
