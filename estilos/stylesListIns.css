@@ -137,7 +137,7 @@ th, td{
 .elemento-cuerpo {
     width: 100%;
     display: flex;
-    margin-left: 2rem;
+    margin-left: 1rem;
     gap: .5rem;
 }
 
@@ -341,7 +341,14 @@ th, td{
     .elemento-opciones{
         grid-area: elemento-opciones;
         display: flex;
+        gap: .6rem;
         justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .elemento-opciones label{
+        display: flex;
+        gap: .2rem;
         align-items: center;
     }
 

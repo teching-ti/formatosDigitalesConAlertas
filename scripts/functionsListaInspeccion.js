@@ -1248,8 +1248,8 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   })
 
   if (evaluarEmpresa() && evaluarDatosPrincipales() && evaluarNombreCargo()) {
-    var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob));
+    /*var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob));*/
 
     /*dia = dia.replace(/\//g, "_")
     //console.log(dia)
