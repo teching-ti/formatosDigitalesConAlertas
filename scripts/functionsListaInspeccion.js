@@ -189,6 +189,29 @@ btnAgregarPersonal.addEventListener("click", function () {
 // la creación de esta variable servirá para hacer un scroll al momento de hacer presionar el boton verde que mostrará al personal
 let contenedoresTrabajadores = document.querySelectorAll(".contenedor-trabajador")
 
+//la creación de esta variable servirá para que se pueda cambiar los select a 0 de de todos los elementos existentes
+//incluyendo a los elementos que sean agregados al añadir un nuevo personal
+let radioButtons = document.querySelectorAll('input[type="radio"]')
+// se hace una iteración sobre todos los radio buttons de la página
+//se crea una funcion que asigna event lsitener a cada radio button para evaluar si es NT cambie su select a 0 y se ejecuta
+let functionObtenerRadioButtons = function(){
+  radioButtons.forEach(r => {
+    r.addEventListener('click', function() {
+    // se obtiene el select correspondiente al raddio buttons
+      const selectElement = this.closest('.elemento-cuerpo').querySelector('select');
+        // si el valor del botón de radio es 'NT', se establece el valor del select a '0'
+        //selectElement.value = (this.value === 'NT') ? '0' : selectElement.value;
+        if(this.value === 'NT'){
+          selectElement.value = 0
+        }else if(this.value!= 'NT' && selectElement.value==0){
+          selectElement.value=1
+        }
+      });
+  });
+}
+// se ejecuta la funcion
+functionObtenerRadioButtons()
+
 //funcion para agregar personal al listado
 function agregarContenedorPersona(numUser) {
   alert("Se añadió un nuevo participante, completar sus datos correctamente");
@@ -210,13 +233,18 @@ function agregarContenedorPersona(numUser) {
 
   document.querySelector(".section-todo-personal").appendChild(nuevoContenedor);
   /*se debe revisar la manera de hacer que cuando se realice la clonación 
-    el resto de contenedores tengan también sus inputs en en NA
-    de esta manera se evitará inconvenientes.
-    */
+  el resto de contenedores tengan también sus inputs en en NA
+  de esta manera se evitará inconvenientes.
+  */
 
-   //aquí la variable que contiene a todo el personal se reescribe cada vez que se añade un nuevo miembro 
+  //aquí la variable que contiene a todo el personal se reescribe cada vez que se añade un nuevo miembro 
   contenedoresTrabajadores = document.querySelectorAll(".contenedor-trabajador")
-   
+  //aqui se reescribe la la variable para obtener a todos lso radio buttons cada vez que se añade un nuevo personal
+  radioButtons = document.querySelectorAll('input[type="radio"]')
+  //console.log(radioButtons)
+  //la funcion de asignación de eventos se vuelve a ejecutar cada vez que se añade a un nuevo personal
+  functionObtenerRadioButtons()
+  
 }
 
 //evento en el boton que se encargará de hacer scroll a cada article del personal
@@ -232,6 +260,7 @@ btnListaPersonal.addEventListener("click", function(){
   // scroll que dirigirá hasta el elemento actual
   articuloActual.scrollIntoView({ behavior: 'smooth' });
 })
+
 
 
 /*---- PARTE 2 DEL CÓDIGO ----*/
@@ -1248,10 +1277,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   })
 
   if (evaluarEmpresa() && evaluarDatosPrincipales() && evaluarNombreCargo()) {
-    /*var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob));*/
+    var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob));
 
-    dia = dia.replace(/\//g, "_")
+    /*dia = dia.replace(/\//g, "_")
     //console.log(dia)
     const nombreDocumento = `lista_inspeccion_${dia}.pdf` 
     doc.save(nombreDocumento)
@@ -1273,7 +1302,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         success: function(php_script_response){
             alert("Archivo generado correctamente")
         }
-    })
+    })*/
   } else {
     alert("Complete los campos solicitados para generar el documento");
   }
