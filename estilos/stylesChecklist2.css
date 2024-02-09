@@ -235,6 +235,27 @@ body{
     color: red;
 }
 
+.table-checkbox{
+    font-size: .8rem;
+    border: solid 1px black;
+    border-collapse: collapse;
+    box-sizing: border-box;
+}
+
+td, th{
+    align-items: center;
+    place-content: center;
+    border-collapse: collapse;
+    border: solid 1px black;
+    text-align: center;
+}
+
+/*tabla de indicaciones para la evaluacion del conductor*/
+.image-checkbox{
+    user-select: none;
+    pointer-events: none;
+}
+
 .evaluacion-conductor{
     font-weight: 600;
     display: flex;
@@ -309,5 +330,9 @@ body{
         width: 100%;
         gap: .2rem;
         place-items: center;
+    }
+
+    .image-checkbox{
+        width: 40%;
     }
 }

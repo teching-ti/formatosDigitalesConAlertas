@@ -283,6 +283,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     if(eval){
         /*var blob = doc.output("blob");
         window.open(URL.createObjectURL(blob));*/
+        
         fechaActual = fechaActual.replace(/\//g, "_")
         const nombreDocumento = `SISTEMA_PROTECCION_CONTRA_CAIDAS_${fechaActual}.pdf`
         doc.save(nombreDocumento)

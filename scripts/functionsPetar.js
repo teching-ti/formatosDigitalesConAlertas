@@ -296,33 +296,42 @@ async function loadImage(url) {
         }
     }
 
+    let evalNaObservaciones = true
     function evaluarMantenimientoElectrico(){
         let elementosMantenimientoElectrico = document.querySelectorAll(".elemento-mantenimiento-electrico")
 
         meY = 67
         //opciones
         elementosMantenimientoElectrico.forEach(e=>{
+
             inputsEvaluar = e.querySelectorAll("input")
+            //se obtiene el text area especifico a la par del bucle que evalúa el checkbox
+            //de esta forma se revisa si el elemento hermano está marcado y con texto al mismo tiempo
+            textArea = e.querySelector("textarea").value
 
             inputsEvaluar.forEach(ie=>{
                 if(ie.checked){
                     if(ie.value=="SI"){
                         doc.text("X", 142.5, meY)
                     }else{
+                        //else significa que por defecto se encuentra marcado el na
+                        //si el textarea hermano tiene texto menor a digitos, entonces se considera como no válido ya que de por si
+                        //no sería un sustento 
+                        if(textArea.length<4){
+                            evalNaObservaciones = false
+                            return
+                        }
                         doc.text("X", 155.5, meY)
                     }
                     meY+=4.8
                 }
-                
             })
         })
-
 
         meObsY = 65
         doc.setFontSize(4.5)
         elementosMantenimientoElectrico.forEach(o=>{
             textArea = o.querySelectorAll("textarea")
-
             textArea.forEach(t=>{
                 doc.text(t.value, 163, meObsY, {
                     maxWidth: 32,
@@ -332,7 +341,14 @@ async function loadImage(url) {
             })
         })
 
-        return true
+        if(evalNaObservaciones){
+            return true
+        }else{
+            alert("En la sección de 'Mantenimiento Eléctrico' debe completar el campo observaciones si ha marcado N/A")
+            return false
+        }
+
+        //return true
     }
     
     function evaluarTrabajoAltura(){
@@ -342,12 +358,22 @@ async function loadImage(url) {
         taY = 104
         elementosTrabajoAltura.forEach(e=>{
             inputsEvaluar = e.querySelectorAll("input")
+            //se obtiene el text area especifico a la par del bucle que evalúa el checkbox
+            //de esta forma se revisa si el elemento hermano está marcado y con texto al mismo tiempo
+            textArea = e.querySelector("textarea").value
 
             inputsEvaluar.forEach(ie=>{
                 if(ie.checked){
                     if(ie.value=="SI"){
                         doc.text("X", 142.5, taY)
                     }else{
+                        //else significa que por defecto se encuentra marcado el na
+                        //si el textarea hermano tiene texto menor a digitos, entonces se considera como no válido ya que de por si
+                        //no sería un sustento 
+                        if(textArea.length<4){
+                            evalNaObservaciones = false
+                            return
+                        }
                         doc.text("X", 155.5, taY)
                     }
                     taY+=4.8
@@ -369,7 +395,15 @@ async function loadImage(url) {
                 taObsY+=4.8
             })
         })
-        return true
+
+        if(evalNaObservaciones){
+            return true
+        }else{
+            alert("En la sección de 'Trabajo en Altura' debe completar el campo observaciones si ha marcado N/A")
+            return false
+        }
+
+        //return true
     }
 
     function evaluarEspaciosConfinados(){
@@ -379,17 +413,26 @@ async function loadImage(url) {
         ecY = 141
         elementosEspaciosConfinados.forEach(e=>{
             inputsEvaluar = e.querySelectorAll("input")
+            //se obtiene el text area especifico a la par del bucle que evalúa el checkbox
+            //de esta forma se revisa si el elemento hermano está marcado y con texto al mismo tiempo
+            textArea = e.querySelector("textarea").value
 
             inputsEvaluar.forEach(ie=>{
                 if(ie.checked){
                     if(ie.value=="SI"){
                         doc.text("X", 142.5, ecY)
                     }else{
+                        //else significa que por defecto se encuentra marcado el na
+                        //si el textarea hermano tiene texto menor a digitos, entonces se considera como no válido ya que de por si
+                        //no sería un sustento 
+                        if(textArea.length<4){
+                            evalNaObservaciones = false
+                            return
+                        }
                         doc.text("X", 155.5, ecY)
                     }
                     ecY+=4.8
                 }
-                
             })
         })
 
@@ -406,7 +449,14 @@ async function loadImage(url) {
                 ecObsY+=4.8
             })
         })
-        return true
+
+        if(evalNaObservaciones){
+            return true
+        }else{
+            alert("En la sección de 'Espacios Confinados' debe completar el campo observaciones si ha marcado N/A")
+            return false
+        }
+        //return true
     }
 
     function evaluarDescripcionTarea(){

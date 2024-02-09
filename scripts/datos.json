@@ -5,70 +5,104 @@
       "dni": "43692772",
       "celular": "993 998 516",
       "firma": "../recursos/firmas/JoseLuisDiazVasquez.png",
-      "cargo": "Jefe Cuadrilla de Balance"
+      "cargo": "Jefe Cuadrilla de Balance",
+      "vehiculo": ""
     },
     {
       "name": "Rodrigo Marco Lopez Acuña",
       "dni": "74444960",
       "celular":"943 044 131",
       "firma": "../recursos/firmas/RodrigoMarcoLopezAcuna.png",
-      "cargo": "Jefe Cuadrilla de Balance"
+      "cargo": "Jefe Cuadrilla de Balance",
+      "vehiculo": ""
     },
     {
       "name": "Luis David Enriquez Quispe",
       "dni": "48072457",
       "celular":"977 231 771",
       "firma": "../recursos/firmas/LuisDavidEnriqueQuispe.png",
-      "cargo": "Jefe Cuadrilla de Balance"
+      "cargo": "Jefe Cuadrilla de Balance",
+      "vehiculo": ""
     },
     {
       "name": "Juan José Alcantara Soto",
       "dni": "77028233",
       "celular":"953 289 739",
       "firma": "../recursos/firmas/JuanJoseAlcantaraSoto.png",
-      "cargo": "Jefe Cuadrilla de Balance"
+      "cargo": "Jefe Cuadrilla de Balance",
+      "vehiculo": ""
     },
     {
       "name": "Erich Ofni Gonzalo Laguna",
       "dni": "48058039",
       "celular":"921 696 606",
       "firma": "../recursos/firmas/ErichOfniGonzaloLaguna.png",
-      "cargo": "Operario de Balance"
+      "cargo": "Operario de Balance",
+      "vehiculo": ""
     },
     {
       "name": "Frank Brayan Morales Quispe",
       "dni": "73876867",
       "celular":"986 969 783",
       "firma": "../recursos/firmas/FrankBrayanMoralesQuispe.png",
-      "cargo": "Operario de Balance"
+      "cargo": "Operario de Balance",
+      "vehiculo": ""
     },
     {
       "name": "Robin Valentino Asensios Cardenas",
       "dni": "77913680",
       "celular":"918 260 797",
       "firma": "../recursos/firmas/RobinAsensios.png",
-      "cargo": "Operario de Balance"
+      "cargo": "Operario de Balance",
+      "vehiculo": ""
     },
     {
       "name": "Jordy Alquett Acosta Fernandez",
       "dni": "47935322",
       "celular":"988 259 588",
       "firma": "../recursos/firmas/JordyAlquettAcostaFernandez.png",
-      "cargo": "Operario de Balance"
+      "cargo": "Operario de Balance",
+      "vehiculo": ""
     },
     {
-      "name": "José Luis Vela Vasquez",
-      "dni": "42668852",
-      "celular":"923 833 421",
-      "firma": "../recursos/firmas/JoseLuisVelaVasquez.png",
-      "cargo": "Chofer Ayudante de Balance"
+      "name": "Angel Anibal Apolinario Rojas",
+      "dni": "40204082",
+      "celular": "999 999 999",
+      "firma": "../recursos/firmas/AngelAnibalApolinarioRojas.png",
+      "cargo": "Chofer Ayudante de Balance",
+      "vehiculo": "Auto"
     },
     {
-      "name": "Ronald Guiler Mendoza Cueva",
-      "dni": "43469067",
-      "celular":"931 808 866",
-      "firma": "../recursos/firmas/RonaldGuilerMendozaCueva.png",
-      "cargo": "Chofer Ayudante de Balance"
+      "name":"Rodolfo Anatilo Izaguirre Cordova",
+      "dni": "40324402",
+      "celular": "999 999 999",
+      "firma": "../recursos/firmas/RodolfoAnatiloIzaguirreCordova.png",
+      "cargo": "Chofer Ayudante de Balance",
+      "vehiculo": "Auto"
+    },
+    {
+      "name":"Wilver Alonso Flores Gomez",
+      "dni": "48285041",
+      "celular": "999 999 999",
+      "firma": "../recursos/firmas/WilverAlonsoFloresGomez.png",
+      "cargo": "Chofer Ayudante de Balance",
+      "vehiculo": "Auto"
+    },
+    {
+      "name":"Christian Carlos Sotelo Saldaña",
+      "dni": "44949737",
+      "celular": "999 999 999",
+      "firma": "../recursos/firmas/ChristianCarlosSoteloSaldaña.png",
+      "cargo": "Chofer Ayudante de Balance",
+      "vehiculo": "Auto"
+    },
+    {
+      "name":"Romario Ronaldiño Ñuñuri Motta",
+      "dni": "77055810",
+      "celular": "999 999 999",
+      "firma": "../recursos/firmas/RomarioRonaldiñoÑuñuriMotta.png",
+      "cargo": "Chofer Ayudante de Balance",
+      "vehiculo": "Moto"
     }
   ],
 
@@ -78,7 +112,8 @@
       "dni": "45387327",
       "celular": "910 729 152",
       "firma": "../recursos/firmas/RobertoLuisBailon.png",
-      "cargo":"Supervisor"
+      "cargo":"Supervisor",
+      "vehiculo": "Auto"
     }
   ],
 
@@ -88,7 +123,16 @@
       "dni": "45169277",
       "celular": "944 686 506",
       "firma": "../recursos/firmas/DanielSaldarriagaAliaga.png",
-      "cargo":"Prevencionista"
+      "cargo":"Prevencionista",
+      "vehiculo": ""
+    },
+    {
+      "name":"Leslie Judith Pacheco Neyra",
+      "dni":"71393623",
+      "celular": "982 846 439",
+      "firma": "../recursos/firmas/LeslieJudithPachecoNeyra.png",
+      "cargo": "Prevencionista",
+      "vehiculo": ""
     }
   ]
 }

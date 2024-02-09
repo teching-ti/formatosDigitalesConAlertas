@@ -77,8 +77,6 @@ fechaVencimiento.addEventListener("blur", function(){
     validarFechas(fechaVencimiento)
 })
 
-
-
 //obtener los datos del archivo
 //uso de una petición fetch
 fetch("../scripts/datos.json")
@@ -86,7 +84,6 @@ fetch("../scripts/datos.json")
   .then((data) => {
     //la data obtenida será nombrada como users
     users = data;
-    choferAyudanteData = users.tecnico.filter((tecnico) => tecnico.cargo === 'Chofer Ayudante de Balance')
     //cargar nombre de los choferes
     llenarSelect(document.getElementById("nombre-conductor"))
     //autocompletar firmas
@@ -97,11 +94,30 @@ fetch("../scripts/datos.json")
 
   //cargar nombre de los choferes
   function llenarSelect(selector){
-    
-    choferAyudanteData.forEach(u=>{
-        let opcion = document.createElement("option")
-        opcion.innerText = u.name
-        selector.appendChild(opcion)
+
+    //evaluacion de tecnicos para el posible llenado
+    users.tecnico.forEach(c=>{
+        if(c.vehiculo!=""){
+            let opcion = document.createElement("option")
+            opcion.innerText = c.name
+            selector.appendChild(opcion)
+        }
+    })
+    //evaluacion de supervisores para el posible llenado
+    users.supervisor.forEach(c=>{
+        if(c.vehiculo!=""){
+            let opcion = document.createElement("option")
+            opcion.innerText = c.name
+            selector.appendChild(opcion)
+        }
+    })
+    //evaluacion de prevencionistas para el posible llenado
+    users.prevencionista.forEach(c=>{
+        if(c.vehiculo!=""){
+            let opcion = document.createElement("option")
+            opcion.innerText = c.name
+            selector.appendChild(opcion)
+        }
     })
   }
 
@@ -109,11 +125,28 @@ fetch("../scripts/datos.json")
   function AutocompletarFirma(selector, inputFirma){
     selector.addEventListener("change", function(){
         let nombreSeleccionado = selector.value
-        let usuarioSeleccionado = choferAyudanteData.find(
-            (chofer) => chofer.name === nombreSeleccionado
+
+        let conductorTecnico = users.tecnico.find(
+            (tecn) => tecn.name === nombreSeleccionado
+        )
+        let conductorSupervisor = users.supervisor.find(
+            (supp) => supp.name === nombreSeleccionado
         )
 
-    inputFirma.value = usuarioSeleccionado.firma
+        let conductorPrevencionista = users.prevencionista.find(
+            (prev) => prev.name === nombreSeleccionado
+        )
+
+        // Verificar en qué categoría se encontró y completar la firma
+        if (conductorTecnico) {
+            inputFirma.value = conductorTecnico.firma
+        } else if (conductorPrevencionista) {
+            inputFirma.value = conductorPrevencionista.firma;
+        } else if (conductorSupervisor) {
+            inputFirma.value = conductorSupervisor.firma;
+        } else {
+            alert("Este espacio no puede permanecer vacío, seleccione al personal requerido")
+        }
     })
   }
 
@@ -190,7 +223,6 @@ async function loadImage(url) {
         vSeparado = new Date(partesFecha[0], partesFecha[1] - 1, partesFecha[2])
         let vencimiento = vSeparado.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
 
-
             //fecha de inspeccion
             doc.text(fecha.value, 177, 36)
 
@@ -248,7 +280,6 @@ async function loadImage(url) {
                 doc.text("x", 191.3, 21)
             }
 
-            
             if(inicio!=""){
                 doc.setFontSize(4.5)
                 doc.text(inicio, 176.5, 24.5)
@@ -327,7 +358,7 @@ async function loadImage(url) {
 
         if(nombreConductor!="" && firmaConductor!=""){
             doc.text(nombreConductor, 40.5, 21.4)
-            doc.addImage(firmaConductor, "PNG", 34, 270, 35, 5.8)
+            doc.addImage(firmaConductor, "PNG", 36, 268, 35, 5.8)
         }else{
             evaluar = false
         }
@@ -347,8 +378,6 @@ async function loadImage(url) {
             lineHeightFactor: 1.48, 
             align: "justify"
         })
-        
-        
         return true
     }
 
@@ -391,7 +420,6 @@ async function loadImage(url) {
                         positionY= 58
                     }
                 }
-
             })
         })
 
@@ -740,15 +768,21 @@ async function loadImage(url) {
         let eval1 = document.getElementById("ev-conductor1")
         let eval2 = document.getElementById("ev-conductor2")
 
-        if(!eval1.checked  || !eval2.checked){
-            alert("Ambas casillas de evaluación deben estar marcadas")
-            evaluar = false
-            return evaluar
+        doc.setFontSize(8.5)
+        doc.setTextColor(0, 0, 225);
+
+        if(!eval1.checked){
+            doc.text("X", 195, 245.6)
+        }else{
+            doc.text("X", 173.73, 245.6)
         }
-        doc.setFontSize(8)
-        doc.setTextColor(0, 0, 150);
-        doc.text("X", 173.6, 245.6)
-        doc.text("X", 173.6, 249)
+        
+        if(!eval2.checked){
+            doc.text("X", 195, 249)
+        }else{
+            doc.text("X", 173.73, 249)
+        }
+        
 
         return evaluar
     }
@@ -800,6 +834,7 @@ async function loadImage(url) {
         if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarMoto() && evaluarEpp() && evaluarPma() && evaluarBotiquin() && evaluarConductor()){
             /*var blob = doc.output("blob");
             window.open(URL.createObjectURL(blob));*/
+
             fechaActual = fechaActual.replace(/\//g, "_")
             const nombreDocumento =`INSPECCION_VEHICULAR_${fechaActual}.pdf`
             doc.save(nombreDocumento)
