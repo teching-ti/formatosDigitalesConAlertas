@@ -45,6 +45,7 @@
             id="datos-generales-documento"
           >
             <h4>Datos Generales</h4>
+            <!-- Algunos elementos de estos datos generales son cargados por defecto -->
             <div class="dg dg-1">
               <input type="text" value="00-00-00" id="fecha" readonly />
               <input type="text" id="proyecto" placeholder="PROYECTO." value="ENEL DX BALANCE Y CORRECCION DE CADENA" readonly/>
@@ -57,13 +58,13 @@
               <input type="text" id="actividad" placeholder="ACTIVIDAD." />
             </div>
             <div class="dg dg-3">
-              <input type="text" id="contacto" placeholder="CONTACTO." />
-              <input type="text" id="telefono" placeholder="TELEFONO." />
+              <input type="text" id="contacto" placeholder="CONTACTO." value="Josue Hidalgo Deza" readonly/>
+              <input type="text" id="telefono" placeholder="TELEFONO." value="919 297 229" readonly/>
             </div>
             <div class="dg dg-4">
               <input type="text" id="direccion" placeholder="DIRECCION." />
               <input type="text" id="referencia" placeholder="REFERENCIA." />
-              <input type="text" id="ceco" placeholder="CECO." />
+              <input type="text" id="ceco" placeholder="CECO." value="PO_EDP" readonly/>
             </div>
           </section>
 
@@ -84,7 +85,7 @@
               <input
                 type="text"
                 id="autorizado"
-                value="Josué Hidalgo Deza"
+                value="Josue Hidalgo Deza"
                 readonly
               />
               <input

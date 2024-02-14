@@ -289,14 +289,15 @@ async function loadImage(url) {
                 return
             }
 
-            if(final!=""){
+            //final deja de ser obligatorio y se coloca como oculto en el html
+            /*if(final!=""){*/
                 doc.setFontSize(4.5)
                 doc.text(final, 199, 24.5)
-            }else{
+            /*}else{
                 alert("Complete el campo de km final")
                 evaluar = false
                 return
-            }
+            }*/
 
             if(soat!=""){
                 doc.setFontSize(6)
@@ -695,6 +696,7 @@ async function loadImage(url) {
         evaluar = true
         let botY = 193
         let salto = 0
+        let contadorElementoBotiquin = 0
         //fechas inicia
         contenedoresBotiquin.forEach(f=>{
             inputFecha = f.querySelector('input[type="date"]')
@@ -702,11 +704,20 @@ async function loadImage(url) {
             vSeparado = new Date(partesFecha[0], partesFecha[1] - 1, partesFecha[2])
             let fechaBotiquin = vSeparado.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
             
-            if(fechaBotiquin!="" && fechaBotiquin!="Invalid Date"){
+            if(fechaBotiquin!="" && fechaBotiquin!="Invalid Date" || contadorElementoBotiquin==7 ||
+            contadorElementoBotiquin==12 || contadorElementoBotiquin==13){
                 if(salto==1 || salto==7){
+                    if(fechaBotiquin=="Invalid Date"){
+                        typeof(fechaBotiquin)
+                        fechaBotiquin=""
+                    }
                     doc.text(fechaBotiquin, 72, botY, { align: 'center'})
                     botY+=4.5
                 }else{
+                    if(fechaBotiquin=="Invalid Date"){
+                        typeof(fechaBotiquin)
+                        fechaBotiquin=""
+                    }
                     doc.text(fechaBotiquin, 72, botY, { align: 'center'})
                     botY+=2.86
                 }
@@ -715,6 +726,7 @@ async function loadImage(url) {
                 evaluar = false
                 return
             }
+            contadorElementoBotiquin+=1
             salto+=1
         })
 
@@ -750,6 +762,7 @@ async function loadImage(url) {
                 }
             })
             salto+=1
+
         })
 
         if(evaluar){
@@ -858,7 +871,7 @@ async function loadImage(url) {
                 }
             })
         }else{
-            alert("Completar todos los campos")
+            alert("Completar todos los campos obligatorios")
         }
     }
   })

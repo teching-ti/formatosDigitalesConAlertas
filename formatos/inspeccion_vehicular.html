@@ -83,8 +83,8 @@
               <label id="cont-inicio"
                 >Inicio(Km) <input type="number" id="inicio-km"
               /></label>
-              <label id="cont-final"
-                >Final(Km) <input type="number" id="final-km"
+              <label id="cont-final">
+                Final(Km) <input type="number" id="final-km"
               /></label>
               <input type="text" placeholder="N° SOAT" id="numero-soat" />
               <input type="text" placeholder="Empresa SOAT" id="empresa-soat" />
@@ -1517,7 +1517,7 @@
           <section class="botiquin">
             <h1>Botiquín de primeros auxilios</h1>
             <div class="elemento-botiquin">
-              <p>Alcohol de 70° de 500 ml</p>
+              <p>*Alcohol de 70° de 500 ml</p>
                 <label>Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo1" value="Bueno" checked /></label>
@@ -1538,7 +1538,7 @@
             </div>
 
             <div class="elemento-botiquin">
-              <p>Jabón antiséptico</p>
+              <p>*Jabón antiséptico</p>
                 <label>Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo2" value="Bueno" checked /></label>
@@ -1559,7 +1559,7 @@
             </div>
 
             <div class="elemento-botiquin">
-              <p>Gasas esterilizadas fraccionadas de 1m x 10cm</p>
+              <p>*Gasas esterilizadas fraccionadas de 1m x 10cm</p>
                 <label>Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo3" value="Bueno" checked /></label>
@@ -1580,7 +1580,7 @@
             </div>
 
             <div class="elemento-botiquin">
-              <p>Apósito Esterilizado 10x10 cm</p>
+              <p>*Apósito Esterilizado 10x10 cm</p>
                 <label>Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo4" value="Bueno" checked /></label>
@@ -1601,7 +1601,7 @@
             </div>
 
             <div class="elemento-botiquin">
-              <p>Esparadrapo hipoalérgico 2.5 cm x 5m</p>
+              <p>*Esparadrapo hipoalérgico 2.5 cm x 5m</p>
                 <label>Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo5" value="Bueno" checked /></label>
@@ -1622,7 +1622,7 @@
             </div>
 
             <div class="elemento-botiquin">
-              <p>Venda elástica 4 pulg x 5 yardas</p>
+              <p>*Venda elástica 4 pulg x 5 yardas</p>
                 <label>Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo6" value="Bueno" checked /></label>
@@ -1643,7 +1643,7 @@
             </div>
 
             <div class="elemento-botiquin">
-              <p>Bandas adhesivas (curitas)</p>
+              <p>*Bandas adhesivas (curitas)</p>
                 <label>Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo7" value="Bueno" checked /></label>
@@ -1665,7 +1665,7 @@
 
             <div class="elemento-botiquin">
               <p>Tijeras punta roma de 3 pulgadas</p>
-                <label>Fecha de vencimiento: <input type="date"></label>
+                <label class="fecha-inutilizable">Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo8" value="Bueno" checked /></label>
                 <label>M<input type="radio" name="bo8" value="Malo" /></label>
@@ -1685,7 +1685,7 @@
             </div>
 
             <div class="elemento-botiquin">
-              <p>Guantes quirúrjicos esterilizados 7 1/2 (pares)</p>
+              <p>*Guantes quirúrjicos esterilizados 7 1/2 (pares)</p>
                 <label>Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo9" value="Bueno" checked /></label>
@@ -1706,7 +1706,7 @@
             </div>
 
             <div class="elemento-botiquin">
-              <p>Algodón x 50 gr</p>
+              <p>*Algodón x 50 gr</p>
                 <label>Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo10" value="Bueno" checked /></label>
@@ -1727,7 +1727,7 @@
             </div>
 
             <div class="elemento-botiquin">
-              <p>Flamodil o Hirudoid (golpes, hematomas)</p>
+              <p>*Flamodil o Hirudoid (golpes, hematomas)</p>
                 <label>Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo11" value="Bueno" checked /></label>
@@ -1748,7 +1748,7 @@
             </div>
 
             <div class="elemento-botiquin">
-              <p>Apositos de Jelonet 10 x 10 cm</p>
+              <p>*Apositos de Jelonet 10 x 10 cm</p>
                 <label>Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo12" value="Bueno" checked /></label>
@@ -1770,7 +1770,7 @@
 
             <div class="elemento-botiquin">
               <p>Tablillas de madera 30x5x1 cm</p>
-                <label>Fecha de vencimiento: <input type="date"></label>
+                <label class="fecha-inutilizable">Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo13" value="Bueno" checked /></label>
                 <label>M<input type="radio" name="bo13" value="Malo" /></label>
@@ -1791,7 +1791,7 @@
 
             <div class="elemento-botiquin">
               <p>Tablillas de madera 70x5x1 cm</p>
-                <label>Fecha de vencimiento: <input type="date"></label>
+                <label class="fecha-inutilizable">Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo14" value="Bueno" checked /></label>
                 <label>M<input type="radio" name="bo14" value="Malo" /></label>
@@ -1811,7 +1811,7 @@
             </div>
 
             <div class="elemento-botiquin">
-              <p>Agua estéril x 1/2 litro</p>
+              <p>*Agua estéril x 1/2 litro</p>
                 <label>Fecha de vencimiento: <input type="date"></label>
               <div>
                 <label>B<input type="radio" name="bo15" value="Bueno" checked /></label>

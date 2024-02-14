@@ -53,58 +53,15 @@ body{
     gap: 1.2rem;
 
 }
-/* 
-#container-fecha{
-    grid-area: fecha;
-}
 
-#nombre-conductor{
-    grid-area: nombre-conductor;
-}
-*/
 #firma-conductor{
     display: none;
 }
-/*
-#placa{
-    grid-area: placa;
-}
 
-#tarjeta-propiedad{
-    grid-area: tarjeta-propiedad;
-}
-
-#empresa{
-    grid-area: empresa;
-}
-
-#cont-lentes{
-    grid-area: lentes;
-    display: flex;
-    gap: .5rem;
-    align-items: center;
-    font-size: .9rem;
-} */
-
-/* #cont-inicio{
-    font-size: .8rem;
-    grid-area: inicio;
-}
-
+/*Se solicita que este campo no deba ser usado para el registro, por lo que se procede a dejar en invisible*/
 #cont-final{
-    font-size: .8rem;
-    grid-area: final;
-} */
-
-/* #soat{
-    grid-area: soat;
-} */
-
-/* #cont-h-inspeccion{
-    grid-row: h-inspeccion;
-    display: flex;
-    font-size: .9rem;
-} */
+    display: none;
+}
 
 .contenedor-vehiculo{
     display: flex;
@@ -215,6 +172,15 @@ body{
 #nombre-supervisor{
     width: 80%;
     padding: .2rem;
+}
+
+/*Este label hace referencia a las fechas de ciertos elementos del botiquin que no son necesarios*/
+/*En el html no cuenta con un asterisco para indicar que no son obligatorios como fecha*/
+/*En el javascript se usa un contador para evaluar el posicionamiento especifico de destos elementos*/
+/*Y así hacer que no sea obligtorio que no posean contenido, esto se debe a que si existirá en el documento*/
+/*Pero se encontrará vacío y por ende, invisible*/
+.fecha-inutilizable{
+    display: none;
 }
 
 #firma-supervisor{

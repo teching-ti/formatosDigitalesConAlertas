@@ -954,6 +954,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
    evaluarHerrammientasAdicionales() &&
    evaluarObservacioProyecto() &&
    evaluarTrabajadores()){
+    
     /*var blob = doc.output("blob");
     window.open(URL.createObjectURL(blob));*/
     dia = dia.replace(/\//g, "_")
