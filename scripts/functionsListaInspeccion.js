@@ -319,14 +319,14 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         alert("Complete la sección de Empresa");
         return false;
       case "TECHING":
-        doc.text("X", 20.6, 11.3);
+        doc.text("X", 17.8, 11.3);
         break;
       case "CONTRATISTA1":
-        doc.text("X", 44.6, 11.3);
+        doc.text("X", 42.8, 11.3);
         doc.text(empresa.value, 60, 11.4);
         break;
       case "CONTRATISTA2":
-        doc.text("X", 44.6, 11.3);
+        doc.text("X", 42.8, 11.3);
         doc.text(empresa.value, 50, 11.4);
         break;
     }
