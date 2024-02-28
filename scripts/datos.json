@@ -2,6 +2,8 @@
   "tecnico": [
     {
       "name": "José Luis Diaz Vasquez",
+      "nombres":"José Luis",
+      "apellidos":"Diaz Vasquez",
       "dni": "43692772",
       "celular": "993 998 516",
       "firma": "../recursos/firmas/JoseLuisDiazVasquez.png",
@@ -10,6 +12,8 @@
     },
     {
       "name": "Rodrigo Marco Lopez Acuña",
+      "nombres":"Rodrigo Marco",
+      "apellidos":"Lopez Acuña",
       "dni": "74444960",
       "celular":"943 044 131",
       "firma": "../recursos/firmas/RodrigoMarcoLopezAcuna.png",
@@ -18,6 +22,8 @@
     },
     {
       "name": "Luis David Enriquez Quispe",
+      "nombres":"Luis David",
+      "apellidos":"Enriquez Quispe",
       "dni": "48072457",
       "celular":"977 231 771",
       "firma": "../recursos/firmas/LuisDavidEnriqueQuispe.png",
@@ -26,6 +32,8 @@
     },
     {
       "name": "Juan José Alcantara Soto",
+      "nombres":"Juan José",
+      "apellidos":"Alcantara Soto",
       "dni": "77028233",
       "celular":"953 289 739",
       "firma": "../recursos/firmas/JuanJoseAlcantaraSoto.png",
@@ -34,6 +42,8 @@
     },
     {
       "name": "Erich Ofni Gonzalo Laguna",
+      "nombres":"Erich Ofni",
+      "apellidos":"Gonzalo Laguna",
       "dni": "48058039",
       "celular":"921 696 606",
       "firma": "../recursos/firmas/ErichOfniGonzaloLaguna.png",
@@ -42,6 +52,8 @@
     },
     {
       "name": "Frank Brayan Morales Quispe",
+      "nombres":"Frank Brayan",
+      "apellidos":"Morales Quispe",
       "dni": "73876867",
       "celular":"986 969 783",
       "firma": "../recursos/firmas/FrankBrayanMoralesQuispe.png",
@@ -50,6 +62,8 @@
     },
     {
       "name": "Robin Valentino Asensios Cardenas",
+      "nombres":"Robin Valentino",
+      "apellidos":"Asensios Cardenas",
       "dni": "77913680",
       "celular":"918 260 797",
       "firma": "../recursos/firmas/RobinAsensios.png",
@@ -58,6 +72,8 @@
     },
     {
       "name": "Jordy Alquett Acosta Fernandez",
+      "nombres":"Jordy Alquett",
+      "apellidos":"Acosta Fernandez",
       "dni": "47935322",
       "celular":"988 259 588",
       "firma": "../recursos/firmas/JordyAlquettAcostaFernandez.png",
@@ -66,6 +82,8 @@
     },
     {
       "name": "Angel Anibal Apolinario Rojas",
+      "nombres":"Angel Anibal",
+      "apellidos":"Apolinario Rojas",
       "dni": "40204082",
       "celular": "999 999 999",
       "firma": "../recursos/firmas/AngelAnibalApolinarioRojas.png",
@@ -74,6 +92,8 @@
     },
     {
       "name":"Rodolfo Anatilo Izaguirre Cordova",
+      "nombres":"Rodolfo Anatilo",
+      "apellidos":"Izaguirre Cordova",
       "dni": "40324402",
       "celular": "999 999 999",
       "firma": "../recursos/firmas/RodolfoAnatiloIzaguirreCordova.png",
@@ -82,6 +102,8 @@
     },
     {
       "name":"Wilver Alonso Flores Gomez",
+      "nombres":"Wilver Alonso",
+      "apellidos":"Flores Gomez",
       "dni": "48285041",
       "celular": "999 999 999",
       "firma": "../recursos/firmas/WilverAlonsoFloresGomez.png",
@@ -90,6 +112,8 @@
     },
     {
       "name":"Christian Carlos Sotelo Saldaña",
+      "nombres":"Christian Carlos",
+      "apellidos":"Sotelo Saldaña",
       "dni": "44949737",
       "celular": "999 999 999",
       "firma": "../recursos/firmas/ChristianCarlosSoteloSaldana.png",
@@ -98,6 +122,8 @@
     },
     {
       "name":"Romario Ronaldiño Ñuñuri Motta",
+      "nombres":"Romario Ronaldiño",
+      "apellidos":"Ñuñuri Motta",
       "dni": "77055810",
       "celular": "999 999 999",
       "firma": "../recursos/firmas/RomarioRonaldinoNunuriMotta.png",
@@ -109,6 +135,8 @@
   "supervisor": [
     {
       "name":"Roberto Carlos Luis Bailon",
+      "nombres":"Roberto Carlos",
+      "apellidos":"Luis Bailon",
       "dni": "45387327",
       "celular": "910 729 152",
       "firma": "../recursos/firmas/RobertoLuisBailon.png",
@@ -120,6 +148,8 @@
   "prevencionista": [
     {
       "name":"Daniel Martin Saldarriaga Aliaga",
+      "nombres":"Daniel Martin",
+      "apellidos":"Saldarriaga Aliaga",
       "dni": "45169277",
       "celular": "944 686 506",
       "firma": "../recursos/firmas/DanielSaldarriagaAliaga.png",
@@ -128,6 +158,8 @@
     },
     {
       "name":"Leslie Judith Pacheco Neyra",
+      "nombres":"Leslie Judith",
+      "apellidos":"Pacheco Neyra",
       "dni":"71393623",
       "celular": "982 846 439",
       "firma": "../recursos/firmas/LeslieJudithPachecoNeyra.png",

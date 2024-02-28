@@ -34,9 +34,11 @@
                <span>Acta de Inspección</span>
             </div>
          </figure>
+
          <section class="form-container">
             <form class="principal-form" id="principal-form">
                <h3 class="title-datos-principales">Datos Generales</h3>
+
                <!--Inicia parte superior del Formulario-->
                <div class="form-sup">
                   <div class="form-sup1">
@@ -50,16 +52,16 @@
                         <label>Nivel de tensión: <input type="text" id="nivel-tension"/></label>
                      </div>
                   </div>
-
+               
                   <div class="form-sup2">
                      <div class="form-sup-e">
-                        <label>Cliente: <input type="text" id="cliente" readonly /></label>
+                        <label>Cliente: <input type="text" id="cliente"/></label>
                      </div>
                      <div class="form-sup-e">
                         <label>Ubicacion: <input type="text" id="ubicacion"/></label>
                      </div>
                      <div class="form-sup-e" id="fecha-h-inicio-final">
-                        <label>Fecha: <input type="text" id="fecha"/></label>
+                        <label>Fecha: <input type="text" id="fecha" readonly/></label>
                         <label>Hora Inicio: <input type="time" id="h-inicio"/></label>
                         <label>Hora Fin: <input type="time" id="h-fin"/></label>
                      </div>
@@ -75,20 +77,19 @@
                      <div class="contenedor-dato-situacion">
                         <h5>Condiciones de trabajo</h5>
                         <div class="contenedor-condiciones">
-                           <label><input type="radio" name="situacion-encontrada-1">Condición Segura</label>
-                           <label><input type="radio" name="situacion-encontrada-1">Condición Insegura (Resguardo Policial)</label>           
+                           <label><input type="radio" class="situacion-encontrada-1" name="situacion-encontrada-1" checked value="1">Condición Segura</label>
+                           <label><input type="radio" class="situacion-encontrada-1" name="situacion-encontrada-1" value="2">Condición Insegura (Resguardo Policial)</label>           
                         </div>
                      </div>
 
                      <div class="contenedor-dato-situacion">
                         <h5>Condiciones Insitu - SED</h5>
                         <div class="contenedor-condiciones">
-                           <label><input type="radio" name="situacion-encontrada-2">Normales</label>
-                           <label><input type="radio" name="situacion-encontrada-2">Obstácuos de desmonte</label>              
+                           <label><input type="radio" class="situacion-encontrada-2" name="situacion-encontrada-2" checked value="1">Normales</label>
+                           <label><input type="radio" class="situacion-encontrada-2" name="situacion-encontrada-2" value="2">Obstácuos de desmonte</label>              
                         </div>
                      </div>
                   </section>
-                  <br>
 
                   <h3> Datos de la inspección  </h3>
 
@@ -245,9 +246,8 @@
                            <label><input type="radio" name="d15" value="2">No procede: Normalizar punto de medición</label>   
                         </div>
                      </div>
-
                   </section>
-                  <br>
+
                   <div class="contenedor-observaciones">
                      <label>Observaciones<textarea name="t-observaciones" id="t-observaciones" cols="30" rows="10"></textarea></label>
                   </div>
@@ -255,11 +255,16 @@
                   <div class="contenedor-recomendaciones">
                      <label>Recomendaciones<textarea name="t-recomendaciones" id="t-recomendaciones" cols="30" rows="10"></textarea></label>
                   </div>
-           
+
                   <div class="contenedor-jefe-cuadrilla">
                      <label>Jefe de Cuadrilla: <select name="jefe cuadrilla" id="jefe-cuadrilla">
                         <option value="--seleccionar--">-- seleccionar --</option>
                      </select></label>
+                     <div>
+                        <input type="text" id="nombres">
+                        <input type="text" id="apellidos">
+                        <input type="text" id="firma">
+                     </div>
                   </div>
 
                </div>
@@ -267,6 +272,7 @@
                <div id="btnGenerar"><i class="fa-solid fa-file-pdf fa-lg"></i></div>
             </form>
          </section>
+         
       </main>
       <script src="../scripts/functionsActaInspeccions.js"></script>
   </body>
