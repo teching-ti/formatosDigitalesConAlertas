@@ -10,7 +10,7 @@ fetch("../scripts/datos.json")
     //la data obtenida será nombrada como users
     users = data;
     llenarSelect(document.getElementById("jefe-cuadrilla"))
-    autocompletarInformacion(document.getElementById("jefe-cuadrilla"), document.getElementById("nombres"), document.getElementById("apellidos"), document.getElementById("firma"))
+    autocompletarInformacion(document.getElementById("jefe-cuadrilla"), document.getElementById("nombres"), document.getElementById("apellidos"), document.getElementById("firma"), document.getElementById("dni"))
 
   })
   .catch((error) => console.error("Error al cargar los datos:", error));
@@ -32,7 +32,7 @@ function llenarSelect(elemento) {
   });
 }
 
-function autocompletarInformacion(elementoSelect, dato, dato1, dato2){
+function autocompletarInformacion(elementoSelect, dato, dato1, dato2, dato3){
     elementoSelect.addEventListener("change", function(){
         const nombreSeleccionado = elementoSelect.value;
         if(nombreSeleccionado!="" && nombreSeleccionado!="Seleccionar"){
@@ -41,9 +41,10 @@ function autocompletarInformacion(elementoSelect, dato, dato1, dato2){
             );
 
             if (usuarioSeleccionado) {
-                dato.value = usuarioSeleccionado.nombres;
-                dato1.value = usuarioSeleccionado.apellidos;
-                dato2.value = usuarioSeleccionado.firma;
+                dato.value = usuarioSeleccionado.nombres
+                dato1.value = usuarioSeleccionado.apellidos
+                dato2.value = usuarioSeleccionado.firma
+                dato3.value = usuarioSeleccionado.dni
             }
         }
     })
@@ -165,9 +166,139 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       })
     }
 
+    function evaluarDatosInspeccion(){
+        let contador = 1
+        //la lógica es la siguiente
+        //primero se selecciona a todos los contenedores principales de 'Datos de inspeccion'
+        document.querySelectorAll(".contenedor-dato-inspeccion").forEach(e=>{
+            //Luego se selecciona solo a sus input, ya que estos son los que serán evaluados
+            let inputs = e.querySelectorAll("input[type='radio']:checked")
+            //Se recorre cada uno de  los input existentes dentro de uno de los contenedores
+            inputs.forEach(function(i){
+                //la aplicaicon de un contador sería útil para que se ejecute una lógica difrente
+                //según el número de contenedor que esté siendo utilizado
+
+                switch (contador){
+                    case 1:
+                        if(i.value==1){
+                            console.log("Se imprimirá la marca en x:21")
+                        }else if(i.value==2){
+                            console.log("Se imprimirá la marca en x:40")
+                        }else if(i.value==3){
+                            console.log("Se imprimirá la marca en x:64")
+                        }else if(i.value==4){
+                            console.log("Se imprimirá la marca en x:88")
+                        }else if(i.value==5){
+                            console.log("Se imprimirá la marca en x:100")
+                        }else{
+                            console.log("Se imprimirá la marca en x:120")
+                        }
+                        break;
+                    case 2:
+                    case 3:
+                    case 4:  
+                    case 7:
+                    case 9:
+                    case 10:
+                    case 12:
+                        if(i.checked){
+                            console.log(i.value)
+                        }
+                        break;
+                    case 5:
+                        if(i.checked){
+                            console.log(i.value)
+                        } 
+                        break;
+                    case 6:
+                        if(i.checked){
+                            console.log(i.value)
+                        } 
+                        break;
+                    case 8:
+                        if(i.checked){
+                            console.log(i.value)
+                        } 
+                        break;
+                    case 11:
+                        if(i.checked){
+                            console.log(i.value)
+                        } 
+                        break;
+                    case 13:
+                        if(i.checked){
+                            console.log(i.value)
+                        } 
+                        break;
+                    case 14:
+                        if(i.checked){
+                            console.log(i.value)
+                        } 
+                        break;
+                    case 15:
+                        if(i.checked){
+                            console.log(i.value)
+                        } 
+                        break;
+                    
+                }
+
+            })
+            contador+=1
+        })
+        
+    }
+
+    function evaluarObservaciones(){
+        doc.setFontSize(8)
+        doc.setTextColor(0, 0,0)
+        let observaciones = document.getElementById("t-observaciones").value
+        let textY = 185.4
+        doc.text(observaciones, 21, textY, {
+            maxWidth: 168,
+            lineHeightFactor : 1.75,
+            align: "justify"
+        })
+    }
+
+    function evaluarRecomendaciones(){
+        let observaciones = document.getElementById("t-recomendaciones").value
+        let textY = 213
+        doc.text(observaciones, 21, textY, {
+            maxWidth: 168,
+            lineHeightFactor : 1.75,
+            align: "justify"
+        })
+    }
+
+    function evaluarJefeCuadrilla(){
+        //let jefeCuadrilla = document.getElementById("jefe-cuadrilla").value
+        doc.setFontSize(7)
+        let nombres = document.getElementById("nombres").value.toUpperCase()
+        let apellidos = document.getElementById("apellidos").value.toUpperCase()
+        let dni = document.getElementById("dni").value
+        let firma = document.getElementById("firma").value
+
+        let firmaSupervisor = "../recursos/firmas/RobertoLuisBailon.png"
+        //let firmaResponsable = "../recursos/firmas/.png"
+        //falta la firma de luis paredes
+
+        doc.text(nombres, 98, 249)
+        doc.text(apellidos, 98, 253.4)
+        doc.text(dni, 92, 257.8)
+        doc.addImage(firma, "PNG", 90, 229, 30, 10)
+        //aquí también se colocará la firma del supervisor y responsable del proyecto
+        doc.addImage(firmaSupervisor, "PNG", 40, 229, 30, 10)
+
+    }
+
     //ejecutar funciones en orden de creacion
     evaluarDatosGenerales()
     evaluarSituacionEncontrada()
+    evaluarDatosInspeccion()
+    evaluarObservaciones()
+    evaluarRecomendaciones()
+    evaluarJefeCuadrilla()
 
     if(eval){
         var blob = doc.output("blob");

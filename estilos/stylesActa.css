@@ -147,7 +147,7 @@ body{
 }
 
 #t-observaciones, #t-recomendaciones{
-    height: 35px;
+    height: 65px;
     resize: none;
     border: none;
     outline: none;
@@ -232,6 +232,6 @@ body{
     }
 
     .contenedor-observaciones, .contenedor-recomendaciones   {
-        max-width: 50%;
+        max-width: 100%;
     }
 }
