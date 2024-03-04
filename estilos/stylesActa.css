@@ -89,7 +89,7 @@ body{
 }
 
 .form-sup-e input{
-    height: 25px;
+    height: 35px;
     padding: .3rem;
     outline: none;
 }
@@ -174,7 +174,7 @@ body{
     transform: scale(1.4);
 }
 
-#nombres, #apellidos, #firma{
+#nombres, #apellidos, #firma, #dni{
     display: none;
 }
 

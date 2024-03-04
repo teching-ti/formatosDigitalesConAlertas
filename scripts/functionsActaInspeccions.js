@@ -111,10 +111,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     ];
 
     let col1X = 40;
-    let col2X = 100;
+    let col2X = 98;
     let datosX = 90;
-    let datosY = 47.5;
-    let datosYc2 = 47.5;
+    let datosY = 46.5;
+    let datosYc2 = 46.5;
     let cont = 1;
 
     datosGenerales.forEach((e) => {
@@ -135,7 +135,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         }
         cont += 1;
       } else {
-        datosY = 56.7;
+        datosY = 55.7;
         if (e != "") {
           doc.text(e, datosX, datosY);
           datosX += 38;
@@ -160,9 +160,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     opcionesSituacion1.forEach((e) => {
       if (e.checked) {
         if (e.value == 1) {
-          doc.text("X", 98, 70.6);
+          doc.text("X", 96, 69.4);
         } else {
-          doc.text("X", 158, 70.6);
+          doc.text("X", 156, 69.4);
         }
       }
     });
@@ -173,9 +173,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     opcionesSituacion2.forEach((e) => {
       if (e.checked) {
         if (e.value == 1) {
-          doc.text("X", 98, 75.4);
+          doc.text("X", 96, 74.6);
         } else {
-          doc.text("X", 158, 75.4);
+          doc.text("X", 156, 74.6);
         }
       }
     });
@@ -202,22 +202,22 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
           //En cada caso se debe colocar la posición según corresponda
           case 1:
             if (i.value == 1) {
-              doc.text("X", 60, 94);
+              doc.text("X", 59, 93);
             } else if (i.value == 2) {
-              doc.text("X", 88, 94);
+              doc.text("X", 88, 93);
             } else if (i.value == 3) {
-              doc.text("X", 100, 94);
+              doc.text("X", 100, 93);
             } else if (i.value == 4) {
-              doc.text("X", 126, 94);
+              doc.text("X", 126, 93);
             } else if (i.value == 5) {
-              doc.text("X", 150, 94);
+              doc.text("X", 150, 93);
             } else {
-              doc.text("X", 172, 94);
+              doc.text("X", 172, 93);
             }
             break;
           case 2:
             if (i.value == 1) {
-              doc.text("X", 82, 98.2);
+              doc.text("X", 68, 98.2);
             } else if (i.value == 2) {
               doc.text("X", 120, 98.2);
             } else {
@@ -234,7 +234,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             break;
           case 3:
             if (i.value == 1) {
-              doc.text("X", 82, 104);
+              doc.text("X", 68, 104);
             } else if (i.value == 2) {
               doc.text("X", 120, 104);
             } else {
@@ -249,7 +249,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             break;
           case 4:
             if (i.value == 1) {
-              doc.text("X", 82, 109.8);
+              doc.text("X", 68, 109.8);
             } else if (i.value == 2) {
               doc.text("X", 120, 109.8);
             } else {
@@ -322,7 +322,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             break;
           case 7:
             if(i.value==1){
-                doc.text("X", 82, 127.2)
+                doc.text("X", 68, 127.2)
             }else if(i.value==2){
                 doc.text("X", 120, 127.2)
             }else{
@@ -346,13 +346,15 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
                 doc.text("X", 120, 133);
               } else if (i.value == 5) {
                 doc.text("X", 145.4, 133);
-              } else if (i.value == 6) {
+              } else {
                 doc.text("X", 168, 133);
               }
+              break;
           case 9:
-            if(i.value==1){
-                doc.text("X", 82, 138.8)
-            }else if(i.value==2){
+            //console.log(i)
+            if(i.value == 1){
+                doc.text("X", 68, 138.8)
+            }else if(i.value == 2){
                 doc.text("X", 120, 138.8)
             }else{
                 detalle = document.getElementById("txtcondicion9").value
@@ -366,7 +368,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             break;
           case 10:
             if(i.value==1){
-                doc.text("X", 82, 144.6)
+                doc.text("X", 68, 144.6)
             }else if(i.value==2){
                 doc.text("X", 120, 144.6)
             }else{
@@ -424,11 +426,13 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             }
             break;
           case 15:
+            console.log(i.value)
             if(i.value==1){
-                doc.text("X", 12,12)
+                doc.text("X", 59, 173.5)
             }else{
-                doc.text("X", 12,12)
+                doc.text("X", 98, 173.)
             }
+            break;
         }
       });
       contador += 1;
@@ -436,25 +440,40 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   }
 
   function evaluarObservaciones() {
-    doc.setFontSize(8);
-    doc.setTextColor(0, 0, 0);
     let observaciones = document.getElementById("t-observaciones").value;
-    let textY = 185.4;
-    doc.text(observaciones, 21, textY, {
-      maxWidth: 168,
-      lineHeightFactor: 1.75,
-      align: "justify",
-    });
+
+    if(observaciones!=""){
+      doc.setFontSize(8);
+      doc.setTextColor(0, 0, 0);
+      
+      let textY = 185;
+      doc.text(observaciones, 21, textY, {
+        maxWidth: 168,
+        lineHeightFactor: 1.75,
+        align: "justify",
+      });
+    }else{{
+      eval = false
+      alert("Completar la casilla de Observaciones")
+    }}
+    
   }
 
   function evaluarRecomendaciones() {
-    let observaciones = document.getElementById("t-recomendaciones").value;
-    let textY = 213;
-    doc.text(observaciones, 21, textY, {
-      maxWidth: 168,
-      lineHeightFactor: 1.75,
-      align: "justify",
-    });
+    let recomendaciones = document.getElementById("t-recomendaciones").value;
+
+    if(recomendaciones!=""){
+      let textY = 212.6;
+      doc.text(recomendaciones, 21, textY, {
+        maxWidth: 168,
+        lineHeightFactor: 1.75,
+        align: "justify",
+      });
+    }else{
+      eval = false
+      alert("Completar la casilla de Recomendaciones")
+    }
+    
   }
 
   function evaluarJefeCuadrilla() {
@@ -478,13 +497,13 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   }
 
   //ejecutar funciones en orden de creacion
-  //evaluarDatosGenerales()
-  //evaluarSituacionEncontrada()
+  evaluarDatosGenerales()
+  evaluarSituacionEncontrada()
   evaluarDatosInspeccion();
-  /*evaluarObservaciones()
-    evaluarRecomendaciones()
-    evaluarJefeCuadrilla()
-    */
+  evaluarObservaciones()
+  evaluarRecomendaciones()
+  evaluarJefeCuadrilla()
+  
   if (eval) {
     var blob = doc.output("blob");
     window.open(URL.createObjectURL(blob));
@@ -512,6 +531,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             }
         })*/
   } else {
-    alert("Debe completar datos");
+    alert("Debe completar todos los datos solicitados");
   }
 });
