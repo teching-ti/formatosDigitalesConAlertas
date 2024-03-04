@@ -219,7 +219,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             if (i.value == 1) {
               doc.text("X", 68, 98.2);
             } else if (i.value == 2) {
-              doc.text("X", 120, 98.2);
+              doc.text("X", 106, 98.2);
             } else {
               detalle = document.getElementById("txtcondicion2").value;
               if (detalle != "") {
@@ -236,7 +236,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             if (i.value == 1) {
               doc.text("X", 68, 104);
             } else if (i.value == 2) {
-              doc.text("X", 120, 104);
+              doc.text("X", 106, 104);
             } else {
               detalle = document.getElementById("txtcondicion3").value;
               if (detalle != "") {
@@ -251,7 +251,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             if (i.value == 1) {
               doc.text("X", 68, 109.8);
             } else if (i.value == 2) {
-              doc.text("X", 120, 109.8);
+              doc.text("X", 106, 109.8);
             } else {
               detalle = document.getElementById("txtcondicion4").value;
               if (detalle != "") {
@@ -275,11 +275,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
                 eval = false;
               }
             } else if (i.value == 2) {
-              doc.text("X", 120, 115.6);
+              doc.text("X", 106, 115.6);
             } else if (i.value == 3) {
               detalle = document.getElementById("txtcondicion52").value;
               if (detalle != "") {
-                doc.text(detalle, 152, 115.6);
+                doc.text(detalle, 149, 115.6);
               } else {
                 alert(
                   "La casilla 'N° Llaves de valor[3]' debe contener informaciónn"
@@ -289,7 +289,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             } else {
               detalle = document.getElementById("txtcondicion53").value;
               if (detalle != "") {
-                doc.text(detalle, 178, 115.6);
+                doc.text(detalle, 176.5, 115.6);
               } else {
                 alert(
                   "La casilla 'N° Llaves de valor[4]' debe contener información"
@@ -324,7 +324,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             if(i.value==1){
                 doc.text("X", 68, 127.2)
             }else if(i.value==2){
-                doc.text("X", 120, 127.2)
+                doc.text("X", 106, 127.2)
             }else{
                 detalle = document.getElementById("txtcondicion7").value
                 if(detalle!=""){
@@ -355,7 +355,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             if(i.value == 1){
                 doc.text("X", 68, 138.8)
             }else if(i.value == 2){
-                doc.text("X", 120, 138.8)
+                doc.text("X", 104, 138.8)
             }else{
                 detalle = document.getElementById("txtcondicion9").value
                 if(detalle!=""){
@@ -370,7 +370,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             if(i.value==1){
                 doc.text("X", 68, 144.6)
             }else if(i.value==2){
-                doc.text("X", 120, 144.6)
+                doc.text("X", 106, 144.6)
             }else{
                 doc.text("X", 153, 144.6)
             }
@@ -487,10 +487,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let firmaSupervisor = "../recursos/firmas/RobertoLuisBailon.png";
     let firmaResponsable = "../recursos/firmas/LuisAdolfoParedesRicra.png";
 
-    doc.text(nombres, 98, 249);
-    doc.text(apellidos, 98, 253.4);
-    doc.text(dni, 92, 257.8);
-    doc.addImage(firma, "PNG", 90, 229, 30, 10);
+    doc.text(apellidos, 95.5, 250);
+    doc.text(nombres, 95.5, 254.6);
+    doc.text(dni, 89.5, 258.8);
+    doc.addImage(firma, "PNG", 89, 229, 30, 10);
     //aquí también se colocará la firma del supervisor y responsable del proyecto
     doc.addImage(firmaSupervisor, "PNG", 40, 229, 30, 10);
     doc.addImage(firmaResponsable, "PNG", 149, 229, 30, 10);
