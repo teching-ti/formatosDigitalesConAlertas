@@ -202,17 +202,17 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
           //En cada caso se debe colocar la posición según corresponda
           case 1:
             if (i.value == 1) {
-              doc.text("X", 59, 93);
+              doc.text("X", 59, 92.5);
             } else if (i.value == 2) {
-              doc.text("X", 88, 93);
+              doc.text("X", 88, 92.5);
             } else if (i.value == 3) {
-              doc.text("X", 100, 93);
+              doc.text("X", 96.5, 92.5);
             } else if (i.value == 4) {
-              doc.text("X", 126, 93);
+              doc.text("X", 124, 92.5);
             } else if (i.value == 5) {
-              doc.text("X", 150, 93);
+              doc.text("X", 145.4, 92.5);
             } else {
-              doc.text("X", 172, 93);
+              doc.text("X", 170, 92.5);
             }
             break;
           case 2:
@@ -263,7 +263,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             }
             break;
           case 5:
-            //console.log(i.value)
             if (i.value == 1) {
               detalle = document.getElementById("txtcondicion51").value;
               if (detalle != "") {
@@ -351,7 +350,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
               }
               break;
           case 9:
-            //console.log(i)
             if(i.value == 1){
                 doc.text("X", 68, 138.8)
             }else if(i.value == 2){
@@ -426,7 +424,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             }
             break;
           case 15:
-            console.log(i.value)
             if(i.value==1){
                 doc.text("X", 59, 173.5)
             }else{
@@ -509,14 +506,14 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     window.open(URL.createObjectURL(blob));
 
     /*fechaActual = fechaActual.replace(/\//g, "_")
-        const nombreDocumento = `INSPECCION_DE_ESCALERA_${fechaActual}.pdf`
+        const nombreDocumento = `ACTA_DE_INSPECCION_${fechaActual}.pdf`
         doc.save(nombreDocumento)
         //endodear el resultado del pdf
         var file_data = btoa(doc.output())
         var form_data = new FormData()
 
         form_data.append("file", file_data)
-        form_data.append("nombre", "INSPECCION_DE_ESCALERA")
+        form_data.append("nombre", "ACTA_DE_INSPECCION")
         //alert(form_data)
         $.ajax({
             url: "../envios/enviar_alerta.php",
