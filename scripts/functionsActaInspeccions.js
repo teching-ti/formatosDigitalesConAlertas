@@ -152,17 +152,17 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   }
 
   function evaluarSituacionEncontrada() {
-    doc.setFontSize(12);
-    doc.setTextColor(0, 0, 225);
+    doc.setFontSize(8);
+    doc.setTextColor(30, 41, 135);
     let opcionesSituacion1 = document.querySelectorAll(
       ".situacion-encontrada-1"
     );
     opcionesSituacion1.forEach((e) => {
       if (e.checked) {
         if (e.value == 1) {
-          doc.text("X", 96, 69.4);
+          doc.text("X", 81, 69.4);
         } else {
-          doc.text("X", 156, 69.4);
+          doc.text("X", 126, 69.4);
         }
       }
     });
@@ -173,9 +173,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     opcionesSituacion2.forEach((e) => {
       if (e.checked) {
         if (e.value == 1) {
-          doc.text("X", 96, 74.6);
+          doc.text("X", 81, 74.2);
         } else {
-          doc.text("X", 156, 74.6);
+          doc.text("X", 126, 74.2);
         }
       }
     });
@@ -183,7 +183,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
 
   function evaluarDatosInspeccion() {
     doc.setFontSize(6.5);
-    doc.setTextColor(0, 0, 255);
+    doc.setTextColor(30, 41, 135);
     let contador = 1;
     let detalle = "";
     //Esta variable obtiene a todos los input de respuestas o detalles de los datos de inspección
