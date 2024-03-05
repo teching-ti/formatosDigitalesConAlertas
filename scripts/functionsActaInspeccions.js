@@ -2,6 +2,9 @@ let fecha = document.getElementById("fecha");
 let fechaActual = new Date().toLocaleDateString();
 fecha.value = fechaActual;
 
+//mensaje de aviso
+alert("Buen día, por favor, seleccione correctamente los datos de inspección y marque la casilla correspondiente si desea añadir información adicional.")
+
 //obtener los datos del archivo
 //uso de una petición fetch
 fetch("../scripts/datos.json")
@@ -185,21 +188,24 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     doc.setFontSize(6.5);
     doc.setTextColor(30, 41, 135);
     let contador = 1;
-    let detalle = "";
     //Esta variable obtiene a todos los input de respuestas o detalles de los datos de inspección
-    let textoDetalle = document.querySelectorAll(".detalle");
     //la lógica es la siguiente
     //primero se selecciona a todos los contenedores principales de 'Datos de inspeccion'
     document.querySelectorAll(".contenedor-dato-inspeccion").forEach((e) => {
       //Luego se selecciona solo a sus input, ya que estos son los que serán evaluados
-      let inputs = e.querySelectorAll("input[type='radio']:checked");
+      let inputs = e.querySelectorAll("input[type='checkbox']:checked")
+      
       //Se recorre cada uno de  los input existentes dentro de uno de los contenedores
       inputs.forEach(function (i) {
         //la aplicaicon de un contador sería útil para que se ejecute una lógica difrente
         //según el número de contenedor que esté siendo utilizado
-
         switch (contador) {
           //En cada caso se debe colocar la posición según corresponda
+
+          /*Coloca condicional de posicionamiento acerca de para el texto de detalles en el caso:
+          2, 3, 4, 5 y 14 de manera similar a como funciona el caso 9, en esos casos se trata de texto,
+          se recomienda también modificar el tamaño con un style simple en donde existen input del tipo numérico
+          */
           case 1:
             if (i.value == 1) {
               doc.text("X", 59, 92.5);
@@ -223,7 +229,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             } else {
               detalle = document.getElementById("txtcondicion2").value;
               if (detalle != "") {
+                doc.setFontSize(5)
                 doc.text(detalle, 162, 98.2);
+                doc.setFontSize(6.5)
               } else {
                 alert(
                   "La casilla 'Reductores de Corriente de Totalizador debe contener información'"
@@ -240,7 +248,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             } else {
               detalle = document.getElementById("txtcondicion3").value;
               if (detalle != "") {
+                doc.setFontSize(5)
                 doc.text(detalle, 152, 104);
+                doc.setFontSize(6.5)
               } else {
                 alert("La casilla 'Tablero BT' debe contener información");
                 eval = false;
@@ -255,7 +265,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             } else {
               detalle = document.getElementById("txtcondicion4").value;
               if (detalle != "") {
+                doc.setFontSize(5)
                 doc.text(detalle, 162, 109.8);
+                doc.setFontSize(6.5)
               } else {
                 alert("La casilla 'Tablero BT' debe contener información");
                 eval = false;
@@ -266,7 +278,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             if (i.value == 1) {
               detalle = document.getElementById("txtcondicion51").value;
               if (detalle != "") {
+                doc.setFontSize(5)
                 doc.text(detalle, 82, 115.6);
+                doc.setFontSize(6.5)
               } else {
                 alert(
                   "La casilla 'N° Llaves de valor[1]' debe contener información"
@@ -278,7 +292,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             } else if (i.value == 3) {
               detalle = document.getElementById("txtcondicion52").value;
               if (detalle != "") {
+                doc.setFontSize(5)
                 doc.text(detalle, 149, 115.6);
+                doc.setFontSize(6.5)
               } else {
                 alert(
                   "La casilla 'N° Llaves de valor[3]' debe contener informaciónn"
@@ -288,7 +304,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             } else {
               detalle = document.getElementById("txtcondicion53").value;
               if (detalle != "") {
+                doc.setFontSize(5)
                 doc.text(detalle, 176.5, 115.6);
+                doc.setFontSize(6.5)
               } else {
                 alert(
                   "La casilla 'N° Llaves de valor[4]' debe contener información"
@@ -308,13 +326,13 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             } else if (i.value == 4) {
               doc.text("X", 111.4, 121.4);
             } else if (i.value == 5) {
-              doc.text("X", 122.5, 121.4);
+              doc.text("X", 118, 121.4);
             } else if (i.value == 6) {
               doc.text("X", 134, 121.4);
             } else if (i.value == 7) {
               doc.text("X", 145.4, 121.4);
             } else if (i.value == 8) {
-              doc.text("X", 158.5, 121.4);
+              doc.text("X", 154.5, 121.4);
             } else if (i.value == 9) {
               doc.text("X", 168, 121.4);
             }
@@ -327,7 +345,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             }else{
                 detalle = document.getElementById("txtcondicion7").value
                 if(detalle!=""){
-                    doc.text(detalle, 165, 127.2)
+                  doc.setFontSize(5)
+                  doc.text(detalle, 165, 127.2)
+                  doc.setFontSize(6.5)
                 }else{
                     alert("La casilla 'Reductores de corriente del medidor AP debe contener información")
                     eval = false
@@ -357,7 +377,13 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             }else{
                 detalle = document.getElementById("txtcondicion9").value
                 if(detalle!=""){
-                    doc.text(detalle, 163.5, 138.8)
+                  doc.setFontSize(5)
+                  if(detalle.length>10){
+                    doc.text(detalle, 163.5, 137, { maxWidth: 25, align: "justify", lineHeightFactor: 0.8})
+                  }else{
+                    doc.text(detalle, 163.5, 138.5)
+                  }
+                  doc.setFontSize(6.5)
                 }else{
                     alert("La casilla 'DMS Redes Eléctricas MT' debe contener información")
                     eval = false
@@ -416,24 +442,31 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             }else{
                 detalle = document.getElementById("txtcondicion14").value
                 if(detalle!=""){
-                    doc.text(detalle, 140, 167)
+                  doc.setFontSize(5)
+                  doc.text(detalle, 140, 167)
+                  doc.setFontSize(6.5)
                 }else{
                     alert("La casilla 'Giro del cliente' debe contener información")
                     eval = false
                 }
             }
             break;
-          case 15:
-            if(i.value==1){
-                doc.text("X", 59, 173.5)
-            }else{
-                doc.text("X", 98, 173.)
-            }
-            break;
         }
       });
       contador += 1;
     });
+
+    let procede = document.querySelectorAll(".d15")
+    procede.forEach(a=>{
+      if(a.checked){
+        if(a.value==1){
+          doc.text("X", 59, 173.5)
+        }else{
+          doc.text("X", 98, 173.)
+        }
+      }
+    })
+            
   }
 
   function evaluarObservaciones() {
