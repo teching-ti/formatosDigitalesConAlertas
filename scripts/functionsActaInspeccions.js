@@ -554,11 +554,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   evaluarRecomendaciones()
   evaluarJefeCuadrilla()
   
-  if (eval) {
-    var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob));
+  if(eval) {
+    /*var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob));*/
 
-    /*fechaActual = fechaActual.replace(/\//g, "_")
+    fechaActual = fechaActual.replace(/\//g, "_")
         const nombreDocumento = `ACTA_DE_INSPECCION_${fechaActual}.pdf`
         doc.save(nombreDocumento)
         //endodear el resultado del pdf
@@ -579,7 +579,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             success: function(php_script_response){
                 alert("Archivo generado correctamente")
             }
-        })*/
+        })
   } else {
     alert("Debe completar todos los datos solicitados");
   }
