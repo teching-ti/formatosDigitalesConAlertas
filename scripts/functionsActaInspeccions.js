@@ -201,7 +201,6 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         //según el número de contenedor que esté siendo utilizado
         switch (contador) {
           //En cada caso se debe colocar la posición según corresponda
-
           /*Coloca condicional de posicionamiento acerca de para el texto de detalles en el caso:
           2, 3, 4, 5 y 14 de manera similar a como funciona el caso 9, en esos casos se trata de texto,
           se recomienda también modificar el tamaño con un style simple en donde existen input del tipo numérico
@@ -230,7 +229,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
               detalle = document.getElementById("txtcondicion2").value;
               if (detalle != "") {
                 doc.setFontSize(5)
-                doc.text(detalle, 162, 98.2);
+                if(detalle.length>10){
+                  doc.text(detalle, 162, 96.7, { maxWidth: 25, align: "justify", lineHeightFactor: 0.8});
+                }else{
+                  doc.text(detalle, 163.5, 98.2)
+                }
                 doc.setFontSize(6.5)
               } else {
                 alert(
@@ -249,7 +252,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
               detalle = document.getElementById("txtcondicion3").value;
               if (detalle != "") {
                 doc.setFontSize(5)
-                doc.text(detalle, 152, 104);
+                if(detalle.length>10){
+                  doc.text(detalle, 152, 102.5, { maxWidth: 30, align: "justify", lineHeightFactor: 0.8})
+                }else{
+                  doc.text(detalle, 152, 104)
+                }
                 doc.setFontSize(6.5)
               } else {
                 alert("La casilla 'Tablero BT' debe contener información");
@@ -266,7 +273,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
               detalle = document.getElementById("txtcondicion4").value;
               if (detalle != "") {
                 doc.setFontSize(5)
-                doc.text(detalle, 162, 109.8);
+                if(detalle.length>10){
+                  doc.text(detalle, 162, 108.3, { maxWidth: 30, align: "justify", lineHeightFactor: 0.8})
+                }else{
+                  doc.text(detalle, 162, 109.8)
+                }
                 doc.setFontSize(6.5)
               } else {
                 alert("La casilla 'Tablero BT' debe contener información");
@@ -346,7 +357,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
                 detalle = document.getElementById("txtcondicion7").value
                 if(detalle!=""){
                   doc.setFontSize(5)
-                  doc.text(detalle, 165, 127.2)
+                  if(detalle.length>10){
+                    doc.text(detalle, 165, 125.9, { maxWidth: 25, align: "justify", lineHeightFactor: 0.8})
+                  }else{
+                    doc.text(detalle, 165, 127.2)
+                  }
+
                   doc.setFontSize(6.5)
                 }else{
                     alert("La casilla 'Reductores de corriente del medidor AP debe contener información")
@@ -443,7 +459,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
                 detalle = document.getElementById("txtcondicion14").value
                 if(detalle!=""){
                   doc.setFontSize(5)
-                  doc.text(detalle, 140, 167)
+                  if(detalle.length>10){
+                    doc.text(detalle, 140, 165.5, { maxWidth: 48, align: "justify", lineHeightFactor: 0.8})
+                  }else{
+                    doc.text(detalle, 140, 167)
+                  }
                   doc.setFontSize(6.5)
                 }else{
                     alert("La casilla 'Giro del cliente' debe contener información")
