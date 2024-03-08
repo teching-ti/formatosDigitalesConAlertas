@@ -113,11 +113,11 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
       hora_final,
     ];
 
-    let col1X = 40;
-    let col2X = 98;
-    let datosX = 90;
-    let datosY = 46.5;
-    let datosYc2 = 46.5;
+    let col1X = 39;
+    let col2X = 97;
+    let datosX = 89;
+    let datosY = 47.5;
+    let datosYc2 = 47.5;
     let cont = 1;
 
     datosGenerales.forEach((e) => {
@@ -138,10 +138,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         }
         cont += 1;
       } else {
-        datosY = 55.7;
+        datosY = 56.7;
         if (e != "") {
           doc.text(e, datosX, datosY);
-          datosX += 38;
+          datosX += 37;
         } else {
           eval = false;
         }
@@ -163,9 +163,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     opcionesSituacion1.forEach((e) => {
       if (e.checked) {
         if (e.value == 1) {
-          doc.text("X", 81, 69.4);
+          doc.text("X", 81, 70.4);
         } else {
-          doc.text("X", 126, 69.4);
+          doc.text("X", 126, 70.4);
         }
       }
     });
@@ -176,9 +176,9 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     opcionesSituacion2.forEach((e) => {
       if (e.checked) {
         if (e.value == 1) {
-          doc.text("X", 81, 74.2);
+          doc.text("X", 81, 75.2);
         } else {
-          doc.text("X", 126, 74.2);
+          doc.text("X", 126, 75.2);
         }
       }
     });
@@ -207,32 +207,32 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
           */
           case 1:
             if (i.value == 1) {
-              doc.text("X", 59, 92.5);
+              doc.text("X", 58, 93.8);
             } else if (i.value == 2) {
-              doc.text("X", 88, 92.5);
+              doc.text("X", 87, 93.8);
             } else if (i.value == 3) {
-              doc.text("X", 96.5, 92.5);
+              doc.text("X", 95.5, 93.8);
             } else if (i.value == 4) {
-              doc.text("X", 124, 92.5);
+              doc.text("X", 122, 93.8);
             } else if (i.value == 5) {
-              doc.text("X", 145.4, 92.5);
+              doc.text("X", 144, 93.8);
             } else {
-              doc.text("X", 170, 92.5);
+              doc.text("X", 169, 93.8);
             }
             break;
           case 2:
             if (i.value == 1) {
-              doc.text("X", 68, 98.2);
+              doc.text("X", 67, 99.2);
             } else if (i.value == 2) {
-              doc.text("X", 106, 98.2);
+              doc.text("X", 105, 99.2);
             } else {
               detalle = document.getElementById("txtcondicion2").value;
               if (detalle != "") {
                 doc.setFontSize(5)
                 if(detalle.length>10){
-                  doc.text(detalle, 162, 96.7, { maxWidth: 25, align: "justify", lineHeightFactor: 0.8});
+                  doc.text(detalle, 160, 97.7, { maxWidth: 28, align: "justify", lineHeightFactor: 0.8});
                 }else{
-                  doc.text(detalle, 163.5, 98.2)
+                  doc.text(detalle, 161.5, 99.2)
                 }
                 doc.setFontSize(6.5)
               } else {
@@ -245,17 +245,17 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             break;
           case 3:
             if (i.value == 1) {
-              doc.text("X", 68, 104);
+              doc.text("X", 67, 105.5);
             } else if (i.value == 2) {
-              doc.text("X", 106, 104);
+              doc.text("X", 104, 105.5);
             } else {
               detalle = document.getElementById("txtcondicion3").value;
               if (detalle != "") {
                 doc.setFontSize(5)
                 if(detalle.length>10){
-                  doc.text(detalle, 152, 102.5, { maxWidth: 30, align: "justify", lineHeightFactor: 0.8})
+                  doc.text(detalle, 150.5, 103.5, { maxWidth: 38, align: "justify", lineHeightFactor: 0.8})
                 }else{
-                  doc.text(detalle, 152, 104)
+                  doc.text(detalle, 150.5, 104.5)
                 }
                 doc.setFontSize(6.5)
               } else {
@@ -266,17 +266,17 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             break;
           case 4:
             if (i.value == 1) {
-              doc.text("X", 68, 109.8);
+              doc.text("X", 67, 111);
             } else if (i.value == 2) {
-              doc.text("X", 106, 109.8);
+              doc.text("X", 105, 111);
             } else {
               detalle = document.getElementById("txtcondicion4").value;
               if (detalle != "") {
                 doc.setFontSize(5)
                 if(detalle.length>10){
-                  doc.text(detalle, 162, 108.3, { maxWidth: 30, align: "justify", lineHeightFactor: 0.8})
+                  doc.text(detalle, 160, 109, { maxWidth: 28, align: "justify", lineHeightFactor: 0.8})
                 }else{
-                  doc.text(detalle, 162, 109.8)
+                  doc.text(detalle, 160, 110.5)
                 }
                 doc.setFontSize(6.5)
               } else {
@@ -290,7 +290,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
               detalle = document.getElementById("txtcondicion51").value;
               if (detalle != "") {
                 doc.setFontSize(5)
-                doc.text(detalle, 82, 115.6);
+                doc.text(detalle, 80, 116.5);
                 doc.setFontSize(6.5)
               } else {
                 alert(
@@ -299,12 +299,12 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
                 eval = false;
               }
             } else if (i.value == 2) {
-              doc.text("X", 106, 115.6);
+              doc.text("X", 104, 116.5);
             } else if (i.value == 3) {
               detalle = document.getElementById("txtcondicion52").value;
               if (detalle != "") {
                 doc.setFontSize(5)
-                doc.text(detalle, 149, 115.6);
+                doc.text(detalle, 147, 116.5);
                 doc.setFontSize(6.5)
               } else {
                 alert(
@@ -316,7 +316,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
               detalle = document.getElementById("txtcondicion53").value;
               if (detalle != "") {
                 doc.setFontSize(5)
-                doc.text(detalle, 176.5, 115.6);
+                doc.text(detalle, 175, 116.5);
                 doc.setFontSize(6.5)
               } else {
                 alert(
@@ -327,42 +327,42 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             }
 
             break;
+            //Si se presenta un caso6, entonces se colocarán únicamente las marcas de X
           case 6:
             if (i.value == 1) {
-              doc.text("X", 58, 121.4);
+              doc.text("X", 58, 122.5);
             } else if (i.value == 2) {
-              doc.text("X", 75.4, 121.4);
+              doc.text("X", 75, 122.5);
             } else if (i.value == 3) {
-              doc.text("X", 101.4, 121.4);
+              doc.text("X", 96.5, 123.4);
             } else if (i.value == 4) {
-              doc.text("X", 111.4, 121.4);
+              doc.text("X", 108, 122.5);
             } else if (i.value == 5) {
-              doc.text("X", 118, 121.4);
+              doc.text("X", 117, 123);
             } else if (i.value == 6) {
-              doc.text("X", 134, 121.4);
+              doc.text("X", 132, 123);
             } else if (i.value == 7) {
-              doc.text("X", 145.4, 121.4);
+              doc.text("X", 144, 123);
             } else if (i.value == 8) {
-              doc.text("X", 154.5, 121.4);
+              doc.text("X", 152.3, 123);
             } else if (i.value == 9) {
-              doc.text("X", 168, 121.4);
+              doc.text("X", 168, 123);
             }
             break;
           case 7:
             if(i.value==1){
-                doc.text("X", 68, 127.2)
+                doc.text("X", 68, 128)
             }else if(i.value==2){
-                doc.text("X", 106, 127.2)
+                doc.text("X", 104, 128)
             }else{
                 detalle = document.getElementById("txtcondicion7").value
                 if(detalle!=""){
                   doc.setFontSize(5)
                   if(detalle.length>10){
-                    doc.text(detalle, 165, 125.9, { maxWidth: 25, align: "justify", lineHeightFactor: 0.8})
+                    doc.text(detalle, 163, 126.4, { maxWidth: 25, align: "justify", lineHeightFactor: 0.8})
                   }else{
-                    doc.text(detalle, 165, 127.2)
+                    doc.text(detalle, 163, 128)
                   }
-
                   doc.setFontSize(6.5)
                 }else{
                     alert("La casilla 'Reductores de corriente del medidor AP debe contener información")
@@ -372,32 +372,32 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             break;
           case 8:
             if (i.value == 1) {
-                doc.text("X", 58, 133);
+                doc.text("X", 58, 134);
               } else if (i.value == 2) {
-                doc.text("X", 92, 133);
+                doc.text("X", 90, 134);
               } else if (i.value == 3) {
-                doc.text("X", 96.4, 133);
+                doc.text("X", 95.5, 134);
               } else if (i.value == 4) {
-                doc.text("X", 120, 133);
+                doc.text("X", 120, 134);
               } else if (i.value == 5) {
-                doc.text("X", 145.4, 133);
+                doc.text("X", 143.5, 134);
               } else {
-                doc.text("X", 168, 133);
+                doc.text("X", 168, 134);
               }
               break;
           case 9:
             if(i.value == 1){
-                doc.text("X", 68, 138.8)
+                doc.text("X", 68, 139.5)
             }else if(i.value == 2){
-                doc.text("X", 104, 138.8)
+                doc.text("X", 103, 139.5)
             }else{
                 detalle = document.getElementById("txtcondicion9").value
                 if(detalle!=""){
                   doc.setFontSize(5)
                   if(detalle.length>10){
-                    doc.text(detalle, 163.5, 137, { maxWidth: 25, align: "justify", lineHeightFactor: 0.8})
+                    doc.text(detalle, 161, 137.8, { maxWidth: 28, align: "justify", lineHeightFactor: 0.8})
                   }else{
-                    doc.text(detalle, 163.5, 138.5)
+                    doc.text(detalle, 161, 139)
                   }
                   doc.setFontSize(6.5)
                 }else{
@@ -408,22 +408,22 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             break;
           case 10:
             if(i.value==1){
-                doc.text("X", 68, 144.6)
+                doc.text("X", 68, 145)
             }else if(i.value==2){
-                doc.text("X", 106, 144.6)
+                doc.text("X", 105, 145)
             }else{
-                doc.text("X", 153, 144.6)
+                doc.text("X", 153, 145)
             }
             break;
           case 11:
             if(i.value==1){
-                doc.text("X", 64, 150.4)
+                doc.text("X", 63, 151)
             }else if(i.value==2){
-                doc.text("X", 101, 150.4)
+                doc.text("X", 100, 151)
             }else if(i.value==3){
-                doc.text("X", 134, 150.4)
+                doc.text("X", 131, 151)
             }else{
-                doc.text("X", 177, 150.4)
+                doc.text("X", 175, 151)
             }
             break;
           case 12:
@@ -437,32 +437,32 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             break;
           case 13:
             if(i.value==1){
-                doc.text("X", 58, 161.2)
+                doc.text("X", 58, 161.3)
             }else if(i.value==2){
-                doc.text("X", 82.5, 161.2)
+                doc.text("X", 82.2, 161)
             }else if(i.value==3){
-                doc.text("X", 107, 161.2)
+                doc.text("X", 103.4, 161)
             }else if(i.value==4){
-                doc.text("X", 122, 161.2)
+                doc.text("X", 120, 161.3)
             }else{
-                doc.text("X", 150, 161.2)
+                doc.text("X", 150, 161.3)
             }
             break;
           case 14:
             if(i.value==1){
-                doc.text("X", 65, 167)
+                doc.text("X", 65, 168)
             }else if(i.value==2){
-                doc.text("X", 98, 167)
+                doc.text("X", 97.5, 168)
             }else if(i.value==3){
-                doc.text("X", 117.5, 167)
+                doc.text("X", 116.2, 168)
             }else{
                 detalle = document.getElementById("txtcondicion14").value
                 if(detalle!=""){
                   doc.setFontSize(5)
                   if(detalle.length>10){
-                    doc.text(detalle, 140, 165.5, { maxWidth: 48, align: "justify", lineHeightFactor: 0.8})
+                    doc.text(detalle, 138.5, 166.5, { maxWidth: 48, align: "justify", lineHeightFactor: 0.8})
                   }else{
-                    doc.text(detalle, 140, 167)
+                    doc.text(detalle, 138.5, 168)
                   }
                   doc.setFontSize(6.5)
                 }else{
@@ -482,7 +482,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
         if(a.value==1){
           doc.text("X", 59, 173.5)
         }else{
-          doc.text("X", 98, 173.)
+          doc.text("X", 98, 173.5)
         }
       }
     })
@@ -537,13 +537,13 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
     let firmaSupervisor = "../recursos/firmas/RobertoLuisBailon.png";
     let firmaResponsable = "../recursos/firmas/LuisAdolfoParedesRicra.png";
 
-    doc.text(apellidos, 95.5, 250);
-    doc.text(nombres, 95.5, 254.6);
-    doc.text(dni, 89.5, 258.8);
-    doc.addImage(firma, "PNG", 89, 229, 30, 10);
+    doc.text(apellidos, 95.1, 250);
+    doc.text(nombres, 95.1, 254.6);
+    doc.text(dni, 89.1, 258.8);
+    doc.addImage(firma, "PNG", 88, 230, 30, 10);
     //aquí también se colocará la firma del supervisor y responsable del proyecto
-    doc.addImage(firmaSupervisor, "PNG", 40, 229, 30, 10);
-    doc.addImage(firmaResponsable, "PNG", 149, 229, 30, 10);
+    doc.addImage(firmaSupervisor, "PNG", 39, 230, 30, 10);
+    doc.addImage(firmaResponsable, "PNG", 148, 230, 30, 10);
   }
 
   //ejecutar funciones en orden de creacion
@@ -555,10 +555,10 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
   evaluarJefeCuadrilla()
   
   if(eval) {
-    /*var blob = doc.output("blob");
-    window.open(URL.createObjectURL(blob));*/
+    var blob = doc.output("blob");
+    window.open(URL.createObjectURL(blob));
 
-    fechaActual = fechaActual.replace(/\//g, "_")
+    /*fechaActual = fechaActual.replace(/\//g, "_")
         const nombreDocumento = `ACTA_DE_INSPECCION_${fechaActual}.pdf`
         doc.save(nombreDocumento)
         //endodear el resultado del pdf
@@ -579,7 +579,7 @@ btnGenerar.addEventListener("click", async function generarPDF(e) {
             success: function(php_script_response){
                 alert("Archivo generado correctamente")
             }
-        })
+        })*/
   } else {
     alert("Debe completar todos los datos solicitados");
   }
