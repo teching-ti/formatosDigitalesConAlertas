@@ -86,8 +86,12 @@ fetch("../scripts/datos.json")
     users = data;
     //cargar nombre de los choferes
     llenarSelect(document.getElementById("nombre-conductor"))
+
     //autocompletar firmas
     AutocompletarFirma(document.getElementById("nombre-conductor"), document.getElementById("firma-conductor"))
+
+    //completar fechas de vencimiento y placa
+    completarFechasVencimiento(document.getElementById("nombre-conductor"), document.getElementById("placa"))
     
   })
   .catch((error) => console.error("Error al cargar los datos:", error));
@@ -150,6 +154,108 @@ fetch("../scripts/datos.json")
     })
   }
 
+    /*Aquí inician las funcionalidades para las fechas*/
+    let btnModificarFechas = document.getElementById("btn-modificar-fechas")
+    btnModificarFechas.disabled = true
+
+    btnModificarFechas.addEventListener("click", function(){
+        //nombre del conductor seleccionado
+        let nombre_conductor = document.getElementById("nombre-conductor").value
+        //se obtienen los input donde están las fechas de vencimiento
+        let elementosBotiquin = document.querySelectorAll(".vencimiento-elemento-botiquin");
+        //se colocan todas las fechas obtenidas en un arreglo
+        let fechasVencimiento = Array.from(elementosBotiquin).map(input => input.value)
+        
+        //se crea un objeto con los datos a enviar
+        let data = {
+            nombreConductor: nombre_conductor,
+            fechasVencimiento: fechasVencimiento
+        }
+
+        fetch('../logica_adicional/guardar_fechas_botiquin.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ocurrió un error al enviar los datos.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Datos actualizados exitosamente:', data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    })
+    
+    // Completar las fechas de vencimiento en los inputs de elementos del botiquin
+    function completarFechasVencimiento(selector, elementoPlaca){
+        selector.addEventListener("change", function(){
+
+            //activacion del boton de modificar fechas
+            btnModificarFechas.disabled = false
+            btnModificarFechas.classList.add("btn-activo")
+
+            //se obtiene el select donde se escoge al participante de la inspeccion
+            let nombre_seleccionado = selector.value
+            let indice = 0
+            let conductorSeleccionado = null;
+
+            //se busca el nombre que coincida
+            let conductorTecnico = users.tecnico.find(
+                (tecn) => tecn.name === nombre_seleccionado
+            )
+
+            let conductorSupervisor = users.supervisor.find(
+                (tecn) => tecn.name === nombre_seleccionado
+            )
+
+            let conductorPrevencionista = users.prevencionista.find(
+                (tecn) => tecn.name === nombre_seleccionado
+            )
+            
+            //se guarda al conductor obtenido en una variable
+            if (conductorTecnico) {
+                conductorSeleccionado = conductorTecnico;
+            } else if (conductorSupervisor) {
+                conductorSeleccionado = conductorSupervisor;
+            } else if (conductorPrevencionista) {
+                conductorSeleccionado = conductorPrevencionista;
+            }
+
+            // Si se ha obtenido un valor se realiza lo siguiente
+            if (conductorSeleccionado) {
+                // Se carga la placa en la casilla de placa
+                elementoPlaca.value = conductorSeleccionado.placa;
+                
+                // se selecciona a todos los input donde se digitan las fechas
+                let fechasVencimientoInput = document.querySelectorAll(".vencimiento-elemento-botiquin")
+                fechasVencimientoInput.forEach((fechaVencimientoInput)=>{
+                    // Se cargan las fechas de vencimiento de manera ordenada (solo se cargan en orden)
+                    fechaVencimientoInput.value = conductorSeleccionado.botiquin[indice].fecha_vencimiento
+                    indice++
+                })
+            } else {
+                alert("Este espacio no puede permanecer vacío, seleccione al personal requerido");
+            }
+
+        })
+    }
+
+    //validar que las fechas que se colocan en el botiquin sean correctas
+    let contenedoresBotiquin = document.querySelectorAll(".elemento-botiquin")
+    contenedoresBotiquin.forEach(function(element){
+        let fecha_vencimiento = element.querySelector('input[type="date"]')
+        fecha_vencimiento.addEventListener("blur", function(){
+            validarFechas(fecha_vencimiento)
+        })
+    })
+
 /*---- PARTE 2 DEL CÓDIGO ----*/
 /* cargar documento */
 //Constante que permitirá usar el objeto jspdf
@@ -173,14 +279,8 @@ async function loadImage(url) {
       xhr.send();
     });
   }
-    //validar que las fechas que se colocan en el botiquin sean correctas
-    let contenedoresBotiquin = document.querySelectorAll(".elemento-botiquin")
-    contenedoresBotiquin.forEach(function(element){
-        let fecha_vencimiento = element.querySelector('input[type="date"]')
-        fecha_vencimiento.addEventListener("blur", function(){
-            validarFechas(fecha_vencimiento)
-        })
-    })
+    
+    
 
   let btnGenerar = document.getElementById("btnGenerar")
 
@@ -814,10 +914,10 @@ async function loadImage(url) {
     if(auto.checked){
 
         if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarTodoVehiculo() && evaluarLLantas() && evaluarAccesorios() && evaluarTapas() && evaluarEpp() && evaluarPma() && evaluarBotiquin() && evaluarConductor()){
-            /*var blob = doc.output("blob");
-            window.open(URL.createObjectURL(blob));*/
+            var blob = doc.output("blob");
+            window.open(URL.createObjectURL(blob));
 
-            fechaActual = fechaActual.replace(/\//g, "_")
+            /*fechaActual = fechaActual.replace(/\//g, "_")
             const nombreDocumento =`INSPECCION_VEHICULAR_${fechaActual}.pdf`
             doc.save(nombreDocumento)
             //endodear el resultado del pdf
@@ -838,17 +938,17 @@ async function loadImage(url) {
                 success: function(php_script_response){
                     alert("Archivo generado correctamente")
                 }
-            })
+            })*/
         }else{
             alert("Completar todos los campos")
         }
     }else if(moto.checked){
 
         if(evaluarDatosGenerales() && evaluarNombre() && evaluarObservaciones() && evaluarMoto() && evaluarEpp() && evaluarPma() && evaluarBotiquin() && evaluarConductor()){
-            /*var blob = doc.output("blob");
-            window.open(URL.createObjectURL(blob));*/
+            var blob = doc.output("blob");
+            window.open(URL.createObjectURL(blob));
 
-            fechaActual = fechaActual.replace(/\//g, "_")
+            /*fechaActual = fechaActual.replace(/\//g, "_")
             const nombreDocumento =`INSPECCION_VEHICULAR_${fechaActual}.pdf`
             doc.save(nombreDocumento)
             //endodear el resultado del pdf
@@ -869,7 +969,7 @@ async function loadImage(url) {
                 success: function(php_script_response){
                     alert("Archivo generado correctamente")
                 }
-            })
+            })*/
         }else{
             alert("Completar todos los campos obligatorios")
         }

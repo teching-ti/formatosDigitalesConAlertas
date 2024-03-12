@@ -8,7 +8,9 @@
       "celular": "913 905 876",
       "firma": "../recursos/firmas/JoseLuisDiazVasquez.png",
       "cargo": "Jefe Cuadrilla de Balance",
-      "vehiculo": ""
+      "vehiculo": "",
+      "placa":"",
+      "botiquin":[]
     },
     {
       "name": "Rodrigo Marco Lopez Acuña",
@@ -18,7 +20,9 @@
       "celular":"913 905 395",
       "firma": "../recursos/firmas/RodrigoMarcoLopezAcuna.png",
       "cargo": "Jefe Cuadrilla de Balance",
-      "vehiculo": ""
+      "vehiculo": "",
+      "placa":"",
+      "botiquin":[]
     },
     {
       "name": "Luis David Enriquez Quispe",
@@ -28,7 +32,9 @@
       "celular":"941 279 185",
       "firma": "../recursos/firmas/LuisDavidEnriqueQuispe.png",
       "cargo": "Jefe Cuadrilla de Balance",
-      "vehiculo": ""
+      "vehiculo": "",
+      "placa":"",
+      "botiquin":[]
     },
     {
       "name": "Juan José Alcantara Soto",
@@ -38,7 +44,9 @@
       "celular":"941 279 010",
       "firma": "../recursos/firmas/JuanJoseAlcantaraSoto.png",
       "cargo": "Jefe Cuadrilla de Balance",
-      "vehiculo": ""
+      "vehiculo": "",
+      "placa":"",
+      "botiquin":[]
     },
     {
       "name": "Erich Ofni Gonzalo Laguna",
@@ -48,7 +56,9 @@
       "celular":"921 696 606",
       "firma": "../recursos/firmas/ErichOfniGonzaloLaguna.png",
       "cargo": "Operario de Balance",
-      "vehiculo": ""
+      "vehiculo": "",
+      "placa":"",
+      "botiquin":[]
     },
     {
       "name": "Frank Brayan Morales Quispe",
@@ -58,7 +68,9 @@
       "celular":"986 969 783",
       "firma": "../recursos/firmas/FrankBrayanMoralesQuispe.png",
       "cargo": "Operario de Balance",
-      "vehiculo": ""
+      "vehiculo": "",
+      "placa":"",
+      "botiquin":[]
     },
     {
       "name": "Robin Valentino Asensios Cardenas",
@@ -68,7 +80,9 @@
       "celular":"918 260 797",
       "firma": "../recursos/firmas/RobinAsensios.png",
       "cargo": "Operario de Balance",
-      "vehiculo": ""
+      "vehiculo": "",
+      "placa":"",
+      "botiquin":[]
     },
     {
       "name": "Jordy Alquett Acosta Fernandez",
@@ -78,7 +92,9 @@
       "celular":"988 259 588",
       "firma": "../recursos/firmas/JordyAlquettAcostaFernandez.png",
       "cargo": "Operario de Balance",
-      "vehiculo": ""
+      "vehiculo": "",
+      "placa":"",
+      "botiquin":[]
     },
     {
       "name": "Angel Anibal Apolinario Rojas",
@@ -88,7 +104,56 @@
       "celular": "999 999 999",
       "firma": "../recursos/firmas/AngelAnibalApolinarioRojas.png",
       "cargo": "Chofer Ayudante de Balance",
-      "vehiculo": "Auto"
+      "vehiculo": "Auto",
+      "placa":"Z7N-057",
+      "botiquin":[{
+            "elemento":"Alcohol de 70° de 500 ml",
+            "fecha_vencimiento":"2028-03-31"
+          },
+          {
+            "elemento":"Jabón antiséptico",
+            "fecha_vencimiento":"2027-01-01"
+          },
+          {
+            "elemento":"Gasas esterilizadas fraccionadas de 1 m x 10cm",
+            "fecha_vencimiento":"2028-03-09"
+          },
+          {
+            "elemento":"Apósito Esterilizado 10x 10 cm",
+            "fecha_vencimiento":"2027-10-31"
+          },
+          {
+            "elemento":"Esparadrapo hipoalérgico 2.5 cm x 5 m",
+            "fecha_vencimiento":"2027-04-12"
+          },
+          {
+            "elemento":"Venda elástica 4 pulg x 5 yardas",
+            "fecha_vencimiento":"2028-03-31"
+          },
+          {
+            "elemento":"Bandas adhesivas (curitas)",
+            "fecha_vencimiento":"2028-07-01"
+          },
+          {
+            "elemento":"Guantes quirúrgicos esterilizados 7 1/2 (pares)",
+            "fecha_vencimiento":"2028-06-26"
+          },
+          {
+            "elemento":"Algodón x 50 gr",
+            "fecha_vencimiento":"2027-06-30"
+          },
+          {
+            "elemento":"Flamodil ó Hirudoid (golpes, hematomas)",
+            "fecha_vencimiento":"2028-07-31"
+          },
+          {
+            "elemento":"Apositos de Jelonet  10 x 10 cm",
+            "fecha_vencimiento":"2027-07-01"
+          },
+          {
+            "elemento":"Agua esteril x 1/2 litro",
+            "fecha_vencimiento":"2026-11-19"
+          }]
     },
     {
       "name":"Rodolfo Anatilo Izaguirre Cordova",
@@ -98,7 +163,56 @@
       "celular": "999 999 999",
       "firma": "../recursos/firmas/RodolfoAnatiloIzaguirreCordova.png",
       "cargo": "Chofer Ayudante de Balance",
-      "vehiculo": "Auto"
+      "vehiculo": "Auto",
+      "placa":"Z7N-052",
+      "botiquin":[{
+            "elemento":"Alcohol de 70° de 500 ml",
+            "fecha_vencimiento":"2026-06-30"
+          },
+          {
+            "elemento":"Jabón antiséptico",
+            "fecha_vencimiento":"2027-12-31"
+          },
+          {
+            "elemento":"Gasas esterilizadas fraccionadas de 1 m x 10cm",
+            "fecha_vencimiento":"2027-10-31"
+          },
+          {
+            "elemento":"Apósito Esterilizado 10x 10 cm",
+            "fecha_vencimiento":"2027-07-21"
+          },
+          {
+            "elemento":"Esparadrapo hipoalérgico 2.5 cm x 5 m",
+            "fecha_vencimiento":"2025-01-31"
+          },
+          {
+            "elemento":"Venda elástica 4 pulg x 5 yardas",
+            "fecha_vencimiento":"2028-08-31"
+          },
+          {
+            "elemento":"Bandas adhesivas (curitas)",
+            "fecha_vencimiento":"2026-06-30"
+          },
+          {
+            "elemento":"Guantes quirúrgicos esterilizados 7 1/2 (pares)",
+            "fecha_vencimiento":"2027-04-30"
+          },
+          {
+            "elemento":"Algodón x 50 gr",
+            "fecha_vencimiento":"2028-06-30"
+          },
+          {
+            "elemento":"Flamodil ó Hirudoid (golpes, hematomas)",
+            "fecha_vencimiento":"2028-07-31"
+          },
+          {
+            "elemento":"Apositos de Jelonet  10 x 10 cm",
+            "fecha_vencimiento":"2027-07-01"
+          },
+          {
+            "elemento":"Agua esteril x 1/2 litro",
+            "fecha_vencimiento":"2026-11-11"
+          }]
     },
     {
       "name":"Wilver Alonso Flores Gomez",
@@ -108,7 +222,56 @@
       "celular": "999 999 999",
       "firma": "../recursos/firmas/WilverAlonsoFloresGomez.png",
       "cargo": "Chofer Ayudante de Balance",
-      "vehiculo": "Auto"
+      "vehiculo": "Auto",
+      "placa":"Z7N-063",
+      "botiquin":[{
+        "elemento":"Alcohol de 70° de 500 ml",
+        "fecha_vencimiento":"2026-06-01"
+      },
+      {
+        "elemento":"Jabón antiséptico",
+        "fecha_vencimiento":"2024-02-01"
+      },
+      {
+        "elemento":"Gasas esterilizadas fraccionadas de 1 m x 10cm",
+        "fecha_vencimiento":"2028-03-01"
+      },
+      {
+        "elemento":"Apósito Esterilizado 10x 10 cm",
+        "fecha_vencimiento":"2027-02-01"
+      },
+      {
+        "elemento":"Esparadrapo hipoalérgico 2.5 cm x 5 m",
+        "fecha_vencimiento":"2025-01-01"
+      },
+      {
+        "elemento":"Venda elástica 4 pulg x 5 yardas",
+        "fecha_vencimiento":"2028-08-01"
+      },
+      {
+        "elemento":"Bandas adhesivas (curitas)",
+        "fecha_vencimiento":"2027-08-01"
+      },
+      {
+        "elemento":"Guantes quirúrgicos esterilizados 7 1/2 (pares)",
+        "fecha_vencimiento":"2027-04-01"
+      },
+      {
+        "elemento":"Algodón x 50 gr",
+        "fecha_vencimiento":"2027-04-01"
+      },
+      {
+        "elemento":"Flamodil ó Hirudoid (golpes, hematomas)",
+        "fecha_vencimiento":"2028-11-01"
+      },
+      {
+        "elemento":"Apositos de Jelonet  10 x 10 cm",
+        "fecha_vencimiento":"2028-07-01"
+      },
+      {
+        "elemento":"Agua esteril x 1/2 litro",
+        "fecha_vencimiento":"2026-11-01"
+      }]
     },
     {
       "name":"Christian Carlos Sotelo Saldaña",
@@ -118,7 +281,56 @@
       "celular": "999 999 999",
       "firma": "../recursos/firmas/ChristianCarlosSoteloSaldana.png",
       "cargo": "Chofer Ayudante de Balance",
-      "vehiculo": "Auto"
+      "vehiculo": "Auto",
+      "placa":"Z7N-050",
+      "botiquin":[{
+        "elemento":"Alcohol de 70° de 500 ml",
+        "fecha_vencimiento":"2026-08-31"
+      },
+      {
+        "elemento":"Jabón antiséptico",
+        "fecha_vencimiento":"2024-02-29"
+      },
+      {
+        "elemento":"Gasas esterilizadas fraccionadas de 1 m x 10cm",
+        "fecha_vencimiento":"2028-03-09"
+      },
+      {
+        "elemento":"Apósito Esterilizado 10x 10 cm",
+        "fecha_vencimiento":"2027-02-28"
+      },
+      {
+        "elemento":"Esparadrapo hipoalérgico 2.5 cm x 5 m",
+        "fecha_vencimiento":"2025-01-31"
+      },
+      {
+        "elemento":"Venda elástica 4 pulg x 5 yardas",
+        "fecha_vencimiento":"2028-08-31"
+      },
+      {
+        "elemento":"Bandas adhesivas (curitas)",
+        "fecha_vencimiento":"2026-06-30"
+      },
+      {
+        "elemento":"Guantes quirúrgicos esterilizados 7 1/2 (pares)",
+        "fecha_vencimiento":"2027-04-30"
+      },
+      {
+        "elemento":"Algodón x 50 gr",
+        "fecha_vencimiento":"2028-01-31"
+      },
+      {
+        "elemento":"Flamodil ó Hirudoid (golpes, hematomas)",
+        "fecha_vencimiento":"2028-07-31"
+      },
+      {
+        "elemento":"Apositos de Jelonet  10 x 10 cm",
+        "fecha_vencimiento":"2025-04-01"
+      },
+      {
+        "elemento":"Agua esteril x 1/2 litro",
+        "fecha_vencimiento":"2026-11-11"
+      }]
     },
     {
       "name":"Romario Ronaldiño Ñuñuri Motta",
@@ -128,7 +340,9 @@
       "celular": "999 999 999",
       "firma": "../recursos/firmas/RomarioRonaldinoNunuriMotta.png",
       "cargo": "Chofer Ayudante de Balance",
-      "vehiculo": "Moto"
+      "vehiculo": "",
+      "placa":"",
+      "botiquin":[]
     }
   ],
 
@@ -141,7 +355,56 @@
       "celular": "910 729 152",
       "firma": "../recursos/firmas/RobertoLuisBailon.png",
       "cargo":"Supervisor",
-      "vehiculo": "Auto"
+      "vehiculo": "Auto",
+      "placa":"Z7N-067",
+      "botiquin":[{
+        "elemento":"Alcohol de 70° de 500 ml",
+        "fecha_vencimiento":"2026-06-30"
+      },
+      {
+        "elemento":"Jabón antiséptico",
+        "fecha_vencimiento":"2024-02-29"
+      },
+      {
+        "elemento":"Gasas esterilizadas fraccionadas de 1 m x 10cm",
+        "fecha_vencimiento":"2025-02-20"
+      },
+      {
+        "elemento":"Apósito Esterilizado 10x 10 cm",
+        "fecha_vencimiento":"2025-02-20"
+      },
+      {
+        "elemento":"Esparadrapo hipoalérgico 2.5 cm x 5 m",
+        "fecha_vencimiento":"2025-01-31"
+      },
+      {
+        "elemento":"Venda elástica 4 pulg x 5 yardas",
+        "fecha_vencimiento":"2028-08-31"
+      },
+      {
+        "elemento":"Bandas adhesivas (curitas)",
+        "fecha_vencimiento":"2026-06-30"
+      },
+      {
+        "elemento":"Guantes quirúrgicos esterilizados 7 1/2 (pares)",
+        "fecha_vencimiento":"2027-04-30"
+      },
+      {
+        "elemento":"Algodón x 50 gr",
+        "fecha_vencimiento":"2025-02-20"
+      },
+      {
+        "elemento":"Flamodil ó Hirudoid (golpes, hematomas)",
+        "fecha_vencimiento":"2028-07-31"
+      },
+      {
+        "elemento":"Apositos de Jelonet  10 x 10 cm",
+        "fecha_vencimiento":"2025-02-20"
+      },
+      {
+        "elemento":"Agua esteril x 1/2 litro",
+        "fecha_vencimiento":"2026-09-16"
+      }]
     }
   ],
 
@@ -154,7 +417,9 @@
       "celular": "944 686 506",
       "firma": "../recursos/firmas/DanielSaldarriagaAliaga.png",
       "cargo":"Prevencionista",
-      "vehiculo": ""
+      "vehiculo": "",
+      "placa":"",
+      "botiquin":[]
     },
     {
       "name":"Leslie Judith Pacheco Neyra",
@@ -164,7 +429,9 @@
       "celular": "982 846 439",
       "firma": "../recursos/firmas/LeslieJudithPachecoNeyra.png",
       "cargo": "Prevencionista",
-      "vehiculo": ""
+      "vehiculo": "",
+      "placa":"",
+      "botiquin":[]
     }
   ]
 }

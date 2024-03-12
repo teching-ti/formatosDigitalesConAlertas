@@ -229,6 +229,25 @@ td, th{
     gap: 1rem;
 }
 
+#seccion-modificar{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: .5rem 0;
+}
+
+#btn-modificar-fechas{
+    padding: .5rem;
+    cursor: pointer;
+    border-radius: .2rem;
+}
+
+.btn-activo:hover{
+    transform: translateY(6px);
+    transition: all ease-in-out .2s;
+    background-color: #d1d1d1;
+}
+
 #btnGenerar{
     cursor: pointer;
     position: fixed;
