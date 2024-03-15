@@ -186,7 +186,9 @@ fetch("../scripts/datos.json")
             return response.json();
         })
         .then(data => {
-            console.log('Datos actualizados exitosamente:', data);
+            alert(`Los elementos del botiquín asociados a: ${data.nombreConductor} han sido modificados exitosamente`)
+            //console.log('Datos actualizados exitosamente:', data);
+            btnModificarFechas.disabled = true
         })
         .catch(error => {
             console.error('Error:', error);

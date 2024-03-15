@@ -1,0 +1,5 @@
+/* 15_03
+Se implementó 'logica_adicional/guardar_fechas_botiquin.php' junto con una modificación en el archivo 'scripts/functionsInspeccion2.js'.
+En este último Se agregó un botón para modificar fechas, lógica para cargar la placa del conductor, y lógica para obtener las fechas
+de los elementos del botiquín, tal y como se encuentran en la página, entonces estas fechas junto con el nombre del conductor se envían al php
+para que este luego obtenga al archivo 'datos.json' y edite las fechas recibidas en orden, pero en base al nombre del conductor recibido.
