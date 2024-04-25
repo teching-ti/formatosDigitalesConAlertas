@@ -1,0 +1,6 @@
+Options -Indexes
+
+RewriteEngine On
+
+RewriteCond %{THE_REQUEST} /scripts_links\.php [NC]
+RewriteRule ^ - [F]

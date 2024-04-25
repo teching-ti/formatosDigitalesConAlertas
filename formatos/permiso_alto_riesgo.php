@@ -1,3 +1,8 @@
+<?php 
+require("../control/db.php");
+require("../control/control_access.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,27 +10,11 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Permiso de Alto Riesgo</title>
-    <link
-      rel="icon"
-      href="../recursos/favicon-teching.png"
-      type="image/x-icon"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <?php 
+      require("./header_comun/scripts_links.php")
+    ?>
+    <!-- Estilos -->
     <link rel="stylesheet" href="../estilos/stylesPermiso.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <script
-  src="https://code.jquery.com/jquery-3.7.1.js"
-  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-  crossorigin="anonymous"></script>
   </head>
   <body>
     <main class="main">

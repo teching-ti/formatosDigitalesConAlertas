@@ -1,5 +1,46 @@
-/* 15_03
+///* 25_04
+- El perfil de usuario que va a utilizar el personal técnico es: techformuser
+- ejemplo, contra de usuario : user123Formatos*
+
+(implementar cierre de sesion a)
+
+////* 24_04
+// creación de base de datos para implementar sistema de autenticación
+* credenciales - Administrador Teching, se debe desactivar el acceso restringido a registrar para su primer uso, para que se pueda registrar a un administrador
+aplicando las medidas de seguridad con las que cuenta el aplicativo desde ahora
+
+- id = 'se ingresa de manera manual'
+- Usuario: tiadmin
+- Contraseña del tiadmin creado - ti123Formatos*
+- Perfil: admin
+
+* credenciales - Usuario que usará el aplicativo
+- id = 'se ingresa de manera manual'
+- Usuario: user
+- contraseña: (crear y tomar nota)
+- perfil: techformuser
+
+CREATE DATABASE formatos_digitales_db
+
+CREATE TABLE usuarios (
+    id VARCHAR(12) PRIMARY KEY NOT NULL,
+    nombre_usuario VARCHAR(50) NOT NULL UNIQUE,
+    contrasena VARCHAR(255) NOT NULL,
+    perfil varchar(13) NOT NULL,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE registros_inicio_sesion (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    fecha_inicio_sesion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+);
+
+///* 15_03
 Se implementó 'logica_adicional/guardar_fechas_botiquin.php' junto con una modificación en el archivo 'scripts/functionsInspeccion2.js'.
 En este último Se agregó un botón para modificar fechas, lógica para cargar la placa del conductor, y lógica para obtener las fechas
 de los elementos del botiquín, tal y como se encuentran en la página, entonces estas fechas junto con el nombre del conductor se envían al php
 para que este luego obtenga al archivo 'datos.json' y edite las fechas recibidas en orden, pero en base al nombre del conductor recibido.
+
