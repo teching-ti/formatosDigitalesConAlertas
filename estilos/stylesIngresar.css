@@ -28,8 +28,8 @@ main{
 
 .form-login{
     display: flex;
-    width: 368px;
-    max-height: 372px;
+    width: 374px;
+    height: fit-content;
     flex-direction: column;
     background: linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.85));
     border: solid 2px rgb(97, 96, 96);

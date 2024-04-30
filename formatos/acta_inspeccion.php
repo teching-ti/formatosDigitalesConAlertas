@@ -258,14 +258,13 @@ require("../control/control_access.php");
                         <input type="text" id="dni">
                      </div>
                   </div>
-
                </div>
-
                <div id="btnGenerar"><i class="fa-solid fa-file-pdf fa-lg"></i></div>
             </form>
          </section>
-         
       </main>
       <script src="../scripts/functionsActaInspeccions.js"></script>
+      <!-- kill sesion detectando inactividad o solo por tiempo-->
+      <script type="module" src="../scripts/control_tiempo.js"></script>
   </body>
 </html>

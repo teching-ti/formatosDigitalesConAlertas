@@ -562,5 +562,6 @@ require("../control/control_access.php");
       <div id="btnGenerar"><i class="fa-solid fa-file-pdf fa-lg"></i></div>
     </main>
     <script src="../scripts/functionsPetar.js"></script>
+    <script type="module" src="../scripts/control_tiempo.js"></script>
   </body>
 </html>

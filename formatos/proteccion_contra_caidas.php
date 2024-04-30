@@ -341,5 +341,6 @@ require("../control/control_access.php");
     </main>
 
     <script src="../scripts/functionsProteccionCaidas.js"></script>
+    <script type="module" src="../scripts/control_tiempo.js"></script>
   </body>
 </html>

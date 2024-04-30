@@ -215,5 +215,6 @@ require("../control/control_access.php");
       </section>
     </main>
     <script src="../scripts/functionsAts.js"></script>
+    <script type="module" src="../scripts/control_tiempo.js"></script>
   </body>
 </html>

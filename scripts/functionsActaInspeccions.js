@@ -5,6 +5,23 @@ fecha.value = fechaActual;
 //mensaje de aviso
 alert("Buen día, por favor, seleccione correctamente los datos de inspección y marque la casilla correspondiente si desea añadir información adicional.")
 
+// evitar los saltos de línea para los textarea
+let textareas = document.querySelectorAll("textarea")
+// console.log(textareas)
+
+// evitar saltos de línea en los textarea
+// textareas.forEach(e=>{
+//   let saltosLinea = 0
+//   e.addEventListener("keydown", (evento)=>{
+//     if(evento.key === "Enter"){
+//       saltosLinea++
+//       if(saltosLinea>=3){
+//         evento.preventDefault()
+//       }
+//     }
+//   })
+// })
+
 //obtener los datos del archivo
 //uso de una petición fetch
 fetch("../scripts/datos.json")

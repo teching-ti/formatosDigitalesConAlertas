@@ -1,3 +1,9 @@
+///*** 30_04
+- Para crear un usuario se puede completar cualquier dato, se usará como id para los usuarios un número de DNI o el nombre de usuario
+- El cierre de sesión se ejecuta siempre y cuando se esté con el navegador encendido debido a que lo hace una funcionalidad javascript =>
+Esa acción debe darse por acción del servidor
+
+
 ///* 25_04
 - El perfil de usuario que va a utilizar el personal técnico es: techformuser
 - ejemplo, contra de usuario : user123Formatos*
@@ -16,15 +22,15 @@ aplicando las medidas de seguridad con las que cuenta el aplicativo desde ahora
 
 * credenciales - Usuario que usará el aplicativo
 - id = 'se ingresa de manera manual'
-- Usuario: user
+- Usuario: 'user'
 - contraseña: (crear y tomar nota)
 - perfil: techformuser
 
 CREATE DATABASE formatos_digitales_db
 
 CREATE TABLE usuarios (
-    id VARCHAR(12) PRIMARY KEY NOT NULL,
-    nombre_usuario VARCHAR(50) NOT NULL UNIQUE,
+    id_usuario VARCHAR(20) PRIMARY KEY NOT NULL,
+    nombre_usuario VARCHAR(65) NOT NULL UNIQUE,
     contrasena VARCHAR(255) NOT NULL,
     perfil varchar(13) NOT NULL,
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -33,7 +39,7 @@ CREATE TABLE usuarios (
 
 CREATE TABLE registros_inicio_sesion (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT NOT NULL,
+    id_usuario VARCHAR(20) NOT NULL,
     fecha_inicio_sesion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
 );

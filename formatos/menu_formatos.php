@@ -46,7 +46,7 @@ require("../control/control_access.php");
         >
       </div>
       <div class="formatos">
-        <a href="./formatos/permiso_alto_riesgo.php" class="links"
+        <a href="./permiso_alto_riesgo.php" class="links"
           >Permiso de Alto Riesgo</a
         >
       </div>

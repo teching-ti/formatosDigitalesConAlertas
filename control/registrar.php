@@ -16,10 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // variable de sentencia sql
     $stmt = null;
 
-
     if($perfil === 'techformuser'){    //2
         // se inserta el nuevo registro en la base de datos
-        $sql = "INSERT INTO usuarios (id, nombre_usuario, contrasena, perfil) VALUES (:id, :username, :passteching, :prof)";
+        $sql = "INSERT INTO usuarios (id_usuario, nombre_usuario, contrasena, perfil) VALUES (:id, :username, :passteching, :prof)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':username', $username);

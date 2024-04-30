@@ -4139,5 +4139,6 @@ require("../control/control_access.php");
       <div id="btnComentarios"><i class="fa-solid fa-comment-dots"></i></div>
     </main>
     <script src="../scripts/functionsListaInspeccion.js"></script>
+    <script type="module" src="../scripts/control_tiempo.js"></script>
   </body>
 </html>
